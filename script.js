@@ -1,19 +1,16 @@
 // ========================
 // SECCIÓN: Noticias Automáticas desde RSS
 // ========================
-const API_KEY = "81e3fb29b7fbe9c2b41476e8a1ab2d3e"; 
-const API_KEY = "TU_API_KEY"; 
-const API_URL = `http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=sports&languages=es`;
-const PROXY_URL = `https://api.allorigins.win/get?url=${encodeURIComponent(API_URL)}`;
+const API_KEY = "56047088e795d75ce157b11ea41c5e21"; // Reemplaza con tu API Key de GNews
+const URL = `https://gnews.io/api/v4/search?q=formula1&lang=es&token=${API_KEY}`;
 
 async function cargarNoticias() {
     try {
-        const response = await fetch(PROXY_URL);
+        const response = await fetch(URL);
         const data = await response.json();
-        const jsonData = JSON.parse(data.contents); // Convertimos a JSON
-        
+
         let noticiasHTML = '';
-        jsonData.data.forEach(noticia => {
+        data.articles.forEach(noticia => {
             noticiasHTML += `
                 <div class="noticia">
                     <img src="${noticia.image || 'https://via.placeholder.com/400'}">
@@ -31,6 +28,7 @@ async function cargarNoticias() {
     }
 }
 document.addEventListener("DOMContentLoaded", cargarNoticias);
+
 
 
 // ========================
