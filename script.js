@@ -1,8 +1,8 @@
 // ========================
 // SECCIÓN: Noticias Automáticas desde RSS
 // ========================
-const API_KEY = "56047088e795d75ce157b11ea41c5e21"; // Reemplaza con tu API Key de GNews
-const URL = `https://gnews.io/api/v4/search?q=formula1&lang=es&token=${API_KEY}`;
+const API_KEY = "pub_67944619781bfef5f895bb18760aa3cf7bf21"; // Reemplaza con tu clave de NewsData.io
+const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=formula1&language=es`;
 
 async function cargarNoticias() {
     try {
@@ -10,13 +10,13 @@ async function cargarNoticias() {
         const data = await response.json();
 
         let noticiasHTML = '';
-        data.articles.forEach(noticia => {
+        data.results.forEach(noticia => {
             noticiasHTML += `
                 <div class="noticia">
-                    <img src="${noticia.image || 'https://via.placeholder.com/400'}">
+                    <img src="${noticia.image_url || 'https://via.placeholder.com/400'}">
                     <h3>${noticia.title}</h3>
                     <p>${noticia.description || 'Sin descripción disponible'}</p>
-                    <a href="${noticia.url}" target="_blank">Leer más</a>
+                    <a href="${noticia.link}" target="_blank">Leer más</a>
                 </div>
             `;
         });
@@ -28,6 +28,7 @@ async function cargarNoticias() {
     }
 }
 document.addEventListener("DOMContentLoaded", cargarNoticias);
+
 
 
 
