@@ -74,3 +74,5 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error al cargar el menú:", error));
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+   
