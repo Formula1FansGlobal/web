@@ -4,7 +4,7 @@
 
 async function cargarNoticiasDesdeRSS() {
     try {
-        const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://es.motorsport.com/rss/f1/news/'));
+        const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://es.motorsport.com/rss/all/videos/'));
         const data = await response.json();
 
         // Convertir XML a un objeto JS
