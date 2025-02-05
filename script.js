@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", cargarNoticias);
     });
 
   // Configuración del contador de cuenta regresiva
-  const fechaObjetivo = new Date('2025-02-15T15:00:00'); // Cambia esta fecha y hora a la deseada
+  const fechaObjetivo = new Date('2025-02-26T08:00:00'); // Cambia esta fecha y hora a la deseada
 
   function actualizarContador() {
     const ahora = new Date();
