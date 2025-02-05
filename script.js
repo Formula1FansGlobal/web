@@ -31,48 +31,33 @@ document.addEventListener("DOMContentLoaded", cargarNoticias);
 
 
 
+// Fetch para el menú
+  fetch('menu.html')
+    .then(response => response.text())
+    .then(data => {
+        document.body.insertAdjacentHTML('afterbegin', data);
+    });
 
-// ========================
-// SECCIÓN: Contador Regresivo para En Vivo
-// ========================
+  // Configuración del contador de cuenta regresiva
+  const fechaObjetivo = new Date('2025-02-15T15:00:00'); // Cambia esta fecha y hora a la deseada
 
-const contadorElement = document.getElementById("contador");
+  function actualizarContador() {
+    const ahora = new Date();
+    const diferencia = fechaObjetivo - ahora;
 
-function actualizarContador() {
-    const fechaFutura = new Date("2025-03-20T14:00:00").getTime(); // Fecha del evento
-    const ahora = new Date().getTime();
-    const tiempoRestante = fechaFutura - ahora;
+    if (diferencia > 0) {
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
 
-    if (tiempoRestante < 0) {
-        contadorElement.innerHTML = "¡El evento ha comenzado!";
-        return;
+      document.getElementById('dias').textContent = dias.toString().padStart(2, '0');
+      document.getElementById('horas').textContent = horas.toString().padStart(2, '0');
+      document.getElementById('minutos').textContent = minutos.toString().padStart(2, '0');
+      document.getElementById('segundos').textContent = segundos.toString().padStart(2, '0');
+    } else {
+      document.getElementById('contador').innerHTML = '<h2>¡La carrera ha comenzado!</h2>';
     }
+  }
 
-    const dias = Math.floor(tiempoRestante / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((tiempoRestante % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((tiempoRestante % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((tiempoRestante % (1000 * 60)) / 1000);
-
-    contadorElement.innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
-}
-
-// Iniciar el contador solo si existe el elemento en la página
-if (contadorElement) {
-    setInterval(actualizarContador, 1000);
-    actualizarContador(); // Llamar una vez para mostrar el tiempo inmediatamente
-}
-
-// ========================
-// SECCIÓN: Menu general
-// ========================
-document.addEventListener("DOMContentLoaded", function () {
-    fetch("menu.html")
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById("menu-container").innerHTML = data;
-        })
-        .catch(error => console.error("Error al cargar el menú:", error));
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-   
+  setInterval(actualizarContador, 1000);
