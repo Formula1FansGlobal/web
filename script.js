@@ -1,16 +1,18 @@
 // ========================
 // SECCIÓN: Noticias Automáticas desde RSS
 // ========================
-const API_KEY = "81e3fb29b7fbe9c2b41476e8a1ab2d3e";
-const URL = `http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=sports&languages=es`;
+const API_KEY = "TU_API_KEY"; 
+const API_URL = `http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=sports&languages=es`;
+const PROXY_URL = `https://api.allorigins.win/get?url=${encodeURIComponent(API_URL)}`;
 
 async function cargarNoticias() {
     try {
-        const response = await fetch(URL);
+        const response = await fetch(PROXY_URL);
         const data = await response.json();
-
+        const jsonData = JSON.parse(data.contents); // Convertimos a JSON
+        
         let noticiasHTML = '';
-        data.data.forEach(noticia => {
+        jsonData.data.forEach(noticia => {
             noticiasHTML += `
                 <div class="noticia">
                     <img src="${noticia.image || 'https://via.placeholder.com/400'}">
