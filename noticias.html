@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 Noticias</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <img src="logo2.jpg" alt="Logo" class="logo">
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="en-vivo.html">En Vivo</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <header>
+        <h1>Últimas Noticias de F1</h1>
+    </header>
+    
+    <section id="news">
+        Cargando noticias...
+    </section>
+    
+    <script src="script.js"></script>
+</body>
+</html>
 
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    nav {
+        background-color: #1a1a1a;
+        padding: 10px 20px;
+    }
+    .nav-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .logo {
+        height: 50px;
+    }
+    .nav-links {
+        list-style: none;
+        display: flex;
+        padding: 0;
+    }
+    .nav-links li {
+        margin: 0 15px;
+    }
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+    }
+    header {
+        text-align: center;
+        padding: 50px 20px;
+    }
+    header h1 {
+        color: #333;
+    }
+    #news {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+    }
+</style>
