@@ -2,20 +2,20 @@
 // SECCIÓN: Noticias Automáticas desde RSS
 // ========================
 const API_KEY = "81e3fb29b7fbe9c2b41476e8a1ab2d3e"; 
-const API_URL = `http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=sports&languages=es`;
+const API_URL = "https://newsapi.org/v2/everything?q=Formula%201&language=es&apiKey=TU_API_KEY";
 const PROXY_URL = `https://api.allorigins.win/get?url=${encodeURIComponent(API_URL)}`;
 
 async function cargarNoticias() {
     try {
         const response = await fetch(PROXY_URL);
         const data = await response.json();
-        const jsonData = JSON.parse(data.contents); // Convertimos a JSON
+        const jsonData = JSON.parse(data.contents); // Convertir texto a JSON
         
         let noticiasHTML = '';
-        jsonData.data.forEach(noticia => {
+        jsonData.articles.forEach(noticia => {
             noticiasHTML += `
                 <div class="noticia">
-                    <img src="${noticia.image || 'https://via.placeholder.com/400'}">
+                    <img src="${noticia.urlToImage || 'https://via.placeholder.com/400'}">
                     <h3>${noticia.title}</h3>
                     <p>${noticia.description || 'Sin descripción disponible'}</p>
                     <a href="${noticia.url}" target="_blank">Leer más</a>
@@ -30,6 +30,7 @@ async function cargarNoticias() {
     }
 }
 document.addEventListener("DOMContentLoaded", cargarNoticias);
+
 
 // ========================
 // SECCIÓN: Contador Regresivo para En Vivo
