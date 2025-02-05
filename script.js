@@ -1,16 +1,19 @@
 // ========================
 // SECCIÓN: Noticias Automáticas desde RSS
 // ========================
+const API_KEY = "81e3fb29b7fbe9c2b41476e8a1ab2d3e";
+const URL = `http://api.mediastack.com/v1/news?access_key=${API_KEY}&categories=sports&languages=es`;
+
 async function cargarNoticias() {
     try {
-        const response = await fetch('https://newsapi.org/v2/everything?q=Formula%201&language=es&apiKey=b97d6efa8cd547748c858777e67f00f1');
+        const response = await fetch(URL);
         const data = await response.json();
 
         let noticiasHTML = '';
-        data.articles.forEach(noticia => {
+        data.data.forEach(noticia => {
             noticiasHTML += `
                 <div class="noticia">
-                    <img src="${noticia.urlToImage || 'https://via.placeholder.com/400'}" alt="Imagen de noticia">
+                    <img src="${noticia.image || 'https://via.placeholder.com/400'}">
                     <h3>${noticia.title}</h3>
                     <p>${noticia.description || 'Sin descripción disponible'}</p>
                     <a href="${noticia.url}" target="_blank">Leer más</a>
@@ -24,7 +27,6 @@ async function cargarNoticias() {
         document.getElementById("news").innerHTML = 'Hubo un error al cargar las noticias.';
     }
 }
-
 document.addEventListener("DOMContentLoaded", cargarNoticias);
 
 // ========================
