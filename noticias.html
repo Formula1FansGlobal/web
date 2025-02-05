@@ -20,11 +20,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-<script>
-    fetch('menu.html')
-        .then(response => response.text())
-        .then(data => {
-            document.body.insertAdjacentHTML('afterbegin', data);
-        });
-</script>
