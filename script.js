@@ -3,7 +3,7 @@
 // ========================
 async function cargarNoticias() {
     try {
-        const response = await fetch('https://newsapi.org/v2/everything?q=Formula%201&language=es&apiKey=TU_API_KEY');
+        const response = await fetch('https://newsapi.org/v2/everything?q=Formula%201&language=es&apiKey=b97d6efa8cd547748c858777e67f00f1');
         const data = await response.json();
 
         let noticiasHTML = '';
