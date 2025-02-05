@@ -1,42 +1,31 @@
 // ========================
 // SECCIÓN: Noticias Automáticas desde RSS
 // ========================
-
-async function cargarNoticiasDesdeRSS() {
+async function cargarNoticias() {
     try {
-        const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://es.motorsport.com/rss/all/videos/'));
+        const response = await fetch('https://newsapi.org/v2/everything?q=Formula%201&language=es&apiKey=TU_API_KEY');
         const data = await response.json();
 
-        // Convertir XML a un objeto JS
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(data.contents, 'application/xml');
-
-        // Extraer noticias del XML
-        const items = xmlDoc.getElementsByTagName('item');
         let noticiasHTML = '';
-
-        for (let i = 0; i < items.length; i++) {
-            const title = items[i].getElementsByTagName('title')[0].textContent;
-            const link = items[i].getElementsByTagName('link')[0].textContent;
-            const description = items[i].getElementsByTagName('description')[0].textContent;
-
+        data.articles.forEach(noticia => {
             noticiasHTML += `
                 <div class="noticia">
-                    <h3><a href="${link}" target="_blank">${title}</a></h3>
-                    <p>${description}</p>
+                    <img src="${noticia.urlToImage || 'https://via.placeholder.com/400'}" alt="Imagen de noticia">
+                    <h3>${noticia.title}</h3>
+                    <p>${noticia.description || 'Sin descripción disponible'}</p>
+                    <a href="${noticia.url}" target="_blank">Leer más</a>
                 </div>
             `;
-        }
+        });
 
         document.getElementById("news").innerHTML = noticiasHTML;
     } catch (error) {
-        console.error('Error al cargar las noticias desde el RSS:', error);
+        console.error('Error al cargar noticias:', error);
         document.getElementById("news").innerHTML = 'Hubo un error al cargar las noticias.';
     }
 }
 
-// Cargar noticias cuando la página haya cargado completamente
-document.addEventListener("DOMContentLoaded", cargarNoticiasDesdeRSS);
+document.addEventListener("DOMContentLoaded", cargarNoticias);
 
 // ========================
 // SECCIÓN: Contador Regresivo para En Vivo
