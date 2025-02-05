@@ -4,22 +4,22 @@
 
 async function cargarNoticiasDesdeRSS() {
     try {
-        const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://www.motorsport.com/rss/news');
+        const response = await fetch('https://api.allorigins.win/get?url=' + encodeURIComponent('https://es.motorsport.com/rss/f1/news/'));
         const data = await response.json();
-        
-        // Convertir XML a un objeto JS usando DOMParser
+
+        // Convertir XML a un objeto JS
         const parser = new DOMParser();
         const xmlDoc = parser.parseFromString(data.contents, 'application/xml');
-        
-        // Extraer las noticias del XML
+
+        // Extraer noticias del XML
         const items = xmlDoc.getElementsByTagName('item');
         let noticiasHTML = '';
-        
+
         for (let i = 0; i < items.length; i++) {
             const title = items[i].getElementsByTagName('title')[0].textContent;
             const link = items[i].getElementsByTagName('link')[0].textContent;
             const description = items[i].getElementsByTagName('description')[0].textContent;
-            
+
             noticiasHTML += `
                 <div class="noticia">
                     <h3><a href="${link}" target="_blank">${title}</a></h3>
@@ -27,7 +27,7 @@ async function cargarNoticiasDesdeRSS() {
                 </div>
             `;
         }
-        
+
         document.getElementById("news").innerHTML = noticiasHTML;
     } catch (error) {
         console.error('Error al cargar las noticias desde el RSS:', error);
