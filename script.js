@@ -61,3 +61,16 @@ if (contadorElement) {
     setInterval(actualizarContador, 1000);
     actualizarContador(); // Llamar una vez para mostrar el tiempo inmediatamente
 }
+
+// ========================
+// SECCIÓN: Menu general
+// ========================
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("menu.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("menu-container").innerHTML = data;
+        })
+        .catch(error => console.error("Error al cargar el menú:", error));
+});
+
