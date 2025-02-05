@@ -7,12 +7,26 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <div id="menu-container"></div>
+  <div id="menu-container"></div>
+
+  <!-- Sección En Vivo -->
   <section id="en-vivo">
-    <h1>Preetemporada 2025</h1>
-    <div id="contador"></div>
+    <h1>Fórmula 1 En Vivo</h1>
+    
+    <!-- Contador de cuenta regresiva -->
+    <div id="contador">
+      <h2>Próxima carrera en:</h2>
+      <div class="countdown">
+        <span id="dias">00</span>d :
+        <span id="horas">00</span>h :
+        <span id="minutos">00</span>m :
+        <span id="segundos">00</span>s
+      </div>
+    </div>
+
+    <!-- Stream en vivo -->
     <div id="stream">
-      <h2>Practicas Barein</h2>
+      <h2>Stream en vivo</h2>
       <video controls>
         <source src="tu_video_local.mp4" type="video/mp4">
         Tu navegador no soporta el elemento de video.
@@ -25,9 +39,34 @@
 </html>
 
 <script>
-    fetch('menu.html')
-        .then(response => response.text())
-        .then(data => {
-            document.body.insertAdjacentHTML('afterbegin', data);
-        });
+  // Fetch para el menú
+  fetch('menu.html')
+    .then(response => response.text())
+    .then(data => {
+        document.body.insertAdjacentHTML('afterbegin', data);
+    });
+
+  // Configuración del contador de cuenta regresiva
+  const fechaObjetivo = new Date('2025-02-15T15:00:00'); // Cambia esta fecha y hora a la deseada
+
+  function actualizarContador() {
+    const ahora = new Date();
+    const diferencia = fechaObjetivo - ahora;
+
+    if (diferencia > 0) {
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+      document.getElementById('dias').textContent = dias.toString().padStart(2, '0');
+      document.getElementById('horas').textContent = horas.toString().padStart(2, '0');
+      document.getElementById('minutos').textContent = minutos.toString().padStart(2, '0');
+      document.getElementById('segundos').textContent = segundos.toString().padStart(2, '0');
+    } else {
+      document.getElementById('contador').innerHTML = '<h2>¡La carrera ha comenzado!</h2>';
+    }
+  }
+
+  setInterval(actualizarContador, 1000);
 </script>
