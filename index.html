@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F1 Fans Global</title>
     <link rel="stylesheet" href="css/style.css">
+    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
+    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
 </head>
 <body>
     <!-- Menú de navegación -->
@@ -35,11 +37,16 @@
         <p>(Aquí pondrás el contenido sobre los inicios de la F1)</p>
         </section>
 
-    <section class="technological-evolution">
-        <h2>Evolución Tecnológica</h2>
-        <h3>La ingeniería al límite de la velocidad</h3>
-        <p>(Aquí pondrás el contenido sobre la evolución de la tecnología)</p>
-        </section>
+        <section class="technological-evolution">
+            <div id="timeline-container"></div>
+            <h2>Evolución Tecnológica</h2>
+            <h3>La ingeniería al límite de la velocidad</h3>
+            <ul id="timeline">
+              <li>1950: Primeros motores de Fórmula 1</li>
+              <li>1967: Alas traseras</li>
+              <li>1982: Motores turbo</li>
+              </ul>
+          </section>
 
     <section class="f1-legends">
         <h2>Leyendas de la Fórmula 1</h2>
@@ -58,5 +65,6 @@
         <p>¡Explora más secciones de nuestra página web!</p>
     </footer>
     <script src="js/menu.js"></script>
+    <script src="js/timeline.js"></script>
 </body>
 </html>
