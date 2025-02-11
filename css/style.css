@@ -166,45 +166,47 @@ img {
 }
 
 /* En Vivo */
-.live-section {
-    text-align: center;
-    padding: 60px 20px;
-    color: #fff;
-    background-color: #1c1c1c; /* Fondo oscuro elegante */
-}
-
-.live-section h2 {
-    font-size: 3rem;
-    margin-bottom: 30px;
-    color: #ffd700; /* Dorado para destacar */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-}
-
-.live-section .countdown {
-    font-size: 2.5rem;
-    background: linear-gradient(135deg, #ff0000, #ffd700); /* Degradado rojo-dorado */
-    color: #fff;
-    padding: 15px 30px;
+#en-vivo {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: #181818;
     border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 30, 0, 0.8);
+}
+
+/* Contador de cuenta regresiva */
+#contador {
+    font-size: 1.5em;
+    background: black;
+    padding: 15px;
+    border-radius: 8px;
     display: inline-block;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); /* Sombra elegante */
-    margin-top: 20px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-.live-section .countdown span {
+.countdown {
+    font-size: 2em;
     font-weight: bold;
-    font-family: 'Arial', sans-serif; /* Tipografía clara y moderna */
+    color: #fff;
 }
 
-.live-section .countdown span:not(:last-child):after {
-    content: ":";
-    margin: 0 5px;
-    color: #000; /* Contraste en separadores */
+/* Estilos para el video */
+#stream video {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 8px;
+    border: 3px solid #ff1e00;
+    box-shadow: 0 0 10px rgba(255, 30, 0, 0.8);
 }
 
-.live-section video {
-    margin-top: 40px;
-    width: 80%;
-    border-radius: 10px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.7); /* Sombra para el video */
+/* Responsividad */
+@media (max-width: 600px) {
+    .countdown {
+        font-size: 1.5em;
+    }
+    
+    #en-vivo {
+        width: 90%;
+    }
 }
