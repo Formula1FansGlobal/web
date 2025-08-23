@@ -30,7 +30,7 @@ window.onload = function() {
                 },
                 "media": {
                     "url": "img/linea de tiempo/1951 – El primer reinado de Fangio.jpg",
-                    "caption": "Juan Manuel Fangio (Alfa Romeo)"
+                    "caption": "Alfa Romeo 158"
                 }
             },
             {
