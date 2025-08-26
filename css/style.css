@@ -109,6 +109,20 @@ img {
     max-width: 100%;
 }
 
+/*Video index*/
+.video-estilo {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4); /* Sombra elegante */
+    border-radius: 20px;                     /* Bordes redondeados */
+    border: 3px solid #ffffff;               /* Borde rojo F1 */
+    background: #fff;                        /* Fondo blanco */
+    transition: transform 0.3s;
+}
+
+.video-estilo:hover {
+    transform: scale(1.02);                  /* Efecto al pasar el mouse */
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+}
+
 /* Noticias */
 #news {
     display: grid;
