@@ -116,11 +116,23 @@ img {
     border: 3px solid #ffffff;               /* Borde rojo F1 */
     background: #fff;                        /* Fondo blanco */
     transition: transform 0.3s;
+    width: 100%;
+    max-width: 1000px; /* Limita el ancho en pantallas grandes */
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .video-estilo:hover {
     transform: scale(1.02);                  /* Efecto al pasar el mouse */
     box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+}
+/* Responsive para móviles */
+@media (max-width: 600px) {
+    .video-estilo {
+        max-width: 100%;
+        border-radius: 10px;
+    }
 }
 
 /* Noticias */
