@@ -3,56 +3,104 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>temporadas</title>
+        <title>Temporadas</title>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
         <div id="menu-container"></div>
 
-        <!-- Carrusel 1 -->
-        <section id="carrusel1">
-            <h2>Temporadas 2024 - 2018</h2>
-            <div class="carousel-wrapper">
-                <button class="prev" onclick="mover(-1, 'carrusel1')">&#10094;</button>
-                <div class="carousel-container">
-                    <div class="carousel">
-                        <a href="" target="_blank">
-                            <img src="https://f1tv.formula1.com/image-resizer/image/10000010561/landscape_web?w=384&h=214&q=HI&o=L" alt="Temporada 2024">
-                        </a>
-                        <a href="" target="_blank">
-                            <img src="https://f1tv.formula1.com/image-resizer/image/10000010561/landscape_web?w=384&h=214&q=HI&o=L" alt="Temporada 2024">
-                        </a>
-                        
-                        <!-- Resto de imágenes -->
-                    </div>
-                </div>
-                <button class="next" onclick="mover(1, 'carrusel1')">&#10095;</button>
-            </div>
-        </section>
-
-        <!-- Carrusel 2 -->
-        <section id="carrusel2">
-            <h2>Otras Temporadas</h2>
-            <div class="carousel-wrapper">
-                <button class="prev" onclick="mover(-1, 'carrusel2')">&#10094;</button>
-                <div class="carousel-container">
-                    <div class="carousel">
-                        <a href="" target="_blank">
-                            <img src="https://f1tv.formula1.com/image-resizer/image/10000010561/landscape_web?w=384&h=214&q=HI&o=L" alt="Temporada 2024">
-                        </a>
-                        <a href="" target="_blank">
-                            <img src="https://f1tv.formula1.com/image-resizer/image/10000010561/landscape_web?w=384&h=214&q=HI&o=L" alt="Temporada 2024">
-                        </a>
-                        <a href="" target="_blank">
-                            <img src="https://f1tv.formula1.com/image-resizer/image/10000010561/landscape_web?w=384&h=214&q=HI&o=L" alt="Temporada 2024">
-                        </a>
-                        <a href="" target="_blank">
-                            <img src="https://f1tv.formula1.com/image-resizer/image/10000010561/landscape_web?w=384&h=214&q=HI&o=L" alt="Temporada 2024">
-                        </a>
-                        <!-- Resto de imágenes -->
-                    </div>
-                </div>
-                <button class="next" onclick="mover(1, 'carrusel2')">&#10095;</button>
+        <!-- Calendario de temporadas -->
+        <section id="calendario_de_temporadas">
+            <h2>Temporadas Pasadas</h2>
+            <div class="calendario-grid">
+                <!--
+                <a href="">
+                    <p>Proximamente</p>
+                    <img src="img/temporada_2025.jpg" alt="Temporada 2025">
+                    <span>Temporada 2025</span>
+                    -->
+                </a>
+                <a href="calendario_temporada.html?year=2024">
+                    <img src="img/temporada_2024.jpg" alt="Temporada 2024">
+                    <span>Temporada 2024</span>
+                </a>
+                <a href="calendario_temporada.html?year=2023">
+                    <img src="img/temporada_2023.jpg" alt="Temporada 2023">
+                    <span>Temporada 2023</span>
+                </a>
+                <a href="calendario_temporada.html?year=2022">
+                    <img src="img/temporada_2022.jpg" alt="Temporada 2022">
+                    <span>Temporada 2022</span>
+                </a>
+                <a href="calendario_temporada.html?year=2021">
+                    <img src="img/temporada_2021.jpg" alt="Temporada 2021">
+                    <span>Temporada 2021</span>
+                </a>
+                <a href="calendario_temporada.html?year=2020">
+                    <img src="img/temporada_2020.jpg" alt="Temporada 2020">
+                    <span>Temporada 2020</span>
+                </a>
+                <!--<a href="calendario_temporada.html?year=2019">
+                    <img src="img/temporada_2019.jpg" alt="Temporada 2019">
+                    <span>Temporada 2019</span>
+                </a>
+                <a href="calendario_temporada.html?year=2018">
+                    <img src="img/temporada_2018.jpg" alt="Temporada 2018">
+                    <span>Temporada 2018</span>
+                </a>
+                <a href="calendario_temporada.html?year=2017">
+                    <img src="img/temporada_2017.jpg" alt="Temporada 2017">
+                    <span>Temporada 2017</span>
+                </a>
+                <a href="calendario_temporada.html?year=2016">
+                    <img src="img/temporada_2016.jpg" alt="Temporada 2016">
+                    <span>Temporada 2016</span>
+                </a>
+                <a href="calendario_temporada.html?year=2015">
+                    <img src="img/temporada_2015.jpg" alt="Temporada 2015">
+                    <span>Temporada 2015</span>
+                </a>
+                <a href="calendario_temporada.html?year=2014">
+                    <img src="img/temporada_2014.jpg" alt="Temporada 2014">
+                    <span>Temporada 2014</span>
+                </a>
+                <a href="calendario_temporada.html?year=2013">
+                    <img src="img/temporada_2013.jpg" alt="Temporada 2013">
+                    <span>Temporada 2013</span>
+                </a>
+                <a href="calendario_temporada.html?year=2012">
+                    <img src="img/temporada_2012.jpg" alt="Temporada 2012">
+                    <span>Temporada 2012</span>
+                </a>
+                <a href="calendario_temporada.html?year=2011">
+                    <img src="img/temporada_2011.jpg" alt="Temporada 2011">
+                    <span>Temporada 2011</span>
+                </a>
+                <a href="calendario_temporada.html?year=2010">
+                    <img src="img/temporada_2010.jpg" alt="Temporada 2010">
+                    <span>Temporada 2010</span>
+                </a>
+                <a href="calendario_temporada.html?year=2009">
+                    <img src="img/temporada_2009.jpg" alt="Temporada 2009">
+                    <span>Temporada 2009</span>
+                </a>
+                <a href="calendario_temporada.html?year=2008">
+                    <img src="img/temporada_2008.jpg" alt="Temporada 2008">
+                    <span>Temporada 2008</span>
+                </a>
+                <a href="calendario_temporada.html?year=2007">
+                    <img src="img/temporada_2007.jpg" alt="Temporada 2007">
+                    <span>Temporada 2007</span>
+                </a>
+                <a href="calendario_temporada.html?year=2006">
+                    <img src="img/temporada_2006.jpg" alt="Temporada 2006">
+                    <span>Temporada 2006</span>
+                </a>
+                <a href="calendario_temporada.html?year=2005">
+                    <img src="img/temporada_2005.jpg" alt="Temporada 2005">
+                    <span>Temporada 2005</span>
+                </a>
+            -->
             </div>
         </section>
 

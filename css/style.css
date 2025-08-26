@@ -123,9 +123,9 @@ img {
     margin: 0 auto;
 }
 
-.video-estilo:hover {
+/*.video-estilo:hover {
     transform: scale(1.02);                  /* Efecto al pasar el mouse */
-    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    /*box-shadow: 0 16px 48px rgba(0,0,0,0.5);
 }
 /* Responsive para móviles */
 @media (max-width: 600px) {
@@ -233,99 +233,114 @@ img {
     box-shadow: 0 0 15px rgba(255, 30, 0, 0.9);
 }
 
-/* Estilos para la sección de Temporadas pasadas */
-#calendario_de_temporadas {
-    text-align: center;
-    padding: 40px 20px;
-    background-color: #1a1a1a;
-    margin: 20px 0;
+/*Calendario de temporadas*/
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 por fila */
+    gap: 32px;
+    justify-items: center;
+    align-items: stretch;
+    padding: 40px 0;
 }
 
-#calendario_de_temporadas h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #ff1e00;
-    text-transform: uppercase;
-}
-
-/* Estilos para el carrusel */
-.carousel-container {
-    position: relative;
-    width: 95%; /* Aumentamos el ancho del contenedor */
-    max-width: 1300px; /* Aumentamos el ancho máximo */
-    margin: 0 auto;
-    overflow: hidden; /* Oculta el contenido que se desborda */
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(255, 30, 0, 0.5);
-}
-
-.carousel {
+.calendario-grid a {
     display: flex;
-    transition: transform 0.5s ease;
-    width: 100%; /* Asegura que el carrusel ocupe el 100% del contenedor */
+    flex-direction: column;
+    align-items: center;
+    background: #222;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(255, 0, 0, 0.2);
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.2s;
+    padding: 10px;
 }
 
-.carousel a {
-    flex: 0 0 23%; /* Reducimos el ancho de las imágenes para dejar espacio al margen */
-    box-sizing: border-box; /* Asegura que el padding y el borde estén incluidos en el ancho */
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    margin: 0 1%; /* Añadimos un margen entre las imágenes */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.carousel a:hover {
+.calendario-grid a:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 30, 0, 0.8);
+    background: #ff1e00;
 }
 
-.carousel img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-    display: block; /* Elimina el espacio adicional debajo de la imagen */
+.calendario-grid img {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
 }
 
-/* Estilos para los botones de navegación del carrusel */
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 30, 0, 0.7);
-    color: white;
-    border: none;
-    padding: 15px;
+.calendario-grid span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.carrera-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #181818;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(255, 30, 0, 0.15);
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.25s, box-shadow 0.25s;
+    padding: 18px 10px 14px 10px;
     cursor: pointer;
-    font-size: 24px;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
+    width: 100%;
+    max-width: 260px;
+    min-height: 320px;
 }
 
-.prev {
-    left: 10px; /* Ajustamos la posición del botón "prev" */
+.carrera-item:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 32px rgba(255, 30, 0, 0.25);
+    background: #ff1e00;
 }
 
-.next {
-    right: 10px; /* Ajustamos la posición del botón "next" */
+.carrera-item img {
+    width: 100%;
+    max-width: 220px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    border: 2px solid #fff;
 }
 
-.prev:hover, .next:hover {
-    background-color: rgba(255, 30, 0, 0.9);
+.carrera-info {
+    text-align: center;
+    margin-top: 8px;
 }
 
-/* Responsividad para el carrusel */
-@media (max-width: 768px) {
-    .carousel a {
-        flex: 0 0 31%; /* Ajustamos el ancho para tablet */
-        margin: 0 1%; /* Mantenemos el margen */
+.carrera-fecha {
+    display: block;
+    font-size: 1rem;
+    color: #ffd700;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.carrera-nombre {
+    display: block;
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+/* Responsive para móviles */
+@media (max-width: 1100px) {
+    .calendario-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
-
-@media (max-width: 480px) {
-    .carousel a {
-        flex: 0 0 48%; /* Ajustamos el ancho para móvil */
-        margin: 0 1%; /* Mantenemos el margen */
+@media (max-width: 700px) {
+    .calendario-grid {
+        grid-template-columns: 1fr;
+    }
+    .carrera-item {
+        max-width: 95vw;
     }
 }

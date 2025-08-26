@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calendario de Temporada</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="menu-container"></div>
+    <section id="calendario_temporada">
+        <h2 id="titulo-temporada"></h2>
+        <div class="calendario-grid" id="carreras-grid"></div>
+    </section>
+    <script>
+        // Datos de carreras por temporada
+        const carrerasPorTemporada = {
+            "2025":[
+                { nombre: "", fecha:"",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+            ],
+            "2024": [ //Tempoarada 2024
+                { nombre: "Gran Premio de Bahrein", fecha: "29 Feb - 2 Mar", imagen: "img/Calendario/2024/Barein 2024.PNG", video: "videos/Presentacion Pilotos F1 2025.mp4" },
+                { nombre: "Gran Premio de Arabia Saudita", fecha: "7 - 9 Mar", imagen: "img/Calendario/2024/Arabia Suadita 2024.PNG ", video: "videos/Presentacion Pilotos F1 2025.mp4" },
+                { nombre: "Gran Premio de Australia", fecha: "22 - 24 Mar", imagen: "img/Calendario/2024/Australia 2024.PNG", video: "videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Japon", fecha: "05 - 7 Abr", imagen:"img/f1moderno.jpg", video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de China", fecha:"19 - 21 Abr",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Miami", fecha:"3 - 5 May",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Emilia Romagna", fecha:"17 - 19 May",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Monaco", fecha:"24 - 26 May",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Canada", fecha:"7 - 9 Jun",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de España", fecha:"21 - 23 Jun",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Austria", fecha:"28 - 30 Jun",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Reino Unido", fecha:"5 - 7 Jul",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Hungria", fecha:"19 - 21 Jul",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Belgica", fecha:"26 - 28 Jul",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Paises Bajos", fecha:"23 - 25 Ago",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Italia", fecha:"30 Ago - 1 Sep",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Azerbaijan", fecha:"13 - 15 Sep",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Singapore", fecha:"20 - 22 Sep",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Estados Unidos", fecha:"18 - 20 Oct",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de México", fecha:"25 - 27 Oct",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Brazil", fecha:"1 - 3 Nov",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Las Vegas", fecha:"21 - 23 Nov",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Qatar", fecha:"29 Nov - 1 Dic",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+                { nombre: "Gran Premio de Abu Dhabi", fecha:"6 - 8 Dic",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+            ],
+            "2023": [ //Temporada 2023
+                { nombre: "Gran Premio de Bahréin", fecha: "5 Mar", imagen: "img/gp_bahrain.jpg", video: "videos/bahrain_2023.mp4" },
+        { nombre: "Gran Premio de Arabia Saudita", fecha: "19 Mar", imagen: "img/gp_arabia.jpg", video: "videos/arabia_2023.mp4" },
+        { nombre: "Gran Premio de Australia", fecha: "2 Abr", imagen: "img/gp_australia.jpg", video: "videos/australia_2023.mp4" },
+        { nombre: "Gran Premio de Azerbaiyán", fecha: "30 Abr", imagen: "img/gp_azerbaiyan.jpg", video: "videos/azerbaiyan_2023.mp4" },
+        { nombre: "Gran Premio de Miami", fecha: "7 May", imagen: "img/gp_miami.jpg", video: "videos/miami_2023.mp4" },
+        { nombre: "Gran Premio de Emilia-Romaña", fecha: "21 May", imagen: "img/gp_emilia.jpg", video: "videos/emilia_2023.mp4" },
+        { nombre: "Gran Premio de Mónaco", fecha: "28 May", imagen: "img/gp_monaco.jpg", video: "videos/monaco_2023.mp4" },
+        { nombre: "Gran Premio de España", fecha: "4 Jun", imagen: "img/gp_espana.jpg", video: "videos/espana_2023.mp4" },
+        { nombre: "Gran Premio de Canadá", fecha: "18 Jun", imagen: "img/gp_canada.jpg", video: "videos/canada_2023.mp4" },
+        { nombre: "Gran Premio de Austria", fecha: "2 Jul", imagen: "img/gp_austria.jpg", video: "videos/austria_2023.mp4" },
+        { nombre: "Gran Premio de Gran Bretaña", fecha: "9 Jul", imagen: "img/gp_gran_bretana.jpg", video: "videos/gran_bretana_2023.mp4" },
+        { nombre: "Gran Premio de Hungría", fecha: "23 Jul", imagen: "img/gp_hungria.jpg", video: "videos/hungria_2023.mp4" },
+        { nombre: "Gran Premio de Bélgica", fecha: "30 Jul", imagen: "img/gp_belgica.jpg", video: "videos/belgica_2023.mp4" },
+        { nombre: "Gran Premio de Países Bajos", fecha: "27 Ago", imagen: "img/gp_paises_bajos.jpg", video: "videos/paises_bajos_2023.mp4" },
+        { nombre: "Gran Premio de Italia", fecha: "3 Sep", imagen: "img/gp_italia.jpg", video: "videos/italia_2023.mp4" },
+        { nombre: "Gran Premio de Singapur", fecha: "17 Sep", imagen: "img/gp_singapur.jpg", video: "videos/singapur_2023.mp4" },
+        { nombre: "Gran Premio de Japón", fecha: "24 Sep", imagen: "img/gp_japon.jpg", video: "videos/japon_2023.mp4" },
+        { nombre: "Gran Premio de Qatar", fecha: "8 Oct", imagen: "img/gp_qatar.jpg", video: "videos/qatar_2023.mp4" },
+        { nombre: "Gran Premio de Estados Unidos", fecha: "22 Oct", imagen: "img/gp_usa.jpg", video: "videos/usa_2023.mp4" },
+        { nombre: "Gran Premio de México", fecha: "29 Oct", imagen: "img/gp_mexico.jpg", video: "videos/mexico_2023.mp4" },
+        { nombre: "Gran Premio de Brasil", fecha: "5 Nov", imagen: "img/gp_brasil.jpg", video: "videos/brasil_2023.mp4" },
+        { nombre: "Gran Premio de Las Vegas", fecha: "18 Nov", imagen: "img/gp_las_vegas.jpg", video: "videos/las_vegas_2023.mp4" },
+        { nombre: "Gran Premio de Abu Dhabi", fecha: "26 Nov", imagen: "img/gp_abu_dhabi.jpg", video: "videos/abu_dhabi_2023.mp4" }
+    ],
+            "2022":[ //Temporada 2022
+                { nombre: "", fecha:"",imagen:"img/f1moderno.jpg",video:"videos/Presentacion Pilotos F1 2025.mp4"},
+            ]
+            // ...agrega más temporadas aquí
+        };
+
+        // Obtener el año de la URL
+        const params = new URLSearchParams(window.location.search);
+        const year = params.get('year');
+
+        // Mostrar el título y las carreras
+        document.getElementById('titulo-temporada').textContent = `Calendario de la Temporada ${year}`;
+
+        const carreras = carrerasPorTemporada[year];
+        const grid = document.getElementById('carreras-grid');
+
+        if (carreras) {
+            carreras.forEach((carrera, i) => {
+                // Genera un identificador simple para el GP
+                const gpId = carrera.nombre.toLowerCase().replace(/ /g, "_").replace(/[^a-z0-9_]/g, "");
+                const carreraHTML = `
+                    <a class="carrera-item" href="video_gp.html?year=${year}&gp=${gpId}">
+                        <img src="${carrera.imagen}" alt="${carrera.nombre}">
+                        <div class="carrera-info">
+                            <span class="carrera-fecha">${carrera.fecha}</span>
+                            <span class="carrera-nombre">${carrera.nombre}</span>
+                        </div>
+                    </a>
+                `;
+                grid.innerHTML += carreraHTML;
+            });
+        } else {
+            grid.innerHTML = "<p>No hay datos para esta temporada.</p>";
+        }
+
+        // Modal para mostrar el video
+        function mostrarVideo(videoSrc, carreraNombre) {
+            let modal = document.getElementById('video-modal');
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = 'video-modal';
+                modal.style.position = 'fixed';
+                modal.style.top = '0';
+                modal.style.left = '0';
+                modal.style.width = '100vw';
+                modal.style.height = '100vh';
+                modal.style.background = 'rgba(0,0,0,0.8)';
+                modal.style.display = 'flex';
+                modal.style.alignItems = 'center';
+                modal.style.justifyContent = 'center';
+                modal.style.zIndex = '1000';
+                modal.innerHTML = `
+                    <div style="background:#222; padding:20px; border-radius:16px; position:relative; max-width:90vw;">
+                        <h3 style="color:#fff;">${carreraNombre}</h3>
+                        <video src="${videoSrc}" controls autoplay loop muted class="video-estilo" style="max-width:80vw;"></video>
+                        <button onclick="document.getElementById('video-modal').remove()" style="position:absolute;top:10px;right:10px;background:#ff1e00;color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer;">Cerrar</button>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+        }
+    </script>
+</body>
+</html>
