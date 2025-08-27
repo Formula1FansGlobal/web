@@ -36,8 +36,8 @@ mwindow.onload = function() {
             {
                 "start_date": { "year": "1952" },
                 "text": {
-                    "headline": "Motores Turbo",
-                    "text": "Comienza la era de los motores turbo en la Fórmula 1."
+                    "headline": "1952 – El reinado de Ascari",
+                    "text": "- Reglamento: Debido a la escasez de coches competitivos, la F1 se corre con normativa de Fórmula 2 (2.0 L atmosféricos).<br>- Dominio: Ascari gana 6 de 7 carreras puntuables en las que compite.<br>- Curiosidad: No compitió en la primera carrera (Suiza) por participar en Indianápolis."
                 }
             },
             {
@@ -53,6 +53,118 @@ mwindow.onload = function() {
             },
             {
                 "start_date": { "year": "1954" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1955" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1956" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1957" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1958" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1959" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1960" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1961" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1962" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1963" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1964" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1965" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1966" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1967" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1968" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1969" },
+                "text": {
+                    "headline": "Era Híbrida",
+                    "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
+                }
+            },
+            {
+                "start_date": { "year": "1970" },
                 "text": {
                     "headline": "Era Híbrida",
                     "text": "Se inicia la era híbrida con motores eléctricos y de combustión."
