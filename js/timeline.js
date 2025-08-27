@@ -2,8 +2,8 @@ window.onload = function() {
     var timelineData = {
         "title": {
             "text": {
-                "headline": "Historia de la Fórmula 1",
-                "text": "Desde sus inicios hasta la era moderna "
+                "headline": "La historia de la Fórmula 1",
+                "text": "Desde sus inicios hasta la era moderna (1894-2024)"
             },
             "media":{
                 "url": "img/linea de tiempo/LA HISTORIA DE LA F1.png",
