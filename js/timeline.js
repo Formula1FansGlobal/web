@@ -1,4 +1,4 @@
-window.onload = function() {
+mwindow.onload = function() {
     var timelineData = {
         "title": {
             "text": {
