@@ -1,4 +1,4 @@
-const fechaObjetivo = new Date('2025-08-29T04:30:00'); // Cambia esta fecha y hora a la deseada
+const fechaObjetivo = new Date('2025-09-07T13:00:00'); // Cambia esta fecha y hora a la deseada
 
 function actualizarContador() {
     const ahora = new Date();
