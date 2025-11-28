@@ -4,7 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>En Vivo</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/en-vivo.css">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7775962173347543"
      crossorigin="anonymous"></script>
 </head>
@@ -12,47 +14,93 @@
   <div id="menu-container"></div>
 
   <!-- Sección En Vivo -->
-  <section id="en-vivo">
-    <h2 style="text-align: center;">QATAR GRAND<br>PRACTICAS 1</h2>
+  <section id="en-vivo-main">
+    <div class="en-vivo-card">
+      <!-- Título del evento -->
+      <div class="event-info">
+        <h1 id="event-title">QATAR GRAND PRIX</h1>
+        <p id="event-subtitle">PRÁCTICA 1</p>
+      </div>
 
-    <!-- Contador de cuenta regresiva -->
-    <div id="contador">
-      <h2>RONDA 23 | 28 - 30 NOV</h2>
-      <div class="countdown">
-        <span id="dias">00</span>d :
-        <span id="horas">00</span>h :
-        <span id="minutos">00</span>m :
-        <span id="segundos">00</span>s
+      <!-- Contador -->
+      <div id="contador" class="countdown-badge">
+        <div class="countdown-label" id="ronda-info">RONDA 23</div>
+        <div class="countdown-timer">
+          <div class="countdown-unit">
+            <span id="dias">00</span>
+            <span class="unit-label">DÍAS</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <span id="horas">00</span>
+            <span class="unit-label">HRS</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <span id="minutos">00</span>
+            <span class="unit-label">MIN</span>
+          </div>
+          <div class="countdown-separator">:</div>
+          <div class="countdown-unit">
+            <span id="segundos">00</span>
+            <span class="unit-label">SEG</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stream principal -->
+      <div class="stream-container">
+        <img id="pre-image" src="img/Circuitos-Live/Paises-Bajos.PNG" alt="Esperando el stream" class="stream-bg">
+        <video id="live-video" class="stream-video" controls>
+          <source src="videos/Presentacion-Pilotos-F1-2025.mp4" type="video/mp4">
+          Tu navegador no soporta el elemento de video.
+        </video>
+        <img id="post-image" src="img/Circuitos-Live/Paises-Bajos.PNG" alt="Stream finalizado" class="stream-bg">
+        
+        <!-- Indicador EN VIVO superpuesto -->
+        <div id="live-indicator" class="live-indicator hidden">
+          <span class="indicator-dot"></span>
+          EN VIVO
+        </div>
+        
+        <!-- Botón EN VIVO parpadeante -->
+        <button id="live-button" class="live-badge">
+          <span class="live-dot"></span> 
+          <span>EN VIVO</span>
+        </button>
       </div>
     </div>
-<!--
-    <img src="img/Circuitos Live/Paises Bajos.PNG" alt="Gran Premio de Paises Bajos" style="width: 100%; margin-top: 20px;">
-  -->
-    <!-- Enlace al canal de Telegram 
-    <iframe src="https://t.me/FORMULA1_FANSC11MX" width="640" height="360"></iframe>
 
-    <!-- Stream en vivo -->
-<div id="stream">
-  <h2 style="text-align: center;"></h2>
-  <img id="pre-image" src="" alt="Esperando el stream" style="width: 100%; display: block;">
-  
-  <video id="live-video" controls style="display: none;">
-      <source src="https://player.castr.com/live_8be4a670eed411efb52f899328f2e956" type="video/mp4">
-      Tu navegador no soporta el elemento de video.
-  </video>
-  
-  <img id="post-image" src="img/Circuitos Live/Paises Bajos.PNG" alt="Stream finalizado" style="width: 100%; display: none;">
-  
+    <!-- Modal de opciones de reproducción -->
+    <div id="play-modal" class="play-modal hidden">
+      <div class="modal-content">
+        <h2>¿Cómo quieres ver la carrera?</h2>
+        <p>La carrera ya ha comenzado. Elige tu opción:</p>
+        
+        <div class="modal-buttons">
+          <button id="play-live-btn" class="modal-btn btn-live">
+            <span class="btn-icon">🔴</span>
+            <span class="btn-text">Ver en Vivo</span>
+            <span class="btn-desc">Desde ahora (tiempo actual)</span>
+          </button>
+          
+          <button id="play-from-start-btn" class="modal-btn btn-start">
+            <span class="btn-icon">⏮️</span>
+            <span class="btn-text">Desde el Comienzo</span>
+            <span class="btn-desc">Desde el inicio de la carrera</span>
+          </button>
+        </div>
 
-  <!-- Botón parpadeante -->
-  <button id="live-button" class="blink-button" style="display: none;">🔴 EN VIVO</button>
-</div>
-
+        <button id="close-modal-btn" class="modal-close">✕</button>
+      </div>
+    </div>
   </section>
 
   <script src="js/stream.js"></script>
   <script src="js/contador.js"></script>
   <script src="js/menu.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/en-vivo.js"></script>
 </body>
 </html>
 

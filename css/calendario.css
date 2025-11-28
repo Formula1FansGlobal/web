@@ -1,0 +1,214 @@
+/* calendario.css - Estilos para temporadas.html y calendario_temporada.html */
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    padding: 20px;
+}
+
+h2 {
+    color: #ffffff;
+}
+
+p {
+    line-height: 1.5;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Menú */
+nav {
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    height: 50px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    font-weight: bold;
+    color: #ffffff;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #ff1e00;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+/* Calendario / Temporadas */
+.calendario-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    justify-items: center;
+    align-items: stretch;
+    padding: 40px 0;
+}
+
+.calendario-grid a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #222;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(255, 0, 0, 0.2);
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.2s;
+    padding: 10px;
+}
+
+.calendario-grid a:hover {
+    transform: scale(1.05);
+    background: #ff1e00;
+}
+
+.calendario-grid img {
+    width: 100px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.calendario-grid span {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffd700;
+}
+
+.carrera-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #181818;
+    border-radius: 18px;
+    box-shadow: 0 4px 16px rgba(255, 30, 0, 0.15);
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.25s, box-shadow 0.25s;
+    padding: 18px 10px 14px 10px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 260px;
+    min-height: 320px;
+}
+
+.carrera-item:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 32px rgba(255, 30, 0, 0.25);
+    background: #ff1e00;
+}
+
+.carrera-item img {
+    width: 100%;
+    max-width: 220px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    border: 2px solid #fff;
+}
+
+.carrera-info {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.carrera-fecha {
+    display: block;
+    font-size: 1rem;
+    color: #ffd700;
+    margin-bottom: 4px;
+    font-weight: bold;
+}
+
+.carrera-nombre {
+    display: block;
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+/* Video styles for calendario_temporada */
+.video-estilo {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    border-radius: 20px;
+    border: 3px solid #ffffff;
+    background: #fff;
+    transition: transform 0.3s;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+    .video-estilo {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .calendario-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .calendario-grid {
+        grid-template-columns: 1fr;
+    }
+    .carrera-item {
+        max-width: 95vw;
+    }
+}

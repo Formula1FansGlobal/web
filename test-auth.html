@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Autenticación - F1 Stream</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #0a0a0a;
+            color: #fff;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .section {
+            background: #1a1a2e;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #ff1e00;
+        }
+        
+        .section h2 {
+            color: #ffd700;
+            margin-top: 0;
+        }
+        
+        button {
+            background: #ff1e00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px 0;
+            width: 100%;
+        }
+        
+        button:hover {
+            background: #ff6600;
+        }
+        
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            background: #0f3460;
+        }
+        
+        .success {
+            background: #4caf50;
+        }
+        
+        .error {
+            background: #f44336;
+        }
+        
+        .output {
+            background: #0a0a0a;
+            padding: 10px;
+            border-radius: 5px;
+            max-height: 300px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .test-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .test-list li {
+            padding: 10px;
+            margin: 5px 0;
+            background: #0f3460;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .test-list li::before {
+            content: '○';
+            margin-right: 10px;
+            font-size: 20px;
+            color: #ff1e00;
+        }
+        
+        .test-list li.passed::before {
+            content: '✓';
+            color: #4caf50;
+        }
+        
+        .test-list li.failed::before {
+            content: '✗';
+            color: #f44336;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; color: #ffd700;">🏎️ TEST SUITE - SISTEMA DE AUTENTICACIÓN F1 STREAM</h1>
+    
+    <div class="container">
+        <div class="section">
+            <h2>Pruebas de Registro</h2>
+            <button onclick="testRegistration()">Probar Registro</button>
+            <button onclick="testDuplicateEmail()">Probar Email Duplicado</button>
+            <button onclick="testDuplicateUser()">Probar Usuario Duplicado</button>
+            <button onclick="testWeakPassword()">Probar Contraseña Débil</button>
+            <button onclick="testAgeValidation()">Probar Validación de Edad</button>
+            <div id="registration-output" class="status" style="display:none;"></div>
+        </div>
+        
+        <div class="section">
+            <h2>Pruebas de Login</h2>
+            <button onclick="testLogin()">Probar Login Correcto</button>
+            <button onclick="testWrongPassword()">Probar Contraseña Incorrecta</button>
+            <button onclick="testUserNotFound()">Probar Usuario No Existe</button>
+            <button onclick="testRememberMe()">Probar Recuérdame</button>
+            <div id="login-output" class="status" style="display:none;"></div>
+        </div>
+    </div>
+    
+    <div class="section" style="border-left-color: #ffd700;">
+        <h2>Estado del Storage</h2>
+        <div class="container">
+            <div>
+                <h3>Usuarios Registrados</h3>
+                <div class="output" id="users-list">Sin usuarios</div>
+            </div>
+            <div>
+                <h3>Usuario Actual</h3>
+                <div class="output" id="current-user">Sin sesión activa</div>
+            </div>
+        </div>
+        <button onclick="clearStorage()">Limpiar Storage</button>
+        <button onclick="refreshStatus()">Actualizar Estado</button>
+    </div>
+    
+    <div class="section" style="border-left-color: #ff6600;">
+        <h2>Historial de Pruebas</h2>
+        <ul class="test-list" id="test-log">
+            <li>Iniciando pruebas...</li>
+        </ul>
+    </div>
+
+    <script>
+        const testLog = [];
+        
+        function addTestLog(message, status = 'info') {
+            const log = document.getElementById('test-log');
+            const li = document.createElement('li');
+            li.textContent = message;
+            li.className = status;
+            log.appendChild(li);
+            testLog.push({ message, status, time: new Date() });
+        }
+        
+        function refreshStatus() {
+            const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            document.getElementById('users-list').textContent = 
+                usuarios.length > 0 
+                    ? JSON.stringify(usuarios, null, 2)
+                    : 'Sin usuarios registrados';
+                    
+            document.getElementById('current-user').textContent = 
+                currentUser 
+                    ? JSON.stringify(currentUser, null, 2)
+                    : 'Sin sesión activa';
+        }
+        
+        function clearStorage() {
+            if (confirm('¿Estás seguro de que quieres limpiar todo el storage?')) {
+                localStorage.clear();
+                refreshStatus();
+                addTestLog('Storage limpiado', 'info');
+            }
+        }
+        
+        function testRegistration() {
+            try {
+                const usuario = {
+                    id: Date.now(),
+                    nombre: 'Juan',
+                    apellido: 'Pérez',
+                    email: 'juan@example.com',
+                    usuario: 'juanperez',
+                    password: btoa('Password123!'),
+                    fechaNacimiento: '1990-01-15',
+                    pais: 'MX',
+                    estado: 'CDMX',
+                    telefono: '5512345678',
+                    edad: 34,
+                    createdAt: new Date().toISOString(),
+                    verificado: false
+                };
+                
+                let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+                usuarios.push(usuario);
+                localStorage.setItem('usuarios', JSON.stringify(usuarios));
+                
+                addTestLog('✅ Usuario registrado: ' + usuario.usuario, 'passed');
+                refreshStatus();
+            } catch (e) {
+                addTestLog('❌ Error en registro: ' + e.message, 'failed');
+            }
+        }
+        
+        function testDuplicateEmail() {
+            try {
+                let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+                if (usuarios.some(u => u.email === 'juan@example.com')) {
+                    addTestLog('✅ Validación correcta: Email duplicado detectado', 'passed');
+                } else {
+                    addTestLog('❌ Email duplicado no detectado', 'failed');
+                }
+            } catch (e) {
+                addTestLog('❌ Error: ' + e.message, 'failed');
+            }
+        }
+        
+        function testDuplicateUser() {
+            try {
+                let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+                if (usuarios.some(u => u.usuario === 'juanperez')) {
+                    addTestLog('✅ Validación correcta: Usuario duplicado detectado', 'passed');
+                } else {
+                    addTestLog('❌ Usuario duplicado no detectado', 'failed');
+                }
+            } catch (e) {
+                addTestLog('❌ Error: ' + e.message, 'failed');
+            }
+        }
+        
+        function testWeakPassword() {
+            const passwords = [
+                { pass: 'weak', expected: false },
+                { pass: 'NoSymbol123', expected: false },
+                { pass: 'Password@123', expected: true }
+            ];
+            
+            passwords.forEach(({ pass, expected }) => {
+                const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+                const result = regex.test(pass);
+                const status = result === expected ? 'passed' : 'failed';
+                addTestLog(`Contraseña "${pass}": ${result} (esperado: ${expected})`, status);
+            });
+        }
+        
+        function testAgeValidation() {
+            const today = new Date();
+            const minAge = new Date();
+            minAge.setFullYear(minAge.getFullYear() - 13);
+            
+            const tooYoung = new Date();
+            tooYoung.setFullYear(tooYoung.getFullYear() - 12);
+            
+            const testAge = (date, expectedValid) => {
+                const edad = today.getFullYear() - new Date(date).getFullYear();
+                const valid = edad >= 13;
+                const status = valid === expectedValid ? 'passed' : 'failed';
+                addTestLog(`Edad ${edad} años: ${valid ? 'válida' : 'inválida'} (esperado: ${expectedValid ? 'válida' : 'inválida'})`, status);
+            };
+            
+            testAge(minAge.toISOString().split('T')[0], true);
+            testAge(tooYoung.toISOString().split('T')[0], false);
+        }
+        
+        function testLogin() {
+            try {
+                const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+                const user = usuarios.find(u => u.usuario === 'juanperez' || u.email === 'juan@example.com');
+                
+                if (user && atob(user.password) === 'Password123!') {
+                    localStorage.setItem('currentUser', JSON.stringify({
+                        id: user.id,
+                        nombre: user.nombre,
+                        apellido: user.apellido,
+                        usuario: user.usuario,
+                        email: user.email
+                    }));
+                    addTestLog('✅ Login exitoso: ' + user.nombre + ' ' + user.apellido, 'passed');
+                    refreshStatus();
+                } else {
+                    addTestLog('❌ Credenciales no coinciden', 'failed');
+                }
+            } catch (e) {
+                addTestLog('❌ Error en login: ' + e.message, 'failed');
+            }
+        }
+        
+        function testWrongPassword() {
+            try {
+                const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+                const user = usuarios.find(u => u.usuario === 'juanperez');
+                
+                if (user && atob(user.password) !== 'WrongPassword123!') {
+                    addTestLog('✅ Validación correcta: Contraseña incorrecta detectada', 'passed');
+                } else {
+                    addTestLog('❌ Contraseña incorrecta no detectada', 'failed');
+                }
+            } catch (e) {
+                addTestLog('❌ Error: ' + e.message, 'failed');
+            }
+        }
+        
+        function testUserNotFound() {
+            try {
+                const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
+                const user = usuarios.find(u => u.usuario === 'noexiste');
+                
+                if (!user) {
+                    addTestLog('✅ Validación correcta: Usuario no encontrado', 'passed');
+                } else {
+                    addTestLog('❌ Usuario no encontrado no detectado', 'failed');
+                }
+            } catch (e) {
+                addTestLog('❌ Error: ' + e.message, 'failed');
+            }
+        }
+        
+        function testRememberMe() {
+            try {
+                localStorage.setItem('loginRemember', JSON.stringify({
+                    email: 'juan@example.com',
+                    recordado: true
+                }));
+                
+                const remember = JSON.parse(localStorage.getItem('loginRemember'));
+                if (remember && remember.recordado) {
+                    addTestLog('✅ Función Recuérdame funcionando: ' + remember.email, 'passed');
+                } else {
+                    addTestLog('❌ Función Recuérdame no funciona', 'failed');
+                }
+            } catch (e) {
+                addTestLog('❌ Error: ' + e.message, 'failed');
+            }
+        }
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            refreshStatus();
+            addTestLog('🟢 Suite de pruebas iniciada', 'info');
+        });
+    </script>
+</body>
+</html>

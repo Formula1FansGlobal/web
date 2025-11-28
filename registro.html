@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - F1 Stream</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/auth-pages.css">
+    <style>
+        .form-message {
+            display: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .form-message.show {
+            display: block;
+        }
+
+        .form-message.hidden {
+            animation: slideOut 0.3s ease-out;
+            display: none;
+        }
+
+        .form-message.success {
+            background-color: #4caf50;
+            color: white;
+            border-left: 4px solid #45a049;
+        }
+
+        .form-message.error {
+            background-color: #f44336;
+            color: white;
+            border-left: 4px solid #da190b;
+        }
+
+        .form-message.info {
+            background-color: #2196F3;
+            color: white;
+            border-left: 4px solid #0b7dda;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        .form-wrapper small {
+            display: block;
+            margin-top: 5px;
+            color: #aaa;
+            font-size: 0.85em;
+        }
+
+        #password ~ small {
+            color: #ff9800;
+        }
+
+        input:invalid:not(:placeholder-shown) {
+            border-color: #f44336 !important;
+        }
+
+        input:valid:not(:placeholder-shown) {
+            border-color: #4caf50 !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu-container"></div>
+
+    <main class="auth-main">
+        <div class="auth-container">
+            <!-- Left Side - Info -->
+            <div class="auth-info">
+                <div class="info-content">
+                    <h2>Únete a la Comunidad</h2>
+                    <p>Forma parte de los aficionados más apasionados de la Fórmula 1</p>
+                    <ul class="benefits">
+                        <li>📺 Acceso a transmisiones en vivo</li>
+                        <li>📰 Noticias exclusivas</li>
+                        <li>🏆 Seguimiento de temporadas</li>
+                        <li>👥 Comunidad de fans</li>
+                    </ul>
+                    <div class="info-quote">"La velocidad es pasión"</div>
+                </div>
+            </div>
+
+            <!-- Right Side - Form -->
+            <div class="auth-form-container">
+                <div class="form-wrapper">
+                    <div class="form-header">
+                        <h1>Crear Cuenta</h1>
+                        <p>Ingresa tus datos para registrarte</p>
+                    </div>
+
+                    <form id="signup-page-form" class="auth-form">
+                        <div id="form-message" class="form-message"></div>
+
+                        <!-- Row 1: Nombre y Apellido -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre">Nombre *</label>
+                                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="apellido">Apellido *</label>
+                                <input type="text" id="apellido" name="apellido" placeholder="Tu apellido" required>
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Email y Username -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Correo Electrónico *</label>
+                                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="usuario">Nombre de Usuario *</label>
+                                <input type="text" id="usuario" name="usuario" placeholder="usuario123" required>
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Confirmar Email -->
+                        <div class="form-group full">
+                            <label for="confirmar-email">Confirmar Correo Electrónico *</label>
+                            <input type="email" id="confirmar-email" name="confirmar-email" placeholder="Confirma tu email" required>
+                        </div>
+
+                        <!-- Row 4: Contraseña y Confirmar -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="password">Contraseña *</label>
+                                <input type="password" id="password" name="password" placeholder="Min. 8 caracteres" required>
+                                <small>Debe contener mayúscula, número y símbolo</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmar-password">Confirmar Contraseña *</label>
+                                <input type="password" id="confirmar-password" name="confirmar-password" placeholder="Confirma tu contraseña" required>
+                            </div>
+                        </div>
+
+                        <!-- Row 5: Fecha Nacimiento y País -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fecha-nacimiento">Fecha de Nacimiento *</label>
+                                <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pais">País *</label>
+                                <select id="pais" name="pais" required>
+                                    <option value="">Selecciona tu país</option>
+                                    <option value="mx">México</option>
+                                    <option value="ar">Argentina</option>
+                                    <option value="es">España</option>
+                                    <option value="co">Colombia</option>
+                                    <option value="cl">Chile</option>
+                                    <option value="br">Brasil</option>
+                                    <option value="us">Estados Unidos</option>
+                                    <option value="other">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Row 6: Estado y Teléfono -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="estado">Estado/Región *</label>
+                                <input type="text" id="estado" name="estado" placeholder="Tu estado o región" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telefono">Número de Teléfono *</label>
+                                <input type="tel" id="telefono" name="telefono" placeholder="+1 (555) 123-4567" required>
+                            </div>
+                        </div>
+
+                        <!-- Checkbox Términos -->
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="terminos" name="terminos" required>
+                            <label for="terminos">Acepto los <a href="#" target="_blank">términos y condiciones</a></label>
+                        </div>
+
+                        <!-- Mensajes de error/éxito -->
+                        <div id="form-message" class="form-message hidden"></div>
+
+                        <!-- Botón Enviar -->
+                        <button type="submit" class="btn-submit">Crear Cuenta</button>
+
+                        <!-- Link a Login -->
+                        <div class="auth-link">
+                            <p>¿Ya tienes cuenta? <a href="login.html">Inicia sesión aquí</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/menu.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/registro.js"></script>
+</body>
+</html>

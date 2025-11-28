@@ -1,0 +1,138 @@
+/* index.css - Estilos para index.html */
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+section {
+    padding: 20px;
+}
+
+h2 {
+    color: #ffffff;
+}
+
+p {
+    line-height: 1.5;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* Menú */
+nav {
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    height: 50px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    font-weight: bold;
+    color: #ffffff;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #ff1e00;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+/* Página Index - Hero */
+.hero {
+    background-color: #ff1e00;
+    text-align: center;
+    padding: 50px 20px;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.hero .btn {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.hero .btn:hover {
+    background-color: #ffd700;
+}
+
+/* Video styles */
+.video-estilo {
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    border-radius: 20px;
+    border: 3px solid #ffffff;
+    background: #fff;
+    transition: transform 0.3s;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+@media (max-width: 600px) {
+    .video-estilo {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+}
+
+/* Timeline section */
+.linea-del-Tiempo {
+    padding: 20px;
+}
