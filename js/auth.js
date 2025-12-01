@@ -1,57 +1,29 @@
-// ===== MODALES DE AUTENTICACIÓN =====
-const loginModal = document.getElementById('login-modal');
-const signupModal = document.getElementById('signup-modal');
-const loginBtn = document.getElementById('login-btn');
-const signupBtn = document.getElementById('signup-btn');
-const closeLoginBtn = document.getElementById('close-login');
-const closeSignupBtn = document.getElementById('close-signup');
-const switchToSignup = document.getElementById('switch-to-signup');
-const switchToLogin = document.getElementById('switch-to-login');
-const loginForm = document.getElementById('login-form');
-const signupForm = document.getElementById('signup-form');
-
-// Elementos de usuario
-const userMenu = document.getElementById('user-menu');
-const userName = document.getElementById('user-name');
-const logoutBtn = document.getElementById('logout-btn');
+// ===== REFERENCIAS A ELEMENTOS DEL DOM =====
+let loginModal, signupModal, loginBtn, signupBtn, closeLoginBtn, closeSignupBtn;
+let switchToSignup, switchToLogin, loginForm, signupForm;
+let userMenu, userName, logoutBtn;
 
 // ===== FUNCIONES DE MODALES =====
 function openLoginModal() {
-    loginModal.classList.remove('hidden');
-    signupModal.classList.add('hidden');
+    if (loginModal && signupModal) {
+        loginModal.classList.remove('hidden');
+        signupModal.classList.add('hidden');
+    }
 }
 
 function openSignupModal() {
-    signupModal.classList.remove('hidden');
-    loginModal.classList.add('hidden');
+    if (signupModal && loginModal) {
+        signupModal.classList.remove('hidden');
+        loginModal.classList.add('hidden');
+    }
 }
 
 function closeModals() {
-    loginModal.classList.add('hidden');
-    signupModal.classList.add('hidden');
+    if (loginModal && signupModal) {
+        loginModal.classList.add('hidden');
+        signupModal.classList.add('hidden');
+    }
 }
-
-// ===== EVENT LISTENERS MODALES =====
-loginBtn.addEventListener('click', openLoginModal);
-signupBtn.addEventListener('click', openSignupModal);
-closeLoginBtn.addEventListener('click', closeModals);
-closeSignupBtn.addEventListener('click', closeModals);
-switchToSignup.addEventListener('click', (e) => {
-    e.preventDefault();
-    openSignupModal();
-});
-switchToLogin.addEventListener('click', (e) => {
-    e.preventDefault();
-    openLoginModal();
-});
-
-// Cerrar modales al hacer clic fuera
-loginModal.addEventListener('click', (e) => {
-    if (e.target === loginModal) closeModals();
-});
-signupModal.addEventListener('click', (e) => {
-    if (e.target === signupModal) closeModals();
-});
 
 // ===== FUNCIONES DE AUTENTICACIÓN =====
 
@@ -66,24 +38,29 @@ function checkUserSession() {
 
 // Mostrar menú de usuario
 function showUserMenu(name) {
-    loginBtn.parentElement.style.display = 'none';
-    signupBtn.parentElement.style.display = 'none';
-    
-    document.querySelector('.nav-auth').style.display = 'flex';
-    userMenu.classList.remove('hidden');
-    userName.textContent = `Bienvenido, ${name}`;
+    if (loginBtn && signupBtn && userMenu && userName) {
+        loginBtn.parentElement.style.display = 'none';
+        signupBtn.parentElement.style.display = 'none';
+        
+        const navAuth = document.querySelector('.nav-auth');
+        if (navAuth) navAuth.style.display = 'flex';
+        
+        userMenu.classList.remove('hidden');
+        userName.textContent = `Bienvenido, ${name}`;
+    }
 }
 
 // Ocultar menú de usuario
 function hideUserMenu() {
-    loginBtn.parentElement.style.display = 'block';
-    signupBtn.parentElement.style.display = 'block';
-    
-    userMenu.classList.add('hidden');
+    if (loginBtn && signupBtn && userMenu) {
+        loginBtn.parentElement.style.display = 'block';
+        signupBtn.parentElement.style.display = 'block';
+        userMenu.classList.add('hidden');
+    }
 }
 
 // ===== REGISTRO =====
-signupForm.addEventListener('submit', (e) => {
+function handleSignup(e) {
     e.preventDefault();
     
     const inputs = signupForm.querySelectorAll('input');
@@ -136,10 +113,10 @@ signupForm.addEventListener('submit', (e) => {
     closeModals();
     showUserMenu(fullName);
     signupForm.reset();
-});
+}
 
 // ===== INICIO DE SESIÓN =====
-loginForm.addEventListener('submit', (e) => {
+function handleLogin(e) {
     e.preventDefault();
 
     const inputs = loginForm.querySelectorAll('input');
@@ -168,18 +145,110 @@ loginForm.addEventListener('submit', (e) => {
     closeModals();
     showUserMenu(user.name);
     loginForm.reset();
-});
+}
 
 // ===== CERRAR SESIÓN =====
-logoutBtn.addEventListener('click', () => {
+function handleLogout() {
     localStorage.removeItem('currentUser');
     hideUserMenu();
-    loginForm.reset();
-    signupForm.reset();
+    if (loginForm) loginForm.reset();
+    if (signupForm) signupForm.reset();
     alert('Sesión cerrada');
-});
+}
+
+// Función para obtener referencias a elementos
+function getAuthElements() {
+    loginModal = document.getElementById('login-modal');
+    signupModal = document.getElementById('signup-modal');
+    loginBtn = document.getElementById('login-btn');
+    signupBtn = document.getElementById('signup-btn');
+    closeLoginBtn = document.getElementById('close-login');
+    closeSignupBtn = document.getElementById('close-signup');
+    switchToSignup = document.getElementById('switch-to-signup');
+    switchToLogin = document.getElementById('switch-to-login');
+    loginForm = document.getElementById('login-form');
+    signupForm = document.getElementById('signup-form');
+    userMenu = document.getElementById('user-menu');
+    userName = document.getElementById('user-name');
+    logoutBtn = document.getElementById('logout-btn');
+    
+    setupEventListeners();
+}
+
+// Función para configurar event listeners
+function setupEventListeners() {
+    if (loginBtn) loginBtn.addEventListener('click', openLoginModal);
+    if (signupBtn) signupBtn.addEventListener('click', openSignupModal);
+    if (closeLoginBtn) closeLoginBtn.addEventListener('click', closeModals);
+    if (closeSignupBtn) closeSignupBtn.addEventListener('click', closeModals);
+    
+    if (switchToSignup) {
+        switchToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            openSignupModal();
+        });
+    }
+    
+    if (switchToLogin) {
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            openLoginModal();
+        });
+    }
+
+    // Cerrar modales al hacer clic fuera
+    if (loginModal) {
+        loginModal.addEventListener('click', (e) => {
+            if (e.target === loginModal) closeModals();
+        });
+    }
+    
+    if (signupModal) {
+        signupModal.addEventListener('click', (e) => {
+            if (e.target === signupModal) closeModals();
+        });
+    }
+
+    // Event listeners del formulario
+    if (signupForm) signupForm.addEventListener('submit', handleSignup);
+    if (loginForm) loginForm.addEventListener('submit', handleLogin);
+    if (logoutBtn) logoutBtn.addEventListener('click', handleLogout);
+}
 
 // ===== INICIALIZAR =====
-document.addEventListener('DOMContentLoaded', () => {
-    checkUserSession();
-});
+// Esperar a que el menú esté cargado antes de inicializar
+function initAuth() {
+    const requiredElements = [
+        'login-modal',
+        'signup-modal',
+        'login-btn',
+        'signup-btn',
+        'close-login',
+        'close-signup',
+        'switch-to-signup',
+        'switch-to-login',
+        'login-form',
+        'signup-form',
+        'user-menu',
+        'user-name',
+        'logout-btn'
+    ];
+
+    // Verificar que todos los elementos existan
+    const allElementsExist = requiredElements.every(id => document.getElementById(id));
+    
+    if (allElementsExist) {
+        getAuthElements();
+        checkUserSession();
+    } else {
+        // Reintentar después de 100ms
+        setTimeout(initAuth, 100);
+    }
+}
+
+// Ejecutar cuando el DOM esté listo
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAuth);
+} else {
+    initAuth();
+}
