@@ -1,14 +1,15 @@
 // ===== CONFIGURACIÓN DE FIREBASE =====
 // IMPORTANTE: Reemplaza estos valores con tus credenciales de Firebase
+// NUNCA hagas commit de credenciales reales. Usa .env o variables de entorno.
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDMXUg5B3IorDbKKOhrim-uUbYNCbCk2fY",
-  authDomain: "formula1fansglobal.firebaseapp.com",
-  projectId: "formula1fansglobal",
-  storageBucket: "formula1fansglobal.firebasestorage.app",
-  messagingSenderId: "452676306454",
-  appId: "1:452676306454:web:06fecfe1387fc2aa3f1737",
-  measurementId: "G-2ZZP6CRH1V"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID",
+  measurementId: "YOUR_MEASUREMENT_ID"
 };
 
 // Inicializar Firebase

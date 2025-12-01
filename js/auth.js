@@ -29,51 +29,6 @@ function closeModals() {
 
 // Verificar si hay usuario logueado
 function checkUserSession() {
-    const user = localStorage.getItem('currentUser');
-    if (user) {
-        const userData = JSON.parse(user);
-        showUserMenu(userData.name);
-    }
-}
-
-// Mostrar menú de usuario
-function showUserMenu(name) {
-    if (loginBtn && signupBtn && userMenu && userName) {
-        loginBtn.parentElement.style.display = 'none';
-        signupBtn.parentElement.style.display = 'none';
-        
-        const navAuth = document.querySelector('.nav-auth');
-        if (navAuth) navAuth.style.display = 'flex';
-        
-        userMenu.classList.remove('hidden');
-        userName.textContent = `Bienvenido, ${name}`;
-    }
-}
-
-// Ocultar menú de usuario
-function hideUserMenu() {
-    if (loginBtn && signupBtn && userMenu) {
-        loginBtn.parentElement.style.display = 'block';
-        signupBtn.parentElement.style.display = 'block';
-        userMenu.classList.add('hidden');
-    }
-}
-
-// ===== VERIFICAR SI FIREBASE ESTÁ DISPONIBLE =====
-function waitForFirebase() {
-    return new Promise((resolve) => {
-        if (typeof firebase !== 'undefined' && firebase.auth && firebase.database) {
-            resolve();
-        } else {
-            setTimeout(() => waitForFirebase().then(resolve), 100);
-        }
-    });
-}
-
-// ===== FUNCIONES DE AUTENTICACIÓN CON FIREBASE =====
-
-// Verificar si hay usuario logueado
-function checkUserSession() {
     if (typeof firebase === 'undefined' || !firebase.auth) {
         console.log('Firebase no está disponible. Usando sesión local.');
         const user = localStorage.getItem('currentUser');
