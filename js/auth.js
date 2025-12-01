@@ -59,7 +59,52 @@ function hideUserMenu() {
     }
 }
 
-// ===== REGISTRO =====
+// ===== VERIFICAR SI FIREBASE ESTÁ DISPONIBLE =====
+function waitForFirebase() {
+    return new Promise((resolve) => {
+        if (typeof firebase !== 'undefined' && firebase.auth && firebase.database) {
+            resolve();
+        } else {
+            setTimeout(() => waitForFirebase().then(resolve), 100);
+        }
+    });
+}
+
+// ===== FUNCIONES DE AUTENTICACIÓN CON FIREBASE =====
+
+// Verificar si hay usuario logueado
+function checkUserSession() {
+    if (typeof firebase === 'undefined' || !firebase.auth) {
+        console.log('Firebase no está disponible. Usando sesión local.');
+        const user = localStorage.getItem('currentUser');
+        if (user) {
+            const userData = JSON.parse(user);
+            showUserMenu(userData.name);
+        }
+        return;
+    }
+
+    firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+            // Usuario logueado en Firebase
+            firebase.database().ref('usuarios/' + user.uid).once('value').then(snapshot => {
+                const userData = snapshot.val();
+                if (userData) {
+                    localStorage.setItem('currentUser', JSON.stringify({
+                        id: user.uid,
+                        name: userData.name,
+                        email: userData.email
+                    }));
+                    showUserMenu(userData.name);
+                }
+            });
+        } else {
+            hideUserMenu();
+        }
+    });
+}
+
+// ===== REGISTRO CON FIREBASE =====
 function handleSignup(e) {
     e.preventDefault();
     
@@ -80,42 +125,75 @@ function handleSignup(e) {
         return;
     }
 
-    // Obtener usuarios existentes
-    let users = JSON.parse(localStorage.getItem('users')) || [];
-
-    // Verificar si el email ya existe
-    if (users.some(u => u.email === email)) {
-        alert('Este email ya está registrado');
+    if (!fullName || fullName.length < 2) {
+        alert('Por favor ingresa un nombre válido');
         return;
     }
 
-    // Crear nuevo usuario
-    const newUser = {
-        id: Date.now(),
-        name: fullName,
-        email: email,
-        password: btoa(password), // Codificación simple (NO usar en producción)
-        createdAt: new Date().toISOString()
-    };
+    // Usar Firebase Authentication
+    if (typeof firebase !== 'undefined' && firebase.auth) {
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                const uid = userCredential.user.uid;
+                
+                // Guardar datos en Realtime Database
+                return firebase.database().ref('usuarios/' + uid).set({
+                    name: fullName,
+                    email: email,
+                    createdAt: new Date().toISOString(),
+                    lastLogin: new Date().toISOString()
+                });
+            })
+            .then(() => {
+                alert('¡Registro exitoso! Bienvenido ' + fullName);
+                closeModals();
+                signupForm.reset();
+                checkUserSession();
+            })
+            .catch((error) => {
+                console.error('Error en registro:', error);
+                if (error.code === 'auth/email-already-in-use') {
+                    alert('Este email ya está registrado');
+                } else if (error.code === 'auth/invalid-email') {
+                    alert('Email inválido');
+                } else {
+                    alert('Error en registro: ' + error.message);
+                }
+            });
+    } else {
+        // Fallback a localStorage si Firebase no está disponible
+        console.log('Firebase no disponible. Usando localStorage.');
+        let users = JSON.parse(localStorage.getItem('users')) || [];
 
-    // Guardar usuario
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
+        if (users.some(u => u.email === email)) {
+            alert('Este email ya está registrado');
+            return;
+        }
 
-    // Guardar sesión
-    localStorage.setItem('currentUser', JSON.stringify({
-        id: newUser.id,
-        name: newUser.name,
-        email: newUser.email
-    }));
+        const newUser = {
+            id: Date.now(),
+            name: fullName,
+            email: email,
+            password: btoa(password),
+            createdAt: new Date().toISOString()
+        };
 
-    alert('¡Registro exitoso! Bienvenido ' + fullName);
-    closeModals();
-    showUserMenu(fullName);
-    signupForm.reset();
+        users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(users));
+        localStorage.setItem('currentUser', JSON.stringify({
+            id: newUser.id,
+            name: newUser.name,
+            email: newUser.email
+        }));
+
+        alert('¡Registro exitoso! Bienvenido ' + fullName);
+        closeModals();
+        showUserMenu(fullName);
+        signupForm.reset();
+    }
 }
 
-// ===== INICIO DE SESIÓN =====
+// ===== INICIO DE SESIÓN CON FIREBASE =====
 function handleLogin(e) {
     e.preventDefault();
 
@@ -123,37 +201,96 @@ function handleLogin(e) {
     const email = inputs[0].value;
     const password = inputs[1].value;
 
-    // Obtener usuarios
-    let users = JSON.parse(localStorage.getItem('users')) || [];
-
-    // Buscar usuario
-    const user = users.find(u => u.email === email && u.password === btoa(password));
-
-    if (!user) {
-        alert('Email o contraseña incorrectos');
+    if (!email || !password) {
+        alert('Por favor completa todos los campos');
         return;
     }
 
-    // Guardar sesión
-    localStorage.setItem('currentUser', JSON.stringify({
-        id: user.id,
-        name: user.name,
-        email: user.email
-    }));
+    // Usar Firebase Authentication
+    if (typeof firebase !== 'undefined' && firebase.auth) {
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((userCredential) => {
+                const uid = userCredential.user.uid;
+                
+                // Actualizar último login
+                return firebase.database().ref('usuarios/' + uid + '/lastLogin').set(new Date().toISOString());
+            })
+            .then(() => {
+                // Obtener datos del usuario
+                const user = firebase.auth().currentUser;
+                return firebase.database().ref('usuarios/' + user.uid).once('value');
+            })
+            .then(snapshot => {
+                const userData = snapshot.val();
+                if (userData) {
+                    localStorage.setItem('currentUser', JSON.stringify({
+                        id: firebase.auth().currentUser.uid,
+                        name: userData.name,
+                        email: userData.email
+                    }));
+                    alert('¡Bienvenido ' + userData.name + '!');
+                    closeModals();
+                    showUserMenu(userData.name);
+                    loginForm.reset();
+                }
+            })
+            .catch((error) => {
+                console.error('Error en login:', error);
+                if (error.code === 'auth/user-not-found') {
+                    alert('Usuario no encontrado');
+                } else if (error.code === 'auth/wrong-password') {
+                    alert('Contraseña incorrecta');
+                } else {
+                    alert('Error en login: ' + error.message);
+                }
+            });
+    } else {
+        // Fallback a localStorage si Firebase no está disponible
+        console.log('Firebase no disponible. Usando localStorage.');
+        let users = JSON.parse(localStorage.getItem('users')) || [];
+        const user = users.find(u => u.email === email && u.password === btoa(password));
 
-    alert('¡Bienvenido ' + user.name + '!');
-    closeModals();
-    showUserMenu(user.name);
-    loginForm.reset();
+        if (!user) {
+            alert('Email o contraseña incorrectos');
+            return;
+        }
+
+        localStorage.setItem('currentUser', JSON.stringify({
+            id: user.id,
+            name: user.name,
+            email: user.email
+        }));
+
+        alert('¡Bienvenido ' + user.name + '!');
+        closeModals();
+        showUserMenu(user.name);
+        loginForm.reset();
+    }
 }
 
 // ===== CERRAR SESIÓN =====
 function handleLogout() {
-    localStorage.removeItem('currentUser');
-    hideUserMenu();
-    if (loginForm) loginForm.reset();
-    if (signupForm) signupForm.reset();
-    alert('Sesión cerrada');
+    if (typeof firebase !== 'undefined' && firebase.auth) {
+        firebase.auth().signOut().then(() => {
+            localStorage.removeItem('currentUser');
+            hideUserMenu();
+            if (loginForm) loginForm.reset();
+            if (signupForm) signupForm.reset();
+            alert('Sesión cerrada');
+        }).catch((error) => {
+            console.error('Error al cerrar sesión:', error);
+            // Cerrar sesión localmente de todas formas
+            localStorage.removeItem('currentUser');
+            hideUserMenu();
+        });
+    } else {
+        // Fallback a localStorage
+        localStorage.removeItem('currentUser');
+        hideUserMenu();
+        if (loginForm) loginForm.reset();
+        if (signupForm) signupForm.reset();
+        alert('Sesión cerrada');
+    }
 }
 
 // Función para obtener referencias a elementos
@@ -239,7 +376,15 @@ function initAuth() {
     
     if (allElementsExist) {
         getAuthElements();
-        checkUserSession();
+        
+        // Esperar a que Firebase esté disponible
+        waitForFirebase().then(() => {
+            console.log('Firebase inicializado correctamente');
+            checkUserSession();
+        }).catch(() => {
+            console.log('Firebase no disponible. Usando sesión local.');
+            checkUserSession();
+        });
     } else {
         // Reintentar después de 100ms
         setTimeout(initAuth, 100);
