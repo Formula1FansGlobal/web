@@ -25,6 +25,30 @@ function closeModals() {
     }
 }
 
+// ===== FUNCIONES DE USUARIO =====
+// Mostrar menú de usuario
+function showUserMenu(name) {
+    if (loginBtn && signupBtn && userMenu && userName) {
+        loginBtn.parentElement.style.display = 'none';
+        signupBtn.parentElement.style.display = 'none';
+        
+        const navAuth = document.querySelector('.nav-auth');
+        if (navAuth) navAuth.style.display = 'flex';
+        
+        userMenu.classList.remove('hidden');
+        userName.textContent = `Bienvenido, ${name}`;
+    }
+}
+
+// Ocultar menú de usuario
+function hideUserMenu() {
+    if (loginBtn && signupBtn && userMenu) {
+        loginBtn.parentElement.style.display = 'block';
+        signupBtn.parentElement.style.display = 'block';
+        userMenu.classList.add('hidden');
+    }
+}
+
 // ===== FUNCIONES DE AUTENTICACIÓN =====
 
 // Verificar si hay usuario logueado
@@ -332,14 +356,10 @@ function initAuth() {
     if (allElementsExist) {
         getAuthElements();
         
-        // Esperar a que Firebase esté disponible
-        waitForFirebase().then(() => {
-            console.log('Firebase inicializado correctamente');
-            checkUserSession();
-        }).catch(() => {
-            console.log('Firebase no disponible. Usando sesión local.');
-            checkUserSession();
-        });
+        // Firebase debería estar cargado por ahora
+        // Si no está disponible, usaremos el fallback a localStorage
+        console.log('Sistema de autenticación inicializado');
+        checkUserSession();
     } else {
         // Reintentar después de 100ms
         setTimeout(initAuth, 100);
