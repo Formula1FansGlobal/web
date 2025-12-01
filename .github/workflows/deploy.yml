@@ -1,4 +1,4 @@
-name: Build and Deploy to GitHub Pages
+name: Generate Firebase Config
 
 on:
   push:
@@ -63,9 +63,13 @@ jobs:
           }
           EOF
       
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
-          cname: ''
+      - name: Verify firebase-config.js was created
+        run: |
+          if [ -f js/firebase-config.js ]; then
+            echo "✅ firebase-config.js created successfully"
+            head -20 js/firebase-config.js
+          else
+            echo "❌ firebase-config.js was not created"
+            exit 1
+          fi
+
