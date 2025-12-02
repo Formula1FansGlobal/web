@@ -478,10 +478,10 @@ img {
 
 #calendario_temporada .calendario-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: clamp(12px, 2vw, 24px);
     padding: 8px 18px;
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
     align-items: start;
 }
@@ -492,7 +492,7 @@ img {
     flex-direction: column;
     gap: 10px;
     align-items: stretch;
-    padding: 12px;
+    padding: clamp(12px, 1.6vw, 20px);
     border-radius: 14px;
     background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
     border: 1px solid rgba(255,255,255,0.04);
@@ -509,7 +509,7 @@ img {
     left: 0;
     top: 0;
     width: 100%;
-    height: 6px;
+    height: clamp(4px, 0.6vw, 8px);
     background: linear-gradient(90deg, #ff6b4a, #ffd700, #00d4ff);
 }
 
@@ -521,7 +521,7 @@ img {
 /* Imagen del GP */
 #calendario_temporada .carrera-item img {
     width: 100%;
-    height: 140px;
+    height: clamp(120px, 16vw, 220px);
     object-fit: cover;
     border-radius: 8px;
     border: 2px solid rgba(255,255,255,0.02);
@@ -533,6 +533,7 @@ img {
 #calendario_temporada .carrera-info {
     padding: 6px 4px 10px 4px;
     text-align: left;
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
 }
 
 #calendario_temporada .carrera-fecha {
@@ -540,26 +541,28 @@ img {
     color: #ffd700;
     font-weight: 800;
     margin-bottom: 6px;
+    font-size: clamp(0.9rem, 1.1vw, 1rem);
 }
 
 #calendario_temporada .carrera-nombre {
-    font-size: 1.05rem;
+    font-size: clamp(1rem, 1.4vw, 1.18rem);
     font-weight: 800;
     color: #fff;
     margin-bottom: 6px;
+    line-height: 1.15;
 }
 
 /* Badge opcional (ej: "Sprint" o "Final") */
 .carrera-badge {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: clamp(8px, 1.2vw, 12px);
+    right: clamp(8px, 1.2vw, 12px);
     background: rgba(255,107,74,0.95);
     color: #fff;
-    padding: 6px 10px;
+    padding: clamp(5px, 0.8vw, 8px) clamp(8px, 1.4vw, 12px);
     border-radius: 12px;
     font-weight: 700;
-    font-size: 0.8rem;
+    font-size: clamp(0.75rem, 0.95vw, 0.9rem);
     box-shadow: 0 6px 18px rgba(255,107,74,0.12);
 }
 
