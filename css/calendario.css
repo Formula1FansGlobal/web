@@ -459,73 +459,117 @@ img {
     margin: 0 auto;
 }
 
-/* Estilos específicos para calendario_temporada (timeline) */
+/* Estilos específicos para calendario_temporada (timeline) - Estilo enriquecido */
 #calendario_temporada {
-    padding-top: 30px;
-    padding-bottom: 40px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    background: radial-gradient(1200px 400px at 10% 10%, rgba(255,30,0,0.03), transparent 10%), radial-gradient(1000px 300px at 90% 90%, rgba(255,215,0,0.02), transparent 10%);
 }
 
 #calendario_temporada #titulo-temporada {
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.4rem;
     color: #ffd700;
-    margin-bottom: 12px;
-    font-weight: 800;
+    margin-bottom: 18px;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
 #calendario_temporada .calendario-grid {
     display: block;
     position: relative;
-    padding-left: 64px;
-    max-width: 1100px;
+    padding: 30px 24px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Línea central tipo cable con degradado y sombra suave */
 #calendario_temporada .calendario-grid::before {
     content: '';
     position: absolute;
-    left: 32px;
-    top: 10px;
-    bottom: 10px;
-    width: 4px;
-    background: linear-gradient(180deg, #ff1e00, #ffd700);
-    border-radius: 4px;
-    opacity: 0.9;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 8px;
+    bottom: 8px;
+    width: 8px;
+    background: linear-gradient(180deg, rgba(255,30,0,0.95), rgba(255,215,0,0.95));
+    border-radius: 8px;
+    box-shadow: 0 6px 30px rgba(255,30,0,0.12);
 }
 
+/* Tarjetas más grandes, ocupan la mitad del ancho y dejan espacio al centro */
 #calendario_temporada .carrera-item {
     display: flex;
-    gap: 18px;
+    gap: 20px;
     align-items: center;
-    margin: 18px 0;
-    padding: 14px 18px;
-    background: #0d0d0d;
-    border-radius: 12px;
+    margin: 28px 0;
+    padding: 18px 22px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius: 16px;
     border: 1px solid rgba(255,255,255,0.04);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.55);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.6);
     position: relative;
-    margin-left: 40px;
+    margin-left: 0;
+    width: calc(50% - 80px);
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeInUp 0.7s cubic-bezier(.2,.9,.3,1) forwards;
 }
 
+/* Alineación alternada: impar a la izquierda, par a la derecha */
+#calendario_temporada .carrera-item:nth-child(odd) {
+    margin-right: calc(50% + 20px);
+}
+
+#calendario_temporada .carrera-item:nth-child(even) {
+    margin-left: calc(50% + 20px);
+}
+
+/* Punto circular en la línea central, con pulso */
 #calendario_temporada .carrera-item::before {
     content: '';
     position: absolute;
-    left: -54px;
+    left: calc(50% - 14px);
     top: 50%;
-    transform: translateY(-50%);
-    width: 14px;
-    height: 14px;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    background: linear-gradient(90deg, #ff1e00, #ffd700);
-    box-shadow: 0 0 10px rgba(255,30,0,0.35);
+    background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,0.2)), linear-gradient(90deg, #ff1e00, #ffd700);
+    box-shadow: 0 0 22px rgba(255,30,0,0.35);
+    z-index: 4;
 }
 
+/* Pequeño halo pulsante */
+#calendario_temporada .carrera-item::after {
+    content: '';
+    position: absolute;
+    left: calc(50% - 28px);
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,30,0,0.06), transparent 40%);
+    z-index: 2;
+    animation: pulse 2.4s infinite ease-out;
+}
+
+/* Imagen más prominente */
 #calendario_temporada .carrera-item img {
-    width: 180px;
-    height: 110px;
+    width: 240px;
+    height: 140px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 10px;
     flex-shrink: 0;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    border: 3px solid rgba(255,255,255,0.03);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+#calendario_temporada .carrera-item:hover img {
+    transform: scale(1.03) translateY(-3px);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.7);
 }
 
 #calendario_temporada .carrera-info {
@@ -533,40 +577,94 @@ img {
 }
 
 #calendario_temporada .carrera-fecha {
-    background: #111;
-    padding: 6px 10px;
-    border-radius: 8px;
+    background: rgba(0,0,0,0.45);
+    padding: 8px 12px;
+    border-radius: 10px;
     display: inline-block;
     color: #ffd700;
-    font-weight: 700;
-    margin-bottom: 8px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
 }
 
 #calendario_temporada .carrera-nombre {
-    font-size: 1.05rem;
-    font-weight: 600;
+    font-size: 1.15rem;
+    font-weight: 700;
     color: #fff;
+    margin-bottom: 6px;
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.7; }
+    60% { transform: translate(-50%, -50%) scale(1.05); opacity: 0.35; }
+    100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+/* Staggered reveal: delays para las primeras 12 carreras */
+#calendario_temporada .carrera-item:nth-child(1) { animation-delay: 0.06s; }
+#calendario_temporada .carrera-item:nth-child(2) { animation-delay: 0.12s; }
+#calendario_temporada .carrera-item:nth-child(3) { animation-delay: 0.18s; }
+#calendario_temporada .carrera-item:nth-child(4) { animation-delay: 0.24s; }
+#calendario_temporada .carrera-item:nth-child(5) { animation-delay: 0.30s; }
+#calendario_temporada .carrera-item:nth-child(6) { animation-delay: 0.36s; }
+#calendario_temporada .carrera-item:nth-child(7) { animation-delay: 0.42s; }
+#calendario_temporada .carrera-item:nth-child(8) { animation-delay: 0.48s; }
+#calendario_temporada .carrera-item:nth-child(9) { animation-delay: 0.54s; }
+#calendario_temporada .carrera-item:nth-child(10) { animation-delay: 0.60s; }
+#calendario_temporada .carrera-item:nth-child(11) { animation-delay: 0.66s; }
+#calendario_temporada .carrera-item:nth-child(12) { animation-delay: 0.72s; }
+
+@media (max-width: 992px) {
+    /* Mantener una sola columna en tablets, pero con estilo enriquecido */
+    #calendario_temporada .calendario-grid::before { left: 40px; transform: none; }
+    #calendario_temporada .carrera-item {
+        width: calc(100% - 80px);
+        margin-left: 80px;
+        margin-right: 0;
+        flex-direction: row;
+    }
+    #calendario_temporada .carrera-item:nth-child(odd),
+    #calendario_temporada .carrera-item:nth-child(even) {
+        margin-left: 80px;
+        margin-right: 0;
+    }
+    #calendario_temporada .carrera-item::before { left: 40px; }
+    #calendario_temporada .carrera-item::after { left: 40px; }
 }
 
 @media (max-width: 768px) {
     #calendario_temporada .calendario-grid {
         padding-left: 18px;
+        padding-right: 18px;
     }
     #calendario_temporada .carrera-item {
         flex-direction: column;
         align-items: flex-start;
+        width: 100%;
         margin-left: 8px;
         padding: 12px;
     }
     #calendario_temporada .carrera-item::before {
-        left: 6px;
+        left: 12px;
         top: 12px;
         transform: none;
+        width: 12px;
+        height: 12px;
+    }
+    #calendario_temporada .carrera-item::after {
+        left: 12px;
+        width: 36px;
+        height: 36px;
     }
     #calendario_temporada .carrera-item img {
         width: 100%;
-        height: 160px;
-        border-radius: 8px;
+        height: 180px;
     }
 }
 
