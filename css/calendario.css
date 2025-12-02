@@ -256,7 +256,7 @@ img {
 /* Calendario / Temporadas */
 .calendario-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(5, 1fr);
     gap: 25px;
     padding: 20px 0;
 }
@@ -412,7 +412,7 @@ img {
 
 @media (max-width: 1200px) {
     .calendario-grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
         gap: 20px;
     }
     
@@ -423,7 +423,7 @@ img {
 
 @media (max-width: 768px) {
     .calendario-grid {
-        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
         gap: 15px;
     }
     
@@ -451,7 +451,7 @@ img {
 
 @media (max-width: 600px) {
     .calendario-grid {
-        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 12px;
     }
     
