@@ -16,8 +16,8 @@ jobs:
         run: |
           mkdir -p js
           cat > js/firebase-config.js <<'EOF'
-          // ===== CONFIGURACIÃ“N DE FIREBASE =====
-          // Este archivo se genera automÃ¡ticamente desde GitHub Secrets
+          // ===== CONFIGURACIÓN DE FIREBASE =====
+          // Este archivo se genera automáticamente desde GitHub Secrets
           // NO se guarda en el repositorio
           
           const firebaseConfig = ${{ secrets.FIREBASE_API_KEY }};
@@ -48,7 +48,7 @@ jobs:
             });
           }
           
-          // Actualizar Ãºltimo login
+          // Actualizar último login
           function updateLastLogin(uid) {
             return db.ref('usuarios/' + uid + '/lastLogin').set(new Date().toISOString());
           }
@@ -57,10 +57,17 @@ jobs:
       - name: Verify firebase-config.js was created
         run: |
           if [ -f js/firebase-config.js ]; then
-            echo "âœ… firebase-config.js created successfully"
+            echo " firebase-config.js created successfully"
             head -20 js/firebase-config.js
           else
-            echo "âŒ firebase-config.js was not created"
+            echo " firebase-config.js was not created"
             exit 1
           fi
-
+      
+      - name: Commit and push firebase-config.js
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add js/firebase-config.js
+          git commit -m "build: generar firebase-config.js desde secretos" || echo "No changes to commit"
+          git push
