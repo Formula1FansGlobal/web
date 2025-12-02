@@ -144,8 +144,11 @@
                     const seasonCard = `
                         <a ${link} class="season-card${badgeClass}">
                             ${badge}
-                            <img src="img/f1moderno.jpg" alt="Temporada ${year}">
-                            <span>Temporada ${year}</span>
+                            <div class="season-year">${year}</div>
+                            <div class="season-image-wrap">
+                                <img src="img/f1moderno.jpg" alt="Temporada ${year}">
+                            </div>
+                            <div class="season-card-footer"><span>Temporada ${year}</span></div>
                         </a>
                     `;
                     grid.innerHTML += seasonCard;
