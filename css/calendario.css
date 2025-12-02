@@ -71,6 +71,55 @@ img {
     background: linear-gradient(90deg, #ff1e00, #ffd700);
 }
 
+/* Botón desplegable */
+.era-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    transition: all 0.3s ease;
+}
+
+.era-toggle:hover {
+    opacity: 0.85;
+    transform: translateX(5px);
+}
+
+.era-toggle:focus {
+    outline: none;
+}
+
+.toggle-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: inline-block;
+    min-width: 30px;
+    text-align: right;
+}
+
+.toggle-icon.rotated {
+    transform: rotate(180deg);
+}
+
+/* Contenido desplegable */
+.era-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    transition: opacity 0.3s ease, max-height 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.era-content.expanded {
+    max-height: 2000px;
+    opacity: 1;
+}
+
 /* Era Moderna (2020s) */
 .era-moderna {
     background: linear-gradient(135deg, rgba(255, 30, 0, 0.08) 0%, rgba(255, 215, 0, 0.08) 100%);
