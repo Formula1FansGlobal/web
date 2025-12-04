@@ -15,103 +15,154 @@
 
         <!-- Calendario de temporadas -->
         <section id="calendario_de_temporadas">
-            <h2>Temporadas Pasadas 2020 - 2024</h2>
-            <div class="calendario-grid">
-                <a href="">
-                    <p>Proximamente</p>
-                    <img src="img/temporada_2025.jpg" alt="Temporada 2025">
-                    <span>Temporada 2025</span>
-                </a>
-                <a href="calendario_temporada.html?year=2024">
-                    <img src="img/Calendario/2024/T2024.avif" alt="Temporada 2024">
-                    <span>Temporada 2024</span>
-                </a>
-                <a href="calendario_temporada.html?year=2023">
-                    <img src="img/temporada_2023.jpg" alt="Temporada 2023">
-                    <span>Temporada 2023</span>
-                </a>
-                <a href="calendario_temporada.html?year=2022">
-                    <img src="img/temporada_2022.jpg" alt="Temporada 2022">
-                    <span>Temporada 2022</span>
-                </a>
-                <a href="calendario_temporada.html?year=2021">
-                    <img src="img/temporada_2021.jpg" alt="Temporada 2021">
-                    <span>Temporada 2021</span>
-                </a>
-                <a href="calendario_temporada.html?year=2020">
-                    <img src="img/temporada_2020.jpg" alt="Temporada 2020">
-                    <span>Temporada 2020</span>
-                </a>
-                <!--<a href="calendario_temporada.html?year=2019">
-                    <img src="img/temporada_2019.jpg" alt="Temporada 2019">
-                    <span>Temporada 2019</span>
-                </a>
-                <a href="calendario_temporada.html?year=2018">
-                    <img src="img/temporada_2018.jpg" alt="Temporada 2018">
-                    <span>Temporada 2018</span>
-                </a>
-                <a href="calendario_temporada.html?year=2017">
-                    <img src="img/temporada_2017.jpg" alt="Temporada 2017">
-                    <span>Temporada 2017</span>
-                </a>
-                <a href="calendario_temporada.html?year=2016">
-                    <img src="img/temporada_2016.jpg" alt="Temporada 2016">
-                    <span>Temporada 2016</span>
-                </a>
-                <a href="calendario_temporada.html?year=2015">
-                    <img src="img/temporada_2015.jpg" alt="Temporada 2015">
-                    <span>Temporada 2015</span>
-                </a>
-                <a href="calendario_temporada.html?year=2014">
-                    <img src="img/temporada_2014.jpg" alt="Temporada 2014">
-                    <span>Temporada 2014</span>
-                </a>
-                <a href="calendario_temporada.html?year=2013">
-                    <img src="img/temporada_2013.jpg" alt="Temporada 2013">
-                    <span>Temporada 2013</span>
-                </a>
-                <a href="calendario_temporada.html?year=2012">
-                    <img src="img/temporada_2012.jpg" alt="Temporada 2012">
-                    <span>Temporada 2012</span>
-                </a>
-                <a href="calendario_temporada.html?year=2011">
-                    <img src="img/temporada_2011.jpg" alt="Temporada 2011">
-                    <span>Temporada 2011</span>
-                </a>
-                <a href="calendario_temporada.html?year=2010">
-                    <img src="img/temporada_2010.jpg" alt="Temporada 2010">
-                    <span>Temporada 2010</span>
-                </a>
-                <a href="calendario_temporada.html?year=2009">
-                    <img src="img/temporada_2009.jpg" alt="Temporada 2009">
-                    <span>Temporada 2009</span>
-                </a>
-                <a href="calendario_temporada.html?year=2008">
-                    <img src="img/temporada_2008.jpg" alt="Temporada 2008">
-                    <span>Temporada 2008</span>
-                </a>
-                <a href="calendario_temporada.html?year=2007">
-                    <img src="img/temporada_2007.jpg" alt="Temporada 2007">
-                    <span>Temporada 2007</span>
-                </a>
-                <a href="calendario_temporada.html?year=2006">
-                    <img src="img/temporada_2006.jpg" alt="Temporada 2006">
-                    <span>Temporada 2006</span>
-                </a>
-                <a href="calendario_temporada.html?year=2005">
-                    <img src="img/temporada_2005.jpg" alt="Temporada 2005">
-                    <span>Temporada 2005</span>
-                </a>
-                <a href="calendario_temporada.html?year=2004">
-                    <img src="img/temporada2004.jpg" alt="Temporada 2004">
-                    <span>Temporada 2004</span>
-                <a/>
-            -->
+            <h1>Calendario de Temporadas F1</h1>
+            <p class="subtitle">Explora todas las temporadas de la Fórmula 1 desde 1950</p>
+
+            <!-- Era 2020s -->
+            <div class="era-section era-moderna">
+                <button class="era-toggle" data-decade="2020s">
+                    <h2 class="era-titulo">⚡ Años 2020s</h2>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="era-content" id="content-2020s">
+                    <p class="era-descripcion">La era moderna con la nueva generación de monoplazas híbridos y sostenibles</p>
+                    <div class="calendario-grid" id="grid-2020s"></div>
+                </div>
             </div>
+
+            <!-- Era 2010s -->
+            <div class="era-section era-2010s">
+                <button class="era-toggle" data-decade="2010s">
+                    <h2 class="era-titulo">🏁 Años 2010s</h2>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="era-content" id="content-2010s">
+                    <p class="era-descripcion">La era del dominio de Mercedes y Hamilton</p>
+                    <div class="calendario-grid" id="grid-2010s"></div>
+                </div>
+            </div>
+
+            <!-- Era 2000s -->
+            <div class="era-section era-2000s">
+                <button class="era-toggle" data-decade="2000s">
+                    <h2 class="era-titulo">🏆 Años 2000s</h2>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="era-content" id="content-2000s">
+                    <p class="era-descripcion">La era dorada de Schumacher y Ferrari</p>
+                    <div class="calendario-grid" id="grid-2000s"></div>
+                </div>
+            </div>
+
+            <!-- Era 1990s -->
+            <div class="era-section era-1990s">
+                <button class="era-toggle" data-decade="1990s">
+                    <h2 class="era-titulo">👑 Años 1990s</h2>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="era-content" id="content-1990s">
+                    <p class="era-descripcion">La era de Senna, Prost y la revolución del motor V10</p>
+                    <div class="calendario-grid" id="grid-1990s"></div>
+                </div>
+            </div>
+
+            <!-- Era 1980s -->
+            <div class="era-section era-1980s">
+                <button class="era-toggle" data-decade="1980s">
+                    <h2 class="era-titulo">🚀 Años 1980s</h2>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="era-content" id="content-1980s">
+                    <p class="era-descripcion">La era de Lauda, Senna y Williams</p>
+                    <div class="calendario-grid" id="grid-1980s"></div>
+                </div>
+            </div>
+
+            <!-- Era 1970s -->
+            <div class="era-section era-1970s">
+                <button class="era-toggle" data-decade="1970s">
+                    <h2 class="era-titulo">⭐ Años 1970s</h2>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="era-content" id="content-1970s">
+                    <p class="era-descripcion">La era de los pilotos legendarios y motores potentes</p>
+                    <div class="calendario-grid" id="grid-1970s"></div>
+                </div>
+            </div>
+
+            <!-- Era 1960s -->
+            <div class="era-section era-1960s">
+                <button class="era-toggle" data-decade="1960s">
+                    <h2 class="era-titulo">🏅 Años 1960s</h2>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="era-content" id="content-1960s">
+                    <p class="era-descripcion">La era clásica de los pilotos aventureros</p>
+                    <div class="calendario-grid" id="grid-1960s"></div>
+                </div>
+            </div>
+
+            <!-- Era 1950s -->
+            <div class="era-section era-1950s">
+                <button class="era-toggle" data-decade="1950s">
+                    <h2 class="era-titulo">🎬 Años 1950s</h2>
+                    <span class="toggle-icon">▼</span>
+                </button>
+                <div class="era-content" id="content-1950s">
+                    <p class="era-descripcion">El nacimiento de la Fórmula 1 - Los orígenes de la leyenda</p>
+                    <div class="calendario-grid" id="grid-1950s"></div>
+                </div>
+            </div>
+
         </section>
 
         <script src="js/menu.js"></script>
-        <script src="js/auth.js"></script>
         <script src="js/carousel_container.js"></script>
+        <script>
+            // Definir años por década
+            const decadas = {
+                '2020s': { años: [2025, 2024, 2023, 2022, 2021, 2020], gridId: 'grid-2020s' },
+                '2010s': { años: [2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010], gridId: 'grid-2010s' },
+                '2000s': { años: [2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000], gridId: 'grid-2000s' },
+                '1990s': { años: [1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992, 1991, 1990], gridId: 'grid-1990s' },
+                '1980s': { años: [1989, 1988, 1987, 1986, 1985, 1984, 1983, 1982, 1981, 1980], gridId: 'grid-1980s' },
+                '1970s': { años: [1979, 1978, 1977, 1976, 1975, 1974, 1973, 1972, 1971, 1970], gridId: 'grid-1970s' },
+                '1960s': { años: [1969, 1968, 1967, 1966, 1965, 1964, 1963, 1962, 1961, 1960], gridId: 'grid-1960s' },
+                '1950s': { años: [1959, 1958, 1957, 1956, 1955, 1954, 1953, 1952, 1951, 1950], gridId: 'grid-1950s' }
+            };
+
+            // Generar tarjetas para cada década
+            for (const [decada, data] of Object.entries(decadas)) {
+                const grid = document.getElementById(data.gridId);
+                data.años.forEach(year => {
+                    const isUpcoming = year === 2025;
+                    const isDisabled = year === 2025;
+                    const link = isDisabled ? 'href=""' : `href="calendario_temporada.html?year=${year}"`;
+                    const badgeClass = isUpcoming ? ' upcoming' : '';
+                    const badge = isUpcoming ? '<p class="season-badge">Próxima</p>' : '';
+                    
+                    const seasonCard = `
+                        <a ${link} class="season-card${badgeClass}">
+                            ${badge}
+                            <img src="img/f1moderno.jpg" alt="Temporada ${year}">
+                            <span>Temporada ${year}</span>
+                        </a>
+                    `;
+                    grid.innerHTML += seasonCard;
+                });
+            }
+
+            // Manejo de desplegables
+            document.querySelectorAll('.era-toggle').forEach(button => {
+                button.addEventListener('click', function() {
+                    const decade = this.dataset.decade;
+                    const content = document.getElementById(`content-${decade}`);
+                    const icon = this.querySelector('.toggle-icon');
+                    
+                    content.classList.toggle('expanded');
+                    icon.classList.toggle('rotated');
+                });
+            });
+        </script>
     </body>
 </html>
