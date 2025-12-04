@@ -1,4 +1,4 @@
-# Environment variables
+﻿# Environment variables
 .env
 .env.local
 .env.*.local
@@ -19,8 +19,5 @@ dist/
 build/
 node_modules/
 
-# Firebase
-firebase-debug.log
 
-# Firebase credentials should NEVER be committed
-firebase-config.js
+
