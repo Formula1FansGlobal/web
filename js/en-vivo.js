@@ -8,7 +8,7 @@ const postImage = document.getElementById('post-image');
 
 // Por defecto, mostrar imagen y ocultar video
 liveVideo.style.display = 'none';
-postImage.style.display = 'none';
+preImage.style.display = 'none';
 
 // Al clickear el botón EN VIVO
 liveButton.addEventListener('click', function(e) {
