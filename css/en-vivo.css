@@ -16,13 +16,6 @@ a {
     color: inherit;
 }
 
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-}
-
 section {
     padding: 40px 20px;
 }
@@ -46,49 +39,6 @@ p {
 
 img {
     max-width: 100%;
-}
-
-/* Menú */
-nav {
-    background-color: #1a1a1a;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.nav-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.logo {
-    height: 50px;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links li {
-    margin: 0 15px;
-}
-
-.nav-links a {
-    font-weight: bold;
-    color: #ffffff;
-    padding: 5px 10px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.nav-links a:hover {
-    background-color: #ff1e00;
-    color: #ffffff;
-    border-radius: 5px;
 }
 
 /* ===== EN VIVO MAIN SECTION ===== */
@@ -237,20 +187,18 @@ nav {
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 0 15px rgba(255, 30, 0, 0.3);
-    margin: -30px -30px -30px -30px;
-    padding: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* CORREGIDO: Removidos márgenes y padding problemáticos */
+    margin: 0;
+    padding: 0;
 }
 
 .stream-bg,
 .stream-video {
     position: absolute;
-    top: 30px;
-    left: 30px;
-    width: calc(100% - 60px);
-    height: calc(100% - 60px);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 10px;
 }
@@ -263,8 +211,8 @@ nav {
 /* Indicador EN VIVO superpuesto */
 #live-indicator {
     position: absolute;
-    top: 50px;
-    right: 50px;
+    top: 20px;
+    right: 20px;
     background: linear-gradient(135deg, #ff1e00 0%, #ff6600 100%);
     color: #fff;
     padding: 12px 20px;
@@ -518,29 +466,6 @@ nav {
     transform: scale(1.2);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .en-vivo-card {
-        border-width: 2px;
-    }
-
-    #event-title {
-        font-size: 2.5rem;
-    }
-
-    #event-subtitle {
-        font-size: 1.3rem;
-    }
-
-    .countdown-timer {
-        font-size: 2rem;
-    }
-
-    .countdown-unit span:first-child {
-        font-size: 2rem;
-    }
-}
-
 /* ===== MODO REPRODUCCIÓN (Stream Playing) ===== */
 #en-vivo-main.playing-stream {
     padding: 40px 20px;
@@ -574,7 +499,6 @@ nav {
     border-bottom: 2px solid #ff1e00;
     padding: 25px 30px;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(15, 52, 96, 0.3) 100%);
-    order: -1;
 }
 
 .playing-stream #event-title {
@@ -638,31 +562,45 @@ nav {
     letter-spacing: 1px;
 }
 
+/* Responsive */
 @media (max-width: 1024px) {
+    .en-vivo-card {
+        border-width: 2px;
+    }
+
+    #event-title {
+        font-size: 2.5rem;
+    }
+
+    #event-subtitle {
+        font-size: 1.3rem;
+    }
+
+    .countdown-timer {
+        font-size: 2rem;
+    }
+
+    .countdown-unit span:first-child {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
     #en-vivo-main {
         padding: 20px 10px;
     }
 
-    .stream-info {
+    .en-vivo-card {
         padding: 25px 15px;
         gap: 20px;
     }
 
-    .live-badge {
-        padding: 10px 18px;
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-        top: 15px;
-        left: 15px;
-    }
-
     #event-title {
-        font-size: 1.8rem;
-        text-shadow: 2px 2px 0px #ff1e00, 4px 4px 15px rgba(255, 30, 0, 0.8);
+        font-size: 2rem;
     }
 
     #event-subtitle {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .countdown-badge {
@@ -684,5 +622,10 @@ nav {
 
     .unit-label {
         font-size: 0.5rem;
+    }
+    
+    .live-badge {
+        padding: 20px 30px;
+        font-size: 1.1rem;
     }
 }
