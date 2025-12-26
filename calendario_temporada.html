@@ -509,7 +509,7 @@
                 const gpId = carrera.nombre.toLowerCase().replace(/ /g, "_").replace(/[^a-z0-9_]/g, "");
                 const carreraHTML = `
                     <a class="carrera-item" href="video_gp.html?year=${year}&gp=${gpId}">
-                        <img src="${carrera.imagen}" alt="${carrera.nombre}">
+                        <img src="${carrera.imagen}" alt="${carrera.nombre}" loading="lazy" onerror="this.onerror=null;this.src='img/Calendario/2024/T2024.avif'">
                         <div class="carrera-info">
                             <span class="carrera-fecha">${carrera.fecha}</span>
                             <span class="carrera-nombre">${carrera.nombre}</span>
