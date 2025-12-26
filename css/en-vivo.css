@@ -114,6 +114,8 @@ img {
         0 0 20px rgba(255, 30, 0, 0.6);
 }
 
+/* (Revertido) Estilos de título con imagen eliminados */
+
 /* Countdown Badge - Segundo */
 .countdown-badge {
     background: linear-gradient(135deg, rgba(255, 30, 0, 0.95) 0%, rgba(255, 102, 0, 0.9) 50%, rgba(128, 0, 0, 0.95) 100%);

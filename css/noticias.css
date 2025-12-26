@@ -80,6 +80,8 @@ nav {
     border-radius: 5px;
 }
 
+/* (Revertido) Estilos de título con imagen eliminados */
+
 /* Estilos para noticias */
 #news {
     display: grid;
