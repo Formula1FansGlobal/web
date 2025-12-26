@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda | Formula 1 Fans Global</title>
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="img/Formula-1-Fans-Global3.jpg">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#121212">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/tienda.css">
+</head>
+<body>
+    <div id="nav-container"></div>
+
+    <header class="shop-hero">
+        <div class="shop-hero-content">
+            <h1>Tienda F1 Fans Global</h1>
+            <p>Ropa, gorras y accesorios inspirados en la Fórmula 1</p>
+        </div>
+    </header>
+
+    <section class="shop-controls">
+        <div class="controls-left">
+                <div class="filter-dropdown" id="filter-dropdown">
+                    <button class="filter-btn" id="filter-btn" aria-haspopup="true" aria-expanded="false">Filtro ▼</button>
+                    <div class="filter-menu closed" id="filter-menu" aria-label="Categorías">
+                        <button class="filter-option active" data-category="all">Todas</button>
+                        <button class="filter-option" data-category="ropa">Ropa</button>
+                        <button class="filter-option" data-category="gorras">Gorras</button>
+                        <button class="filter-option" data-category="accesorios">Accesorios</button>
+                        <button class="filter-option" data-category="coleccionables">Coleccionables</button>
+                        <button class="filter-option" data-category="posters">Posters</button>
+                        <button class="filter-option" data-category="miniaturas">Miniaturas</button>
+                    </div>
+                </div>
+        </div>
+        <div class="controls-right">
+            <input id="search-input" class="search-input" placeholder="Buscar producto…" aria-label="Buscar">
+            <select id="sort-select" class="sort-select" aria-label="Ordenar">
+                <option value="relevance">Relevancia</option>
+                <option value="price_asc">Precio: menor a mayor</option>
+                <option value="price_desc">Precio: mayor a menor</option>
+                <option value="new">Novedades</option>
+            </select>
+            <label class="source-toggle" title="Carga productos desde Mercado Libre">
+                <input type="checkbox" id="ml-source-toggle">
+                <span>Mercado Libre</span>
+            </label>
+        </div>
+    </section>
+
+    <section class="shop-subcontrols">
+        <div class="sub-left">
+            <div class="chip-group" id="chip-equipos" aria-label="Equipos">
+                <button class="chip" data-team="ferrari">Ferrari</button>
+                <button class="chip" data-team="redbull">Red Bull</button>
+                <button class="chip" data-team="mercedes">Mercedes</button>
+                <button class="chip" data-team="mclaren">McLaren</button>
+            </div>
+        </div>
+        <div class="sub-right">
+            <label class="range-label">Precio
+                <input type="range" id="price-range" min="0" max="5000" step="100" value="5000">
+                <span id="price-label">Hasta $5,000</span>
+            </label>
+        </div>
+    </section>
+
+    <main class="shop-main">
+        <section class="featured-banner">
+            <div class="featured-content">
+                <div class="badges">
+                    <span class="badge">Exclusivo</span>
+                    <span class="badge">Novedad</span>
+                </div>
+                <h2>Ediciones especiales F1 2026</h2>
+                <p>Prendas premium, gorras edición limitada y accesorios únicos.</p>
+                <a href="#product-grid" class="btn-primary">Ver productos</a>
+            </div>
+        </section>
+        <div id="product-grid" class="product-grid" aria-live="polite"></div>
+    </main>
+
+    <footer class="shop-footer">
+        <p>Si activas la opción, los productos se cargan desde tu tienda en Mercado Libre.</p>
+    </footer>
+
+    <!-- Modal de producto -->
+    <div id="product-modal" class="product-modal" hidden>
+        <div class="modal-backdrop"></div>
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <button class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
+            <div class="modal-media">
+                <img id="modal-image" alt="Producto" loading="lazy">
+            </div>
+            <div class="modal-body">
+                <h3 id="modal-title"></h3>
+                <p id="modal-price" class="modal-price"></p>
+                <p id="modal-desc" class="modal-desc">Producto oficial F1 Fans Global.</p>
+                <div class="modal-actions">
+                    <a id="modal-link" class="btn-primary" target="_blank" rel="noopener">Comprar en Mercado Libre</a>
+                    <button class="btn-secondary" disabled>Agregar al carrito (próx.)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/menu.js" defer></script>
+    <script src="js/tienda.js" defer></script>
+</body>
+</html>

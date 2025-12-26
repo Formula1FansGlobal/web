@@ -20,110 +20,174 @@
      crossorigin="anonymous"></script>
     </head>
     <body>
-        <div id="menu-container"></div>
+        <div id="nav-container"></div>
 
-        <!-- Calendario de temporadas -->
-        <section id="calendario_de_temporadas">
-            <h1>Calendario de Temporadas F1</h1>
-            <p class="subtitle">Explora todas las temporadas de la Fórmula 1 desde sus inicios</p>
-
-            <!-- Era 2020s -->
-            <div class="era-section era-moderna">
-                <button class="era-toggle" data-decade="2020s">
-                    <h2 class="era-titulo">⚡ Años 2020s</h2>
-                    <span class="toggle-icon">▼</span>
-                </button>
-                <div class="era-content" id="content-2020s">
-                    <p class="era-descripcion">La era moderna con la nueva generación de monoplazas híbridos y sostenibles</p>
-                    <div class="calendario-grid" id="grid-2020s"></div>
+        <main class="seasons-page">
+            <section class="seasons-hero">
+                <div class="hero-copy">
+                    <p class="eyebrow">Archivo histórico • 1950-2025</p>
+                    <h1>Calendario de temporadas F1</h1>
+                    <p class="hero-subtitle">Recorre cada era, revive campeonatos icónicos y descubre cómo evolucionó la parrilla hasta hoy.</p>
+                    <div class="hero-actions">
+                        <a class="btn primary" href="calendario_temporada.html?year=2024">Ver temporada 2024</a>
+                        <a class="btn ghost" href="en-vivo.html">Ir a transmisiones</a>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Era 2010s -->
-            <div class="era-section era-2010s">
-                <button class="era-toggle" data-decade="2010s">
-                    <h2 class="era-titulo">🏁 Años 2010s</h2>
-                    <span class="toggle-icon">▼</span>
-                </button>
-                <div class="era-content" id="content-2010s">
-                    <p class="era-descripcion">La era del dominio de Mercedes y Hamilton</p>
-                    <div class="calendario-grid" id="grid-2010s"></div>
+                <div class="hero-panel">
+                    <div class="stat-card">
+                        <p class="stat-label">Temporadas</p>
+                        <p class="stat-value">76</p>
+                        <p class="stat-helper">Desde 1950 hasta 2025</p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-label">Grandes Premios</p>
+                        <p class="stat-value">1,100+</p>
+                        <p class="stat-helper">Carreras registradas</p>
+                    </div>
+                    <div class="stat-card">
+                        <p class="stat-label">Campeones</p>
+                        <p class="stat-value">34</p>
+                        <p class="stat-helper">Pilotos que alzaron el título</p>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- Era 2000s -->
-            <div class="era-section era-2000s">
-                <button class="era-toggle" data-decade="2000s">
-                    <h2 class="era-titulo">🏆 Años 2000s</h2>
-                    <span class="toggle-icon">▼</span>
-                </button>
-                <div class="era-content" id="content-2000s">
-                    <p class="era-descripcion">La era dorada de Schumacher y Ferrari</p>
-                    <div class="calendario-grid" id="grid-2000s"></div>
+            <section id="calendario_de_temporadas" class="seasons-accordion">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Explorar por década</p>
+                        <p class="subtitle">Expande una era y abre la temporada que quieras revisar.</p>
+                    </div>
+                    <div class="section-actions">
+                        <a class="btn subtle" href="#content-2020s">Ir a 2020s</a>
+                        <a class="btn subtle" href="#content-2000s">Ir a 2000s</a>
+                        <a class="btn subtle" href="#content-1950s">Primeros años</a>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Era 1990s -->
-            <div class="era-section era-1990s">
-                <button class="era-toggle" data-decade="1990s">
-                    <h2 class="era-titulo">👑 Años 1990s</h2>
-                    <span class="toggle-icon">▼</span>
-                </button>
-                <div class="era-content" id="content-1990s">
-                    <p class="era-descripcion">La era de Senna, Prost y la revolución del motor V10</p>
-                    <div class="calendario-grid" id="grid-1990s"></div>
+                <div class="era-stack">
+                    <!-- Era 2020s -->
+                    <div class="era-section era-moderna">
+                        <button class="era-toggle" data-decade="2020s">
+                            <div>
+                                <h2 class="era-titulo">⚡ Años 2020s</h2>
+                                <p class="era-meta">Energía híbrida, efecto suelo y regulación sostenible</p>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </button>
+                        <div class="era-content" id="content-2020s">
+                            <p class="era-descripcion">La era moderna con la nueva generación de monoplazas híbridos y sostenibles</p>
+                            <div class="calendario-grid" id="grid-2020s"></div>
+                        </div>
+                    </div>
+
+                    <!-- Era 2010s -->
+                    <div class="era-section era-2010s">
+                        <button class="era-toggle" data-decade="2010s">
+                            <div>
+                                <h2 class="era-titulo">🏁 Años 2010s</h2>
+                                <p class="era-meta">Híbridos V6 y dominio de Mercedes</p>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </button>
+                        <div class="era-content" id="content-2010s">
+                            <p class="era-descripcion">La era del dominio de Mercedes y Hamilton</p>
+                            <div class="calendario-grid" id="grid-2010s"></div>
+                        </div>
+                    </div>
+
+                    <!-- Era 2000s -->
+                    <div class="era-section era-2000s">
+                        <button class="era-toggle" data-decade="2000s">
+                            <div>
+                                <h2 class="era-titulo">🏆 Años 2000s</h2>
+                                <p class="era-meta">Ferrari, Schumacher y el inicio de los V8</p>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </button>
+                        <div class="era-content" id="content-2000s">
+                            <p class="era-descripcion">La era dorada de Schumacher y Ferrari</p>
+                            <div class="calendario-grid" id="grid-2000s"></div>
+                        </div>
+                    </div>
+
+                    <!-- Era 1990s -->
+                    <div class="era-section era-1990s">
+                        <button class="era-toggle" data-decade="1990s">
+                            <div>
+                                <h2 class="era-titulo">👑 Años 1990s</h2>
+                                <p class="era-meta">V10 rugiendo y el duelo Senna-Prost</p>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </button>
+                        <div class="era-content" id="content-1990s">
+                            <p class="era-descripcion">La era de Senna, Prost y la revolución del motor V10</p>
+                            <div class="calendario-grid" id="grid-1990s"></div>
+                        </div>
+                    </div>
+
+                    <!-- Era 1980s -->
+                    <div class="era-section era-1980s">
+                        <button class="era-toggle" data-decade="1980s">
+                            <div>
+                                <h2 class="era-titulo">🚀 Años 1980s</h2>
+                                <p class="era-meta">Turbo salvajes, Lauda y Williams</p>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </button>
+                        <div class="era-content" id="content-1980s">
+                            <p class="era-descripcion">La era de Lauda, Senna y Williams</p>
+                            <div class="calendario-grid" id="grid-1980s"></div>
+                        </div>
+                    </div>
+
+                    <!-- Era 1970s -->
+                    <div class="era-section era-1970s">
+                        <button class="era-toggle" data-decade="1970s">
+                            <div>
+                                <h2 class="era-titulo">⭐ Años 1970s</h2>
+                                <p class="era-meta">Diseños audaces y héroes inolvidables</p>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </button>
+                        <div class="era-content" id="content-1970s">
+                            <p class="era-descripcion">La era de los pilotos legendarios y motores potentes</p>
+                            <div class="calendario-grid" id="grid-1970s"></div>
+                        </div>
+                    </div>
+
+                    <!-- Era 1960s -->
+                    <div class="era-section era-1960s">
+                        <button class="era-toggle" data-decade="1960s">
+                            <div>
+                                <h2 class="era-titulo">🏅 Años 1960s</h2>
+                                <p class="era-meta">Ingeniería ligera y circuitos míticos</p>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </button>
+                        <div class="era-content" id="content-1960s">
+                            <p class="era-descripcion">La era clásica de los pilotos aventureros</p>
+                            <div class="calendario-grid" id="grid-1960s"></div>
+                        </div>
+                    </div>
+
+                    <!-- Era 1950s -->
+                    <div class="era-section era-1950s">
+                        <button class="era-toggle" data-decade="1950s">
+                            <div>
+                                <h2 class="era-titulo">🎬 Años 1950s</h2>
+                                <p class="era-meta">El nacimiento de la categoría reina</p>
+                            </div>
+                            <span class="toggle-icon">▼</span>
+                        </button>
+                        <div class="era-content" id="content-1950s">
+                            <p class="era-descripcion">El nacimiento de la Fórmula 1 - Los orígenes de la leyenda</p>
+                            <div class="calendario-grid" id="grid-1950s"></div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Era 1980s -->
-            <div class="era-section era-1980s">
-                <button class="era-toggle" data-decade="1980s">
-                    <h2 class="era-titulo">🚀 Años 1980s</h2>
-                    <span class="toggle-icon">▼</span>
-                </button>
-                <div class="era-content" id="content-1980s">
-                    <p class="era-descripcion">La era de Lauda, Senna y Williams</p>
-                    <div class="calendario-grid" id="grid-1980s"></div>
-                </div>
-            </div>
-
-            <!-- Era 1970s -->
-            <div class="era-section era-1970s">
-                <button class="era-toggle" data-decade="1970s">
-                    <h2 class="era-titulo">⭐ Años 1970s</h2>
-                    <span class="toggle-icon">▼</span>
-                </button>
-                <div class="era-content" id="content-1970s">
-                    <p class="era-descripcion">La era de los pilotos legendarios y motores potentes</p>
-                    <div class="calendario-grid" id="grid-1970s"></div>
-                </div>
-            </div>
-
-            <!-- Era 1960s -->
-            <div class="era-section era-1960s">
-                <button class="era-toggle" data-decade="1960s">
-                    <h2 class="era-titulo">🏅 Años 1960s</h2>
-                    <span class="toggle-icon">▼</span>
-                </button>
-                <div class="era-content" id="content-1960s">
-                    <p class="era-descripcion">La era clásica de los pilotos aventureros</p>
-                    <div class="calendario-grid" id="grid-1960s"></div>
-                </div>
-            </div>
-
-            <!-- Era 1950s -->
-            <div class="era-section era-1950s">
-                <button class="era-toggle" data-decade="1950s">
-                    <h2 class="era-titulo">🎬 Años 1950s</h2>
-                    <span class="toggle-icon">▼</span>
-                </button>
-                <div class="era-content" id="content-1950s">
-                    <p class="era-descripcion">El nacimiento de la Fórmula 1 - Los orígenes de la leyenda</p>
-                    <div class="calendario-grid" id="grid-1950s"></div>
-                </div>
-            </div>
-
-        </section>
+            </section>
+        </main>
 
         <script src="js/menu.js" defer></script>
         <script src="js/carousel_container.js" defer></script>

@@ -9,7 +9,8 @@ body {
     color: #fff;
 }
 
-a {
+/* Limitar enlaces al contenido para no afectar el menú */
+section a, .hero a {
     text-decoration: none;
     color: inherit;
 }
@@ -33,52 +34,12 @@ p {
     line-height: 1.5;
 }
 
-img {
+/* Limitar imágenes al contenido para no afectar el logo del menú */
+section img, .hero img {
     max-width: 100%;
 }
 
-/* Menú */
-nav {
-    background-color: #1a1a1a;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-.nav-container {
-    display: flex;
-    align-items: center;
-    width: 100%;
-}
-
-.logo {
-    height: 50px;
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    margin: 0;
-    padding: 0;
-}
-
-.nav-links li {
-    margin: 0 15px;
-}
-
-.nav-links a {
-    font-weight: bold;
-    color: #ffffff;
-    padding: 5px 10px;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.nav-links a:hover {
-    background-color: #ff1e00;
-    color: #ffffff;
-    border-radius: 5px;
-}
+/* Menú global controlado por css/menu.css (se removieron reglas locales) */
 
 /* Página Index - Hero */
 .hero {

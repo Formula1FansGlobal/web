@@ -22,89 +22,156 @@
 <body>
     <!-- Menú de navegación -->
     <div id="nav-container"></div>
-    <!-- Sección En Vivo -->
-    <section id="en-vivo-main">
-        <div class="en-vivo-card"> <!-- CORREGIDO: Removidas clases innecesarias -->
-            <!-- Título del evento -->
-            <div class="event-info">
-                <h1 id="event-title">PRUEBAS DE PRETEMPORADA</h1>
-                <p id="event-subtitle">PRETEMPORADA 2026</p>
-            </div>
-            
-            <!-- Contador -->
-            <div id="contador" class="countdown-badge">
-                <div class="countdown-label" id="ronda-info">RONDA 0</div>
-                <div class="countdown-timer">
-                    <div class="countdown-unit">
-                        <span id="dias">00</span>
-                        <span class="unit-label">DÍAS</span>
+
+    <!-- Contenido principal En Vivo -->
+    <main id="en-vivo-main" role="main" aria-labelledby="event-title">
+        <div class="live-container">
+            <!-- Columna izquierda: Info y Contador -->
+            <div class="live-sidebar">
+                <!-- Banner del evento -->
+                <header class="event-banner">
+                    <div class="event-info">
+                        <div class="event-badge">🏁 F1 LIVE</div>
+                        <h1 id="event-title">PRUEBAS DE PRETEMPORADA</h1>
+                        <p id="event-subtitle">PRETEMPORADA 2026</p>
                     </div>
-                    <div class="countdown-separator">:</div>
-                    <div class="countdown-unit">
-                        <span id="horas">00</span>
-                        <span class="unit-label">HRS</span>
+                </header>
+
+                <!-- Contador con estilo moderno -->
+                <aside class="countdown-card" aria-label="Cuenta regresiva">
+                    <div class="countdown-header">
+                        <span class="countdown-icon">⏱️</span>
+                        <h2 id="ronda-info">RONDA 0</h2>
                     </div>
-                    <div class="countdown-separator">:</div>
-                    <div class="countdown-unit">
-                        <span id="minutos">00</span>
-                        <span class="unit-label">MIN</span>
+                    <div id="contador" class="countdown-display">
+                        <div class="time-block">
+                            <span id="dias" class="time-value">00</span>
+                            <span class="time-label">DÍAS</span>
+                        </div>
+                        <div class="time-block">
+                            <span id="horas" class="time-value">00</span>
+                            <span class="time-label">HRS</span>
+                        </div>
+                        <div class="time-block">
+                            <span id="minutos" class="time-value">00</span>
+                            <span class="time-label">MIN</span>
+                        </div>
+                        <div class="time-block">
+                            <span id="segundos" class="time-value">00</span>
+                            <span class="time-label">SEG</span>
+                        </div>
                     </div>
-                    <div class="countdown-separator">:</div>
-                    <div class="countdown-unit">
-                        <span id="segundos">00</span>
-                        <span class="unit-label">SEG</span>
+                </aside>
+
+                <!-- Info adicional -->
+                <div class="race-info">
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <div class="info-text">
+                            <strong>Ubicación</strong>
+                            <p>Circuito Internacional</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🏎️</span>
+                        <div class="info-text">
+                            <strong>Categoría</strong>
+                            <p>Fórmula 1</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Stream principal -->
-            <div class="stream-container">
-                <img id="pre-image" src="img/Pilotos-f1-2025.jpg" alt="Esperando el stream" class="stream-bg" loading="lazy">
-                <video id="live-video" class="stream-video" controls playsinline preload="metadata" poster="img/Pilotos-f1-2025.jpg">
-                    <source src="videos/Presentacion-Pilotos-F1-2025.mp4" type="video/mp4">
-                    Tu navegador no soporta el elemento de video.
-                </video>
-                <img id="post-image" src="img/Circuitos-Live/Paises-Bajos.PNG" alt="Stream finalizado" class="stream-bg" loading="lazy">
-                
-                <!-- Indicador EN VIVO superpuesto -->
-                <div id="live-indicator" class="live-indicator hidden">
-                    <span class="indicator-dot"></span> EN VIVO
-                </div>
-                
-                <!-- Botón EN VIVO parpadeante -->
-                <button id="live-button" class="live-badge">
-                    <span class="live-dot"></span>
-                    <span>EN VIVO</span>
-                </button>
+
+            <!-- Columna derecha: Stream -->
+            <div class="live-main">
+                <section class="stream-wrapper" aria-label="Transmisión en vivo">
+                    <!-- Indicador EN VIVO flotante -->
+                    <div id="live-indicator" class="live-badge-top hidden">
+                        <span class="pulse-dot"></span>
+                        <span>EN VIVO</span>
+                    </div>
+
+                    <div class="stream-container">
+                        <img id="pre-image" src="img/Pilotos-f1-2025.jpg" alt="Esperando el stream" class="stream-bg" loading="lazy">
+                        <video id="live-video" class="stream-video" controls playsinline preload="metadata" poster="img/Pilotos-f1-2025.jpg">
+                            Tu navegador no soporta el elemento de video.
+                        </video>
+                        <img id="post-image" src="img/Circuitos-Live/Paises-Bajos.PNG" alt="Stream finalizado" class="stream-bg" loading="lazy">
+
+                        <!-- Botón play central -->
+                        <button id="live-button" class="play-button" aria-controls="play-modal">
+                            <span class="play-icon">▶</span>
+                            <span class="live-dot"></span>
+                            <span class="play-text">TRANSMISIÓN EN VIVO</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Chat en vivo -->
+                <section class="chat-section hidden" id="live-chat" aria-label="Chat en vivo">
+                    <div class="chat-header">
+                        <span class="chat-icon">💬</span>
+                        <h3>Chat en vivo</h3>
+                        <span class="online-count" id="online-count">0 en línea</span>
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="chat-welcome">
+                            <p>¡Bienvenido al chat! Comparte tu emoción por la carrera.</p>
+                        </div>
+                    </div>
+                    <form class="chat-input-form" id="chat-form">
+                        <input 
+                            type="text" 
+                            id="chat-username" 
+                            placeholder="Tu nombre" 
+                            maxlength="20"
+                            required
+                        >
+                        <input 
+                            type="text" 
+                            id="chat-message" 
+                            placeholder="Escribe un mensaje..." 
+                            maxlength="200"
+                            required
+                        >
+                        <button type="submit" class="chat-send-btn">
+                            <span>Enviar</span>
+                        </button>
+                    </form>
+                </section>
             </div>
         </div>
-        
-        <!-- Modal de opciones de reproducción -->
-        <div id="play-modal" class="play-modal hidden">
-            <div class="modal-content">
-                <h2>¿Cómo quieres ver la carrera?</h2>
-                <p>La carrera ya ha comenzado. Elige tu opción:</p>
-                <div class="modal-buttons">
-                    <button id="play-live-btn" class="modal-btn btn-live">
-                        <span class="btn-icon">🔴</span>
-                        <span class="btn-text">Ver en Vivo</span>
-                        <span class="btn-desc">Desde ahora (tiempo actual)</span>
+
+        <!-- Modal moderno -->
+        <div id="play-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="play-modal-title" aria-describedby="play-modal-desc">
+            <div class="modal-box">
+                <button id="close-modal-btn" class="modal-close-btn" aria-label="Cerrar">✕</button>
+                <div class="modal-header">
+                    <h2 id="play-modal-title">🏁 Opciones de reproducción</h2>
+                    <p id="play-modal-desc">La transmisión está disponible. Elige cómo ver:</p>
+                </div>
+                <div class="modal-options">
+                    <button id="play-live-btn" class="option-card card-live">
+                        <span class="option-icon">🔴</span>
+                        <h3>Ver en Vivo</h3>
+                        <p>Únete a la transmisión actual</p>
                     </button>
-                    <button id="play-from-start-btn" class="modal-btn btn-start">
-                        <span class="btn-icon">⏮️</span>
-                        <span class="btn-text">Desde el Comienzo</span>
-                        <span class="btn-desc">Desde el inicio de la carrera</span>
+                    <button id="play-from-start-btn" class="option-card card-start">
+                        <span class="option-icon">⏮️</span>
+                        <h3>Desde el Inicio</h3>
+                        <p>Ver desde el comienzo</p>
                     </button>
                 </div>
-                <button id="close-modal-btn" class="modal-close">✕</button>
             </div>
         </div>
-    </section>
-    
-    <!-- Solo mantener stream.js, eliminar en-vivo.js -->
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="js/hls-config.js"></script>
     <script src="js/stream.js" defer></script>
     <script src="js/contador.js" defer></script>
+    <script src="js/chat.js" defer></script>
     <script src="js/menu.js" defer></script>
-    <!-- NO incluir en-vivo.js - causa conflictos -->
 </body>
 </html>
