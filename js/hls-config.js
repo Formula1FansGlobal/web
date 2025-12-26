@@ -8,7 +8,7 @@ const STREAM_CONFIG = {
     
     // Modo de desarrollo: usa video local si no hay stream disponible
     fallbackVideo: 'videos/Presentacion-Pilotos-F1-2025.mp4',
-    useFallback: false, // Cambia a false cuando tengas el stream funcionando
+    useFallback: true, // Cambia a false cuando tengas el stream funcionando
     
     // Configuración de HLS
     hlsConfig: {
