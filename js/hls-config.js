@@ -40,8 +40,17 @@ function initHLS() {
         return;
     }
 
+    // Prevención: si la página está en HTTPS y el stream usa HTTP, el navegador lo bloqueará (Mixed Content).
+    // En ese caso, activar fallback automáticamente para evitar que la página "se rompa".
+    const pageIsHttps = window.location.protocol === 'https:';
+    const streamIsHttp = typeof STREAM_CONFIG.liveStreamUrl === 'string' && STREAM_CONFIG.liveStreamUrl.startsWith('http://');
+    const mixedContentBlocked = pageIsHttps && streamIsHttp;
+
     // Si está en modo fallback, usar video local
-    if (STREAM_CONFIG.useFallback) {
+    if (STREAM_CONFIG.useFallback || mixedContentBlocked) {
+        if (mixedContentBlocked) {
+            console.warn('HLS: Mixed Content detectado (HTTPS página vs HTTP stream). Activando fallback.');
+        }
         console.log('HLS: Usando video local (fallback mode)');
         video.src = STREAM_CONFIG.fallbackVideo;
         video.load();
