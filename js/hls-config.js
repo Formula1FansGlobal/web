@@ -4,11 +4,11 @@
 const STREAM_CONFIG = {
     // CUANDO TENGAS MEDIAMTX: Reemplaza con tu IP pública:puerto
     // Ejemplo: 'http://201.123.45.67:8888/f1live/index.m3u8'
-    liveStreamUrl: 'http://localhost:8888/f1live/index.m3u8',
+    liveStreamUrl: 'http://189.136.180.108:8888/f1live/index.m3u8',
     
     // Modo de desarrollo: usa video local si no hay stream disponible
     fallbackVideo: 'videos/Presentacion-Pilotos-F1-2025.mp4',
-    useFallback: true, // Cambia a false cuando tengas el stream funcionando
+    useFallback: false, // Cambia a false cuando tengas el stream funcionando
     
     // Configuración de HLS
     hlsConfig: {
