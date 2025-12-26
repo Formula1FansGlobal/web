@@ -6,18 +6,21 @@ const ML_CONFIG = {
   SELLER_ID: null // Ejemplo: 123456789
 };
 
-const localProducts = [
-  { id: 'p1', title: 'Gorra F1 Fans Global', price: 399, category: 'gorras', team: 'redbull', image: 'img/Formula-1-Fans-Global2.jpg', link: 'https://mercadolibre.com.mx/', badge: 'Novedad' },
-  { id: 'p2', title: 'Playera F1 Fans Global', price: 499, category: 'ropa', team: 'ferrari', image: 'img/ParrillaF1.jpg', link: 'https://mercadolibre.com.mx/', badge: 'Exclusivo' },
-  { id: 'p3', title: 'Termo edición F1', price: 299, category: 'accesorios', team: 'mercedes', image: 'img/Pilotos-f1-2025.jpg', link: 'https://mercadolibre.com.mx/' },
-  { id: 'p4', title: 'Sudadera F1 negra', price: 799, category: 'ropa', team: 'mclaren', image: 'img/Formula-1-Fans-Global.jpg', link: 'https://mercadolibre.com.mx/' },
-  { id: 'p5', title: 'Poster circuito Monza', price: 259, category: 'posters', image: 'img/Circuitos-Live/Italy_carrera.avif', link: 'https://mercadolibre.com.mx/' },
-  { id: 'p6', title: 'Miniatura RB20 1:43', price: 1299, category: 'miniaturas', team: 'redbull', image: 'img/Calendario/2024/Australia-2024.avif', link: 'https://mercadolibre.com.mx/' },
-  { id: 'p7', title: 'Taza F1 edición 2025', price: 199, category: 'accesorios', image: 'img/Calendario/2024/T2024.avif', link: 'https://mercadolibre.com.mx/' },
-  { id: 'p8', title: 'Chaqueta Ferrari', price: 1499, category: 'ropa', team: 'ferrari', image: 'img/Calendario/2024/T2024.avif', link: 'https://mercadolibre.com.mx/' },
-  { id: 'p9', title: 'Llaveros Escuderías', price: 149, category: 'accesorios', image: 'img/Calendario/2024/T2024.avif', link: 'https://mercadolibre.com.mx/' },
-  { id: 'p10', title: 'Sticker pack F1', price: 99, category: 'coleccionables', image: 'img/Calendario/2024/T2024.avif', link: 'https://mercadolibre.com.mx/' }
-];
+// Configuración de la tienda (checkout)
+const SHOP_CONFIG = {
+  WHATSAPP_PHONE: null // Ejemplo: '5215512345678' para México. Si es null, abre WhatsApp sin número.
+};
+
+// Configuración del carrusel
+const CAROUSEL_CONFIG = {
+  AUTO_SCROLL_INTERVAL: 5000, // ms entre desplazamientos automáticos
+  FEATURED_COUNT: 8 // cantidad de productos destacados a mostrar
+};
+
+// ===== PRODUCTOS =====
+// Los productos se cargan desde: js/productos-afiliados.js
+// Para agregar o editar productos, abre ese archivo y sigue las instrucciones
+const localProducts = productosAfiliados;
 
 function formatCurrency(mx) {
   return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN' }).format(mx);
@@ -38,6 +41,22 @@ async function fetchMercadoLibreProducts(site, sellerId, limit = 24) {
   }));
 }
 
+function renderSkeletons(count = 8) {
+  const grid = document.getElementById('product-grid');
+  if (!grid) return;
+  const items = Array.from({ length: count }).map(() => `
+    <div class="skeleton-card">
+      <div class="skeleton-img"></div>
+      <div class="skeleton-body">
+        <div class="skeleton-line" style="width: 70%"></div>
+        <div class="skeleton-line" style="width: 40%"></div>
+        <div class="skeleton-line" style="width: 60%"></div>
+      </div>
+    </div>
+  `).join('');
+  grid.innerHTML = items;
+}
+
 function renderProducts(products) {
   const grid = document.getElementById('product-grid');
   if (!grid) return;
@@ -53,8 +72,7 @@ function renderProducts(products) {
         <div class="product-title">${p.title}</div>
         <div class="product-price">${formatCurrency(p.price)}</div>
         <div class="product-actions">
-          <a class="btn-primary" href="${p.link}" target="_blank" rel="noopener">Ver en Mercado Libre</a>
-          <button class="btn-secondary" aria-label="Ver detalles" data-product-id="${p.id}">Detalles</button>
+          <a class="btn-primary btn-buy" href="${p.link}" target="_blank" rel="noopener">🛒 Comprar</a>
         </div>
       </div>
     `;
@@ -65,11 +83,6 @@ function renderProducts(products) {
 function filterByCategory(products, category) {
   if (category === 'all') return products;
   return products.filter(p => p.category === category);
-}
-
-function filterByTeam(products, team) {
-  if (!team) return products;
-  return products.filter(p => p.team === team);
 }
 
 function applySearch(products, query) {
@@ -90,48 +103,240 @@ function applySort(products, sort) {
   return arr;
 }
 
-async function loadProducts(useMercadoLibre) {
+async function loadProducts() {
   try {
-    let products = [];
-    if (useMercadoLibre && ML_CONFIG.SELLER_ID) {
-      products = await fetchMercadoLibreProducts(ML_CONFIG.SITE, ML_CONFIG.SELLER_ID);
-    } else {
-      products = localProducts;
-    }
-    const activeCategory = document.querySelector('.filter-option.active')?.dataset.category || 'all';
-    const activeTeam = document.querySelector('#chip-equipos .chip.active')?.dataset.team || '';
-    const query = document.getElementById('search-input')?.value || '';
-    const sort = document.getElementById('sort-select')?.value || 'relevance';
-    const maxPrice = Number(document.getElementById('price-range')?.value || 5000);
-
-    let filtered = products;
-    filtered = filterByCategory(filtered, activeCategory);
-    filtered = filterByTeam(filtered, activeTeam);
-    filtered = applySearch(filtered, query);
-    filtered = applyPrice(filtered, maxPrice);
-    filtered = applySort(filtered, sort);
-
-    renderProducts(filtered);
+    const products = localProducts;
+    allProducts = products;
+    
+    // Vista simplificada: sin filtros ni búsqueda
+    renderProducts(products.slice(0, 4));
+    renderCarousel(products);
   } catch (e) {
     console.error('Error cargando productos', e);
-    renderProducts(localProducts);
+    allProducts = localProducts;
+    renderProducts(localProducts.slice(0, 4));
+    renderCarousel(localProducts);
   }
 }
 
+// ===== Carrito =====
+const CART_KEY = 'f1_cart';
+let currentModalProduct = null;
+let allProducts = []; // Almacena todos los productos (local o ML)
+
+function getCart() {
+  try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; }
+}
+function saveCart(cart) {
+  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+}
+function updateCartCount() {
+  const countEl = document.getElementById('cart-count');
+  const cart = getCart();
+  const count = cart.reduce((sum, i) => sum + (i.qty || 1), 0);
+  if (countEl) countEl.textContent = String(count);
+}
+function addToCart(prod) {
+  if (!prod || !prod.id) return;
+  const cart = getCart();
+  const idx = cart.findIndex(i => i.id === prod.id);
+  if (idx >= 0) {
+    cart[idx].qty = (cart[idx].qty || 1) + 1;
+  } else {
+    cart.push({ id: prod.id, title: prod.title, price: prod.price, image: prod.image, qty: 1 });
+  }
+  saveCart(cart);
+  updateCartCount();
+  renderCart();
+}
+function removeFromCart(id) {
+  const cart = getCart().filter(i => i.id !== id);
+  saveCart(cart);
+  updateCartCount();
+  renderCart();
+}
+function updateQty(id, delta) {
+  const cart = getCart();
+  const idx = cart.findIndex(i => i.id === id);
+  if (idx >= 0) {
+    cart[idx].qty = Math.max(1, (cart[idx].qty || 1) + delta);
+    saveCart(cart);
+    updateCartCount();
+    renderCart();
+  }
+}
+function cartTotal() {
+  const cart = getCart();
+  return cart.reduce((sum, i) => sum + (i.price || 0) * (i.qty || 1), 0);
+}
+function buildWhatsAppLink() {
+  const cart = getCart();
+  const lines = cart.map(i => `• ${i.title} x${i.qty} – ${formatCurrency(i.price)} c/u`).join('\n');
+  const totalLine = `Total: ${formatCurrency(cartTotal())}`;
+  const text = encodeURIComponent(`Hola, quiero comprar:\n${lines}\n${totalLine}`);
+  const base = SHOP_CONFIG.WHATSAPP_PHONE ? `https://wa.me/${SHOP_CONFIG.WHATSAPP_PHONE}` : `https://wa.me/`;
+  return `${base}?text=${text}`;
+}
+function renderCart() {
+  const itemsEl = document.getElementById('cart-items');
+  const totalEl = document.getElementById('cart-total');
+  const checkoutEl = document.getElementById('cart-checkout');
+  if (!itemsEl || !totalEl || !checkoutEl) return;
+  const cart = getCart();
+  if (!cart.length) {
+    itemsEl.innerHTML = '<p>Tu carrito está vacío.</p>';
+  } else {
+    itemsEl.innerHTML = cart.map(i => `
+      <div class="cart-item">
+        <img src="${i.image}" alt="${i.title}" onerror="this.src='img/Calendario/2024/T2024.avif'" />
+        <div>
+          <div class="cart-item-title">${i.title}</div>
+          <div class="cart-item-meta">${formatCurrency(i.price)} • Cantidad: ${i.qty}</div>
+        </div>
+        <div class="cart-item-actions">
+          <button class="qty-btn" data-action="dec" data-id="${i.id}">−</button>
+          <button class="qty-btn" data-action="inc" data-id="${i.id}">+</button>
+          <button class="remove-btn" data-action="remove" data-id="${i.id}">Quitar</button>
+        </div>
+      </div>
+    `).join('');
+  }
+  totalEl.textContent = formatCurrency(cartTotal());
+  checkoutEl.href = buildWhatsAppLink();
+}
+function openCart() { const m = document.getElementById('cart-modal'); if (m) { m.hidden = false; renderCart(); } }
+function closeCart() { const m = document.getElementById('cart-modal'); if (m) m.hidden = true; }
+
+// ===== CARRUSEL =====
+let carouselIndex = 0;
+let carouselInterval = null;
+let carouselProducts = [];
+let carouselMaxIndex = 0;
+
+function renderCarousel(products) {
+  const track = document.getElementById('carousel-track');
+  if (!track) return;
+  
+  // Usar productosCarrusel (ofertas limitadas) en lugar de productos del grid
+  carouselProducts = productosCarrusel || [];
+  
+  track.innerHTML = carouselProducts.map(p => `
+    <article class="carousel-item carousel-limited" data-product-id="${p.id}">
+      <div class="carousel-item-image">
+        <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.src='img/Calendario/2024/T2024.avif'">
+        <div class="limited-badge">Oferta Limitada</div>
+      </div>
+      <div class="carousel-item-body">
+        <div class="carousel-item-title">${p.title}</div>
+        <div class="carousel-item-price">${formatCurrency(p.price)}</div>
+      </div>
+    </article>
+  `).join('');
+  
+  carouselIndex = 0;
+  // Calcular indicadores según el número visible
+  recalculateCarouselLayout();
+  startCarouselAutoScroll();
+}
+
+function scrollCarousel(direction) {
+  const track = document.getElementById('carousel-track');
+  const container = document.getElementById('carousel-container');
+  if (!track || !container || carouselProducts.length === 0) return;
+  
+  const itemEl = track.querySelector('.carousel-item');
+  const gap = parseInt(getComputedStyle(track).gap || '16', 10);
+  const itemWidth = (itemEl ? itemEl.offsetWidth : 280) + gap; // ancho del item + gap
+  const visibleItems = Math.max(1, Math.floor(container.offsetWidth / itemWidth));
+  const maxIndex = Math.max(0, carouselProducts.length - visibleItems);
+  
+  if (direction === 'next') {
+    carouselIndex = (carouselIndex + 1) % (maxIndex + 1);
+  } else {
+    carouselIndex = (carouselIndex - 1 + (maxIndex + 1)) % (maxIndex + 1);
+  }
+  
+  track.style.transform = `translateX(-${carouselIndex * itemWidth}px)`;
+  updateIndicators();
+}
+
+function startCarouselAutoScroll() {
+  if (carouselInterval) clearInterval(carouselInterval);
+  carouselInterval = setInterval(() => scrollCarousel('next'), CAROUSEL_CONFIG.AUTO_SCROLL_INTERVAL);
+}
+
+function stopCarouselAutoScroll() {
+  if (carouselInterval) clearInterval(carouselInterval);
+}
+
+function renderIndicators(count) {
+  const indicators = document.getElementById('carousel-indicators');
+  if (!indicators) return;
+  indicators.innerHTML = Array.from({ length: count }).map((_, i) => `
+    <button class="indicator-dot" data-index="${i}" aria-label="Ir a sección ${i+1}"></button>
+  `).join('');
+  if (!indicators.dataset.bound) {
+    indicators.addEventListener('click', (e) => {
+      const dot = e.target.closest('.indicator-dot');
+      if (!dot) return;
+      stopCarouselAutoScroll();
+      jumpCarouselTo(Number(dot.dataset.index));
+      startCarouselAutoScroll();
+    });
+    indicators.dataset.bound = 'true';
+  }
+}
+
+function updateIndicators() {
+  const indicators = document.getElementById('carousel-indicators');
+  if (!indicators) return;
+  indicators.querySelectorAll('.indicator-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === carouselIndex);
+  });
+}
+
+function jumpCarouselTo(index) {
+  const track = document.getElementById('carousel-track');
+  const container = document.getElementById('carousel-container');
+  if (!track || !container) return;
+  const itemEl = track.querySelector('.carousel-item');
+  const gap = parseInt(getComputedStyle(track).gap || '16', 10);
+  const itemWidth = (itemEl ? itemEl.offsetWidth : 280) + gap;
+  carouselIndex = Math.min(Math.max(index, 0), carouselMaxIndex);
+  track.style.transform = `translateX(-${carouselIndex * itemWidth}px)`;
+  updateIndicators();
+}
+
+function recalculateCarouselLayout() {
+  const track = document.getElementById('carousel-track');
+  const container = document.getElementById('carousel-container');
+  if (!track || !container || carouselProducts.length === 0) return;
+  const itemEl = track.querySelector('.carousel-item');
+  const gap = parseInt(getComputedStyle(track).gap || '16', 10);
+  const itemWidth = (itemEl ? itemEl.offsetWidth : 280) + gap;
+  const visibleItems = Math.max(1, Math.floor(container.offsetWidth / itemWidth));
+  carouselMaxIndex = Math.max(0, carouselProducts.length - visibleItems);
+  if (carouselIndex > carouselMaxIndex) carouselIndex = carouselMaxIndex;
+  track.style.transform = `translateX(-${carouselIndex * itemWidth}px)`;
+  renderIndicators(carouselMaxIndex + 1);
+  updateIndicators();
+}
+
 window.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.getElementById('ml-source-toggle');
   const filterBtn = document.getElementById('filter-btn');
   const filterMenu = document.getElementById('filter-menu');
-  const chipsEquipos = document.getElementById('chip-equipos');
   const searchInput = document.getElementById('search-input');
   const sortSelect = document.getElementById('sort-select');
   const priceRange = document.getElementById('price-range');
   const priceLabel = document.getElementById('price-label');
+  const cartOpenBtn = document.getElementById('cart-open');
+  const cartCloseBtn = document.getElementById('cart-close');
+  const cartClearBtn = document.getElementById('cart-clear');
+  const carouselPrev = document.getElementById('carousel-prev');
+  const carouselNext = document.getElementById('carousel-next');
+  const carouselContainer = document.getElementById('carousel-container');
 
-  if (toggle) toggle.checked = ML_CONFIG.ENABLED_BY_DEFAULT;
-
-  const refresh = () => loadProducts(toggle?.checked);
-  toggle?.addEventListener('change', refresh);
+  const refresh = () => loadProducts();
   searchInput?.addEventListener('input', refresh);
   sortSelect?.addEventListener('change', refresh);
   priceRange?.addEventListener('input', () => {
@@ -181,21 +386,12 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  chipsEquipos?.addEventListener('click', (e) => {
-    const btn = e.target.closest('.chip');
-    if (!btn) return;
-    const wasActive = btn.classList.contains('active');
-    chipsEquipos.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-    if (!wasActive) btn.classList.add('active');
-    refresh();
-  });
-
-  // Modal de producto
+  // Modal de producto desde grid
   document.getElementById('product-grid')?.addEventListener('click', (e) => {
     const btn = e.target.closest('button[data-product-id]');
     if (!btn) return;
     const id = btn.getAttribute('data-product-id');
-    const p = [...localProducts].find(x => x.id === id);
+    const p = allProducts.find(x => x.id === id);
     const modal = document.getElementById('product-modal');
     if (p && modal) {
       document.getElementById('modal-image').src = p.image;
@@ -203,6 +399,7 @@ window.addEventListener('DOMContentLoaded', () => {
       document.getElementById('modal-price').textContent = formatCurrency(p.price);
       const link = document.getElementById('modal-link');
       link.href = p.link;
+      currentModalProduct = { id: p.id, title: p.title, price: p.price, image: p.image };
       modal.hidden = false;
     }
   });
@@ -211,6 +408,65 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   document.querySelector('.modal-backdrop')?.addEventListener('click', ()=>{
     document.getElementById('product-modal').hidden = true;
+  });
+
+  // (Carrito deshabilitado) Se elimina la lógica de agregar al carrito desde modal y tarjetas
+
+  // Carrito: abrir/cerrar/acciones
+  cartOpenBtn?.addEventListener('click', () => openCart());
+  cartCloseBtn?.addEventListener('click', () => closeCart());
+  document.querySelector('#cart-modal .modal-backdrop')?.addEventListener('click', () => closeCart());
+  cartClearBtn?.addEventListener('click', () => { saveCart([]); updateCartCount(); renderCart(); });
+  document.getElementById('cart-items')?.addEventListener('click', (e) => {
+    const t = e.target;
+    if (!(t instanceof HTMLElement)) return;
+    const id = t.getAttribute('data-id');
+    const action = t.getAttribute('data-action');
+    if (action === 'inc') updateQty(id, +1);
+    else if (action === 'dec') updateQty(id, -1);
+    else if (action === 'remove') removeFromCart(id);
+  });
+
+  // Inicializa contador del carrito
+  updateCartCount();
+
+  // Carrusel: navegación manual y pausa al hover
+  carouselPrev?.addEventListener('click', () => {
+    stopCarouselAutoScroll();
+    scrollCarousel('prev');
+    startCarouselAutoScroll();
+  });
+  carouselNext?.addEventListener('click', () => {
+    stopCarouselAutoScroll();
+    scrollCarousel('next');
+    startCarouselAutoScroll();
+  });
+  carouselContainer?.addEventListener('mouseenter', () => stopCarouselAutoScroll());
+  carouselContainer?.addEventListener('mouseleave', () => startCarouselAutoScroll());
+  window.addEventListener('resize', () => {
+    stopCarouselAutoScroll();
+    recalculateCarouselLayout();
+    startCarouselAutoScroll();
+  });
+  
+  // Carrusel: click en item abre modal
+  document.getElementById('carousel-track')?.addEventListener('click', (e) => {
+    const item = e.target.closest('.carousel-item');
+    if (!item) return;
+    const id = item.getAttribute('data-product-id');
+    // Buscar en productosCarrusel primero, luego en localProducts
+    let p = productosCarrusel?.find(x => x.id === id);
+    if (!p) p = allProducts.find(x => x.id === id);
+    const modal = document.getElementById('product-modal');
+    if (p && modal) {
+      document.getElementById('modal-image').src = p.image;
+      document.getElementById('modal-title').textContent = p.title;
+      document.getElementById('modal-price').textContent = formatCurrency(p.price);
+      const link = document.getElementById('modal-link');
+      link.href = p.link;
+      currentModalProduct = { id: p.id, title: p.title, price: p.price, image: p.image };
+      modal.hidden = false;
+    }
   });
 
   refresh();
