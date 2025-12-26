@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <title>Calendario de Temporada</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/calendario.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7775962173347543"
      crossorigin="anonymous"></script>
 </head>
 <body>
-    <div id="menu-container"></div>
+    <!-- Menú de navegación -->
+    <div id="nav-container"></div>
     <section id="calendario_temporada">
         <h2 id="titulo-temporada"></h2>
         <div class="calendario-grid" id="carreras-grid"></div>
@@ -379,8 +381,58 @@
                 { nombre: "Gran Premio de Abu Dhabi", fecha: "12 - 14 Nov", imagen:"img/f1moderno.jpg"},
                 { nombre: "Gran Premio de Brasil", fecha: "26 - 28 Nov", imagen:"img/f1moderno.jpg"},
             ],
-            "2009":[ { nombre: "Datos históricos disponibles", fecha: "", imagen:"img/f1moderno.jpg"} ],
-            "2008":[ { nombre: "Datos históricos disponibles", fecha: "", imagen:"img/f1moderno.jpg"} ],
+            "2009":[ 
+                { nombre: "Gran Premio de Bahrein", fecha: "29 Feb - 2 Mar", imagen: "img/Calendario/2024/Bahrain-2024.jpg"},
+                { nombre: "Gran Premio de Arabia Saudita", fecha: "7 - 9 Mar", imagen: "img/Calendario/2024/Arabia-Saudita-2024.jpg"},
+                { nombre: "Gran Premio de Australia", fecha: "22 - 24 Mar", imagen: "img/Calendario/2024/Australia-2024.avif"},
+                { nombre: "Gran Premio de Japon", fecha: "05 - 7 Abr", imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de China", fecha:"19 - 21 Abr",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Miami", fecha:"3 - 5 May",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Emilia Romagna", fecha:"17 - 19 May",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Monaco", fecha:"24 - 26 May",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Canada", fecha:"7 - 9 Jun",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de España", fecha:"21 - 23 Jun",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Austria", fecha:"28 - 30 Jun",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Reino Unido", fecha:"5 - 7 Jul",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Hungria", fecha:"19 - 21 Jul",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Belgica", fecha:"26 - 28 Jul",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Paises Bajos", fecha:"23 - 25 Ago",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Italia", fecha:"30 Ago - 1 Sep",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Azerbaijan", fecha:"13 - 15 Sep",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Singapore", fecha:"20 - 22 Sep",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Estados Unidos", fecha:"18 - 20 Oct",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Mexico", fecha:"25 - 27 Oct",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Brazil", fecha:"1 - 3 Nov",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Las Vegas", fecha:"21 - 23 Nov",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Qatar", fecha:"29 Nov - 1 Dic",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Abu Dhabi", fecha:"6 - 8 Dic",imagen:"img/f1moderno.jpg"}, 
+            ],
+            "2008":[ 
+                { nombre: "Gran Premio de Bahrein", fecha: "29 Feb - 2 Mar", imagen: "img/Calendario/2024/Bahrain-2024.jpg"},
+                { nombre: "Gran Premio de Arabia Saudita", fecha: "7 - 9 Mar", imagen: "img/Calendario/2024/Arabia-Saudita-2024.jpg"},
+                { nombre: "Gran Premio de Australia", fecha: "22 - 24 Mar", imagen: "img/Calendario/2024/Australia-2024.avif"},
+                { nombre: "Gran Premio de Japon", fecha: "05 - 7 Abr", imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de China", fecha:"19 - 21 Abr",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Miami", fecha:"3 - 5 May",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Emilia Romagna", fecha:"17 - 19 May",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Monaco", fecha:"24 - 26 May",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Canada", fecha:"7 - 9 Jun",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de España", fecha:"21 - 23 Jun",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Austria", fecha:"28 - 30 Jun",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Reino Unido", fecha:"5 - 7 Jul",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Hungria", fecha:"19 - 21 Jul",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Belgica", fecha:"26 - 28 Jul",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Paises Bajos", fecha:"23 - 25 Ago",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Italia", fecha:"30 Ago - 1 Sep",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Azerbaijan", fecha:"13 - 15 Sep",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Singapore", fecha:"20 - 22 Sep",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Estados Unidos", fecha:"18 - 20 Oct",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Mexico", fecha:"25 - 27 Oct",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Brazil", fecha:"1 - 3 Nov",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Las Vegas", fecha:"21 - 23 Nov",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Qatar", fecha:"29 Nov - 1 Dic",imagen:"img/f1moderno.jpg"},
+                { nombre: "Gran Premio de Abu Dhabi", fecha:"6 - 8 Dic",imagen:"img/f1moderno.jpg"},
+            ],
             "2007":[ { nombre: "Datos históricos disponibles", fecha: "", imagen:"img/f1moderno.jpg"} ],
             "2006":[ { nombre: "Datos históricos disponibles", fecha: "", imagen:"img/f1moderno.jpg"} ],
             "2005":[ { nombre: "Datos históricos disponibles", fecha: "", imagen:"img/f1moderno.jpg"} ],
@@ -497,5 +549,6 @@
             }
         }
     </script>
+    <script src="js/menu.js"></script>
 </body>
 </html>

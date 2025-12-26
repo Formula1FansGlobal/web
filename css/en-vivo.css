@@ -165,7 +165,7 @@ img {
 }
 
 .unit-label {
-    font-size: 0.6rem;
+    font-size: 2rem;
     color: #fff;
     font-weight: 700;
     text-transform: uppercase;
@@ -247,8 +247,8 @@ img {
 /* Botón EN VIVO en el stream */
 .live-badge {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 35%;
+    left: 38%;
     transform: translate(-50%, -50%);
     pointer-events: all;
     display: flex;
@@ -546,8 +546,8 @@ img {
 .stream-container.stream-active::after {
     content: '🔴 EN VIVO';
     position: absolute;
-    bottom: 20px;
     right: 20px;
+    top: 20px;
     background: linear-gradient(135deg, #ff1e00 0%, #ff6600 100%);
     color: #fff;
     padding: 8px 16px;
@@ -557,6 +557,7 @@ img {
     box-shadow: 
         0 0 20px rgba(255, 30, 0, 0.9),
         0 0 40px rgba(255, 102, 0, 0.5);
+        animation: color-change ;
     animation: pulse-badge 1.5s ease-in-out infinite;
     z-index: 5;
     letter-spacing: 1px;

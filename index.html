@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/index.css">
-    <link title="timeline-styles" rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/timeline.css">
-    <script src="https://cdn.knightlab.com/libs/timeline3/latest/js/timeline.js"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7775962173347543"
      crossorigin="anonymous"></script>
 </head>
@@ -22,7 +22,7 @@
             <h1>Bienvenidos a Formula 1 Fans Global</h1>
             <p>Tu fuente número uno de información, noticias, eventos en vivo, dinámicas, <br>y mucho más sobre el mundo de la Fórmula 1.</p>
             <!-- <a href="noticias.html" class="btn">Últimas Noticias</a> -->
-             <video class="video-estilo" src="videos/Presentacion-Pilotos-F1-2025.mp4" autoplay muted width="1000"></video>
+             <video class="video-estilo" src="videos/Presentacion-Pilotos-F1-2025.mp4" autoplay muted playsinline preload="metadata" width="1000"></video>
         </div>
     </header>
     <!--Linea del Tiempo
@@ -43,7 +43,6 @@
         <p>¡Explora más secciones de nuestra página web!</p>
     </footer>
 -->
-    <script src="js/menu.js"></script>
-    <script src="js/timeline.js"></script>
+    <script src="js/menu.js" defer></script>
 </body>
 </html>

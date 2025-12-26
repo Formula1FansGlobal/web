@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Temporadas</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/menu.css">
         <link rel="stylesheet" href="css/calendario.css">
@@ -116,8 +118,8 @@
 
         </section>
 
-        <script src="js/menu.js"></script>
-        <script src="js/carousel_container.js"></script>
+        <script src="js/menu.js" defer></script>
+        <script src="js/carousel_container.js" defer></script>
         <script>
             // Definir años por década
             const decadas = {
@@ -144,7 +146,7 @@
                     const seasonCard = `
                         <a ${link} class="season-card${badgeClass}">
                             ${badge}
-                            <img src="img/f1moderno.jpg" alt="Temporada ${year}">
+                            <img src="img/f1moderno.jpg" alt="Temporada ${year}" loading="lazy">
                             <span>Temporada ${year}</span>
                         </a>
                     `;

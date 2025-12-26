@@ -54,8 +54,8 @@ img {
 
 /* Secciones por Era */
 .era-section {
-    margin-bottom: 80px;
-    padding: 40px 30px;
+    margin-bottom: 40px;
+    padding: 15px 10px;
     border-radius: 20px;
     position: center;
     overflow: hidden;
@@ -733,7 +733,7 @@ img {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: #ff6b4a;
+    background: #ff6b4a00;
     box-shadow: none;
 }
 

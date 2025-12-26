@@ -4,6 +4,8 @@
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>En Vivo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/en-vivo.css">
@@ -50,12 +52,12 @@
             
             <!-- Stream principal -->
             <div class="stream-container">
-                <img id="pre-image" src="img/Pilotos-f1-2025.jpg" alt="Esperando el stream" class="stream-bg">
-                <video id="live-video" class="stream-video" controls>
+                <img id="pre-image" src="img/Pilotos-f1-2025.jpg" alt="Esperando el stream" class="stream-bg" loading="lazy">
+                <video id="live-video" class="stream-video" controls playsinline preload="metadata" poster="img/Pilotos-f1-2025.jpg">
                     <source src="videos/Presentacion-Pilotos-F1-2025.mp4" type="video/mp4">
                     Tu navegador no soporta el elemento de video.
                 </video>
-                <img id="post-image" src="img/Circuitos-Live/Paises-Bajos.PNG" alt="Stream finalizado" class="stream-bg">
+                <img id="post-image" src="img/Circuitos-Live/Paises-Bajos.PNG" alt="Stream finalizado" class="stream-bg" loading="lazy">
                 
                 <!-- Indicador EN VIVO superpuesto -->
                 <div id="live-indicator" class="live-indicator hidden">
@@ -93,9 +95,9 @@
     </section>
     
     <!-- Solo mantener stream.js, eliminar en-vivo.js -->
-    <script src="js/stream.js"></script>
-    <script src="js/contador.js"></script>
-    <script src="js/menu.js"></script>
+    <script src="js/stream.js" defer></script>
+    <script src="js/contador.js" defer></script>
+    <script src="js/menu.js" defer></script>
     <!-- NO incluir en-vivo.js - causa conflictos -->
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿// Elementos del modal
+﻿// Elementos del modal (con comprobaciones)
 const liveButton = document.getElementById('live-button');
 const playModal = document.getElementById('play-modal');
 const playLiveBtn = document.getElementById('play-live-btn');
@@ -12,69 +12,83 @@ const enVivoMain = document.getElementById('en-vivo-main');
 const streamContainer = document.querySelector('.stream-container');
 const liveIndicator = document.getElementById('live-indicator');
 
+// Si faltan elementos críticos, no continuar
+if (!liveButton || !video || !preImage || !postImage || !enVivoCard || !enVivoMain || !streamContainer) {
+    console.warn('Stream: elementos requeridos no encontrados, se omiten listeners.');
+} else {
+
 // Abrir modal al hacer clic en EN VIVO
-liveButton.addEventListener('click', function() {
-    playModal.classList.remove('hidden');
-});
+    liveButton.addEventListener('click', function() {
+        if (playModal) playModal.classList.remove('hidden');
+    });
 
 // Cerrar modal
-closeModalBtn.addEventListener('click', function() {
-    playModal.classList.add('hidden');
-});
+    if (closeModalBtn && playModal) {
+        closeModalBtn.addEventListener('click', function() {
+            playModal.classList.add('hidden');
+        });
+    }
 
 // Cerrar modal al hacer clic fuera (en el fondo)
-playModal.addEventListener('click', function(e) {
-    if (e.target === playModal) {
-        playModal.classList.add('hidden');
+    if (playModal) {
+        playModal.addEventListener('click', function(e) {
+            if (e.target === playModal) {
+                playModal.classList.add('hidden');
+            }
+        });
     }
-});
 
 // Opción: Ver en Vivo (desde el tiempo actual)
-playLiveBtn.addEventListener('click', function() {
-    video.style.display = 'block';
-    preImage.style.display = 'none';
-    postImage.style.display = 'none';
-    video.play();
-    playModal.classList.add('hidden');
-    
-    // Agregar clase playing-stream para expandir video
-    enVivoCard.classList.add('playing-stream');
-    enVivoMain.classList.add('playing-stream');
-    streamContainer.classList.add('stream-active');
-    
-    // Ocultar indicador cuando el video está activo
-    liveIndicator.classList.add('hidden');
-});
+    if (playLiveBtn) {
+        playLiveBtn.addEventListener('click', function() {
+            video.style.display = 'block';
+            preImage.style.display = 'none';
+            postImage.style.display = 'none';
+            video.play();
+            if (playModal) playModal.classList.add('hidden');
+            
+            // Agregar clase playing-stream para expandir video
+            enVivoCard.classList.add('playing-stream');
+            enVivoMain.classList.add('playing-stream');
+            streamContainer.classList.add('stream-active');
+            
+            // Ocultar indicador cuando el video está activo
+            if (liveIndicator) liveIndicator.classList.add('hidden');
+        });
+    }
 
 // Opción: Desde el Comienzo (reiniciar desde 0)
-playFromStartBtn.addEventListener('click', function() {
-    video.style.display = 'block';
-    preImage.style.display = 'none';
-    postImage.style.display = 'none';
-    video.currentTime = 0;
-    video.play();
-    playModal.classList.add('hidden');
-    
-    // Agregar clase playing-stream para expandir video
-    enVivoCard.classList.add('playing-stream');
-    enVivoMain.classList.add('playing-stream');
-    streamContainer.classList.add('stream-active');
-    
-    // Ocultar indicador cuando el video está activo
-    liveIndicator.classList.add('hidden');
-});
+    if (playFromStartBtn) {
+        playFromStartBtn.addEventListener('click', function() {
+            video.style.display = 'block';
+            preImage.style.display = 'none';
+            postImage.style.display = 'none';
+            video.currentTime = 0;
+            video.play();
+            if (playModal) playModal.classList.add('hidden');
+            
+            // Agregar clase playing-stream para expandir video
+            enVivoCard.classList.add('playing-stream');
+            enVivoMain.classList.add('playing-stream');
+            streamContainer.classList.add('stream-active');
+            
+            // Ocultar indicador cuando el video está activo
+            if (liveIndicator) liveIndicator.classList.add('hidden');
+        });
+    }
 
 // Cuando el video termina, mostrar imagen post
-video.addEventListener('ended', function() {
-    video.style.display = 'none';
-    postImage.style.display = 'block';
-    
-    // Mostrar indicador cuando el video termina
-    liveIndicator.classList.remove('hidden');
-});
+    video.addEventListener('ended', function() {
+        video.style.display = 'none';
+        postImage.style.display = 'block';
+        
+        // Mostrar indicador cuando el video termina
+        if (liveIndicator) liveIndicator.classList.remove('hidden');
+    });
 
 // Mostrar indicador al cargar la página (simular que hay transmisión disponible)
-document.addEventListener('DOMContentLoaded', function() {
-    // Descomenta la siguiente línea para mostrar el indicador por defecto
-    // liveIndicator.classList.remove('hidden');
-});
+    document.addEventListener('DOMContentLoaded', function() {
+        // Descomenta la siguiente línea para mostrar el indicador por defecto
+        // if (liveIndicator) liveIndicator.classList.remove('hidden');
+    });
+}

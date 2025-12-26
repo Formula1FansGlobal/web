@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Video de Gran Premio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/video-gp.css">
@@ -40,7 +42,7 @@
 <body>
     <div class="video-container">
         <div class="video-titulo" id="video-titulo"></div>
-        <video id="video-gp" class="video-estilo" controls poster="img/f1moderno.jpg"></video>
+        <video id="video-gp" class="video-estilo" controls playsinline preload="metadata" poster="img/f1moderno.jpg"></video>
     </div>
     <script>
         // Ejemplo de videos por GP
@@ -125,6 +127,6 @@
             document.getElementById('video-titulo').textContent = "Video no disponible";
         }
     </script>
-    <script src="js/menu.js"></script>
+    <script src="js/menu.js" defer></script>
 </body>
 </html>
