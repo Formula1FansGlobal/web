@@ -1,0 +1,124 @@
+/* Estilos para Notificaciones Toast */
+
+#notifications-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    pointer-events: none;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    pointer-events: auto;
+    animation: slideIn 0.3s ease-out;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+.notification.show {
+    opacity: 1;
+}
+
+.notification-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    font-weight: bold;
+}
+
+.notification-message {
+    flex: 1;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: inherit;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    flex-shrink: 0;
+}
+
+.notification-close:hover {
+    opacity: 1;
+}
+
+/* Variantes de colores */
+.notification-success {
+    background-color: #4CAF50;
+    color: white;
+    border-left: 4px solid #2E7D32;
+}
+
+.notification-error {
+    background-color: #F44336;
+    color: white;
+    border-left: 4px solid #C62828;
+}
+
+.notification-info {
+    background-color: #2196F3;
+    color: white;
+    border-left: 4px solid #1565C0;
+}
+
+.notification-warning {
+    background-color: #FF9800;
+    color: white;
+    border-left: 4px solid #E65100;
+}
+
+/* Animaciones */
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #notifications-container {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+
+    .notification {
+        max-width: 100%;
+    }
+}

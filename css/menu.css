@@ -7,6 +7,33 @@ nav.site-nav {
     z-index: 100;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     border-bottom: 3px solid #ff1e00;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+[data-theme="dark"] nav.site-nav {
+    background-color: #1a1a1a;
+    border-bottom-color: #ff1e00;
+}
+
+/* Light Mode */
+[data-theme="light"] nav.site-nav {
+    background-color: #f5f5f5;
+    border-bottom-color: #ff1e00;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] nav.site-nav .nav-links li a {
+    color: #333;
+}
+
+[data-theme="light"] nav.site-nav .nav-links li a:hover {
+    color: #FF1E00;
+}
+
+[data-theme="light"] nav.site-nav .nav-links li a[aria-current="page"],
+[data-theme="light"] nav.site-nav .nav-links li a.is-active {
+    color: #FF1E00;
 }
 
 nav.site-nav .nav-container {
@@ -161,3 +188,36 @@ nav.site-nav .nav-links li a.is-active::before {
 }
 
 /* (Revertido) Drawer y toggle eliminados */
+
+/* ===== THEME TOGGLE BUTTON ===== */
+.theme-toggle-btn {
+    background: none;
+    border: 2px solid #FF1E00;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    min-width: 45px;
+    height: 45px;
+}
+
+.theme-toggle-btn:hover {
+    background-color: rgba(255, 30, 0, 0.2);
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(255, 30, 0, 0.5);
+}
+
+[data-theme="light"] .theme-toggle-btn {
+    color: #333;
+    border-color: #FF1E00;
+}
+
+[data-theme="light"] .theme-toggle-btn:hover {
+    background-color: rgba(255, 30, 0, 0.1);
+}
