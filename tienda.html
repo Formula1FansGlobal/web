@@ -25,77 +25,27 @@
 <body>
     <div id="nav-container"></div>
 
-    <header class="shop-hero">
-        <div class="shop-hero-content">
-            <h1>Tienda F1 Fans Global</h1>
-            <p>Ropa, gorras y accesorios inspirados en la Fórmula 1</p>
-        </div>
-    </header>
-
-    <section class="shop-controls">
-        <div class="controls-left">
-                <div class="filter-dropdown" id="filter-dropdown">
-                    <button class="filter-btn" id="filter-btn" aria-haspopup="true" aria-expanded="false">Filtro ▼</button>
-                    <div class="filter-menu closed" id="filter-menu" aria-label="Categorías">
-                        <button class="filter-option active" data-category="all">Todas</button>
-                        <button class="filter-option" data-category="ropa">Ropa</button>
-                        <button class="filter-option" data-category="gorras">Gorras</button>
-                        <button class="filter-option" data-category="accesorios">Accesorios</button>
-                        <button class="filter-option" data-category="coleccionables">Coleccionables</button>
-                        <button class="filter-option" data-category="posters">Posters</button>
-                        <button class="filter-option" data-category="miniaturas">Miniaturas</button>
-                    </div>
-                </div>
-        </div>
-        <div class="controls-right">
-            <input id="search-input" class="search-input" placeholder="Buscar producto…" aria-label="Buscar">
-            <select id="sort-select" class="sort-select" aria-label="Ordenar">
-                <option value="relevance">Relevancia</option>
-                <option value="price_asc">Precio: menor a mayor</option>
-                <option value="price_desc">Precio: mayor a menor</option>
-                <option value="new">Novedades</option>
-            </select>
-            <label class="source-toggle" title="Carga productos desde Mercado Libre">
-                <input type="checkbox" id="ml-source-toggle">
-                <span>Mercado Libre</span>
-            </label>
-        </div>
-    </section>
-
-    <section class="shop-subcontrols">
-        <div class="sub-left">
-            <div class="chip-group" id="chip-equipos" aria-label="Equipos">
-                <button class="chip" data-team="ferrari">Ferrari</button>
-                <button class="chip" data-team="redbull">Red Bull</button>
-                <button class="chip" data-team="mercedes">Mercedes</button>
-                <button class="chip" data-team="mclaren">McLaren</button>
-            </div>
-        </div>
-        <div class="sub-right">
-            <label class="range-label">Precio
-                <input type="range" id="price-range" min="0" max="5000" step="100" value="5000">
-                <span id="price-label">Hasta $5,000</span>
-            </label>
-        </div>
-    </section>
-
     <main class="shop-main">
-        <section class="featured-banner">
-            <div class="featured-content">
-                <div class="badges">
-                    <span class="badge">Exclusivo</span>
-                    <span class="badge">Novedad</span>
+        <!-- Carrusel de productos destacados -->
+        <section class="carousel-section">
+            <div class="carousel-header">
+                <h2>Productos destacados</h2>
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev" id="carousel-prev" aria-label="Anterior">‹</button>
+                    <button class="carousel-btn next" id="carousel-next" aria-label="Siguiente">›</button>
                 </div>
-                <h2>Ediciones especiales F1 2026</h2>
-                <p>Prendas premium, gorras edición limitada y accesorios únicos.</p>
-                <a href="#product-grid" class="btn-primary">Ver productos</a>
             </div>
+            <div class="carousel-container" id="carousel-container">
+                <div class="carousel-track" id="carousel-track"></div>
+            </div>
+            <div class="carousel-indicators" id="carousel-indicators" aria-label="Indicadores de carrusel"></div>
         </section>
+
         <div id="product-grid" class="product-grid" aria-live="polite"></div>
     </main>
 
     <footer class="shop-footer">
-        <p>Si activas la opción, los productos se cargan desde tu tienda en Mercado Libre.</p>
+        <p>Los productos mostrados son enlaces de afiliado de Mercado Libre. Al realizar una compra, ayudas a mantener este sitio.</p>
     </footer>
 
     <!-- Modal de producto -->
@@ -111,13 +61,14 @@
                 <p id="modal-price" class="modal-price"></p>
                 <p id="modal-desc" class="modal-desc">Producto oficial F1 Fans Global.</p>
                 <div class="modal-actions">
-                    <a id="modal-link" class="btn-primary" target="_blank" rel="noopener">Comprar en Mercado Libre</a>
-                    <button class="btn-secondary" disabled>Agregar al carrito (próx.)</button>
+                    <a id="modal-link" class="btn-primary btn-buy" target="_blank" rel="noopener">🛒 Comprar</a>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="js/productos-afiliados.js"></script>
+    <script src="js/productos-carrusel.js"></script>
     <script src="js/menu.js" defer></script>
     <script src="js/tienda.js" defer></script>
     <script src="js/theme-toggle.js" defer></script>
