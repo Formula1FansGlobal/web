@@ -119,6 +119,26 @@ footer {
     background-color: #FF1E00;
     color: white;
     transform: translateY(-3px);
+    margin-left: 0;
+}
+
+.social-link {
+    padding: 8px;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.social-links a svg {
+    fill: #FF1E00;
+    transition: fill 0.3s;
+}
+
+.social-links a:hover svg {
+    fill: white;
 }
 
 /* Footer Bottom */
@@ -193,6 +213,14 @@ footer {
 [data-theme="light"] .social-links a:hover {
     background-color: #FF1E00;
     color: white;
+}
+
+[data-theme="light"] .social-links a svg {
+    fill: #FF1E00;
+}
+
+[data-theme="light"] .social-links a:hover svg {
+    fill: white;
 }
 
 [data-theme="light"] .footer-bottom {
