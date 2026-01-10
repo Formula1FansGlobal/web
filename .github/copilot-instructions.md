@@ -1229,17 +1229,11 @@ Pop-Location
 
 ## Seguridad & Content Security Policy (CSP)
 
-Todas las páginas HTML incluyen meta tags de seguridad en el `<head>`:
+Todas las páginas HTML incluyen una meta tag CSP en el `<head>`:
 
 **Content Security Policy:**
 ```html
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
-```
-
-**Headers de Seguridad Adicionales:**
-```html
-<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-<meta http-equiv="X-XSS-Protection" content="1; mode=block">
 ```
 
 **Directivas activas:**
@@ -1248,9 +1242,13 @@ Todas las páginas HTML incluyen meta tags de seguridad en el `<head>`:
 - `style-src`: Permite CSS inline y Google Fonts
 - `img-src`: Permite imágenes locales y placeholders
 - `font-src`: Permite Google Fonts
+- `frame-src`: Solo permite iframes del mismo origen (protección contra clickjacking)
 - `upgrade-insecure-requests`: Fuerza HTTPS
-- `X-Frame-Options: SAMEORIGIN`: Protege contra clickjacking (solo permite iframes del mismo origen)
-- `X-XSS-Protection: 1; mode=block`: Protección adicional contra ataques XSS en navegadores antiguos
+
+**Limitaciones de GitHub Pages:**
+- No se pueden agregar HTTP headers personalizados (X-Frame-Options, X-XSS-Protection, HSTS)
+- Solo se pueden usar meta tags para CSP
+- GitHub Pages maneja automáticamente HTTPS/HSTS
 
 **Nota:** Si agregas nuevas APIs o recursos externos, actualiza la CSP para evitar errores de bloqueo.
 
