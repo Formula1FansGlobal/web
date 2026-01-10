@@ -4,7 +4,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Transmisión en vivo, chat y cuenta regresiva de carreras F1 en español.">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com https://cdn.jsdelivr.net; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
     <title>En Vivo</title>
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../../img/Formula-1-Fans-Global3.jpg">
@@ -97,6 +97,7 @@
                     <div class="stream-container">
                         <img id="pre-image" src="../../img/Pilotos-f1-2025.jpg" alt="Esperando el stream" class="stream-bg" loading="lazy">
                         <video id="live-video" class="stream-video" controls playsinline preload="metadata" poster="../../img/Pilotos-f1-2025.jpg">
+                            <source src="../../videos/Presentacion-Pilotos-F1-2025.mp4" type="video/mp4">
                             Tu navegador no soporta el elemento de video.
                         </video>
                         <img id="post-image" src="../../img/Circuitos-Live/Paises-Bajos.PNG" alt="Stream finalizado" class="stream-bg" loading="lazy">

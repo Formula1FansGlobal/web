@@ -23,7 +23,12 @@ async function cargarNoticias() {
             const link = noticia.link || '#';
             return `
                 <div class="noticia">
-                    <img src="${imgSrc}" alt="${title}" loading="lazy">
+                    <img 
+                        src="${imgSrc}" 
+                        alt="${title}" 
+                        loading="lazy"
+                        onerror="this.src='https://via.placeholder.com/400?text=F1+News'"
+                    >
                     <h3>${title}</h3>
                     <p>${desc}</p>
                     <a href="${link}" target="_blank" rel="noopener noreferrer">Leer más</a>
