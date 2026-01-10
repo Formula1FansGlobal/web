@@ -28,6 +28,9 @@ class FooterManager {
             // Inyectar antes del cierre de body
             document.body.insertAdjacentHTML('beforeend', footerHTML);
             
+            // Reescribir rutas dinámicamente
+            this.rewriteFooterPaths();
+            
             // Inicializar formulario de newsletter
             this.initNewsletter();
             
@@ -35,6 +38,29 @@ class FooterManager {
         } catch (error) {
             console.error('❌ Error cargando footer:', error);
         }
+    }
+
+    /**
+     * Reescribe las rutas del footer según la ubicación actual
+     * (Rewrite footer paths based on current location)
+     */
+    rewriteFooterPaths() {
+        // Calcular prefijo base
+        const path = window.location.pathname.replace(/\\/g, '/');
+        const basePrefix = path.includes('/html/paginas/') || path.includes('/html/layout/') ? '../../' : './';
+        
+        // Buscar todos los enlaces con data-path en el footer
+        const footer = document.querySelector('footer');
+        if (!footer) return;
+        
+        const links = footer.querySelectorAll('a[data-path]');
+        links.forEach(link => {
+            const originalPath = link.getAttribute('data-path');
+            if (originalPath && !originalPath.startsWith('http') && originalPath !== '#') {
+                const normalizedPath = originalPath.replace(/^\.\//, '');
+                link.setAttribute('href', `${basePrefix}${normalizedPath}`);
+            }
+        });
     }
 
     /**
