@@ -7,7 +7,7 @@ const STREAM_CONFIG = {
     liveStreamUrl: 'http://189.136.180.108:8888/f1live/index.m3u8',
     
     // Modo de desarrollo: usa video local si no hay stream disponible
-    fallbackVideo: './videos/Presentacion-Pilotos-F1-2025.mp4',
+    fallbackVideo: '../../videos/Presentacion-Pilotos-F1-2025.mp4',
     useFallback: true, // Cambia a false cuando tengas el stream funcionando
     
     // Configuración de HLS
@@ -29,6 +29,21 @@ const STREAM_CONFIG = {
         debug: false // Cambia a true para depurar
     }
 };
+
+// Permitir override de la URL del stream vía query param (?stream=https://...)
+(function applyStreamOverride() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const override = params.get('stream');
+        if (override) {
+            STREAM_CONFIG.liveStreamUrl = override;
+            STREAM_CONFIG.useFallback = false;
+            console.log('Override de stream desde query param:', override);
+        }
+    } catch (e) {
+        console.warn('No se pudo aplicar override de stream:', e);
+    }
+})();
 
 // Inicializar HLS cuando el DOM esté listo
 let hlsInstance = null;
