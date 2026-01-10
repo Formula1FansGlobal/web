@@ -6,7 +6,12 @@
 
 class FooterManager {
     constructor() {
-        this.footerFile = 'footer.html';
+        const path = window.location.pathname.replace(/\\/g, '/');
+        if (path.includes('/html/paginas/') || path.includes('/html/layout/')) {
+            this.footerFile = '../../html/layout/footer.html';
+        } else {
+            this.footerFile = 'html/layout/footer.html';
+        }
     }
 
     /**
