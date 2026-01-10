@@ -787,6 +787,14 @@ Todas las páginas usan el mismo menú inyectado dinámicamente:
 <script src="../../js/menu.js" defer></script>  <!-- Ruta relativa correcta -->
 ```
 
+**Estructura actual del menú (html/layout/menu.html):**
+- 🏠 Inicio
+- 📰 Noticias
+- 🛍️ Tienda
+- 📺 En Vivo
+- ~~📅 Temporada actual~~ (oculto temporalmente)
+- ~~📚 Temporadas~~ (oculto temporalmente)
+
 **En js/menu.js:**
 ```javascript
 // Calcula prefijo relativo desde la ubicación actual al root del proyecto
