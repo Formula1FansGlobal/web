@@ -29,13 +29,16 @@ El menú de navegación se obtiene e inyecta dinámicamente en cada página a tr
 - El script usa `fetch('menu.html')` → `insertAdjacentHTML` con detección de enlace activo mediante `window.location.pathname`
 - El enlace activo obtiene `aria-current="page"` + clase `is-active`
 
-**Archivos:** [menu.html](menu.html), [js/menu.js](js/menu.js), [css/menu.css](css/menu.css)
+**Archivos:** [html/layout/menu.html](html/layout/menu.html), [js/menu.js](js/menu.js), [css/menu.css](css/menu.css)
+
+**Nota Importante (v2.0):** El menú ahora usa **data attributes** (`data-path`, `data-logo-src`) en lugar de href/src directos, evitando URLs quebradas al inyectarse desde diferentes ubicaciones. El script `menu.js` reescribe automáticamente los paths según el prefijo relativo del navegador actual.
 
 Al agregar nuevas páginas:
-1. Agregar ruta a `menu.html` (Add route)
+1. Crear archivo en `html/paginas/nueva-pagina.html`
 2. Incluir `<div id="nav-container"></div>` al inicio del body (at top of body)
 3. Cargar `js/menu.js` con atributo `defer` (Load with defer attribute)
 4. Establecer título apropiado en etiqueta `<title>` para coincidencia de enlace activo (for active link matching)
+5. Actualizar [html/layout/menu.html](html/layout/menu.html): agregar enlace con `data-path="html/paginas/nueva-pagina.html"`
 
 ---
 
@@ -260,7 +263,7 @@ Cuando termina el video: muestra post-image, botón vuelve a aparecer
 
 ---
 
-### **noticias.html - Página de Noticias**
+### **html/paginas/noticias.html - Página de Noticias**
 
 **¿Qué hace?**
 Carga y muestra noticias dinámicas de F1 desde la API de NewsData.io. Las noticias se renderizan como un grid de tarjetas.
@@ -319,7 +322,7 @@ const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=formula1&languag
 
 ---
 
-### **temporadas.html - Calendario de Temporadas**
+### **html/paginas/temporadas.html - Calendario de Temporadas**
 
 **¿Qué hace?**
 Página histórica que muestra un acordeón de décadas (1950s-2020s) con información sobre cada era de F1. Cada sección expandible contiene carreras de esa décad a.
@@ -371,7 +374,7 @@ Página histórica que muestra un acordeón de décadas (1950s-2020s) con inform
 
 ---
 
-### **calendario_temporada.html - Calendario de Temporada Específica**
+### **html/paginas/calendario_temporada.html - Calendario de Temporada Específica**
 
 **¿Qué hace?**
 Muestra todas las carreras de una temporada específica (ej: 2024, 2025) en un grid. Se puede acceder con parámetro `?year=YYYY`.
@@ -415,7 +418,7 @@ const carrerasPorTemporada = {
 
 ---
 
-### **video_gp.html - Videos de Gran Premios**
+### **html/paginas/video_gp.html - Videos de Gran Premios**
 
 **¿Qué hace?**
 Reproduce video de un Gran Premio específico. Se accede con parámetro `?gp=2024_gran_premio_de_australia` (ejemplo).
@@ -465,7 +468,7 @@ const videosPorGP = {
 
 ---
 
-### **tienda.html - Tienda de Mercancía**
+### **html/paginas/tienda.html - Tienda de Mercancía**
 
 **¿Qué hace?**
 Tienda de mercancía de F1 con sistema de filtros, búsqueda y ordenamiento. Estructura preparada para integración con datos dinámicos o Mercado Libre.
@@ -550,7 +553,7 @@ Tienda de mercancía de F1 con sistema de filtros, búsqueda y ordenamiento. Est
 
 ---
 
-### **menu.html - Componente Reutilizable**
+### **html/layout/menu.html - Componente Reutilizable**
 
 **¿Qué hace?**
 Componente de navegación que se inyecta dinámicamente en todas las páginas via `js/menu.js`.
@@ -607,7 +610,7 @@ fetch('menu.html')
 
 ---
 
-### **prueba.html - Página de Prueba/Desarrollo**
+### **html/paginas/prueba.html - Página de Prueba/Desarrollo**
 
 **¿Qué hace?**
 Página de desarrollo/testing. Usada para prototipar nuevas características o hacer pruebas rápidas sin afectar otras páginas.
@@ -621,33 +624,89 @@ Página de desarrollo/testing. Usada para prototipar nuevas características o h
 ### Estructura General
 ```
 web/
-├── index.html                          # Página de inicio
-├── en-vivo.html                        # Transmisión en vivo + chat
-├── noticias.html                       # Feed de noticias de API
-├── temporadas.html                     # Archivo histórico de eras F1
-├── calendario_temporada.html           # Carreras de una temporada específica
-├── video_gp.html                       # Reproductor de videos por GP
-├── tienda.html                         # Tienda de mercancía
-├── menu.html                           # Componente menú (reutilizable)
-├── prueba.html                         # Página de desarrollo/testing
+├── index.html                          # Página de inicio (en raíz)
 ├── manifest.webmanifest                # Manifiesto PWA
 ├── README.md                           # Documentación del proyecto
 │
+├── html/
+│   ├── paginas/
+│   │   ├── en-vivo.html                # Transmisión en vivo + chat
+│   │   ├── noticias.html               # Feed de noticias de API
+│   │   ├── temporadas.html             # Archivo histórico de eras F1
+│   │   ├── calendario_temporada.html   # Carreras de una temporada específica
+│   │   ├── video_gp.html               # Reproductor de videos por GP
+│   │   ├── tienda.html                 # Tienda de mercancía
+│   │   ├── terminos.html               # Términos y condiciones
+│   │   └── prueba.html                 # Página de desarrollo/testing
+│   │
+│   └── layout/
+│       ├── menu.html                   # Componente menú (reutilizable, inyectado dinámicamente)
+│       └── footer.html                 # Componente footer (reutilizable, inyectado dinámicamente)
+│
 ├── css/
 │   ├── menu.css                        # Estilos del menú (cargado en TODAS las páginas)
+│   ├── footer.css                      # Estilos del footer
 │   ├── index.css                       # Estilos específicos de index.html
 │   ├── en-vivo.css                     # Estilos de en-vivo.html (stream, chat, modal)
 │   ├── noticias.css                    # Estilos del grid de noticias
 │   ├── calendario.css                  # Estilos del acordeón y grid de carreras
 │   ├── tienda.css                      # Estilos de la tienda
 │   ├── video-gp.css                    # Estilos del reproductor de video
-│   └── style.css                       # Estilos base globales (opcional)
+│   ├── notifications.css               # Estilos de notificaciones
+│   ├── breadcrumbs.css                 # Estilos de migas de pan
+│   └── style.css                       # Estilos base globales
 │
 ├── js/
 │   ├── menu.js                         # Inyección del menú + detección de enlace activo
-│   ├── script.js                       # Noticias + countdown (usado en index.html, aunque comentado)
+│   ├── footer.js                       # Inyección del footer
+│   ├── script.js                       # Noticias + countdown
 │   ├── noticias.js                     # Carga noticias desde API NewsData.io
 │   ├── stream.js                       # Control del video en vivo (modal, play, pause, etc.)
+│   ├── en-vivo.js                      # Control alternativo del stream
+│   ├── chat.js                         # Clase SimpleChat para chat local con localStorage
+│   ├── contador.js                     # Contador regresivo para carreras
+│   ├── hls-config.js                   # Configuración de HLS
+│   ├── tienda.js                       # Lógica de filtros, búsqueda, ordenamiento
+│   ├── carousel_container.js           # Carrusel reutilizable
+│   ├── timeline.js                     # Línea del tiempo
+│   ├── lazy-images.js                  # Carga lazy de imágenes
+│   ├── breadcrumbs.js                  # Migas de pan dinámicas
+│   ├── notifications.js                # Sistema de notificaciones
+│   ├── theme-toggle.js                 # Toggle de tema (claro/oscuro)
+│   └── productos-afiliados.js          # Gestión de productos afiliados
+│
+├── img/
+│   ├── Formula-1-Fans-Global2.jpg      # Logo del sitio
+│   ├── favicon.ico                     # Ícono de pestaña
+│   ├── f1moderno.jpg                   # Imagen placeholder para carreras
+│   ├── Pilotos-f1-2025.jpg             # Foto para poster de stream
+│   ├── Calendario/
+│   │   ├── 2024/
+│   │   │   ├── Australia-2024.avif     # Imagen del circuito de Australia
+│   │   │   ├── Bahrain-2024.jpg
+│   │   │   └── T2024.avif              # Imagen de carátula 2024
+│   │   └── 2025/
+│   │       └── (imágenes por circuito)
+│   ├── Circuitos-Live/
+│   │   ├── Italy_carrera.avif          # Circuito Italia
+│   │   └── Paises-Bajos.PNG            # Circuito Países Bajos
+│   └── linea-de-tiempo/
+│       └── (imágenes para timeline)
+│
+├── videos/
+│   └── Presentacion-Pilotos-F1-2025.mp4  # Video de presentación de pilotos
+│
+├── archivos-desarrollo/
+│   ├── documentacion/                  # Documentación interna
+│   ├── notas/                          # Notas técnicas
+│   └── scripts/                        # Scripts de diagnóstico
+│
+├── .github/
+│   └── copilot-instructions.md         # Instrucciones para Copilot IA
+│
+├── .git/                               # Repositorio Git
+└── .gitignore                          # Archivos ignorados por Git
+```
 │   ├── en-vivo.js                      # Control alternativo del stream (puede haber duplicidad)
 │   ├── chat.js                         # Clase SimpleChat para chat local con localStorage
 │   ├── contador.js                     # Contador regresivo para carreras
@@ -722,15 +781,26 @@ web/
 
 Todas las páginas usan el mismo menú inyectado dinámicamente:
 
-**En HTML:**
+**En HTML (para páginas en html/paginas/):**
 ```html
 <div id="nav-container"></div>  <!-- Placeholder donde se inyecta el menú -->
-<script src="js/menu.js" defer></script>
+<script src="../../js/menu.js" defer></script>  <!-- Ruta relativa correcta -->
 ```
 
 **En js/menu.js:**
 ```javascript
-fetch('menu.html')
+// Calcula prefijo relativo desde la ubicación actual al root del proyecto
+const computeBasePrefix = () => {
+    const path = window.location.pathname.replace(/\\/g, '/');
+    if (path.includes('/html/paginas/')) return '../../';
+    if (path.includes('/html/layout/')) return '../../';
+    return './';
+};
+
+const basePrefix = computeBasePrefix();
+const menuPath = `${basePrefix}html/layout/menu.html`;
+
+fetch(menuPath)
     .then(response => {
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
         return response.text();
@@ -739,16 +809,40 @@ fetch('menu.html')
         const container = document.getElementById('nav-container');
         if (container) {
             container.innerHTML = html;
-        } else {
-            document.body.insertAdjacentHTML('afterbegin', html);
         }
         
+        // Reescribir hrefs y recursos del menú con prefijo dinámico
+        const nav = document.querySelector('nav.site-nav');
+        if (nav) {
+            const logoLink = nav.querySelector('.logo-link');
+            const logoImg = nav.querySelector('img.logo');
+            if (logoLink) {
+                const logoPath = (logoLink.dataset.path || 'index.html').replace(/^\.\//, '');
+                logoLink.setAttribute('href', `${basePrefix}${logoPath}`);
+            }
+            if (logoImg) {
+                const logoSrc = (logoImg.dataset.logoSrc || 'img/Formula-1-Fans-Global2.jpg').replace(/^\.\//, '');
+                logoImg.setAttribute('src', `${basePrefix}${logoSrc}`);
+            }
+
+            const links = nav.querySelectorAll('.nav-links a');
+            links.forEach(a => {
+                const originalHref = a.dataset.path || a.getAttribute('href');
+                if (!originalHref || originalHref.startsWith('http') || originalHref === '#') return;
+                const normalizedHref = originalHref.replace(/^\.\//, '');
+                a.setAttribute('href', `${basePrefix}${normalizedHref}`);
+            });
+        }
+
         // Marcar enlace activo según URL actual
         const links = document.querySelectorAll('nav.site-nav .nav-links a');
-        const current = window.location.pathname.split('/').pop() || 'index.html';
+        const currentUrl = new URL(window.location.href);
+        const currentPath = currentUrl.pathname.endsWith('/') ? `${currentUrl.pathname}index.html` : currentUrl.pathname;
         links.forEach(a => {
             const href = a.getAttribute('href');
-            if (href && current === href) {
+            if (!href) return;
+            const targetPath = new URL(href, currentUrl.origin).pathname;
+            if (currentPath === targetPath) {
                 a.setAttribute('aria-current', 'page');
                 a.classList.add('is-active');
             }
@@ -761,6 +855,7 @@ fetch('menu.html')
 - DRY (Don't Repeat Yourself): Un solo menú para todas las páginas
 - Fácil mantenimiento: Actualizar menú en un solo lugar
 - Detección automática de página activa
+- Reescritura dinámica de rutas según profundidad del navegador (Dynamic path rewriting desde html/paginas/)
 
 ---
 
