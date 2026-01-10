@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Política de Privacidad de Formula 1 Fans Global - Conoce cómo protegemos y gestionamos tu información personal.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <title>Política de Privacidad - Formula 1 Fans Global</title>
+    <link rel="stylesheet" href="../../css/menu.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .privacy-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #FF1E00 0%, #c71600 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(255, 30, 0, 0.3);
+        }
+
+        .privacy-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .privacy-header .last-updated {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+        }
+
+        .privacy-section {
+            background: rgba(30, 30, 30, 0.8);
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            border-left: 4px solid #FF1E00;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .privacy-section h2 {
+            color: #FF1E00;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .privacy-section h3 {
+            color: #ff6b4a;
+            font-size: 1.3rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .privacy-section p {
+            margin-bottom: 15px;
+            color: #d0d0d0;
+        }
+
+        .privacy-section ul, .privacy-section ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: #d0d0d0;
+        }
+
+        .privacy-section li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .privacy-section strong {
+            color: #fff;
+        }
+
+        .highlight-box {
+            background: rgba(255, 30, 0, 0.1);
+            border: 2px solid rgba(255, 30, 0, 0.3);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 10px;
+        }
+
+        .info-box {
+            background: rgba(0, 123, 255, 0.1);
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 40px;
+            border: 2px solid #FF1E00;
+        }
+
+        .contact-section h3 {
+            color: #FF1E00;
+            margin-bottom: 15px;
+        }
+
+        .contact-section a {
+            color: #ff6b4a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .contact-section a:hover {
+            color: #FF1E00;
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: #FF1E00;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 30, 0, 0.3);
+        }
+
+        .back-link:hover {
+            background: #c71600;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(255, 30, 0, 0.5);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(20, 20, 20, 0.5);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        th {
+            background: rgba(255, 30, 0, 0.2);
+            color: #FF1E00;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background: rgba(255, 30, 0, 0.05);
+        }
+
+        .icon {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 768px) {
+            .privacy-header h1 {
+                font-size: 1.8rem;
+            }
+
+            .privacy-section h2 {
+                font-size: 1.4rem;
+            }
+
+            .privacy-container {
+                padding: 20px 15px;
+            }
+
+            .privacy-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="nav-container"></div>
+
+    <div class="privacy-container">
+        <div class="privacy-header">
+            <h1>🔒 Política de Privacidad</h1>
+            <p class="last-updated">Última actualización: 10 de enero de 2026</p>
+        </div>
+
+        <!-- Introducción -->
+        <div class="privacy-section">
+            <h2><span class="icon">📋</span> Introducción</h2>
+            <p>En <strong>Formula 1 Fans Global</strong>, nos comprometemos a proteger y respetar tu privacidad. Esta Política de Privacidad explica cómo recopilamos, usamos, compartimos y protegemos tu información personal cuando visitas nuestro sitio web.</p>
+            
+            <div class="highlight-box">
+                <p><strong>⚠️ Importante:</strong> Al utilizar nuestro sitio web, aceptas las prácticas descritas en esta política. Si no estás de acuerdo con alguna parte de esta política, por favor no utilices nuestro sitio.</p>
+            </div>
+
+            <p>Este sitio es operado como un proyecto informativo y de entretenimiento para aficionados de la Fórmula 1. No estamos afiliados con la Fórmula 1®, FIA, ni ningún equipo o piloto oficial.</p>
+        </div>
+
+        <!-- Información que Recopilamos -->
+        <div class="privacy-section">
+            <h2><span class="icon">📊</span> Información que Recopilamos</h2>
+            
+            <h3>1. Información Recopilada Automáticamente</h3>
+            <p>Cuando visitas nuestro sitio, cierta información se recopila automáticamente:</p>
+            <ul>
+                <li><strong>Datos de navegación:</strong> Dirección IP, tipo de navegador, sistema operativo, páginas visitadas, tiempo de permanencia, y URL de referencia.</li>
+                <li><strong>Cookies y tecnologías similares:</strong> Utilizamos cookies y localStorage para mejorar tu experiencia.</li>
+                <li><strong>Analytics:</strong> Utilizamos Cloudflare Insights para análisis anónimo de tráfico.</li>
+            </ul>
+
+            <h3>2. Información que Proporcionas Voluntariamente</h3>
+            <ul>
+                <li><strong>Chat en vivo:</strong> Nombre de usuario y mensajes que escribes en el chat (almacenados localmente en tu dispositivo).</li>
+                <li><strong>Newsletter:</strong> Dirección de correo electrónico si te suscribes a nuestro boletín.</li>
+                <li><strong>Formularios de contacto:</strong> Nombre, correo electrónico y mensaje cuando nos contactas.</li>
+            </ul>
+
+            <h3>3. Información de Terceros</h3>
+            <p>Integramos servicios de terceros que pueden recopilar información:</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Proveedor</th>
+                            <th>Propósito</th>
+                            <th>Política de Privacidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Noticias de F1</td>
+                            <td>NewsData.io</td>
+                            <td>Obtener noticias actualizadas</td>
+                            <td><a href="https://newsdata.io/privacy-policy" target="_blank" rel="noopener">Ver política</a></td>
+                        </tr>
+                        <tr>
+                            <td>Analytics</td>
+                            <td>Cloudflare Insights</td>
+                            <td>Análisis de tráfico anónimo</td>
+                            <td><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Ver política</a></td>
+                        </tr>
+                        <tr>
+                            <td>CDN</td>
+                            <td>jsDelivr</td>
+                            <td>Entrega de bibliotecas JavaScript</td>
+                            <td><a href="https://www.jsdelivr.com/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">Ver política</a></td>
+                        </tr>
+                        <tr>
+                            <td>Fuentes</td>
+                            <td>Google Fonts</td>
+                            <td>Tipografía del sitio</td>
+                            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Ver política</a></td>
+                        </tr>
+                        <tr>
+                            <td>Hosting</td>
+                            <td>GitHub Pages</td>
+                            <td>Alojamiento del sitio web</td>
+                            <td><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">Ver política</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Cómo Utilizamos tu Información -->
+        <div class="privacy-section">
+            <h2><span class="icon">🎯</span> Cómo Utilizamos tu Información</h2>
+            <p>Utilizamos la información recopilada para los siguientes propósitos:</p>
+            <ol>
+                <li><strong>Operación del sitio:</strong> Proporcionar, mantener y mejorar nuestro sitio web.</li>
+                <li><strong>Personalización:</strong> Recordar tus preferencias (nombre de usuario en el chat, tema oscuro/claro).</li>
+                <li><strong>Comunicación:</strong> Enviarte noticias, actualizaciones y contenido relacionado con F1 (solo si te suscribes).</li>
+                <li><strong>Analytics:</strong> Entender cómo los usuarios interactúan con nuestro sitio para mejorarlo.</li>
+                <li><strong>Seguridad:</strong> Detectar, prevenir y abordar problemas técnicos o de seguridad.</li>
+                <li><strong>Cumplimiento legal:</strong> Cumplir con obligaciones legales, regulaciones y procesos legales.</li>
+            </ol>
+
+            <div class="info-box">
+                <p><strong>ℹ️ Nota importante:</strong> NO vendemos, alquilamos ni compartimos tu información personal con terceros con fines comerciales o de marketing sin tu consentimiento explícito.</p>
+            </div>
+        </div>
+
+        <!-- Cookies y Almacenamiento Local -->
+        <div class="privacy-section">
+            <h2><span class="icon">🍪</span> Cookies y Almacenamiento Local</h2>
+            
+            <h3>¿Qué son las cookies?</h3>
+            <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Utilizamos tanto cookies como <strong>localStorage</strong> (almacenamiento local del navegador).</p>
+
+            <h3>Tipos de Cookies y Almacenamiento que Utilizamos</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Nombre</th>
+                            <th>Propósito</th>
+                            <th>Duración</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>localStorage</td>
+                            <td>chatUsername</td>
+                            <td>Guardar tu nombre de usuario en el chat</td>
+                            <td>Permanente (hasta que lo borres)</td>
+                        </tr>
+                        <tr>
+                            <td>localStorage</td>
+                            <td>chatMessages</td>
+                            <td>Guardar historial del chat (máx. 50 mensajes)</td>
+                            <td>Permanente (hasta que lo borres)</td>
+                        </tr>
+                        <tr>
+                            <td>localStorage</td>
+                            <td>theme</td>
+                            <td>Recordar tu preferencia de tema (claro/oscuro)</td>
+                            <td>Permanente (hasta que lo borres)</td>
+                        </tr>
+                        <tr>
+                            <td>Cookie</td>
+                            <td>_cf_*</td>
+                            <td>Cloudflare Insights - Analytics anónimo</td>
+                            <td>Sesión / 30 días</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Gestión de Cookies</h3>
+            <p>Puedes controlar y eliminar cookies a través de la configuración de tu navegador:</p>
+            <ul>
+                <li><strong>Chrome:</strong> Configuración → Privacidad y seguridad → Cookies y otros datos de sitios</li>
+                <li><strong>Firefox:</strong> Opciones → Privacidad y seguridad → Cookies y datos del sitio</li>
+                <li><strong>Safari:</strong> Preferencias → Privacidad → Gestionar datos de sitios web</li>
+                <li><strong>Edge:</strong> Configuración → Privacidad, búsqueda y servicios → Cookies y permisos de sitio</li>
+            </ul>
+
+            <div class="warning-box">
+                <p><strong>⚠️ Advertencia:</strong> Si deshabilitas cookies y localStorage, algunas funciones del sitio (como el chat y tus preferencias) no funcionarán correctamente.</p>
+            </div>
+        </div>
+
+        <!-- Almacenamiento de Datos -->
+        <div class="privacy-section">
+            <h2><span class="icon">💾</span> Almacenamiento y Seguridad de Datos</h2>
+            
+            <h3>Dónde se Almacenan tus Datos</h3>
+            <ul>
+                <li><strong>Datos locales (localStorage):</strong> Se almacenan únicamente en TU dispositivo, en tu navegador. Nunca se envían a nuestros servidores.</li>
+                <li><strong>Datos del sitio:</strong> El sitio está alojado en GitHub Pages (servidores en Estados Unidos y Europa).</li>
+                <li><strong>Analytics:</strong> Cloudflare Insights procesa datos anónimos en sus servidores globales.</li>
+            </ul>
+
+            <h3>Seguridad</h3>
+            <p>Tomamos medidas razonables para proteger tu información:</p>
+            <ul>
+                <li><strong>HTTPS:</strong> Todo el tráfico está cifrado mediante SSL/TLS.</li>
+                <li><strong>Content Security Policy (CSP):</strong> Protección contra XSS y otras inyecciones.</li>
+                <li><strong>Sin backend:</strong> Al ser un sitio estático, no almacenamos credenciales ni datos sensibles en servidores.</li>
+                <li><strong>Actualizaciones regulares:</strong> Mantenemos las dependencias y bibliotecas actualizadas.</li>
+            </ul>
+
+            <div class="info-box">
+                <p><strong>ℹ️ Nota:</strong> Ningún método de transmisión por Internet es 100% seguro. Aunque nos esforzamos por proteger tu información, no podemos garantizar seguridad absoluta.</p>
+            </div>
+        </div>
+
+        <!-- Derechos del Usuario -->
+        <div class="privacy-section">
+            <h2><span class="icon">⚖️</span> Tus Derechos y Opciones</h2>
+            
+            <p>Dependiendo de tu ubicación, puedes tener los siguientes derechos:</p>
+            
+            <h3>Derechos bajo GDPR (Unión Europea)</h3>
+            <ul>
+                <li><strong>Acceso:</strong> Derecho a saber qué información tenemos sobre ti.</li>
+                <li><strong>Rectificación:</strong> Derecho a corregir información inexacta.</li>
+                <li><strong>Eliminación:</strong> Derecho a solicitar que eliminemos tu información ("derecho al olvido").</li>
+                <li><strong>Restricción:</strong> Derecho a limitar cómo procesamos tu información.</li>
+                <li><strong>Portabilidad:</strong> Derecho a recibir tus datos en formato estructurado.</li>
+                <li><strong>Oposición:</strong> Derecho a oponerte al procesamiento de tus datos.</li>
+                <li><strong>No automatización:</strong> Derecho a no estar sujeto a decisiones basadas únicamente en procesamiento automatizado.</li>
+            </ul>
+
+            <h3>Derechos bajo CCPA (California, EE.UU.)</h3>
+            <ul>
+                <li>Derecho a saber qué información personal se recopila, usa, comparte o vende.</li>
+                <li>Derecho a eliminar información personal.</li>
+                <li>Derecho a optar por no participar en la venta de información personal (no vendemos datos).</li>
+                <li>Derecho a no ser discriminado por ejercer tus derechos.</li>
+            </ul>
+
+            <h3>Cómo Ejercer tus Derechos</h3>
+            <p>Para ejercer cualquiera de estos derechos:</p>
+            <ol>
+                <li>Envía un correo a: <a href="mailto:contacto@formula1fansglobal.com">contacto@formula1fansglobal.com</a></li>
+                <li>Abre un issue en nuestro repositorio: <a href="https://github.com/Formula1FansGlobal/web/issues" target="_blank" rel="noopener">GitHub Issues</a></li>
+                <li>Reporta mediante nuestro <a href="https://formula1fansglobal.github.io/web/.well-known/security.txt" target="_blank">security.txt</a></li>
+            </ol>
+
+            <div class="highlight-box">
+                <p><strong>💡 Eliminación instantánea de datos locales:</strong> Puedes eliminar todos los datos almacenados en tu dispositivo en cualquier momento abriendo la consola del navegador (F12) y ejecutando:</p>
+                <code style="display: block; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 5px; margin-top: 10px;">
+                    localStorage.clear();<br>
+                    sessionStorage.clear();<br>
+                    // Luego recarga la página
+                </code>
+            </div>
+        </div>
+
+        <!-- PWA y Datos Offline -->
+        <div class="privacy-section">
+            <h2><span class="icon">📱</span> Aplicación Web Progresiva (PWA)</h2>
+            
+            <p>Nuestro sitio está habilitado como PWA, lo que significa que puedes instalarlo en tu dispositivo para usarlo como una aplicación.</p>
+
+            <h3>Datos Almacenados Offline</h3>
+            <p>Cuando instalas nuestra PWA:</p>
+            <ul>
+                <li><strong>Archivos en caché:</strong> Se almacenan copias de HTML, CSS, JavaScript e imágenes para funcionamiento offline.</li>
+                <li><strong>Manifest:</strong> El archivo manifest.webmanifest contiene metadatos de la aplicación.</li>
+                <li><strong>Service Worker:</strong> Gestiona el caché y las actualizaciones en segundo plano.</li>
+            </ul>
+
+            <h3>Desinstalar la PWA</h3>
+            <p>Para desinstalar y eliminar todos los datos de la PWA:</p>
+            <ul>
+                <li><strong>Android/Chrome:</strong> Configuración de la app → Almacenamiento → Borrar datos</li>
+                <li><strong>iOS/Safari:</strong> Mantén presionado el icono → Eliminar app</li>
+                <li><strong>Desktop:</strong> Configuración del navegador → Apps instaladas → Desinstalar</li>
+            </ul>
+        </div>
+
+        <!-- Enlaces a Terceros -->
+        <div class="privacy-section">
+            <h2><span class="icon">🔗</span> Enlaces a Sitios de Terceros</h2>
+            
+            <p>Nuestro sitio contiene enlaces a sitios web de terceros (noticias de F1, redes sociales, etc.). No somos responsables de las prácticas de privacidad de esos sitios.</p>
+
+            <div class="warning-box">
+                <p><strong>⚠️ Importante:</strong> Te recomendamos leer las políticas de privacidad de cualquier sitio de terceros que visites desde nuestros enlaces.</p>
+            </div>
+
+            <p><strong>Enlaces externos comunes en nuestro sitio:</strong></p>
+            <ul>
+                <li>Noticias de F1 (fuentes externas vía NewsData.io)</li>
+                <li>Redes sociales (TikTok, YouTube)</li>
+                <li>Productos de afiliados (Amazon, tiendas de F1)</li>
+                <li>Documentación de servicios (GitHub, políticas de privacidad de terceros)</li>
+            </ul>
+        </div>
+
+        <!-- Menores de Edad -->
+        <div class="privacy-section">
+            <h2><span class="icon">👶</span> Privacidad de Menores</h2>
+            
+            <p>Nuestro sitio está dirigido a una audiencia general y no recopilamos intencionalmente información de menores de 13 años (o 16 años en la UE).</p>
+
+            <div class="highlight-box">
+                <p><strong>Si eres padre o tutor</strong> y crees que tu hijo nos ha proporcionado información personal sin tu consentimiento, por favor contáctanos inmediatamente en <a href="mailto:contacto@formula1fansglobal.com">contacto@formula1fansglobal.com</a> para eliminar dicha información.</p>
+            </div>
+
+            <h3>Recomendaciones para Menores</h3>
+            <ul>
+                <li>No compartas información personal en el chat público.</li>
+                <li>Pide permiso a tus padres antes de suscribirte al newsletter.</li>
+                <li>No uses tu nombre real como nombre de usuario en el chat.</li>
+            </ul>
+        </div>
+
+        <!-- Cambios a la Política -->
+        <div class="privacy-section">
+            <h2><span class="icon">📝</span> Cambios a esta Política de Privacidad</h2>
+            
+            <p>Nos reservamos el derecho de actualizar esta política en cualquier momento. Los cambios significativos se comunicarán mediante:</p>
+            <ul>
+                <li>Notificación en la página principal del sitio</li>
+                <li>Actualización de la fecha "Última actualización" en la parte superior</li>
+                <li>Correo electrónico a suscriptores (para cambios importantes)</li>
+                <li>Anuncio en nuestras redes sociales</li>
+            </ul>
+
+            <div class="info-box">
+                <p><strong>ℹ️ Te recomendamos</strong> revisar esta política periódicamente para estar informado sobre cómo protegemos tu información.</p>
+            </div>
+
+            <h3>Historial de Cambios</h3>
+            <ul>
+                <li><strong>10 de enero de 2026:</strong> Política inicial publicada</li>
+            </ul>
+        </div>
+
+        <!-- Transferencias Internacionales -->
+        <div class="privacy-section">
+            <h2><span class="icon">🌍</span> Transferencias Internacionales de Datos</h2>
+            
+            <p>Como nuestro sitio está alojado en GitHub Pages y utiliza servicios globales, tu información puede ser transferida y procesada en países fuera de tu país de residencia, incluyendo Estados Unidos y otros países.</p>
+
+            <p>Estos países pueden tener leyes de protección de datos diferentes a las de tu país. Sin embargo:</p>
+            <ul>
+                <li>Solo trabajamos con proveedores que cumplen con estándares reconocidos de privacidad.</li>
+                <li>Implementamos medidas técnicas y organizativas apropiadas.</li>
+                <li>Cumplimos con marcos legales como Privacy Shield (cuando aplicable).</li>
+            </ul>
+        </div>
+
+        <!-- Base Legal -->
+        <div class="privacy-section">
+            <h2><span class="icon">⚖️</span> Base Legal para el Procesamiento (GDPR)</h2>
+            
+            <p>Si estás en la Unión Europea, procesamos tu información bajo las siguientes bases legales:</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Procesamiento</th>
+                            <th>Base Legal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Operación del sitio web</td>
+                            <td>Interés legítimo</td>
+                        </tr>
+                        <tr>
+                            <td>Newsletter</td>
+                            <td>Consentimiento explícito</td>
+                        </tr>
+                        <tr>
+                            <td>Analytics</td>
+                            <td>Interés legítimo (anónimo)</td>
+                        </tr>
+                        <tr>
+                            <td>Chat local (localStorage)</td>
+                            <td>Consentimiento implícito al usar la función</td>
+                        </tr>
+                        <tr>
+                            <td>Cumplimiento legal</td>
+                            <td>Obligación legal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Retención de Datos -->
+        <div class="privacy-section">
+            <h2><span class="icon">⏱️</span> Retención de Datos</h2>
+            
+            <p>Conservamos tu información personal solo durante el tiempo necesario para cumplir con los propósitos para los que se recopiló:</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tipo de Dato</th>
+                            <th>Período de Retención</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>localStorage (chat, preferencias)</td>
+                            <td>Hasta que el usuario lo elimine manualmente</td>
+                        </tr>
+                        <tr>
+                            <td>Suscriptores de newsletter</td>
+                            <td>Hasta que canceles la suscripción</td>
+                        </tr>
+                        <tr>
+                            <td>Logs de servidor (GitHub Pages)</td>
+                            <td>Gestionado por GitHub (típicamente 90 días)</td>
+                        </tr>
+                        <tr>
+                            <td>Analytics (Cloudflare)</td>
+                            <td>Según política de Cloudflare (anónimo)</td>
+                        </tr>
+                        <tr>
+                            <td>Consultas de contacto</td>
+                            <td>Hasta 2 años después de la última comunicación</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Contacto -->
+        <div class="contact-section">
+            <h3>📧 ¿Tienes Preguntas sobre esta Política?</h3>
+            <p>Si tienes alguna pregunta, inquietud o solicitud relacionada con esta Política de Privacidad, contáctanos:</p>
+            <p><strong>Email:</strong> <a href="mailto:contacto@formula1fansglobal.com">contacto@formula1fansglobal.com</a></p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/Formula1FansGlobal/web" target="_blank" rel="noopener">Formula1FansGlobal/web</a></p>
+            <p><strong>Security.txt:</strong> <a href="https://formula1fansglobal.github.io/web/.well-known/security.txt" target="_blank" rel="noopener">.well-known/security.txt</a></p>
+            
+            <p style="margin-top: 20px;">Responderemos a tu solicitud dentro de 30 días.</p>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="../../index.html" class="back-link">← Volver al Inicio</a>
+        </div>
+    </div>
+
+    <script src="../../js/menu.js" defer></script>
+</body>
+</html>
