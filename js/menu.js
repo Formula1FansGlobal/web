@@ -57,13 +57,18 @@ fetch(menuPath)
 
         // Marcar enlace activo según la URL (ignorando query params)
         const links = document.querySelectorAll('nav.site-nav .nav-links a');
-        const currentUrl = new URL(window.location.href);
-        const currentPath = currentUrl.pathname.endsWith('/') ? `${currentUrl.pathname}index.html` : currentUrl.pathname;
+        const currentPath = window.location.pathname;
+        const currentFile = currentPath.split('/').pop() || 'index.html';
+        
         links.forEach(a => {
             const href = a.getAttribute('href');
-            if (!href) return;
-            const targetPath = new URL(href, currentUrl.origin).pathname;
-            if (currentPath === targetPath) {
+            if (!href || href.startsWith('#')) return;
+            
+            // Extraer el nombre del archivo del href
+            const hrefFile = href.split('/').pop().split('?')[0];
+            
+            // Comparar nombres de archivo
+            if (currentFile === hrefFile || (currentFile === '' && hrefFile === 'index.html')) {
                 a.setAttribute('aria-current', 'page');
                 a.classList.add('is-active');
             }
