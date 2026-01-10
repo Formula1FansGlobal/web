@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Videos de Grandes Premios de Fórmula 1 por temporada.">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagservices.com https://securepubads.g.doubleclick.net https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; media-src 'self'; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
     <title>Video de Gran Premio</title>
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -51,10 +52,40 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="video-container">
-        <div class="video-titulo" id="video-titulo"></div>
-        <video id="video-gp" class="video-estilo" controls playsinline preload="metadata" poster="img/Calendario/2024/T2024.avif"></video>
-    </div>
+    <div id="nav-container"></div>
+    
+    <main class="video-gp-page">
+        <!-- Hero Section -->
+        <section class="video-hero">
+            <div class="hero-content">
+                <div class="hero-eyebrow">🏎️ GRAN PREMIO</div>
+                <h1 id="video-titulo" class="hero-title">Video no disponible</h1>
+                <p id="video-season" class="hero-subtitle">Temporada 2024</p>
+            </div>
+        </section>
+        
+        <!-- Video Player Section -->
+        <section class="player-section">
+            <div class="player-wrapper">
+                <div class="player-container">
+                    <video id="video-gp" class="video-estilo" controls playsinline preload="metadata" poster="img/Calendario/2024/T2024.avif"></video>
+                </div>
+                <div class="player-info">
+                    <h3>Información de la Carrera</h3>
+                    <div id="race-details" class="race-details">
+                        <p id="race-empty-msg">Selecciona una carrera para ver detalles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Back Navigation -->
+        <section class="back-nav-section">
+            <div class="back-nav-content">
+                <a href="javascript:history.back()" class="back-btn">← Volver al calendario</a>
+            </div>
+        </section>
+    </main>
     <script>
         // Ejemplo de videos por GP
         const videosPorGP = {
@@ -132,14 +163,26 @@
         const key = `${year}_${gp}`;
 
         if (videosPorGP[key]) {
-            document.getElementById('video-titulo').textContent = videosPorGP[key].titulo;
-            document.getElementById('video-gp').src = videosPorGP[key].src;
+            const videoData = videosPorGP[key];
+            document.getElementById('video-titulo').textContent = videoData.titulo;
+            document.getElementById('video-season').textContent = `Temporada ${year}`;
+            document.getElementById('video-gp').src = videoData.src;
+            
+            // Mostrar estado del video
+            const raceDetails = document.getElementById('race-details');
+            if (videoData.src) {
+                raceDetails.innerHTML = `<p>✅ Video disponible para reproducción</p>`;
+            } else {
+                raceDetails.innerHTML = `<p>⏳ Video no disponible en este momento</p>`;
+            }
         } else {
             document.getElementById('video-titulo').textContent = "Video no disponible";
+            document.getElementById('race-details').innerHTML = `<p>❌ No se encontró información de esta carrera</p>`;
         }
     </script>
     <script src="js/menu.js" defer></script>
     <script src="js/theme-toggle.js" defer></script>
+    <script src="js/lazy-images.js" defer></script>
     <script src="js/notifications.js" defer></script>
     <script src="js/breadcrumbs.js" defer></script>
     <script src="js/footer.js" defer></script>

@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Archivo histórico de temporadas F1, calendarios por década y datos clave.">
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://pagead2.googlesyndication.com https://www.googletagservices.com https://securepubads.g.doubleclick.net https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net; media-src 'self'; frame-src https://googleads.g.doubleclick.net https://tpc.googlesyndication.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
         <title>Temporadas</title>
         <link rel="icon" href="img/favicon.ico" type="image/x-icon">
@@ -20,8 +21,8 @@
         <link rel="stylesheet" href="css/footer.css">
         <link rel="stylesheet" href="css/breadcrumbs.css">
         <link rel="stylesheet" href="css/notifications.css">
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7775962173347543"
-     crossorigin="anonymous"></script>
+          <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7775962173347543"
+      crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="nav-container"></div>
@@ -29,11 +30,11 @@
         <main class="seasons-page">
             <section class="seasons-hero">
                 <div class="hero-copy">
-                    <p class="eyebrow">Archivo histórico • 1950-2025</p>
+                    <p class="eyebrow">Archivo histórico • 1950-2026</p>
                     <h1>Calendario de temporadas F1</h1>
                     <p class="hero-subtitle">Recorre cada era, revive campeonatos icónicos y descubre cómo evolucionó la parrilla hasta hoy.</p>
                     <div class="hero-actions">
-                        <a class="btn primary" href="calendario_temporada.html?year=2024">Ver temporada 2024</a>
+                        <a class="btn primary" href="calendario_temporada.html?year=2025">Ver temporada 2025</a>
                         <a class="btn ghost" href="en-vivo.html">Ir a transmisiones</a>
                     </div>
                 </div>
@@ -63,9 +64,9 @@
                         <p class="subtitle">Expande una era y abre la temporada que quieras revisar.</p>
                     </div>
                     <div class="section-actions">
-                        <a class="btn subtle" href="#content-2020s">Ir a 2020s</a>
-                        <a class="btn subtle" href="#content-2000s">Ir a 2000s</a>
-                        <a class="btn subtle" href="#content-1950s">Primeros años</a>
+                        <a class="btn subtle" href="calendario_temporada.html?year=2026">Temporada 2026</a>
+                        <a class="btn subtle" href="calendario_temporada.html?year=2025">Temporada 2025</a>
+                        <a class="btn subtle" href="calendario_temporada.html?year=2027">Próxima 2027</a>
                     </div>
                 </div>
 
@@ -198,7 +199,7 @@
         <script>
             // Definir años por década
             const decadas = {
-                '2020s': { años: [2025, 2024, 2023, 2022, 2021, 2020], gridId: 'grid-2020s' },
+                '2020s': { años: [2027, 2026, 2025, 2024, 2023, 2022, 2021, 2020], gridId: 'grid-2020s' },
                 '2010s': { años: [2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010], gridId: 'grid-2010s' },
                 '2000s': { años: [2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000], gridId: 'grid-2000s' },
                 '1990s': { años: [1999, 1998, 1997, 1996, 1995, 1994, 1993, 1992, 1991, 1990], gridId: 'grid-1990s' },
@@ -212,9 +213,8 @@
             for (const [decada, data] of Object.entries(decadas)) {
                 const grid = document.getElementById(data.gridId);
                 data.años.forEach(year => {
-                    const isUpcoming = year === 2025;
-                    const isDisabled = year === 2025;
-                    const link = isDisabled ? 'href=""' : `href="calendario_temporada.html?year=${year}"`;
+                    const isUpcoming = year === 2027;
+                    const link = `href="calendario_temporada.html?year=${year}"`;
                     const badgeClass = isUpcoming ? ' upcoming' : '';
                     const badge = isUpcoming ? '<p class="season-badge">Próxima</p>' : '';
                     
@@ -243,6 +243,7 @@
         </script>
         <script src="js/menu.js" defer></script>
         <script src="js/theme-toggle.js" defer></script>
+        <script src="js/lazy-images.js" defer></script>
         <script src="js/notifications.js" defer></script>
         <script src="js/breadcrumbs.js" defer></script>
         <script src="js/footer.js" defer></script>
