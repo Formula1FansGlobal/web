@@ -1,0 +1,13 @@
+Contact: https://github.com/Formula1FansGlobal/web/security/advisories/new
+Expires: 2026-12-31T23:59:59.000Z
+Preferred-Languages: es, en
+Canonical: https://formula1fansglobal.github.io/web/.well-known/security.txt
+Policy: https://github.com/Formula1FansGlobal/web/blob/main/SECURITY.md
+
+# Formula 1 Fans Global - Security Policy
+# Si encuentras una vulnerabilidad de seguridad, por favor:
+# 1. Repórtala de forma privada a través del enlace de Contact
+# 2. NO la hagas pública hasta que se corrija
+# 3. Proporciona detalles: pasos para reproducir, impacto, etc.
+# 
+# Agradecemos tu ayuda para mantener seguro nuestro sitio.
