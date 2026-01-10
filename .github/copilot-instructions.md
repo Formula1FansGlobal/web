@@ -1219,6 +1219,26 @@ Pop-Location
 
 ---
 
+## Seguridad & Content Security Policy (CSP)
+
+Todas las páginas HTML incluyen una meta tag CSP que define qué recursos externos se pueden cargar:
+
+```html
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+```
+
+**Directivas activas:**
+- `script-src`: Permite scripts de CDN (jsdelivr) y Cloudflare Insights beacon
+- `connect-src`: Permite conexiones a NewsData.io (noticias) y Cloudflare Insights (analytics)
+- `style-src`: Permite CSS inline y Google Fonts
+- `img-src`: Permite imágenes locales y placeholders
+- `font-src`: Permite Google Fonts
+- `upgrade-insecure-requests`: Fuerza HTTPS
+
+**Nota:** Si agregas nuevas APIs o recursos externos, actualiza la CSP para evitar errores de bloqueo.
+
+---
+
 ## Convenciones de Lenguaje
 
 - **UI/UX:** Siempre en español
