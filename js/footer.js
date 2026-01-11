@@ -47,31 +47,58 @@ class FooterManager {
     rewriteFooterPaths() {
         // Calcular prefijo base - detectar profundidad actual
         const currentUrl = window.location.pathname;
+        console.log('📍 Current pathname:', currentUrl);
+        
         let basePrefix = './';
         
         if (currentUrl.includes('/html/paginas/')) {
             basePrefix = '../../';
+            console.log('✓ Detectado: /html/paginas/ → basePrefix = "../../"');
         } else if (currentUrl.includes('/html/layout/')) {
             basePrefix = '../../';
+            console.log('✓ Detectado: /html/layout/ → basePrefix = "../../"');
+        } else {
+            console.log('✓ Detectado: raíz o index → basePrefix = "./"');
         }
         
         // Buscar todos los enlaces con data-path en el footer
         const footer = document.querySelector('footer');
-        if (!footer) return;
+        if (!footer) {
+            console.warn('⚠️ Footer no encontrado en el DOM');
+            return;
+        }
         
         const links = footer.querySelectorAll('a[data-path]');
-        links.forEach(link => {
+        console.log(`📊 Se encontraron ${links.length} enlaces con data-path`);
+        
+        links.forEach((link, index) => {
             const dataPath = link.getAttribute('data-path');
+            console.log(`   [${index}] dataPath="${dataPath}"`);
             
             // Solo procesar si tiene data-path válido y no es un ancla
             if (dataPath && !dataPath.startsWith('http') && !dataPath.startsWith('#')) {
                 const normalizedPath = dataPath.replace(/^\.\//, '');
                 const finalHref = `${basePrefix}${normalizedPath}`;
+                
                 // Establecer href con la ruta correcta
                 link.setAttribute('href', finalHref);
-                console.log(`🔗 Footer link: ${dataPath} → ${finalHref}`);
+                
+                // Asegurar que es clickeable
+                link.style.cursor = 'pointer';
+                
+                // Para mejor accesibilidad, si no tiene href previamente, agregar atributos
+                if (!link.hasAttribute('role')) {
+                    link.setAttribute('role', 'link');
+                }
+                if (!link.hasAttribute('tabindex')) {
+                    link.setAttribute('tabindex', '0');
+                }
+                
+                console.log(`   ✓ Actualizado a href="${finalHref}"`);
             }
         });
+        
+        console.log('✅ rewriteFooterPaths completado');
     }
 
     /**

@@ -43,6 +43,7 @@ footer {
     display: inline-flex;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
 }
 
 .footer-section a:hover {
@@ -166,6 +167,7 @@ footer {
     color: #b0b0b0;
     text-decoration: none;
     transition: color 0.3s;
+    cursor: pointer;
 }
 
 .footer-bottom-links a:hover {
