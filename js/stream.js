@@ -53,12 +53,8 @@ if (!liveButton || !video || !preImage || !postImage || !streamContainer) {
             if (enVivoMain) enVivoMain.classList.add('playing-stream');
             if (streamContainer) streamContainer.classList.add('stream-active');
             
-            // Ocultar indicador cuando el video está activo
-            if (liveIndicator) liveIndicator.classList.add('hidden');
-            
-            // Mostrar chat en vivo
-            const liveChat = document.getElementById('live-chat');
-            if (liveChat) liveChat.classList.remove('hidden');
+            // Mostrar indicador EN VIVO cuando está reproduciendo
+            if (liveIndicator) liveIndicator.classList.remove('hidden');
         });
     }
 
@@ -78,12 +74,8 @@ if (!liveButton || !video || !preImage || !postImage || !streamContainer) {
             if (enVivoMain) enVivoMain.classList.add('playing-stream');
             if (streamContainer) streamContainer.classList.add('stream-active');
             
-            // Ocultar indicador cuando el video está activo
-            if (liveIndicator) liveIndicator.classList.add('hidden');
-            
-            // Mostrar chat en vivo
-            const liveChat = document.getElementById('live-chat');
-            if (liveChat) liveChat.classList.remove('hidden');
+            // Mostrar indicador EN VIVO cuando está reproduciendo
+            if (liveIndicator) liveIndicator.classList.remove('hidden');
         });
     }
 
@@ -93,8 +85,8 @@ if (!liveButton || !video || !preImage || !postImage || !streamContainer) {
         postImage.style.display = 'block';
         liveButton.style.display = 'flex';
         
-        // Mostrar indicador cuando el video termina
-        if (liveIndicator) liveIndicator.classList.remove('hidden');
+        // Ocultar indicador EN VIVO cuando el video termina
+        if (liveIndicator) liveIndicator.classList.add('hidden');
     });
 
 // Mostrar indicador al cargar la página (simular que hay transmisión disponible)
