@@ -6,10 +6,7 @@ const ML_CONFIG = {
   SELLER_ID: null // Ejemplo: 123456789
 };
 
-// Configuración de la tienda (checkout)
-const SHOP_CONFIG = {
-  WHATSAPP_PHONE: null // Ejemplo: '5215512345678' para México. Si es null, abre WhatsApp sin número.
-};
+// (Carrito deshabilitado) No se requiere configuración de checkout interno
 
 // Configuración del carrusel
 const CAROUSEL_CONFIG = {
@@ -66,13 +63,14 @@ function renderProducts(products) {
     card.className = 'product-card';
     card.innerHTML = `
       <div class="product-image">
-        <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.src='img/Calendario/2024/T2024.avif'">
+        <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.src='../../img/Calendario/2024/T2024.avif'">
       </div>
       <div class="product-body">
         <div class="product-title">${p.title}</div>
         <div class="product-price">${formatCurrency(p.price)}</div>
         <div class="product-actions">
           <a class="btn-primary btn-buy" href="${p.link}" target="_blank" rel="noopener">🛒 Comprar</a>
+          <button class="btn-secondary" data-product-id="${p.id}">Ver detalles</button>
         </div>
       </div>
     `;
@@ -105,107 +103,38 @@ function applySort(products, sort) {
 
 async function loadProducts() {
   try {
-    const products = localProducts;
-    allProducts = products;
-    
-    // Vista simplificada: sin filtros ni búsqueda
-    renderProducts(products.slice(0, 4));
-    renderCarousel(products);
+    // Fuente base: catálogo local (afiliados)
+    allProducts = Array.isArray(localProducts) ? localProducts : [];
+
+    // Estado UI
+    const activeFilter = document.querySelector('.filter-option.active');
+    const category = activeFilter?.dataset?.category || 'all';
+    const searchInput = document.getElementById('search-input');
+    const sortSelect = document.getElementById('sort-select');
+    const priceRange = document.getElementById('price-range');
+    const maxPrice = Number(priceRange?.value || 5000);
+    const query = (searchInput?.value || '').trim();
+    const sort = sortSelect?.value || 'relevance';
+
+    // Pipeline de filtrado
+    let filtered = filterByCategory(allProducts, category);
+    filtered = applySearch(filtered, query);
+    filtered = applyPrice(filtered, maxPrice);
+    filtered = applySort(filtered, sort);
+
+    // Render
+    renderProducts(filtered);
+    renderCarousel(allProducts);
   } catch (e) {
     console.error('Error cargando productos', e);
-    allProducts = localProducts;
-    renderProducts(localProducts.slice(0, 4));
-    renderCarousel(localProducts);
+    allProducts = Array.isArray(localProducts) ? localProducts : [];
+    renderProducts(allProducts);
+    renderCarousel(allProducts);
   }
 }
 
-// ===== Carrito =====
-const CART_KEY = 'f1_cart';
 let currentModalProduct = null;
 let allProducts = []; // Almacena todos los productos (local o ML)
-
-function getCart() {
-  try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; }
-}
-function saveCart(cart) {
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
-}
-function updateCartCount() {
-  const countEl = document.getElementById('cart-count');
-  const cart = getCart();
-  const count = cart.reduce((sum, i) => sum + (i.qty || 1), 0);
-  if (countEl) countEl.textContent = String(count);
-}
-function addToCart(prod) {
-  if (!prod || !prod.id) return;
-  const cart = getCart();
-  const idx = cart.findIndex(i => i.id === prod.id);
-  if (idx >= 0) {
-    cart[idx].qty = (cart[idx].qty || 1) + 1;
-  } else {
-    cart.push({ id: prod.id, title: prod.title, price: prod.price, image: prod.image, qty: 1 });
-  }
-  saveCart(cart);
-  updateCartCount();
-  renderCart();
-}
-function removeFromCart(id) {
-  const cart = getCart().filter(i => i.id !== id);
-  saveCart(cart);
-  updateCartCount();
-  renderCart();
-}
-function updateQty(id, delta) {
-  const cart = getCart();
-  const idx = cart.findIndex(i => i.id === id);
-  if (idx >= 0) {
-    cart[idx].qty = Math.max(1, (cart[idx].qty || 1) + delta);
-    saveCart(cart);
-    updateCartCount();
-    renderCart();
-  }
-}
-function cartTotal() {
-  const cart = getCart();
-  return cart.reduce((sum, i) => sum + (i.price || 0) * (i.qty || 1), 0);
-}
-function buildWhatsAppLink() {
-  const cart = getCart();
-  const lines = cart.map(i => `• ${i.title} x${i.qty} – ${formatCurrency(i.price)} c/u`).join('\n');
-  const totalLine = `Total: ${formatCurrency(cartTotal())}`;
-  const text = encodeURIComponent(`Hola, quiero comprar:\n${lines}\n${totalLine}`);
-  const base = SHOP_CONFIG.WHATSAPP_PHONE ? `https://wa.me/${SHOP_CONFIG.WHATSAPP_PHONE}` : `https://wa.me/`;
-  return `${base}?text=${text}`;
-}
-function renderCart() {
-  const itemsEl = document.getElementById('cart-items');
-  const totalEl = document.getElementById('cart-total');
-  const checkoutEl = document.getElementById('cart-checkout');
-  if (!itemsEl || !totalEl || !checkoutEl) return;
-  const cart = getCart();
-  if (!cart.length) {
-    itemsEl.innerHTML = '<p>Tu carrito está vacío.</p>';
-  } else {
-    itemsEl.innerHTML = cart.map(i => `
-      <div class="cart-item">
-        <img src="${i.image}" alt="${i.title}" onerror="this.src='img/Calendario/2024/T2024.avif'" />
-        <div>
-          <div class="cart-item-title">${i.title}</div>
-          <div class="cart-item-meta">${formatCurrency(i.price)} • Cantidad: ${i.qty}</div>
-        </div>
-        <div class="cart-item-actions">
-          <button class="qty-btn" data-action="dec" data-id="${i.id}">−</button>
-          <button class="qty-btn" data-action="inc" data-id="${i.id}">+</button>
-          <button class="remove-btn" data-action="remove" data-id="${i.id}">Quitar</button>
-        </div>
-      </div>
-    `).join('');
-  }
-  totalEl.textContent = formatCurrency(cartTotal());
-  checkoutEl.href = buildWhatsAppLink();
-}
-function openCart() { const m = document.getElementById('cart-modal'); if (m) { m.hidden = false; renderCart(); } }
-function closeCart() { const m = document.getElementById('cart-modal'); if (m) m.hidden = true; }
 
 // ===== CARRUSEL =====
 let carouselIndex = 0;
@@ -223,7 +152,7 @@ function renderCarousel(products) {
   track.innerHTML = carouselProducts.map(p => `
     <article class="carousel-item carousel-limited" data-product-id="${p.id}">
       <div class="carousel-item-image">
-        <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.src='img/Calendario/2024/T2024.avif'">
+        <img src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.src='../../img/Calendario/2024/T2024.avif'">
         <div class="limited-badge">Oferta Limitada</div>
       </div>
       <div class="carousel-item-body">
@@ -329,9 +258,6 @@ window.addEventListener('DOMContentLoaded', () => {
   const sortSelect = document.getElementById('sort-select');
   const priceRange = document.getElementById('price-range');
   const priceLabel = document.getElementById('price-label');
-  const cartOpenBtn = document.getElementById('cart-open');
-  const cartCloseBtn = document.getElementById('cart-close');
-  const cartClearBtn = document.getElementById('cart-clear');
   const carouselPrev = document.getElementById('carousel-prev');
   const carouselNext = document.getElementById('carousel-next');
   const carouselContainer = document.getElementById('carousel-container');
@@ -343,6 +269,10 @@ window.addEventListener('DOMContentLoaded', () => {
     priceLabel.textContent = `Hasta ${formatCurrency(Number(priceRange.value))}`;
     refresh();
   });
+  // Inicializar etiqueta de rango de precio
+  if (priceRange && priceLabel) {
+    priceLabel.textContent = `Hasta ${formatCurrency(Number(priceRange.value || 5000))}`;
+  }
 
   // Menú desplegable de filtro
   let filterOpen = false;
@@ -410,25 +340,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('product-modal').hidden = true;
   });
 
-  // (Carrito deshabilitado) Se elimina la lógica de agregar al carrito desde modal y tarjetas
-
-  // Carrito: abrir/cerrar/acciones
-  cartOpenBtn?.addEventListener('click', () => openCart());
-  cartCloseBtn?.addEventListener('click', () => closeCart());
-  document.querySelector('#cart-modal .modal-backdrop')?.addEventListener('click', () => closeCart());
-  cartClearBtn?.addEventListener('click', () => { saveCart([]); updateCartCount(); renderCart(); });
-  document.getElementById('cart-items')?.addEventListener('click', (e) => {
-    const t = e.target;
-    if (!(t instanceof HTMLElement)) return;
-    const id = t.getAttribute('data-id');
-    const action = t.getAttribute('data-action');
-    if (action === 'inc') updateQty(id, +1);
-    else if (action === 'dec') updateQty(id, -1);
-    else if (action === 'remove') removeFromCart(id);
-  });
-
-  // Inicializa contador del carrito
-  updateCartCount();
+  // Carrito deshabilitado: no se registran eventos ni contadores
 
   // Carrusel: navegación manual y pausa al hover
   carouselPrev?.addEventListener('click', () => {

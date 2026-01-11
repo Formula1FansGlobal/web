@@ -27,6 +27,55 @@
 <body>
     <div id="nav-container"></div>
 
+    <header class="shop-hero">
+        <div class="shop-hero-content">
+            <h1>Tienda F1 Fans Global</h1>
+            <p>Ropa, gorras y accesorios inspirados en la Fórmula 1</p>
+        </div>
+    </header>
+
+    <section class="shop-controls" aria-label="Controles de tienda">
+        <div class="controls-left">
+            <div class="filter-dropdown">
+                <button id="filter-btn" class="filter-btn" aria-haspopup="true" aria-expanded="false">Filtro: Todas ▼</button>
+                <div id="filter-menu" class="filter-menu closed" role="menu">
+                    <button class="filter-option active" data-category="all" role="menuitem">Todas</button>
+                    <button class="filter-option" data-category="ropa" role="menuitem">Ropa</button>
+                    <button class="filter-option" data-category="gorras" role="menuitem">Gorras</button>
+                    <button class="filter-option" data-category="accesorios" role="menuitem">Accesorios</button>
+                    <button class="filter-option" data-category="coleccionables" role="menuitem">Coleccionables</button>
+                    <button class="filter-option" data-category="posters" role="menuitem">Posters</button>
+                    <button class="filter-option" data-category="miniaturas" role="menuitem">Miniaturas</button>
+                    <button class="filter-option" data-category="herramientas" role="menuitem">Herramientas</button>
+                    <button class="filter-option" data-category="hogar" role="menuitem">Hogar</button>
+                    <button class="filter-option" data-category="accesorios para vehiculos" role="menuitem">Accesorios para Vehículos</button>
+                    <button class="filter-option" data-category="belleza y cuidado personal" role="menuitem">Belleza y Cuidado Personal</button>
+                    <button class="filter-option" data-category="muebles" role="menuitem">Muebles</button>
+                    <button class="filter-option" data-category="jardin" role="menuitem">Jardín</button>
+                    <button class="filter-option" data-category="electrodomesticos" role="menuitem">Electrodomésticos</button>
+                    <button class="filter-option" data-category="mascotas" role="menuitem">Mascotas</button>
+                    <button class="filter-option" data-category="camaras y accesorios" role="menuitem">Cámaras y Accesorios</button>
+                </div>
+            </div>
+        </div>
+        <div class="controls-right">
+            <input id="search-input" class="search-input" placeholder="Buscar producto…" aria-label="Buscar producto">
+            <select id="sort-select" class="sort-select" aria-label="Ordenar">
+                <option value="relevance">Relevancia</option>
+                <option value="price_asc">Precio ↑</option>
+                <option value="price_desc">Precio ↓</option>
+                <option value="new">Novedades</option>
+            </select>
+        </div>
+    </section>
+
+    <section class="shop-subcontrols" aria-label="Filtros secundarios">
+        <div class="range-label">
+            <input type="range" id="price-range" min="0" max="5000" step="100" aria-label="Precio máximo">
+            <span id="price-label">Hasta $5,000</span>
+        </div>
+    </section>
+
     <main class="shop-main">
         <!-- Carrusel de productos destacados -->
         <section class="carousel-section">
@@ -68,6 +117,7 @@
             </div>
         </div>
     </div>
+
 
     <script src="../../js/productos-afiliados.js"></script>
     <script src="../../js/productos-carrusel.js"></script>

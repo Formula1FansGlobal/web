@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Panel Admin para gestionar productos de la tienda F1 Fans Global.">
+    <title>Panel Admin - Productos | Formula 1 Fans Global</title>
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../css/menu.css">
+    <style>
+        body {
+            background: #121212;
+            color: #fff;
+            font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+        }
+        .admin-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 18px;
+        }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .admin-header h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: #ff1e00;
+        }
+        .admin-actions {
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #ff1e00, #ff6600);
+            color: #fff;
+        }
+        .btn-primary:hover {
+            filter: brightness(1.1);
+        }
+        .btn-secondary {
+            background: #2a2a2a;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .btn-secondary:hover {
+            background: #3a3a3a;
+        }
+        .btn-danger {
+            background: #3a2a2a;
+            color: #ff6666;
+            border: 1px solid #ff6666;
+        }
+        .btn-danger:hover {
+            background: #4a3a3a;
+        }
+        .btn-small {
+            padding: 8px 12px;
+            font-size: 0.9rem;
+        }
+        .products-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #1a1a1a;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .products-table thead {
+            background: #222;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.08);
+        }
+        .products-table th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 700;
+            color: #ffd700;
+        }
+        .products-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .products-table tbody tr:hover {
+            background: #242424;
+        }
+        .product-image-thumb {
+            width: 50px;
+            height: 50px;
+            background: #222;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .product-image-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .table-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: #1a1a1a;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 24px;
+            width: min(600px, 90vw);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .modal-header h2 {
+            margin: 0;
+            color: #ff1e00;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .form-group {
+            margin-bottom: 16px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background: #222;
+            border: 2px solid #333;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1rem;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #ff1e00;
+            outline: none;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 24px;
+        }
+        .code-section {
+            background: #1a1a1a;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 14px;
+            padding: 24px;
+            margin-top: 30px;
+        }
+        .code-section h2 {
+            color: #ffd700;
+            margin-top: 0;
+        }
+        .code-output {
+            background: #222;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            max-height: 400px;
+            overflow-y: auto;
+            color: #0f0;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .copy-code-btn {
+            margin-top: 12px;
+            width: 100%;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .stat-card {
+            background: #1a1a1a;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+        }
+        .stat-card h3 {
+            margin: 0 0 8px;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff1e00;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            opacity: 0.7;
+        }
+        .success-msg {
+            background: #2a3a2a;
+            border: 2px solid #44ff44;
+            color: #99ff99;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: none;
+        }
+        .success-msg.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div id="nav-container"></div>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>🛠️ Panel Admin - Productos</h1>
+            <div class="admin-actions">
+                <button class="btn-primary" id="add-product-btn">+ Agregar</button>
+                <button class="btn-secondary" id="export-btn">📥 Generar Código</button>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 24px; display: flex; gap: 12px; border-bottom: 2px solid rgba(255,255,255,0.08);">
+            <button class="tab-btn active" data-tab="productos" style="background: none; border: none; color: #fff; padding: 12px 16px; font-weight: 700; border-bottom: 3px solid #ff1e00; cursor: pointer;">📦 Catálogo Principal</button>
+            <button class="tab-btn" data-tab="carrusel" style="background: none; border: none; color: #fff; padding: 12px 16px; font-weight: 700; border-bottom: 3px solid transparent; cursor: pointer; opacity: 0.6;">✨ Carrusel (Ofertas)</button>
+        </div>
+
+        <div class="success-msg" id="success-msg">✓ Cambios guardados correctamente</div>
+
+        <div class="stats" id="stats"></div>
+
+        <div id="products-container">
+            <div class="empty-state">
+                <p>Cargando productos...</p>
+            </div>
+        </div>
+
+        <div class="code-section" id="code-section" style="display: none;">
+            <h2>📝 Código Actualizado</h2>
+            <div style="background: #2a2a2a; padding: 12px; border-radius: 6px; margin-bottom: 16px; font-size: 0.9rem;">
+                <strong>Archivo destino:</strong> <code id="code-file-path" style="color: #ffd700;">js/productos-afiliados.js</code>
+            </div>
+            <p style="opacity: 0.8;">Copia este código completo y reemplaza el contenido del archivo indicado arriba</p>
+            <div class="code-output" id="code-output"></div>
+            <button class="btn-primary copy-code-btn" id="copy-code-btn">📋 Copiar Código</button>
+        </div>
+    </div>
+
+    <!-- Modal para Agregar/Editar -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Agregar Producto</h2>
+                <button class="modal-close" onclick="closeModal()">✕</button>
+            </div>
+
+            <form id="product-form">
+                <div class="form-group">
+                    <label for="form-title">Título *</label>
+                    <input type="text" id="form-title" required placeholder="Ej: Playera Casual Checo Sergio Perez">
+                </div>
+
+                <div class="form-group">
+                    <label for="form-price">Precio (MXN) *</label>
+                    <input type="number" id="form-price" required min="0" step="0.01" placeholder="300">
+                </div>
+
+                <div class="form-group">
+                    <label for="form-category">Categoría *</label>
+                    <select id="form-category" required>
+                        <option value="ropa">Ropa</option>
+                        <option value="gorras">Gorras</option>
+                        <option value="accesorios">Accesorios</option>
+                        <option value="coleccionables">Coleccionables</option>
+                        <option value="posters">Posters</option>
+                        <option value="miniaturas">Miniaturas</option>
+                        <option value="juguete">Juguete</option>
+                        <option value="herramientas">Herramientas</option>
+                        <option value="hogar">Hogar</option>
+                        <option value="accesorios para vehiculos">Accesorios para Vehículos</option>
+                        <option value="belleza y cuidado personal">Belleza y Cuidado Personal</option>
+                        <option value="muebles">Muebles</option>
+                        <option value="jardin">Jardín</option>
+                        <option value="electrodomesticos">Electrodomésticos</option>
+                        <option value="mascotas">Mascotas</option>
+                        <option value="camaras y accesorios">Cámaras y Accesorios</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="form-image">URL de la Imagen *</label>
+                    <input type="url" id="form-image" required placeholder="https://...">
+                </div>
+
+                <div class="form-group">
+                    <label for="form-link">Enlace de Afiliado *</label>
+                    <input type="url" id="form-link" required placeholder="https://mercadolibre.com/sec/...">
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal()">Cancelar</button>
+                    <button type="submit" class="btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../js/productos-afiliados.js"></script>
+    <script src="../../js/productos-carrusel.js"></script>
+    <script src="../../js/menu.js" defer></script>
+    <script>
+        let products = [];
+        let carouselProducts = [];
+        let currentTab = 'productos';
+        let editingId = null;
+
+        // Cargar productos del archivo
+        function loadProducts() {
+            products = JSON.parse(JSON.stringify(productosAfiliados || []));
+            carouselProducts = JSON.parse(JSON.stringify(productosCarrusel || []));
+            renderProducts();
+            updateStats();
+        }
+
+        // Renderizar tabla
+        function renderProducts() {
+            const container = document.getElementById('products-container');
+            const currentProducts = currentTab === 'productos' ? products : carouselProducts;
+            
+            if (currentProducts.length === 0) {
+                container.innerHTML = '<div class="empty-state"><p>No hay productos. Agrega uno nuevo para comenzar.</p></div>';
+                return;
+            }
+
+            let html = `
+                <table class="products-table">
+                    <thead>
+                        <tr>
+                            <th>Imagen</th>
+                            <th>Título</th>
+                            <th>Precio</th>
+                            <th>Categoría</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            currentProducts.forEach(p => {
+                html += `
+                    <tr>
+                        <td>
+                            <div class="product-image-thumb">
+                                <img src="${p.image}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/50'">
+                            </div>
+                        </td>
+                        <td>${p.title}</td>
+                        <td>$${p.price.toLocaleString('es-MX')}</td>
+                        <td><span style="background: #2a2a2a; padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;">${p.category}</span></td>
+                        <td>
+                            <div class="table-actions">
+                                <button class="btn-secondary btn-small" onclick="editProduct('${p.id}')">✏️ Editar</button>
+                                <button class="btn-danger btn-small" onclick="deleteProduct('${p.id}')">🗑️ Eliminar</button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            html += `
+                    </tbody>
+                </table>
+            `;
+
+            container.innerHTML = html;
+        }
+
+        // Actualizar estadísticas
+        function updateStats() {
+            const stats = document.getElementById('stats');
+            const currentProducts = currentTab === 'productos' ? products : carouselProducts;
+            const categories = {};
+            let totalValue = 0;
+
+            currentProducts.forEach(p => {
+                categories[p.category] = (categories[p.category] || 0) + 1;
+                totalValue += p.price;
+            });
+
+            stats.innerHTML = `
+                <div class="stat-card">
+                    <h3>Total Productos</h3>
+                    <div class="number">${currentProducts.length}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Valor Total Catálogo</h3>
+                    <div class="number">$${totalValue.toLocaleString('es-MX')}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Categorías</h3>
+                    <div class="number">${Object.keys(categories).length}</div>
+                </div>
+            `;
+        }
+
+        // Abrir modal
+        function openModal(title = 'Agregar Producto', product = null) {
+            editingId = product?.id || null;
+            document.getElementById('modal-title').textContent = title;
+
+            if (product) {
+                document.getElementById('form-title').value = product.title;
+                document.getElementById('form-price').value = product.price;
+                document.getElementById('form-category').value = product.category;
+                document.getElementById('form-image').value = product.image;
+                document.getElementById('form-link').value = product.link;
+            } else {
+                document.getElementById('product-form').reset();
+            }
+
+            document.getElementById('product-modal').classList.add('active');
+        }
+
+        // Cerrar modal
+        function closeModal() {
+            document.getElementById('product-modal').classList.remove('active');
+            editingId = null;
+        }
+
+        // Generar ID único
+        function generateId() {
+            return 'p' + Date.now().toString(36) + Math.random().toString(36).substr(2, 9);
+        }
+
+        // Guardar producto
+        document.getElementById('product-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const product = {
+                id: editingId || generateId(),
+                title: document.getElementById('form-title').value,
+                price: parseFloat(document.getElementById('form-price').value),
+                category: document.getElementById('form-category').value,
+                image: document.getElementById('form-image').value,
+                link: document.getElementById('form-link').value
+            };
+
+            if (currentTab === 'productos') {
+                if (editingId) {
+                    const idx = products.findIndex(p => p.id === editingId);
+                    if (idx >= 0) products[idx] = product;
+                } else {
+                    products.push(product);
+                }
+            } else {
+                product.badge = 'Oferta Limitada'; // Agregar badge al carrusel
+                if (editingId) {
+                    const idx = carouselProducts.findIndex(p => p.id === editingId);
+                    if (idx >= 0) carouselProducts[idx] = product;
+                } else {
+                    carouselProducts.push(product);
+                }
+            }
+
+            renderProducts();
+            updateStats();
+            closeModal();
+            showSuccess();
+        });
+
+        // Editar producto
+        function editProduct(id) {
+            const currentProducts = currentTab === 'productos' ? products : carouselProducts;
+            const product = currentProducts.find(p => p.id === id);
+            if (product) {
+                openModal('Editar Producto', product);
+            }
+        }
+
+        // Eliminar producto
+        function deleteProduct(id) {
+            if (confirm('¿Estás seguro de que quieres eliminar este producto?')) {
+                if (currentTab === 'productos') {
+                    products = products.filter(p => p.id !== id);
+                } else {
+                    carouselProducts = carouselProducts.filter(p => p.id !== id);
+                }
+                renderProducts();
+                updateStats();
+                showSuccess();
+            }
+        }
+
+        // Generar código
+        document.getElementById('export-btn').addEventListener('click', () => {
+            const isCarousel = currentTab === 'carrusel';
+            const sourceProducts = isCarousel ? carouselProducts : products;
+            const filename = isCarousel ? 'js/productos-carrusel.js' : 'js/productos-afiliados.js';
+            
+            const code = `// ═══════════════════════════════════════════════════════════════════════════
+// ${isCarousel ? '🎯 PRODUCTOS DE OFERTA LIMITADA - Carrusel' : '🛒 PRODUCTOS DE AFILIADOS - Mercado Libre (GRID PRINCIPAL)'}
+// ═══════════════════════════════════════════════════════════════════════════
+
+const ${isCarousel ? 'productosCarrusel' : 'productosAfiliados'} = ${JSON.stringify(sourceProducts, null, 2)};
+`;
+            
+            document.getElementById('code-file-path').textContent = filename;
+            document.getElementById('code-output').textContent = code;
+            document.getElementById('code-section').style.display = 'block';
+            document.getElementById('code-section').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Copiar código
+        document.getElementById('copy-code-btn').addEventListener('click', () => {
+            const code = document.getElementById('code-output').textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.getElementById('copy-code-btn');
+                const originalText = btn.textContent;
+                btn.textContent = '✓ Copiado';
+                setTimeout(() => {
+                    btn.textContent = originalText;
+                }, 2000);
+            }).catch(() => {
+                alert('Error al copiar. Copia manualmente desde el cuadro de texto.');
+            });
+        });
+
+        // Botón agregar
+        document.getElementById('add-product-btn').addEventListener('click', () => {
+            openModal();
+        });
+
+        // Mensaje de éxito
+        function showSuccess() {
+            const msg = document.getElementById('success-msg');
+            msg.classList.add('active');
+            setTimeout(() => {
+                msg.classList.remove('active');
+            }, 3000);
+        }
+
+        // Cerrar modal al presionar Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Manejo de tabs
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tab = btn.dataset.tab;
+                currentTab = tab;
+                
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.style.borderBottom = '3px solid transparent';
+                    b.style.opacity = '0.6';
+                });
+                btn.classList.add('active');
+                btn.style.borderBottom = '3px solid #ff1e00';
+                btn.style.opacity = '1';
+                
+                renderProducts();
+                updateStats();
+            });
+        });
+
+        // Cargar productos al iniciar
+        loadProducts();
+    </script>
+</body>
+</html>
