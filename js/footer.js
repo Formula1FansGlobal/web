@@ -45,9 +45,15 @@ class FooterManager {
      * (Rewrite footer paths based on current location)
      */
     rewriteFooterPaths() {
-        // Calcular prefijo base
-        const path = window.location.pathname.replace(/\\/g, '/');
-        const basePrefix = path.includes('/html/paginas/') || path.includes('/html/layout/') ? '../../' : './';
+        // Calcular prefijo base - detectar profundidad actual
+        const currentUrl = window.location.pathname;
+        let basePrefix = './';
+        
+        if (currentUrl.includes('/html/paginas/')) {
+            basePrefix = '../../';
+        } else if (currentUrl.includes('/html/layout/')) {
+            basePrefix = '../../';
+        }
         
         // Buscar todos los enlaces con data-path en el footer
         const footer = document.querySelector('footer');
@@ -55,10 +61,15 @@ class FooterManager {
         
         const links = footer.querySelectorAll('a[data-path]');
         links.forEach(link => {
-            const originalPath = link.getAttribute('data-path');
-            if (originalPath && !originalPath.startsWith('http') && originalPath !== '#') {
-                const normalizedPath = originalPath.replace(/^\.\//, '');
-                link.setAttribute('href', `${basePrefix}${normalizedPath}`);
+            const dataPath = link.getAttribute('data-path');
+            
+            // Solo procesar si tiene data-path válido y no es un ancla
+            if (dataPath && !dataPath.startsWith('http') && !dataPath.startsWith('#')) {
+                const normalizedPath = dataPath.replace(/^\.\//, '');
+                const finalHref = `${basePrefix}${normalizedPath}`;
+                // Establecer href con la ruta correcta
+                link.setAttribute('href', finalHref);
+                console.log(`🔗 Footer link: ${dataPath} → ${finalHref}`);
             }
         });
     }
