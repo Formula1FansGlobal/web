@@ -98,4 +98,196 @@ section img, .hero img {
     padding: 20px;
 }
 
+/* Sección de desarrollo histórico */
+.f1-history {
+    background-color: #1a1a1a;
+    padding: 30px 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+/* Timeline personalizado sin librería externa */
+.custom-timeline {
+    position: relative;
+    margin: 40px 0;
+    padding-left: 20px;
+}
+
+.custom-timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #555;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 30px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-item .circle {
+    position: absolute;
+    left: -4px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: #ff1e00;
+    border-radius: 50%;
+}
+
+.timeline-item .item-content h3 {
+    margin: 0 0 5px;
+    font-size: 1.1rem;
+}
+
+.timeline-item .item-content p {
+    margin: 0;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+/* --- carousel horizontal --- */
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px 0;
+}
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel-item {
+    flex: 0 0 80px;
+    height: 80px;
+    margin: 0 10px;
+    background-color: #222;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+
+.carousel-item.active {
+    transform: scale(1.6);
+    background-color: #ff1e00;
+    color: #000;
+    z-index: 2;
+}
+
+.carousel-item .year {
+    pointer-events: none;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 3;
+}
+.carousel-btn.prev {
+    left: 5px;
+}
+.carousel-btn.next {
+    right: 5px;
+}
+
+.carousel-detail {
+    margin-top: 20px;
+    padding: 15px;
+    background: #1c1c1c;
+    border-radius: 8px;
+    color: #ddd;
+}
+
+.carousel-detail h3 {
+    margin: 0 0 10px;
+    font-size: 1.3rem;
+}
+
+.carousel-detail p {
+    margin: 0;
+    line-height: 1.4;
+}
+.f1-history h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.f1-history ol {
+    counter-reset: item;
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+.f1-history li {
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.f1-history li strong {
+    color: #ff1e00;
+}
+
+.f1-history .note {
+    font-size: 0.9rem;
+    margin-top: 15px;
+    color: #ccc;
+}
+
+/* Detalles en cada año muestran al pasar el mouse */
+.history-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.history-item .summary {
+    display: inline;
+}
+
+.history-item .detail {
+    display: none;
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-top: 5px;
+    transition: opacity 0.2s;
+}
+
+.history-item:hover .detail {
+    display: block;
+    opacity: 1;
+}
+
+.history-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    padding: 5px 10px;
+    border-radius: 5px;
+}
 /* (Revertido) Estilos de título con imagen eliminados */
