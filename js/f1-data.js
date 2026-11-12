@@ -60,7 +60,13 @@
         'São Paulo': 'São Paulo', 'Sao Paulo': 'São Paulo', 'Brazilian': 'Brasil',
         'Las Vegas': 'Las Vegas', 'Qatar': 'Catar', 'Abu Dhabi': 'Abu Dabi',
         'Barcelona-Catalunya': 'Barcelona-Cataluña', 'Madrid': 'Madrid', 'Portuguese': 'Portugal',
-        'French': 'Francia', 'German': 'Alemania', 'Turkish': 'Turquía', 'Russian': 'Rusia'
+        'French': 'Francia', 'German': 'Alemania', 'Turkish': 'Turquía', 'Russian': 'Rusia',
+        'Styrian': 'Estiria', 'Eifel': 'Eifel', 'Tuscan': 'Toscana', 'Sakhir': 'Sakhir',
+        '70th Anniversary': 'Aniversario 70', 'San Marino': 'San Marino', 'Pacific': 'Pacífico',
+        'Luxembourg': 'Luxemburgo', 'Swiss': 'Suiza', 'Argentine': 'Argentina', 'South African': 'Sudáfrica',
+        'Korean': 'Corea', 'Indian': 'India', 'Malaysian': 'Malasia', 'European': 'Europa',
+        'Moroccan': 'Marruecos', 'Detroit': 'Detroit', 'Dallas': 'Dallas', 'Caesars Palace': 'Caesars Palace',
+        'Japanese': 'Japón', 'Chinese': 'China', 'Indianapolis 500': 'Indianápolis 500', 'Pescara': 'Pescara'
     };
 
     const SESIONES = [
@@ -116,9 +122,10 @@
         return normalizarCarrera(race);
     }
 
-    async function getClasificacion(tipo) {
+    async function getClasificacion(tipo, anio) {
         const esPilotos = tipo !== 'constructores';
-        const json = await getJSON(esPilotos ? '/current/driverStandings.json' : '/current/constructorStandings.json');
+        const temporada = anio ? encodeURIComponent(anio) : 'current';
+        const json = await getJSON(`/${temporada}/${esPilotos ? 'driverStandings' : 'constructorStandings'}.json`);
         const lista = json && json.MRData && json.MRData.StandingsTable && json.MRData.StandingsTable.StandingsLists[0];
         if (!lista) return { temporada: '', ronda: null, filas: [] };
 
@@ -176,8 +183,68 @@
         const carreras = (json && json.MRData && json.MRData.RaceTable && json.MRData.RaceTable.Races) || [];
         return carreras.map((r) => {
             const inicio = (r.FirstPractice && r.FirstPractice.date) || r.date;
-            return { nombre: nombreGP(r.raceName), fecha: textoFecha(inicio, r.date), ronda: Number(r.round) || 0 };
+            const loc = (r.Circuit && r.Circuit.Location) || {};
+            return {
+                nombre: nombreGP(r.raceName),
+                fecha: textoFecha(inicio, r.date),
+                ronda: Number(r.round) || 0,
+                lugar: [loc.locality, loc.country].filter(Boolean).join(', '),
+                iso: r.date
+            };
         });
+    }
+
+    /** Ganador de cada carrera de una temporada: { [ronda]: { nombre, equipo } } */
+    async function getGanadores(anio) {
+        const json = await getJSON(`/${encodeURIComponent(anio)}/results/1.json?limit=100`);
+        const carreras = (json && json.MRData && json.MRData.RaceTable && json.MRData.RaceTable.Races) || [];
+        const mapa = {};
+        carreras.forEach((r) => {
+            const g = r.Results && r.Results[0];
+            if (g) mapa[Number(r.round)] = { nombre: `${g.Driver.givenName} ${g.Driver.familyName}`, equipo: g.Constructor ? g.Constructor.name : '' };
+        });
+        return mapa;
+    }
+
+    /** Resultado completo de una carrera (y clasificación si existe). */
+    async function getCarrera(anio, ronda) {
+        const base = `/${encodeURIComponent(anio)}/${encodeURIComponent(ronda)}`;
+        const res = await getJSON(`${base}/results.json?limit=100`);
+        const race = res && res.MRData && res.MRData.RaceTable && res.MRData.RaceTable.Races[0];
+        if (!race) return null;
+        const loc = (race.Circuit && race.Circuit.Location) || {};
+
+        let clasificacion = [];
+        try {
+            const q = await getJSON(`${base}/qualifying.json?limit=100`);
+            const qr = q && q.MRData && q.MRData.RaceTable && q.MRData.RaceTable.Races[0];
+            clasificacion = ((qr && qr.QualifyingResults) || []).map((r) => ({
+                pos: Number(r.position) || 0,
+                nombre: `${r.Driver.givenName} ${r.Driver.familyName}`,
+                equipo: r.Constructor ? r.Constructor.name : '',
+                q1: r.Q1 || '', q2: r.Q2 || '', q3: r.Q3 || ''
+            }));
+        } catch (e) { /* sin datos de clasificación para esta carrera */ }
+
+        return {
+            nombre: nombreGP(race.raceName),
+            temporada: race.season,
+            ronda: Number(race.round) || null,
+            fecha: race.date,
+            circuito: (race.Circuit && race.Circuit.circuitName) || '',
+            lugar: [loc.locality, loc.country].filter(Boolean).join(', '),
+            resultados: (race.Results || []).map((r) => ({
+                pos: Number(r.position) || 0,
+                parrilla: Number(r.grid) || 0,
+                nombre: `${r.Driver.givenName} ${r.Driver.familyName}`,
+                equipo: r.Constructor ? r.Constructor.name : '',
+                vueltas: Number(r.laps) || 0,
+                tiempo: (r.Time && r.Time.time) || r.status || '',
+                puntos: Number(r.points) || 0,
+                vr: (r.FastestLap && r.FastestLap.Time && r.FastestLap.Time.time) || ''
+            })),
+            clasificacion
+        };
     }
 
     /** Lee data/proxima-sesion.json (respaldo editable a mano). */
@@ -270,8 +337,38 @@
     }
 
     window.F1Data = {
-        getProximaCarrera, getClasificacion, getUltimoResultado, getProximaManual, getCalendario,
+        getProximaCarrera, getClasificacion, getUltimoResultado, getProximaManual, getCalendario, getGanadores, getCarrera,
         nombreGP, normalizarCarrera, siguienteSesion
     };
-    window.F1UI = { h, formatearSesion, zonaHoraria, cuentaRegresiva, dosDigitos: (n) => String(n).padStart(2, '0') };
+    /** Tarjeta de video de YouTube (carga el iframe solo al hacer clic). */
+    const ID_YT = /^[A-Za-z0-9_-]{11}$/;
+    function tarjetaVideo(v) {
+        if (!v || !ID_YT.test(String(v.id || '')) || !v.titulo) return null;
+        const marco = h('div', { class: 'video-frame' });
+        const boton = h('button', { class: 'video-play', type: 'button', 'aria-label': 'Reproducir: ' + v.titulo },
+            h('img', { src: `https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`, alt: '', loading: 'lazy', width: '480', height: '360' }),
+            h('span', { class: 'video-play-icon', 'aria-hidden': 'true', text: '▶' })
+        );
+        boton.addEventListener('click', () => {
+            marco.replaceChildren(h('iframe', {
+                src: `https://www.youtube-nocookie.com/embed/${v.id}?autoplay=1&rel=0`,
+                title: v.titulo,
+                allow: 'autoplay; encrypted-media; picture-in-picture; fullscreen',
+                allowfullscreen: true,
+                referrerpolicy: 'strict-origin-when-cross-origin'
+            }));
+        });
+        marco.appendChild(boton);
+        const f = v.fecha ? new Date(v.fecha) : null;
+        const meta = [v.tipo === 'propio' ? 'Propio' : 'Oficial', v.categoria, f && !isNaN(f) ? f.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' }) : ''].filter(Boolean);
+        return h('article', { class: 'video-card' }, marco,
+            h('div', { class: 'video-info' },
+                h('h3', { text: v.titulo }),
+                v.descripcion ? h('p', { text: v.descripcion }) : null,
+                h('div', { class: 'video-meta' }, meta.map((m, i) => h('span', { class: i === 0 ? 'badge' : '', text: m })))
+            )
+        );
+    }
+
+    window.F1UI = { tarjetaVideo, h, formatearSesion, zonaHoraria, cuentaRegresiva, dosDigitos: (n) => String(n).padStart(2, '0') };
 })();

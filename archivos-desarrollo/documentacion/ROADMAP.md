@@ -41,7 +41,7 @@ accesible, 100 % legal (sin retransmitir ni alojar señal de F1).
 ## Ideas siguientes (por prioridad)
 
 1. **Tienda**: rediseño con el sistema de diseño y revisión de licencias de imágenes.
-2. **Temporadas / historial**: páginas por temporada con resultados de carreras (la API ya los tiene).
+2. ~~Temporadas / historial~~ (hecho: `temporadas.html`, `calendario_temporada.html`, `carrera.html`)
 3. **Pilotos y equipos**: fichas con datos públicos de la API (sin fotos con derechos).
 4. **PWA real**: service worker para uso sin conexión y notificaciones de inicio de sesión.
 5. **Idiomas**: inglés como segunda lengua.

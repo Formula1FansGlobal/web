@@ -31,7 +31,7 @@ La página `html/paginas/videos.html` se alimenta de `data/videos.json`. No hay 
 | `fecha` | no | `AAAA-MM-DD` (se ordena de más nuevo a más viejo) |
 | `tipo` | no | `propio` u `oficial` |
 | `categoria` | no | Texto libre; si hay 2 o más categorías aparecen filtros |
-| `gp` | no | Liga el video a un Gran Premio del calendario, formato `AÑO_slug` (ej. `2026_gran_premio_de_las_vegas`). Aparece en `video_gp.html` al abrir esa carrera desde el calendario |
+| `carrera` | no | Liga el video a una carrera con el formato `AÑO-RONDA` (ej. `2026-22`). Aparece en la pestaña Videos de `carrera.html?year=2026&round=22` |
 
 ## Reglas (ver `POLITICA_DE_CONTENIDO.md`)
 

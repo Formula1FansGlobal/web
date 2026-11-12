@@ -156,3 +156,13 @@
 }
 .chip:hover { color: var(--text); border-color: var(--text-dim); }
 .chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+/* ---------- Pestañas ---------- */
+.tabs { display: inline-flex; background: var(--bg-card); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+.tab {
+    appearance: none; border: 0; background: transparent; color: var(--text-dim);
+    padding: 9px 18px; border-radius: 999px; font: 600 0.9rem var(--font); cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.tab:hover { color: var(--text); }
+.tab.is-active { background: var(--brand); color: #fff; }
