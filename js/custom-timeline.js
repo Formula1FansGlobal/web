@@ -55,7 +55,9 @@
         p.textContent = ev.text;
         detalle.replaceChildren(y, t, p);
         detalle.setAttribute('aria-labelledby', botones[actual].id);
-        botones[actual].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        // Centra el año SOLO dentro de su fila (scrollIntoView movería también toda la página)
+        const b = botones[actual];
+        cont.scrollTo({ left: b.offsetLeft - (cont.clientWidth - b.offsetWidth) / 2, behavior: 'smooth' });
         if (enfocar) botones[actual].focus();
     }
 
