@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+        <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Panel Admin para gestionar productos de la tienda F1 Fans Global.">
     <title>Panel Admin - Productos | Formula 1 Fans Global</title>
@@ -32,7 +33,11 @@
         }
         .admin-actions {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
+        }
+        @media (max-width: 700px) {
+            .products-table { display: block; overflow-x: auto; }
         }
         button {
             padding: 12px 20px;

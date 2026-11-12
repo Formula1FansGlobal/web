@@ -62,7 +62,7 @@ img {
 
 .seasons-hero {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: 24px;
     padding: 60px 20px 20px;
     position: relative;
@@ -177,7 +177,7 @@ img {
 
 .hero-panel {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
     gap: 12px;
     align-self: stretch;
 }
@@ -1043,3 +1043,7 @@ img {
         font-size: 1.5rem;
     }
 }
+/* Evita desbordes horizontales en pantallas pequeñas */
+.seasons-hero > * { min-width: 0; }
+.hero-copy { overflow-wrap: anywhere; }
+.hero-actions { flex-wrap: wrap; }

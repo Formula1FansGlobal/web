@@ -51,6 +51,15 @@ Al agregar nuevas páginas:
 > Las noticias se piden al proxy (`js/config.js` → `newsEndpoint`) y se pintan con DOM/`textContent`, nunca con `innerHTML`; los ejemplos de abajo con `API_KEY` en el cliente están obsoletos.
 > Detalle: `archivos-desarrollo/documentacion/POLITICA_DE_CONTENIDO.md`.
 
+## Sistema de diseño (páginas rediseñadas: index, noticias, en-vivo, videos, video_gp)
+
+- Orden de CSS: `tokens.css` → `base.css` → `components.css` → `menu.css` → CSS de la página → `footer.css`.
+- Colores, radios y sombras SIEMPRE con variables de `tokens.css` (soporta `[data-theme="dark|light"]`).
+- Páginas antiguas (tienda, calendario, temporadas, términos, privacidad) solo cargan `tokens.css` + `menu.css`.
+- Datos de la F1: `js/f1-data.js` (`F1Data`, `F1UI`). Contenido externo siempre con `textContent`/`F1UI.h()`, nunca `innerHTML`.
+- Videos: `data/videos.json` (ver `archivos-desarrollo/documentacion/COMO_AGREGAR_VIDEOS.md`).
+- Estado y pendientes: `archivos-desarrollo/documentacion/ROADMAP.md`.
+
 `html/paginas/en-vivo.html` muestra:
 - Cuenta regresiva alimentada por `data/proxima-sesion.json` (editable sin tocar código) vía `js/contador.js`.
 - Panel `.watch-panel` con enlaces oficiales (F1 TV, canal oficial de YouTube, formula1.com).
