@@ -97,6 +97,20 @@
 
         const siguiente = D.siguienteSesion(carrera);
         panel.replaceChildren(tablaHorario(carrera, siguiente));
+        const futuras = carrera.sesiones.filter((s) => s.fecha > new Date());
+        if (futuras.length) {
+            const btn = h('button', { type: 'button', class: 'btn btn--ghost', style: 'margin-top:16px' }, '📅 Agregar sesiones a mi calendario (.ics)');
+            btn.addEventListener('click', () => {
+                const ics = D.generarICS({ ...carrera, sesiones: futuras });
+                const url = URL.createObjectURL(new Blob([ics], { type: 'text/calendar;charset=utf-8' }));
+                const a = h('a', { href: url, download: 'sesiones-f1.ics' });
+                document.body.appendChild(a);
+                a.click();
+                a.remove();
+                setTimeout(() => URL.revokeObjectURL(url), 1000);
+            });
+            panel.after(btn);
+        }
         if (siguiente) iniciarCuenta(siguiente);
         else mensajeCuenta('El fin de semana de carrera ya terminó.');
     }

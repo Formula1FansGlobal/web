@@ -183,3 +183,20 @@
     .standings th, .standings td { padding: 10px 10px; }
     .hero-actions .btn { flex: 1 1 100%; }
 }
+
+/* ---------- Podio ---------- */
+.podium { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.podium-item {
+    display: flex; flex-direction: column; gap: 4px;
+    background: var(--bg-card); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 20px; position: relative; overflow: hidden;
+}
+.podium-item::after { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 4px; background: var(--text-faint); }
+.podium-1::after { background: var(--gold); }
+.podium-2::after { background: #b8bcc8; }
+.podium-3::after { background: #c27b3d; }
+.podium-pos { font-size: 2.4rem; font-weight: 800; line-height: 1; color: var(--text-dim); }
+.podium-1 .podium-pos { color: var(--gold); }
+.podium-item strong { font-size: 1.1rem; }
+.podium-item span:not(.podium-pos), .podium-item small { color: var(--text-dim); font-size: 0.88rem; }
+@media (max-width: 700px) { .podium { grid-template-columns: 1fr; } .podium-item { flex-direction: row; align-items: center; gap: 12px; flex-wrap: wrap; } }

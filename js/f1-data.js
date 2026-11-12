@@ -336,7 +336,34 @@
         return () => clearInterval(id);
     }
 
+    /** Genera un archivo .ics con las sesiones de una carrera normalizada. */
+    function generarICS(carrera) {
+        const DUR = { FirstPractice: 60, SecondPractice: 60, ThirdPractice: 60, SprintQualifying: 45, SprintShootout: 45, Sprint: 45, Qualifying: 70, Race: 120, manual: 60 };
+        const f = (d) => d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+        const esc = (t) => String(t).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n');
+        const ahora = f(new Date());
+        const lineas = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Formula 1 Fans Global//Sesiones//ES', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
+        carrera.sesiones.forEach((s, i) => {
+            const fin = new Date(s.fecha.getTime() + (DUR[s.clave] || 60) * 60000);
+            lineas.push(
+                'BEGIN:VEVENT',
+                `UID:${carrera.temporada || 'f1'}-${carrera.ronda || 0}-${s.clave}-${i}@formula1fansglobal`,
+                `DTSTAMP:${ahora}`,
+                `DTSTART:${f(s.fecha)}`,
+                `DTEND:${f(fin)}`,
+                `SUMMARY:${esc(carrera.nombre + ' - ' + s.nombre)}`,
+                `LOCATION:${esc([carrera.circuito, carrera.lugar].filter(Boolean).join(', '))}`,
+                'DESCRIPTION:Horario sujeto a cambios. Confirma en formula1.com.',
+                'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:Recordatorio de sesion de F1', 'TRIGGER:-PT15M', 'END:VALARM',
+                'END:VEVENT'
+            );
+        });
+        lineas.push('END:VCALENDAR');
+        return lineas.join('\r\n') + '\r\n';
+    }
+
     window.F1Data = {
+        generarICS,
         getProximaCarrera, getClasificacion, getUltimoResultado, getProximaManual, getCalendario, getGanadores, getCarrera,
         nombreGP, normalizarCarrera, siguienteSesion
     };

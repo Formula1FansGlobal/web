@@ -1,11 +1,11 @@
 {
   "name": "Formula 1 Fans Global",
   "short_name": "F1 Fans",
-  "start_url": "/index.html",
-  "scope": "/",
+  "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#121212",
-  "theme_color": "#121212",
+  "background_color": "#0b0b0e",
+  "theme_color": "#0b0b0e",
   "description": "Noticias, calendario e historia de la Fórmula 1 (sitio de aficionados)",
   "icons": [
     {
@@ -24,6 +24,29 @@
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any"
+    }
+  ],
+  "id": "./",
+  "lang": "es",
+  "categories": [
+    "sports",
+    "news"
+  ],
+  "shortcuts": [
+    {
+      "name": "Sesiones del fin de semana",
+      "short_name": "Sesiones",
+      "url": "./html/paginas/en-vivo.html"
+    },
+    {
+      "name": "Temporada actual",
+      "short_name": "Temporada",
+      "url": "./html/paginas/calendario_temporada.html"
+    },
+    {
+      "name": "Noticias",
+      "short_name": "Noticias",
+      "url": "./html/paginas/noticias.html"
     }
   ]
 }

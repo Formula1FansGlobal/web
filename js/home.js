@@ -175,7 +175,28 @@
         }
     }
 
+    /* --------------------------------------------------------------- Podio */
+    async function cargarPodio() {
+        try {
+            const r = await D.getUltimoResultado();
+            if (!r || r.filas.length < 3) return;
+            document.getElementById('podio-nombre').textContent = r.nombre;
+            document.getElementById('podio').replaceChildren(...r.filas.slice(0, 3).map((f) =>
+                h('li', { class: 'podium-item podium-' + f.pos },
+                    h('span', { class: 'podium-pos', text: String(f.pos) }),
+                    h('strong', { text: f.nombre }),
+                    h('span', { text: f.equipo }),
+                    h('small', { text: f.tiempo })
+                )
+            ));
+            document.getElementById('podio-sec').hidden = false;
+        } catch (e) {
+            console.warn('home: podio no disponible', e);
+        }
+    }
+
     cargarProxima();
+    cargarPodio();
     iniciarTabs();
     cargarNoticias();
 })();

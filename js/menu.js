@@ -97,3 +97,11 @@ fetch(menuPath)
     .catch(error => {
         console.error('Error cargando el menú:', error);
     });
+
+
+// Service worker (PWA): permite abrir el sitio sin conexión y instalarlo como app
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register(`${basePrefix}sw.js`).catch((e) => console.warn('SW no registrado:', e));
+    });
+}
