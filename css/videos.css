@@ -2,17 +2,6 @@
    videos.css - Galería de videos (html/paginas/videos.html)
    ========================================================================== */
 
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-.chip {
-    appearance: none; cursor: pointer;
-    background: var(--bg-card); color: var(--text-dim);
-    border: 1px solid var(--line); border-radius: 999px;
-    padding: 8px 16px; font: 600 0.88rem var(--font);
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
-}
-.chip:hover { color: var(--text); border-color: var(--text-dim); }
-.chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
-
 .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
 
 .video-card {

@@ -144,3 +144,15 @@
 .standings .pts { font-weight: 800; }
 .standings tbody tr:hover { background: var(--bg-card-hover); }
 .data-credit { margin: 12px 0 0; font-size: 0.78rem; color: var(--text-faint); }
+
+/* ---------- Chips de filtro ---------- */
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.chip {
+    appearance: none; cursor: pointer;
+    background: var(--bg-card); color: var(--text-dim);
+    border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 16px; font: 600 0.88rem var(--font);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.chip:hover { color: var(--text); border-color: var(--text-dim); }
+.chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
