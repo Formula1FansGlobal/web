@@ -158,6 +158,28 @@
         };
     }
 
+    const MESES = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
+    function textoFecha(inicio, fin) {
+        const a = new Date(inicio + 'T00:00:00Z');
+        const b = new Date(fin + 'T00:00:00Z');
+        if (isNaN(a) || isNaN(b)) return '';
+        const da = a.getUTCDate(), db = b.getUTCDate();
+        const ma = MESES[a.getUTCMonth()], mb = MESES[b.getUTCMonth()];
+        if (inicio === fin) return `${db} ${mb}`;
+        return ma === mb ? `${da} - ${db} ${mb}` : `${da} ${ma} - ${db} ${mb}`;
+    }
+
+    /** Calendario completo de una temporada: [{ nombre, fecha, ronda }] */
+    async function getCalendario(anio) {
+        const json = await getJSON(`/${encodeURIComponent(anio)}.json?limit=100`);
+        const carreras = (json && json.MRData && json.MRData.RaceTable && json.MRData.RaceTable.Races) || [];
+        return carreras.map((r) => {
+            const inicio = (r.FirstPractice && r.FirstPractice.date) || r.date;
+            return { nombre: nombreGP(r.raceName), fecha: textoFecha(inicio, r.date), ronda: Number(r.round) || 0 };
+        });
+    }
+
     /** Lee data/proxima-sesion.json (respaldo editable a mano). */
     async function getProximaManual(rutaBase) {
         try {
@@ -248,7 +270,7 @@
     }
 
     window.F1Data = {
-        getProximaCarrera, getClasificacion, getUltimoResultado, getProximaManual,
+        getProximaCarrera, getClasificacion, getUltimoResultado, getProximaManual, getCalendario,
         nombreGP, normalizarCarrera, siguienteSesion
     };
     window.F1UI = { h, formatearSesion, zonaHoraria, cuentaRegresiva, dosDigitos: (n) => String(n).padStart(2, '0') };
