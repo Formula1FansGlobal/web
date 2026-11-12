@@ -8,7 +8,7 @@
 //
 // IMPORTANTE: al cambiar archivos del sitio, sube CACHE_VERSION para que los visitantes reciban lo nuevo.
 
-const CACHE_VERSION = 'f1fg-v1';
+const CACHE_VERSION = 'f1fg-v2';
 const SHELL = [
     './',
     'index.html',
@@ -17,14 +17,14 @@ const SHELL = [
     'css/tokens.css', 'css/base.css', 'css/components.css', 'css/menu.css', 'css/footer.css', 'css/notifications.css',
     'css/home.css', 'css/sesiones.css', 'css/temporada.css', 'css/tienda.css', 'css/videos.css', 'css/noticias.css', 'css/legal.css',
     'js/config.js', 'js/menu.js', 'js/theme-toggle.js', 'js/notifications.js', 'js/footer.js', 'js/f1-data.js',
-    'js/home.js', 'js/custom-timeline.js', 'js/sesiones.js', 'js/temporada.js', 'js/temporadas.js', 'js/carrera.js',
+    'js/home.js', 'js/historia.js', 'js/sesiones.js', 'js/temporada.js', 'js/temporadas.js', 'js/carrera.js',
     'js/videos.js', 'js/noticias.js', 'js/tienda.js', 'js/productos-afiliados.js', 'js/productos-carrusel.js',
     'html/layout/menu.html', 'html/layout/footer.html',
     'html/paginas/noticias.html', 'html/paginas/en-vivo.html', 'html/paginas/videos.html',
     'html/paginas/calendario_temporada.html', 'html/paginas/temporadas.html', 'html/paginas/carrera.html',
     'html/paginas/tienda.html', 'html/paginas/terminos.html', 'html/paginas/privacidad.html',
     'img/favicon.ico', 'img/Formula-1-Fans-Global2.jpg', 'img/Formula-1-Fans-Global3.jpg',
-    'data/proxima-sesion.json', 'data/videos.json'
+    'data/proxima-sesion.json', 'data/videos.json', 'data/historia.json'
 ];
 
 self.addEventListener('install', (event) => {

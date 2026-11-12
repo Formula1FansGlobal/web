@@ -21,6 +21,7 @@ accesible, 100 % legal (sin retransmitir ni alojar señal de F1).
 | 9. Temporadas | `temporadas.html` (índice por década), `calendario_temporada.html` (calendario + ganadores + clasificación final de cualquier año) y `carrera.html` (resultados, clasificación y videos por GP). |
 | 10. PWA | `sw.js` (funciona sin conexión), manifest con accesos directos, botón «Agregar sesiones a mi calendario (.ics)», podio de la última carrera en la home. |
 | 11. Cloudflare | Repo listo: `_headers` (HSTS, anti-iframe, permisos), `_redirects`, `build.sh` (publica solo lo necesario), `set-domain.sh`. Guía en `PUBLICAR_EN_CLOUDFLARE.md` (ruta gratis `*.pages.dev`). Pendiente: pasos en tu cuenta de Cloudflare. |
+| 12. Historia viva | Línea del tiempo en la portada: 32 eventos curados (10 de seguridad con «Lo que cambió»), filtros, orden, «Un día como hoy», temporada en curso y campeones automáticos desde 2025. Guía: `COMO_ACTUALIZAR_HISTORIA.md`. |
 | 7. Calidad | `sitemap.xml` y `robots.txt` correctos, `404.html`, `lang`/`h1`/`main` en las páginas, sin desbordes en móvil. |
 
 ## Dependencias externas

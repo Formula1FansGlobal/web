@@ -57,6 +57,7 @@ Al agregar nuevas páginas:
 - Colores, radios y sombras SIEMPRE con variables de `tokens.css` (soporta `[data-theme="dark|light"]`).
 - Páginas antiguas (tienda, calendario, temporadas, términos, privacidad) solo cargan `tokens.css` + `menu.css`.
 - Datos de la F1: `js/f1-data.js` (`F1Data`, `F1UI`). Contenido externo siempre con `textContent`/`F1UI.h()`, nunca `innerHTML`.
+- Historia de la portada: `data/historia.json` + `js/historia.js` (ver `COMO_ACTUALIZAR_HISTORIA.md`). Verifica los hechos antes de agregar eventos.
 - Videos: `data/videos.json` (ver `archivos-desarrollo/documentacion/COMO_AGREGAR_VIDEOS.md`).
 - Al agregar páginas o cambiar archivos del shell, actualiza `sw.js` (lista `SHELL` y `CACHE_VERSION`).
 - Estado y pendientes: `archivos-desarrollo/documentacion/ROADMAP.md`.

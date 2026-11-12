@@ -147,23 +147,103 @@
 .tile h3 { margin: 0 0 6px; font-size: 1.15rem; }
 .tile p { margin: 0; color: var(--text-dim); font-size: 0.92rem; }
 
-/* ---------- Línea del tiempo ---------- */
-.timeline-years {
-    display: flex; gap: 8px; overflow-x: auto; padding: 4px 2px 14px;
-    scroll-snap-type: x proximity; scrollbar-width: thin;
+/* ---------- Historia viva ---------- */
+.hist-controls { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin-bottom: 8px; }
+.hist-controls .chips { margin: 0; }
+.hist-order { padding: 9px 16px; font-size: 0.85rem; }
+.hist-intro { margin: 10px 0 28px; color: var(--text-dim); max-width: 74ch; min-height: 1.6em; }
+
+/* Tarjetas "ahora": un día como hoy + temporada en curso */
+.ahora { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 30px; }
+.ahora-card {
+    position: relative; display: flex; flex-direction: column; gap: 6px;
+    background: var(--hero-glow), var(--bg-card);
+    border: 1px solid var(--line); border-left: 4px solid var(--brand);
+    border-radius: var(--radius); padding: 20px 22px;
 }
-.timeline-year {
-    flex: 0 0 auto; scroll-snap-align: center;
-    appearance: none; background: var(--bg-card); color: var(--text-dim);
-    border: 1px solid var(--line); border-radius: 999px;
-    padding: 10px 20px; font: 700 0.95rem var(--font); cursor: pointer;
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
+.ahora-card .eyebrow { margin: 0; }
+.ahora-card h3 { margin: 2px 0 0; font-size: 1.15rem; line-height: 1.3; }
+.ahora-card p { margin: 0; color: var(--text-dim); font-size: 0.93rem; }
+.ahora-card .link-btn {
+    align-self: flex-start; margin-top: 8px; appearance: none; background: none; border: 0; padding: 0; cursor: pointer;
+    color: var(--brand-strong); font: 600 0.9rem var(--font);
 }
-.timeline-year:hover { color: var(--text); border-color: var(--text-dim); }
-.timeline-year[aria-selected="true"] { background: var(--brand); border-color: var(--brand); color: #fff; }
-.timeline-detail h3 { margin: 0 0 8px; font-size: clamp(1.2rem, 2.4vw, 1.6rem); }
-.timeline-detail p { margin: 0; color: var(--text-dim); max-width: 70ch; }
-.timeline-detail .tl-year { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; color: var(--brand-strong); display: block; margin-bottom: 6px; }
+.ahora-card .link-btn:hover { text-decoration: underline; }
+
+/* Línea vertical */
+.hist {
+    --line-x: 50%;
+    list-style: none; margin: 0; padding: 0; position: relative;
+}
+.hist::before {
+    content: ''; position: absolute; top: 0; bottom: 0; left: var(--line-x); width: 3px; transform: translateX(-50%);
+    background: linear-gradient(180deg, var(--brand), var(--line) 12%, var(--line) 88%, transparent);
+    border-radius: 3px;
+}
+
+.hist-item {
+    position: relative; width: 50%; padding: 0 38px 30px 0;
+    opacity: 0; transform: translateY(18px);
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+}
+.hist-item.is-in { opacity: 1; transform: none; }
+.hist-item:nth-child(even) { margin-left: 50%; padding: 0 0 30px 38px; }
+
+/* Punto sobre la línea */
+.hist-item::before {
+    content: ''; position: absolute; top: 24px; right: -9px; width: 18px; height: 18px; border-radius: 50%;
+    background: var(--bg); border: 4px solid var(--c, var(--brand)); box-shadow: 0 0 0 4px var(--bg-elev);
+}
+.hist-item:nth-child(even)::before { right: auto; left: -9px; }
+
+.hist-card {
+    background: var(--bg-card); border: 1px solid var(--line); border-top: 3px solid var(--c, var(--brand));
+    border-radius: var(--radius); padding: 20px 22px;
+    transition: border-color 0.2s, transform 0.2s var(--ease);
+}
+.hist-card:hover { transform: translateY(-3px); }
+.hist-item.is-target .hist-card { border-color: var(--c, var(--brand)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c, var(--brand)) 35%, transparent); }
+
+.hist-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 6px; }
+.hist-year { font-size: 2rem; font-weight: 800; line-height: 1; letter-spacing: -0.02em; color: var(--c, var(--brand-strong)); }
+.hist-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+.hist-badge {
+    font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 999px;
+    color: var(--c, var(--brand-strong)); background: color-mix(in srgb, var(--c, var(--brand)) 14%, transparent);
+}
+.hist-badge--auto { color: var(--text-dim); background: var(--bg-elev); border: 1px dashed var(--line); }
+.hist-date { margin: 0 0 4px; font-size: 0.8rem; color: var(--text-faint); }
+.hist-card h3 { margin: 0 0 8px; font-size: 1.12rem; line-height: 1.3; }
+.hist-card p { margin: 0; color: var(--text-dim); font-size: 0.94rem; line-height: 1.65; }
+.hist-cambio {
+    margin-top: 14px; padding: 12px 14px; border-radius: var(--radius-sm);
+    background: color-mix(in srgb, var(--c, var(--brand)) 9%, var(--bg-elev)); border-left: 3px solid var(--c, var(--brand));
+}
+.hist-cambio strong { display: block; font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c, var(--brand-strong)); margin-bottom: 4px; }
+.hist-cambio span { color: var(--text); font-size: 0.9rem; line-height: 1.6; }
+
+/* Colores por categoría */
+.cat-hito { --c: var(--gold); }
+.cat-seguridad { --c: var(--ok); }
+.cat-tecnica { --c: #4da3ff; }
+.cat-campeonato { --c: var(--brand-strong); }
+[data-theme="light"] .cat-tecnica { --c: #1766c9; }
+
+.hist-more { text-align: center; margin-top: 8px; }
+.hist-note { margin-top: 28px; }
+.hist-loading { list-style: none; }
+
+@media (max-width: 760px) {
+    .hist { --line-x: 14px; }
+    .hist-item, .hist-item:nth-child(even) { width: 100%; margin-left: 0; padding: 0 0 24px 40px; }
+    .hist-item::before, .hist-item:nth-child(even)::before { left: 5px; right: auto; top: 22px; }
+    .hist-controls { flex-direction: column; align-items: stretch; }
+    .hist-order { width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hist-item { opacity: 1; transform: none; }
+}
 
 /* ---------- CTA ---------- */
 .cta {

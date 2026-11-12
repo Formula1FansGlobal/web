@@ -146,32 +146,37 @@
             </div>
         </section>
 
-        <!-- ============ HISTORIA ============ -->
+        <!-- ============ HISTORIA VIVA ============ -->
         <section class="section section--alt" id="historia" aria-labelledby="h-historia">
             <div class="container">
                 <div class="section-head">
                     <div>
-                        <p class="eyebrow">Línea del tiempo</p>
-                        <h2 id="h-historia">Momentos que marcaron la Fórmula 1</h2>
+                        <p class="eyebrow">Historia viva</p>
+                        <h2 id="h-historia">La historia de la Fórmula 1, en una línea del tiempo</h2>
+                        <p>Hitos, rivalidades y las tragedias que cambiaron las reglas para hacer los coches más seguros. Se actualiza sola con cada campeonato.</p>
                     </div>
                 </div>
-                <div class="timeline" id="timeline">
-                    <div class="timeline-years" id="timeline-years" role="tablist" aria-label="Años destacados"></div>
-                    <article class="timeline-detail card" id="timeline-detail" role="tabpanel" aria-live="polite"></article>
+
+                <div class="ahora" id="ahora" hidden>
+                    <article class="ahora-card" id="ahora-hoy" hidden></article>
+                    <article class="ahora-card" id="ahora-curso" hidden></article>
                 </div>
-                <noscript>
-                    <ol>
-                        <li><strong>1950</strong> – Primera temporada oficial, en Silverstone.</li>
-                        <li><strong>1958</strong> – Nace el campeonato de constructores.</li>
-                        <li><strong>1977</strong> – Lotus estrena el efecto suelo con el 78.</li>
-                        <li><strong>1988</strong> – McLaren MP4/4 gana 15 de 16 carreras.</li>
-                        <li><strong>1994</strong> – Fin de semana trágico en Imola; se refuerza la seguridad.</li>
-                        <li><strong>2005</strong> – Alonso rompe la racha de Ferrari y Schumacher.</li>
-                        <li><strong>2014</strong> – Comienza la era híbrida V6 turbo.</li>
-                        <li><strong>2021</strong> – Hamilton vs. Verstappen se decide en Abu Dabi.</li>
-                        <li><strong>2026</strong> – Nueva era de reglamentos técnicos.</li>
-                    </ol>
-                </noscript>
+
+                <div class="hist-controls">
+                    <div class="chips" id="hist-chips" role="group" aria-label="Filtrar la historia"></div>
+                    <button type="button" class="btn btn--ghost hist-order" id="hist-order" aria-pressed="false">↓ Del más antiguo al más reciente</button>
+                </div>
+                <p class="hist-intro" id="hist-intro" aria-live="polite"></p>
+
+                <ol class="hist" id="hist" aria-label="Línea del tiempo de la Fórmula 1">
+                    <li class="hist-loading"><div class="skeleton" style="height: 140px"></div></li>
+                </ol>
+                <div class="hist-more">
+                    <button type="button" class="btn btn--ghost" id="hist-more" hidden>Ver más</button>
+                </div>
+
+                <p class="notice hist-note">Algunos momentos recuerdan accidentes graves. Los incluimos con respeto, por lo que cambiaron en la seguridad de los pilotos, los comisarios y los aficionados. Si encuentras un error, avísanos desde la sección de contacto.</p>
+                <noscript><p class="notice">Activa JavaScript para ver la línea del tiempo de la historia de la F1.</p></noscript>
             </div>
         </section>
 
@@ -199,7 +204,7 @@
     <script src="js/notifications.js" defer></script>
     <script src="js/f1-data.js" defer></script>
     <script src="js/home.js" defer></script>
-    <script src="js/custom-timeline.js" defer></script>
+    <script src="js/historia.js" defer></script>
     <script src="js/footer.js" defer></script>
 </body>
 </html>
