@@ -1,176 +1,31 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
     <title>Términos y Condiciones - Formula 1 Fans Global</title>
     <meta name="description" content="Términos y condiciones de uso del sitio web Formula 1 Fans Global.">
-    <link rel="stylesheet" href="../../css/menu.css">
-    <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/style.css">
-    <style>
-        body {
-            padding-bottom: 100px;
-        }
-
-        .terms-container {
-            max-width: 900px;
-            margin: 40px auto 100px auto;
-            padding: 30px 30px 50px 30px;
-            background-color: #1a1a1a;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        .terms-header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #FF1E00;
-        }
-
-        .terms-header h1 {
-            color: #FF1E00;
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .terms-header .last-updated {
-            color: #b0b0b0;
-            font-size: 0.9rem;
-            font-style: italic;
-        }
-
-        .terms-content {
-            color: #e0e0e0;
-            line-height: 1.8;
-        }
-
-        .terms-content h2 {
-            color: #FF1E00;
-            font-size: 1.6rem;
-            margin-top: 35px;
-            margin-bottom: 15px;
-            padding-top: 10px;
-        }
-
-        .terms-content h3 {
-            color: #ff4d2e;
-            font-size: 1.3rem;
-            margin-top: 25px;
-            margin-bottom: 12px;
-        }
-
-        .terms-content p {
-            margin-bottom: 15px;
-        }
-
-        .terms-content ul, .terms-content ol {
-            margin-left: 25px;
-            margin-bottom: 15px;
-        }
-
-        .terms-content li {
-            margin-bottom: 10px;
-        }
-
-        .terms-content strong {
-            color: #FF1E00;
-        }
-
-        .highlight-box {
-            background-color: rgba(255, 30, 0, 0.1);
-            border-left: 4px solid #FF1E00;
-            padding: 15px 20px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-
-        .contact-box {
-            background-color: #262626;
-            padding: 30px;
-            border-radius: 8px;
-            margin-top: 50px;
-            margin-bottom: 0;
-            text-align: center;
-            border: 2px solid #FF1E00;
-            box-shadow: 0 4px 15px rgba(255, 30, 0, 0.2);
-        }
-
-        .contact-box h3 {
-            color: #FF1E00;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-
-        .contact-box a {
-            color: #ff6b4a;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .contact-box a:hover {
-            color: #FF1E00;
-            text-decoration: underline;
-        }
-
-        .contact-box p {
-            margin-bottom: 10px;
-            color: #e0e0e0;
-        }
-
-        /* Light Mode */
-        [data-theme="light"] .terms-container {
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        [data-theme="light"] .terms-content {
-            color: #333;
-        }
-
-        [data-theme="light"] .terms-header .last-updated {
-            color: #666;
-        }
-
-        [data-theme="light"] .highlight-box {
-            background-color: rgba(255, 30, 0, 0.05);
-        }
-
-        [data-theme="light"] .contact-box {
-            background-color: #f5f5f5;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .terms-container {
-                margin: 20px 15px;
-                padding: 20px;
-            }
-
-            .terms-header h1 {
-                font-size: 2rem;
-            }
-
-            .terms-content h2 {
-                font-size: 1.4rem;
-            }
-
-            .terms-content h3 {
-                font-size: 1.2rem;
-            }
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/menu.css">
+    <link rel="stylesheet" href="../../css/legal.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/notifications.css">
 </head>
 <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <div id="nav-container"></div>
 
-    <div class="terms-container">
+    <main id="contenido" class="legal terms-container">
         <div class="terms-header">
-            <h1>⚖️ Términos y Condiciones</h1>
-            <p class="last-updated">Última actualización: 1 de enero de 2026</p>
+            <h1>Términos y Condiciones</h1>
+            <p class="last-updated">Última actualización: 12 de noviembre de 2026</p>
         </div>
 
         <div class="terms-content">
@@ -185,8 +40,7 @@
             <h3>2.1 Licencia de Uso</h3>
             <p>Se le concede una licencia limitada, no exclusiva, intransferible y revocable para acceder y hacer uso personal del contenido de este sitio web. Esta licencia no incluye:</p>
             <ul>
-                <li>Descarga o copia de información de cuenta para el beneficio de otro comerciante</li>
-                <li>Uso de minería de datos, robots o métodos similares de recopilación de datos</li>
+                                <li>Uso de minería de datos, robots o métodos similares de recopilación de datos</li>
                 <li>Modificación o copia de los materiales sin autorización escrita</li>
                 <li>Uso del contenido para cualquier propósito comercial sin nuestro consentimiento previo</li>
             </ul>
@@ -202,39 +56,55 @@
             </ul>
 
             <h2>3. Propiedad Intelectual</h2>
-            <h3>3.1 Derechos de Autor</h3>
-            <p>Todo el contenido de este sitio web, incluyendo pero no limitado a texto, gráficos, logos, imágenes, videos, audio y software, es propiedad de Formula 1 Fans Global o sus proveedores de contenido y está protegido por las leyes internacionales de derechos de autor.</p>
+            <h3>3.1 Contenido propio</h3>
+            <p>Los textos originales, el diseño, el código y los materiales creados por Formula 1 Fans Global (por ejemplo, nuestros análisis y videos propios) están protegidos por las leyes de derechos de autor. No se pueden copiar ni reutilizar sin autorización escrita, salvo las citas breves que permita la ley con mención de la fuente.</p>
 
-            <h3>3.2 Marcas Registradas</h3>
-            <p>Formula 1®, F1®, FIA Formula One World Championship™, y todos los logos y marcas asociadas son marcas registradas de Formula One Licensing BV. Este sitio NO está afiliado, patrocinado ni respaldado por la Fórmula 1, FIA, ni ningún equipo o piloto oficial. Todo el contenido relacionado con F1 se utiliza únicamente con fines informativos y de entretenimiento bajo el principio de uso justo.</p>
+            <h3>3.2 Contenido de terceros</h3>
+            <p>Nombres, logotipos, fotografías, videos, datos y demás materiales de la Fórmula 1, la FIA, los equipos, los pilotos, los medios de comunicación y otros titulares pertenecen a sus respectivos dueños. No reclamamos propiedad sobre ellos. Los titulares de noticias se obtienen de un proveedor de noticias y siempre enlazan a la fuente original, que conserva sus derechos.</p>
+
+            <h3>3.3 Marcas registradas y ausencia de afiliación</h3>
+            <p>Formula 1®, F1®, FIA Formula One World Championship™ y los logotipos y marcas asociadas son marcas registradas de Formula One Licensing B.V. Este es un sitio independiente hecho por aficionados: <strong>no está afiliado, patrocinado ni respaldado</strong> por la Fórmula 1, la FIA, ni por ningún equipo, piloto o emisora. Las marcas se mencionan únicamente para identificar el tema del que trata el sitio.</p>
+
+            <h3 id="aviso-derechos">3.4 Aviso y retiro de contenido</h3>
+            <p>Respetamos los derechos de propiedad intelectual de terceros. Si eres titular de derechos (o su representante) y consideras que algún contenido de este sitio los infringe, escríbenos a <a href="mailto:f1mexc11+soporte@gmail.com?subject=Aviso%20de%20derechos%20de%20autor">f1mexc11+soporte@gmail.com</a> con el asunto "Aviso de derechos de autor" e incluye:</p>
+            <ul>
+                <li>La identificación de la obra protegida que consideras infringida</li>
+                <li>La dirección (URL) exacta del contenido en nuestro sitio</li>
+                <li>Tus datos de contacto y la acreditación de que eres el titular o su representante</li>
+                <li>Una declaración de que la información del aviso es exacta</li>
+            </ul>
+            <p>Al recibir un aviso completo retiraremos o deshabilitaremos el contenido señalado con prontitud mientras se revisa el caso. Podemos cancelar el acceso de los usuarios que infrinjan derechos de forma reiterada.</p>
 
             <h2>4. Contenido Generado por Usuarios</h2>
             <h3>4.1 Chat y Comentarios</h3>
-            <p>Al utilizar nuestras funciones de chat en vivo o cualquier otra forma de comunicación en el sitio, usted acepta:</p>
+            <p>Al utilizar nuestras funciones de chat, comentarios o cualquier otra forma de comunicación en el sitio, usted acepta:</p>
             <ul>
                 <li>No publicar contenido ofensivo, difamatorio, obsceno o ilegal</li>
                 <li>No acosar, intimidar o amenazar a otros usuarios</li>
                 <li>No compartir información personal de terceros sin consentimiento</li>
-                <li>Respetar los derechos de propiedad intelectual de otros</li>
+                <li>Respetar los derechos de propiedad intelectual de otros (no publicar contenido protegido sin permiso)</li>
                 <li>No enviar spam o contenido promocional no solicitado</li>
             </ul>
 
             <h3>4.2 Moderación</h3>
             <p>Nos reservamos el derecho de eliminar cualquier contenido que consideremos inapropiado y de suspender o cancelar cuentas que violen estos términos.</p>
 
-            <h2>5. Transmisiones en Vivo</h2>
-            <p>Las transmisiones en vivo proporcionadas en este sitio pueden estar sujetas a:</p>
+            <h2>5. Contenido Audiovisual y Sesiones de F1</h2>
+            <p><strong>Formula 1 Fans Global no retransmite ni aloja</strong> sesiones de entrenamientos, clasificaciones, carreras ni otras señales de televisión de la Fórmula 1. Los derechos de esas transmisiones pertenecen a sus titulares y emisoras.</p>
             <ul>
-                <li><strong>Disponibilidad:</strong> No garantizamos la disponibilidad continua de las transmisiones</li>
-                <li><strong>Calidad:</strong> La calidad puede variar según su conexión a internet</li>
-                <li><strong>Derechos de Transmisión:</strong> Todo el contenido de transmisión es propiedad de sus respectivos dueños</li>
-                <li><strong>Restricciones Geográficas:</strong> Algunas transmisiones pueden no estar disponibles en ciertas regiones</li>
+                <li><strong>Enlaces oficiales:</strong> para ver las sesiones te remitimos a los servicios y canales oficiales (por ejemplo, F1 TV). Puede requerir suscripción y su disponibilidad depende de tu país.</li>
+                <li><strong>Videos en el sitio:</strong> solo publicamos videos de producción propia o videos incrustados desde el canal oficial de su titular, que se rigen por los términos de esa plataforma.</li>
+                <li><strong>Cuenta regresiva y horarios:</strong> son informativos y pueden cambiar. Confirma siempre los horarios en las fuentes oficiales.</li>
+                <li><strong>Prohibido:</strong> está prohibido usar este sitio, su chat o sus comentarios para compartir enlaces a retransmisiones no autorizadas o contenido pirata. Lo retiraremos y podremos bloquear al usuario.</li>
             </ul>
 
-            <h2>6. Enlaces a Terceros</h2>
+            <h2>6. Proveedores Externos</h2>
+            <p>Para mostrar noticias y otros datos utilizamos servicios de terceros (por ejemplo, un proveedor de noticias y servicios de alojamiento y analítica). Cada proveedor tiene sus propios términos y políticas, y los contenidos que entrega pertenecen a sus autores originales.</p>
+
+            <h2>7. Enlaces a Terceros</h2>
             <p>Este sitio puede contener enlaces a sitios web de terceros. No tenemos control sobre el contenido, políticas de privacidad o prácticas de estos sitios y no asumimos responsabilidad alguna por ellos. Le recomendamos revisar los términos y políticas de privacidad de cualquier sitio de terceros que visite.</p>
 
-            <h2>7. Tienda y Productos Afiliados</h2>
+            <h2>8. Tienda y Productos Afiliados</h2>
             <p>Nuestra sección de tienda puede incluir enlaces de afiliados a productos de terceros. En estos casos:</p>
             <ul>
                 <li>Podemos recibir una comisión por compras realizadas a través de estos enlaces</li>
@@ -243,10 +113,10 @@
                 <li>Las transacciones se realizan directamente con el vendedor</li>
             </ul>
 
-            <h2>8. Privacidad y Datos Personales</h2>
+            <h2>9. Privacidad y Datos Personales</h2>
             <p>El uso de nuestro sitio también está regido por nuestra <a href="privacidad.html">Política de Privacidad</a>, que describe cómo recopilamos, usamos y protegemos su información personal. Al usar nuestro sitio, usted acepta nuestras prácticas de privacidad.</p>
 
-            <h2>9. Descargo de Responsabilidad</h2>
+            <h2>10. Descargo de Responsabilidad</h2>
             <h3>9.1 "Tal Como Es"</h3>
             <p>Este sitio web se proporciona "tal como es" y "según disponibilidad" sin garantías de ningún tipo, ya sean expresas o implícitas. No garantizamos que:</p>
             <ul>
@@ -259,16 +129,16 @@
             <h3>9.2 Información y Contenido</h3>
             <p>Si bien nos esforzamos por proporcionar información precisa y actualizada sobre la Fórmula 1, no garantizamos la exactitud, integridad o utilidad de cualquier información en el sitio. Cualquier dependencia que tenga en dicha información es estrictamente bajo su propio riesgo.</p>
 
-            <h2>10. Limitación de Responsabilidad</h2>
+            <h2>11. Limitación de Responsabilidad</h2>
             <p>En ningún caso Formula 1 Fans Global, sus directores, empleados o colaboradores serán responsables por daños indirectos, incidentales, especiales, consecuentes o punitivos, incluyendo sin limitación, pérdida de beneficios, datos, uso, buena voluntad u otras pérdidas intangibles, resultantes de:</p>
             <ul>
                 <li>Su acceso o uso (o incapacidad de acceso o uso) del sitio</li>
                 <li>Cualquier conducta o contenido de terceros en el sitio</li>
                 <li>Cualquier contenido obtenido del sitio</li>
-                <li>Acceso no autorizado, uso o alteración de sus transmisiones o contenido</li>
+                <li>Acceso no autorizado, uso o alteración de sus datos o contenido</li>
             </ul>
 
-            <h2>11. Indemnización</h2>
+            <h2>12. Indemnización</h2>
             <p>Usted acepta defender, indemnizar y mantener indemne a Formula 1 Fans Global y sus licenciantes y licenciatarios, y sus empleados, contratistas, agentes, oficiales y directores, de y contra cualquier reclamación, daño, obligación, pérdida, responsabilidad, costo o deuda, y gasto (incluyendo pero no limitado a honorarios de abogados) que surja de:</p>
             <ul>
                 <li>Su uso y acceso al sitio</li>
@@ -276,7 +146,7 @@
                 <li>Su violación de cualquier derecho de terceros, incluyendo sin limitación cualquier derecho de autor, propiedad o privacidad</li>
             </ul>
 
-            <h2>12. Modificaciones del Sitio y Términos</h2>
+            <h2>13. Modificaciones del Sitio y Términos</h2>
             <p>Nos reservamos el derecho de:</p>
             <ul>
                 <li>Modificar o descontinuar, temporal o permanentemente, el sitio (o cualquier parte de él)</li>
@@ -285,32 +155,32 @@
             </ul>
             <p>Los cambios sustanciales serán notificados mediante un aviso en el sitio. El uso continuado del sitio después de dichos cambios constituye su aceptación de los nuevos términos.</p>
 
-            <h2>13. Terminación</h2>
+            <h2>14. Terminación</h2>
             <p>Podemos terminar o suspender su acceso al sitio inmediatamente, sin previo aviso o responsabilidad, por cualquier razón, incluyendo sin limitación si usted incumple estos términos. Todas las disposiciones de estos términos que por su naturaleza deban sobrevivir a la terminación sobrevivirán.</p>
 
-            <h2>14. Ley Aplicable y Jurisdicción</h2>
+            <h2>15. Ley Aplicable y Jurisdicción</h2>
             <p>Estos términos se regirán e interpretarán de acuerdo con las leyes aplicables, sin tener en cuenta sus disposiciones sobre conflictos de leyes. Cualquier disputa que surja de estos términos estará sujeta a la jurisdicción exclusiva de los tribunales competentes.</p>
 
-            <h2>15. Divisibilidad</h2>
+            <h2>16. Divisibilidad</h2>
             <p>Si alguna disposición de estos términos se considera inválida o inaplicable, dicha disposición será eliminada o limitada en la medida mínima necesaria, y las disposiciones restantes continuarán en pleno vigor y efecto.</p>
 
-            <h2>16. Acuerdo Completo</h2>
+            <h2>17. Acuerdo Completo</h2>
             <p>Estos términos constituyen el acuerdo completo entre usted y Formula 1 Fans Global con respecto al uso del sitio y reemplazan todos los acuerdos anteriores y contemporáneos, escritos u orales, con respecto a dicho tema.</p>
 
-            <h2>17. Renuncia</h2>
+            <h2>18. Renuncia</h2>
             <p>Ninguna renuncia por parte de Formula 1 Fans Global a cualquier término o condición establecido en estos términos se considerará una renuncia adicional o continua de dicho término o condición o una renuncia de cualquier otro término o condición.</p>
 
             <div class="contact-box">
                 <h3>¿Preguntas sobre estos términos?</h3>
                 <p>Si tiene alguna pregunta sobre estos Términos y Condiciones, por favor contáctenos a través de:</p>
-                <p><strong>Email:</strong> <a href="mailto:contacto@formula1fansglobal.com">contacto@formula1fansglobal.com</a></p>
+                <p><strong>Email:</strong> <a href="mailto:f1mexc11+soporte@gmail.com">f1mexc11+soporte@gmail.com</a></p>
                 <p><strong>Redes Sociales:</strong> <a href="https://www.tiktok.com/@formula1fansglobal">TikTok</a> | <a href="https://www.youtube.com/@F1FansC11MX">YouTube</a></p>
             </div>
         </div>
-    </div>
-
+    </main>
     <script src="../../js/menu.js" defer></script>
-    <script src="../../js/footer.js" defer></script>
     <script src="../../js/theme-toggle.js" defer></script>
+    <script src="../../js/notifications.js" defer></script>
+    <script src="../../js/footer.js" defer></script>
 </body>
 </html>

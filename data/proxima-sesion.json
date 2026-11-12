@@ -1,0 +1,9 @@
+{
+  "_ayuda": "Respaldo manual. La web consulta primero la API pública de Jolpica; este archivo solo se usa si la API falla. 'fecha' va en ISO 8601 con zona horaria, p. ej. 2027-03-06T12:30:00-06:00. Con fecha null no se muestra nada.",
+  "evento": "PRÓXIMA SESIÓN",
+  "subtitulo": "Fecha por confirmar",
+  "ronda": "TEMPORADA",
+  "ubicacion": "Por confirmar",
+  "sesion": "Por confirmar",
+  "fecha": null
+}

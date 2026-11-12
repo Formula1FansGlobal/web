@@ -155,6 +155,15 @@ footer {
     margin: 5px 0;
 }
 
+.footer-bottom p a {
+    color: #b0b0b0;
+    text-decoration: underline;
+}
+
+.footer-bottom p a:hover {
+    color: #FF1E00;
+}
+
 .footer-bottom-links {
     display: flex;
     justify-content: center;
@@ -230,7 +239,8 @@ footer {
     color: #999;
 }
 
-[data-theme="light"] .footer-bottom-links a {
+[data-theme="light"] .footer-bottom-links a,
+[data-theme="light"] .footer-bottom p a {
     color: #666;
 }
 

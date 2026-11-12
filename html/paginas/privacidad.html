@@ -1,232 +1,30 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Política de Privacidad de Formula 1 Fans Global - Conoce cómo protegemos y gestionamos tu información personal.">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
     <title>Política de Privacidad - Formula 1 Fans Global</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/components.css">
     <link rel="stylesheet" href="../../css/menu.css">
+    <link rel="stylesheet" href="../../css/legal.css">
     <link rel="stylesheet" href="../../css/footer.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: #e0e0e0;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        .privacy-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .privacy-header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding: 30px;
-            background: linear-gradient(135deg, #FF1E00 0%, #c71600 100%);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(255, 30, 0, 0.3);
-        }
-
-        .privacy-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #fff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        .privacy-header .last-updated {
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.9);
-            font-style: italic;
-        }
-
-        .privacy-section {
-            background: rgba(30, 30, 30, 0.8);
-            padding: 30px;
-            margin-bottom: 25px;
-            border-radius: 10px;
-            border-left: 4px solid #FF1E00;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .privacy-section h2 {
-            color: #FF1E00;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .privacy-section h3 {
-            color: #ff6b4a;
-            font-size: 1.3rem;
-            margin-top: 25px;
-            margin-bottom: 15px;
-        }
-
-        .privacy-section p {
-            margin-bottom: 15px;
-            color: #d0d0d0;
-        }
-
-        .privacy-section ul, .privacy-section ol {
-            margin-left: 25px;
-            margin-bottom: 15px;
-            color: #d0d0d0;
-        }
-
-        .privacy-section li {
-            margin-bottom: 10px;
-            line-height: 1.7;
-        }
-
-        .privacy-section strong {
-            color: #fff;
-        }
-
-        .highlight-box {
-            background: rgba(255, 30, 0, 0.1);
-            border: 2px solid rgba(255, 30, 0, 0.3);
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
-
-        .highlight-box p {
-            margin-bottom: 10px;
-        }
-
-        .info-box {
-            background: rgba(0, 123, 255, 0.1);
-            border-left: 4px solid #007bff;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 5px;
-        }
-
-        .warning-box {
-            background: rgba(255, 193, 7, 0.1);
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            margin: 15px 0;
-            border-radius: 5px;
-        }
-
-        .contact-section {
-            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            margin-top: 40px;
-            border: 2px solid #FF1E00;
-        }
-
-        .contact-section h3 {
-            color: #FF1E00;
-            margin-bottom: 15px;
-        }
-
-        .contact-section a {
-            color: #ff6b4a;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .contact-section a:hover {
-            color: #FF1E00;
-            text-decoration: underline;
-        }
-
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 12px 25px;
-            background: #FF1E00;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(255, 30, 0, 0.3);
-        }
-
-        .back-link:hover {
-            background: #c71600;
-            transform: translateY(-2px);
-            box-shadow: 0 7px 20px rgba(255, 30, 0, 0.5);
-        }
-
-        .table-container {
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: rgba(20, 20, 20, 0.5);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        th, td {
-            padding: 12px 15px;
-            text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        th {
-            background: rgba(255, 30, 0, 0.2);
-            color: #FF1E00;
-            font-weight: bold;
-        }
-
-        tr:hover {
-            background: rgba(255, 30, 0, 0.05);
-        }
-
-        .icon {
-            font-size: 1.2rem;
-        }
-
-        @media (max-width: 768px) {
-            .privacy-header h1 {
-                font-size: 1.8rem;
-            }
-
-            .privacy-section h2 {
-                font-size: 1.4rem;
-            }
-
-            .privacy-container {
-                padding: 20px 15px;
-            }
-
-            .privacy-section {
-                padding: 20px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/notifications.css">
 </head>
 <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <div id="nav-container"></div>
 
-    <div class="privacy-container">
+    <main id="contenido" class="legal privacy-container">
         <div class="privacy-header">
-            <h1>🔒 Política de Privacidad</h1>
-            <p class="last-updated">Última actualización: 10 de enero de 2026</p>
+            <h1>Política de Privacidad</h1>
+            <p class="last-updated">Última actualización: 12 de noviembre de 2026</p>
         </div>
 
         <!-- Introducción -->
@@ -249,13 +47,12 @@
             <p>Cuando visitas nuestro sitio, cierta información se recopila automáticamente:</p>
             <ul>
                 <li><strong>Datos de navegación:</strong> Dirección IP, tipo de navegador, sistema operativo, páginas visitadas, tiempo de permanencia, y URL de referencia.</li>
-                <li><strong>Cookies y tecnologías similares:</strong> Utilizamos cookies y localStorage para mejorar tu experiencia.</li>
+                <li><strong>Almacenamiento local:</strong> Guardamos en tu navegador (localStorage) tu preferencia de tema claro/oscuro y una copia temporal de datos de la F1 para que el sitio cargue más rápido. No contiene datos personales y puedes borrarla desde tu navegador.</li>
                 <li><strong>Analytics:</strong> Utilizamos Cloudflare Insights para análisis anónimo de tráfico.</li>
             </ul>
 
             <h3>2. Información que Proporcionas Voluntariamente</h3>
             <ul>
-                <li><strong>Chat en vivo:</strong> Nombre de usuario y mensajes que escribes en el chat (almacenados localmente en tu dispositivo).</li>
                 <li><strong>Newsletter:</strong> Dirección de correo electrónico si te suscribes a nuestro boletín.</li>
                 <li><strong>Formularios de contacto:</strong> Nombre, correo electrónico y mensaje cuando nos contactas.</li>
             </ul>
@@ -286,10 +83,16 @@
                             <td><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Ver política</a></td>
                         </tr>
                         <tr>
-                            <td>CDN</td>
-                            <td>jsDelivr</td>
-                            <td>Entrega de bibliotecas JavaScript</td>
-                            <td><a href="https://www.jsdelivr.com/privacy-policy-jsdelivr-net" target="_blank" rel="noopener">Ver política</a></td>
+                            <td>Datos de la temporada (calendario, clasificación, resultados)</td>
+                            <td>Jolpica F1 API</td>
+                            <td>Mostrar datos públicos de la F1 (tu navegador consulta directamente su servidor, que puede registrar tu IP)</td>
+                            <td><a href="https://github.com/jolpica/jolpica-f1" target="_blank" rel="noopener">Ver proyecto</a></td>
+                        </tr>
+                        <tr>
+                            <td>Videos</td>
+                            <td>YouTube (modo sin cookies, youtube-nocookie.com)</td>
+                            <td>Reproducir videos incrustados; solo se cargan cuando haces clic en reproducir</td>
+                            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Ver política</a></td>
                         </tr>
                         <tr>
                             <td>Fuentes</td>
@@ -440,7 +243,7 @@
             <h3>Cómo Ejercer tus Derechos</h3>
             <p>Para ejercer cualquiera de estos derechos:</p>
             <ol>
-                <li>Envía un correo a: <a href="mailto:contacto@formula1fansglobal.com">contacto@formula1fansglobal.com</a></li>
+                <li>Envía un correo a: <a href="mailto:f1mexc11+soporte@gmail.com">f1mexc11+soporte@gmail.com</a></li>
                 <li>Abre un issue en nuestro repositorio: <a href="https://github.com/Formula1FansGlobal/web/issues" target="_blank" rel="noopener">GitHub Issues</a></li>
                 <li>Reporta mediante nuestro <a href="https://formula1fansglobal.github.io/web/.well-known/security.txt" target="_blank">security.txt</a></li>
             </ol>
@@ -504,7 +307,7 @@
             <p>Nuestro sitio está dirigido a una audiencia general y no recopilamos intencionalmente información de menores de 13 años (o 16 años en la UE).</p>
 
             <div class="highlight-box">
-                <p><strong>Si eres padre o tutor</strong> y crees que tu hijo nos ha proporcionado información personal sin tu consentimiento, por favor contáctanos inmediatamente en <a href="mailto:contacto@formula1fansglobal.com">contacto@formula1fansglobal.com</a> para eliminar dicha información.</p>
+                <p><strong>Si eres padre o tutor</strong> y crees que tu hijo nos ha proporcionado información personal sin tu consentimiento, por favor contáctanos inmediatamente en <a href="mailto:f1mexc11+soporte@gmail.com">f1mexc11+soporte@gmail.com</a> para eliminar dicha información.</p>
             </div>
 
             <h3>Recomendaciones para Menores</h3>
@@ -635,7 +438,7 @@
         <div class="contact-section">
             <h3>📧 ¿Tienes Preguntas sobre esta Política?</h3>
             <p>Si tienes alguna pregunta, inquietud o solicitud relacionada con esta Política de Privacidad, contáctanos:</p>
-            <p><strong>Email:</strong> <a href="mailto:contacto@formula1fansglobal.com">contacto@formula1fansglobal.com</a></p>
+            <p><strong>Email:</strong> <a href="mailto:f1mexc11+soporte@gmail.com">f1mexc11+soporte@gmail.com</a></p>
             <p><strong>GitHub:</strong> <a href="https://github.com/Formula1FansGlobal/web" target="_blank" rel="noopener">Formula1FansGlobal/web</a></p>
             <p><strong>Security.txt:</strong> <a href="https://formula1fansglobal.github.io/web/.well-known/security.txt" target="_blank" rel="noopener">.well-known/security.txt</a></p>
             
@@ -645,9 +448,10 @@
         <div style="text-align: center;">
             <a href="../../index.html" class="back-link">← Volver al Inicio</a>
         </div>
-    </div>
-
+    </main>
     <script src="../../js/menu.js" defer></script>
+    <script src="../../js/theme-toggle.js" defer></script>
+    <script src="../../js/notifications.js" defer></script>
     <script src="../../js/footer.js" defer></script>
 </body>
 </html>

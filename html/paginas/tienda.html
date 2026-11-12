@@ -1,130 +1,102 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tienda F1 Fans Global: ropa, gorras y accesorios inspirados en la Fórmula 1.">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: http:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
-    <title>Tienda | Formula 1 Fans Global</title>
+    <meta name="description" content="Selección de productos de aficionados a la Fórmula 1 con enlaces de afiliados de Mercado Libre: ropa, gorras, miniaturas y más.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://*.mlstatic.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://cloudflareinsights.com; media-src 'self'; frame-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <title>Tienda de aficionados | Formula 1 Fans Global</title>
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../../img/Formula-1-Fans-Global3.jpg">
     <link rel="manifest" href="../../manifest.webmanifest">
-    <meta name="theme-color" content="#121212">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
+    <meta name="theme-color" content="#0b0b0e">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/components.css">
     <link rel="stylesheet" href="../../css/menu.css">
+    <link rel="stylesheet" href="../../css/sesiones.css">
     <link rel="stylesheet" href="../../css/tienda.css">
     <link rel="stylesheet" href="../../css/footer.css">
-    <link rel="stylesheet" href="../../css/breadcrumbs.css">
     <link rel="stylesheet" href="../../css/notifications.css">
 </head>
 <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <div id="nav-container"></div>
 
-    <header class="shop-hero">
-        <div class="shop-hero-content">
-            <h1>Tienda F1 Fans Global</h1>
-            <p>Ropa, gorras y accesorios inspirados en la Fórmula 1</p>
-        </div>
-    </header>
+    <main id="contenido">
+        <header class="page-hero">
+            <div class="container">
+                <p class="eyebrow">Tienda</p>
+                <h1>Para el aficionado a la F1</h1>
+                <p class="page-sub">Ropa, miniaturas y accesorios seleccionados de Mercado Libre.</p>
+                <p class="notice affiliate-note">
+                    <strong>Aviso de afiliación:</strong> somos participantes del Programa de Afiliados de Mercado Libre y podemos recibir una
+                    comisión por compras hechas desde estos enlaces, sin costo extra para ti. Los productos son de vendedores terceros: no los
+                    vendemos ni están afiliados a la Fórmula 1 ni a los equipos. Precios y disponibilidad pueden cambiar; confirma siempre en Mercado Libre.
+                </p>
+            </div>
+        </header>
 
-    <section class="shop-controls" aria-label="Controles de tienda">
-        <div class="controls-left">
-            <div class="filter-dropdown">
-                <button id="filter-btn" class="filter-btn" aria-haspopup="true" aria-expanded="false">Filtro: Todas ▼</button>
-                <div id="filter-menu" class="filter-menu closed" role="menu">
-                    <button class="filter-option active" data-category="all" role="menuitem">Todas</button>
-                    <button class="filter-option" data-category="ropa" role="menuitem">Ropa</button>
-                    <button class="filter-option" data-category="gorras" role="menuitem">Gorras</button>
-                    <button class="filter-option" data-category="accesorios" role="menuitem">Accesorios</button>
-                    <button class="filter-option" data-category="coleccionables" role="menuitem">Coleccionables</button>
-                    <button class="filter-option" data-category="posters" role="menuitem">Posters</button>
-                    <button class="filter-option" data-category="miniaturas" role="menuitem">Miniaturas</button>
-                    <button class="filter-option" data-category="herramientas" role="menuitem">Herramientas</button>
-                    <button class="filter-option" data-category="hogar" role="menuitem">Hogar</button>
-                    <button class="filter-option" data-category="accesorios para vehiculos" role="menuitem">Accesorios para Vehículos</button>
-                    <button class="filter-option" data-category="belleza y cuidado personal" role="menuitem">Belleza y Cuidado Personal</button>
-                    <button class="filter-option" data-category="muebles" role="menuitem">Muebles</button>
-                    <button class="filter-option" data-category="jardin" role="menuitem">Jardín</button>
-                    <button class="filter-option" data-category="electrodomesticos" role="menuitem">Electrodomésticos</button>
-                    <button class="filter-option" data-category="mascotas" role="menuitem">Mascotas</button>
-                    <button class="filter-option" data-category="camaras y accesorios" role="menuitem">Cámaras y Accesorios</button>
+        <section class="section section--tight" id="ofertas-sec" aria-labelledby="h-ofertas" hidden>
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Selección</p>
+                        <h2 id="h-ofertas">Destacados</h2>
+                    </div>
+                    <div class="scroller-nav">
+                        <button type="button" class="round-btn" id="of-prev" aria-label="Anterior">‹</button>
+                        <button type="button" class="round-btn" id="of-next" aria-label="Siguiente">›</button>
+                    </div>
                 </div>
+                <div class="offers" id="offers" tabindex="0" aria-label="Productos destacados"></div>
             </div>
-        </div>
-        <div class="controls-right">
-            <input id="search-input" class="search-input" placeholder="Buscar producto…" aria-label="Buscar producto">
-            <select id="sort-select" class="sort-select" aria-label="Ordenar">
-                <option value="relevance">Relevancia</option>
-                <option value="price_asc">Precio ↑</option>
-                <option value="price_desc">Precio ↓</option>
-                <option value="new">Novedades</option>
-            </select>
-        </div>
-    </section>
-
-    <section class="shop-subcontrols" aria-label="Filtros secundarios">
-        <div class="range-label">
-            <input type="range" id="price-range" min="0" max="5000" step="100" aria-label="Precio máximo">
-            <span id="price-label">Hasta $5,000</span>
-        </div>
-    </section>
-
-    <main class="shop-main">
-        <!-- Carrusel de productos destacados -->
-        <section class="carousel-section">
-            <div class="carousel-header">
-                <h2>Productos destacados</h2>
-                <div class="carousel-nav">
-                    <button class="carousel-btn prev" id="carousel-prev" aria-label="Anterior">‹</button>
-                    <button class="carousel-btn next" id="carousel-next" aria-label="Siguiente">›</button>
-                </div>
-            </div>
-            <div class="carousel-container" id="carousel-container">
-                <div class="carousel-track" id="carousel-track"></div>
-            </div>
-            <div class="carousel-indicators" id="carousel-indicators" aria-label="Indicadores de carrusel"></div>
         </section>
 
-        <div id="product-grid" class="product-grid" aria-live="polite"></div>
-    </main>
-
-    <!-- Footer será inyectado por footer.js -->
-
-    <!-- Modal de producto -->
-    <div id="product-modal" class="product-modal" hidden>
-        <div class="modal-backdrop"></div>
-        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-            <button class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
-            <div class="modal-media">
-                <img id="modal-image" alt="Producto" loading="lazy">
-            </div>
-            <div class="modal-body">
-                <h3 id="modal-title"></h3>
-                <p id="modal-price" class="modal-price"></p>
-                <p id="modal-desc" class="modal-desc">Producto oficial F1 Fans Global.</p>
-                <div class="modal-actions">
-                    <a id="modal-link" class="btn-primary btn-buy" target="_blank" rel="noopener">🛒 Comprar</a>
+        <section class="section section--alt" aria-labelledby="h-catalogo">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2 id="h-catalogo">Catálogo</h2>
+                        <p id="count" aria-live="polite"></p>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
+                <div class="shop-bar">
+                    <label class="field">
+                        <span class="sr-only">Buscar producto</span>
+                        <input type="search" id="q" class="input" placeholder="Buscar producto…" autocomplete="off">
+                    </label>
+                    <label class="field">
+                        <span class="sr-only">Ordenar</span>
+                        <select id="sort" class="input">
+                            <option value="rel">Relevancia</option>
+                            <option value="asc">Precio: menor a mayor</option>
+                            <option value="desc">Precio: mayor a menor</option>
+                        </select>
+                    </label>
+                    <label class="field price-field">
+                        <span id="price-text">Hasta $0</span>
+                        <input type="range" id="price" min="0" max="1000" step="50" aria-labelledby="price-text">
+                    </label>
+                </div>
+                <div class="chips" id="cats" role="group" aria-label="Categorías"></div>
+
+                <div class="product-grid" id="grid" aria-live="polite"></div>
+            </div>
+        </section>
+    </main>
 
     <script src="../../js/productos-afiliados.js"></script>
     <script src="../../js/productos-carrusel.js"></script>
     <script src="../../js/menu.js" defer></script>
-    <script src="../../js/tienda.js" defer></script>
     <script src="../../js/theme-toggle.js" defer></script>
-    <script src="../../js/lazy-images.js" defer></script>
     <script src="../../js/notifications.js" defer></script>
-    <script src="../../js/breadcrumbs.js" defer></script>
+    <script src="../../js/f1-data.js" defer></script>
+    <script src="../../js/tienda.js" defer></script>
     <script src="../../js/footer.js" defer></script>
 </body>
 </html>

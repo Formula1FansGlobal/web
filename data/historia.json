@@ -1,0 +1,255 @@
+{
+  "_ayuda": "Eventos de la línea de tiempo de la portada. Campos: anio (obligatorio), categoria (hito|seguridad|tecnica|campeonato), titulo, texto, cambio (opcional: lo que cambió en seguridad), fecha (opcional MM-DD, activa la tarjeta 'Un día como hoy'). Los campeones desde 2025 se agregan solos desde la API si no existe un evento de categoría 'campeonato' para ese año. Ver archivos-desarrollo/documentacion/COMO_ACTUALIZAR_HISTORIA.md",
+  "eventos": [
+    {
+      "id": "1950-01",
+      "anio": 1950,
+      "categoria": "hito",
+      "titulo": "Nace el Campeonato Mundial",
+      "texto": "Silverstone recibe la primera carrera del campeonato. La gana Giuseppe Farina con Alfa Romeo, que también se convierte en el primer campeón mundial de la historia.",
+      "fecha": "05-13"
+    },
+    {
+      "id": "1957-02",
+      "anio": 1957,
+      "categoria": "hito",
+      "titulo": "La obra maestra de Fangio",
+      "texto": "En el Nürburgring, Juan Manuel Fangio remonta con Maserati y gana el Gran Premio de Alemania. Ese año consigue su quinto título, una marca que resistió más de cuarenta años.",
+      "fecha": "08-04"
+    },
+    {
+      "id": "1958-03",
+      "anio": 1958,
+      "categoria": "hito",
+      "titulo": "Nace el campeonato de constructores",
+      "texto": "Por primera vez se premia también a los equipos. El primer campeón de constructores es Vanwall."
+    },
+    {
+      "id": "1959-04",
+      "anio": 1959,
+      "categoria": "tecnica",
+      "titulo": "El motor trasero cambia la F1",
+      "texto": "Jack Brabham gana el título con Cooper. Los monoplazas con el motor detrás del piloto dejan atrás el diseño clásico y todos los equipos terminan copiándolos."
+    },
+    {
+      "id": "1968-05",
+      "anio": 1968,
+      "categoria": "tecnica",
+      "titulo": "Alerones y patrocinadores",
+      "texto": "A finales de los 60 aparecen los alerones para pegar los coches al suelo, y Lotus estrena los colores de un patrocinador comercial. La F1 empieza a verse como la conocemos."
+    },
+    {
+      "id": "1970-06",
+      "anio": 1970,
+      "categoria": "hito",
+      "titulo": "Jochen Rindt, el único campeón póstumo",
+      "texto": "Rindt murió en la clasificación del Gran Premio de Italia, en Monza. Nadie logró superar sus puntos en las carreras restantes y fue proclamado campeón después de su muerte."
+    },
+    {
+      "id": "1976-07",
+      "anio": 1976,
+      "categoria": "seguridad",
+      "titulo": "El fuego de Niki Lauda",
+      "texto": "En el Nürburgring, el Ferrari de Niki Lauda se estrella y se incendia. Otros pilotos se detienen para sacarlo del coche. Seis semanas después, Lauda vuelve a correr en Monza.",
+      "fecha": "08-01",
+      "cambio": "El Nürburgring Nordschleife, de unos 22 km, sale del calendario de la F1. Se refuerzan los estándares de los circuitos y el rescate en pista."
+    },
+    {
+      "id": "1976-08",
+      "anio": 1976,
+      "categoria": "campeonato",
+      "titulo": "Hunt campeón por un punto",
+      "texto": "Bajo una lluvia intensa en Japón, Lauda decide no continuar y James Hunt consigue el título por un solo punto.",
+      "fecha": "10-24"
+    },
+    {
+      "id": "1977-09",
+      "anio": 1977,
+      "categoria": "tecnica",
+      "titulo": "Efecto suelo y motor turbo",
+      "texto": "Lotus presenta el 78, que aprovecha el efecto suelo para pegar el coche a la pista, y Renault debuta con el motor turbo en la F1."
+    },
+    {
+      "id": "1978-10",
+      "anio": 1978,
+      "categoria": "seguridad",
+      "titulo": "La F1 se toma en serio la atención médica",
+      "texto": "Ese año se incorpora el neurocirujano Sid Watkins como médico de la F1, un cargo que ocupó hasta 2004. En septiembre, el campeonato lamenta la muerte de Ronnie Peterson tras el accidente en la salida de Monza.",
+      "fecha": "09-10",
+      "cambio": "Con los años se consolidan el centro médico en cada circuito, el coche médico y la atención inmediata en pista."
+    },
+    {
+      "id": "1981-11",
+      "anio": 1981,
+      "categoria": "tecnica",
+      "titulo": "El chasis de fibra de carbono",
+      "texto": "El McLaren MP4/1, diseñado por John Barnard, estrena un monocasco de fibra de carbono. Su resistencia se vio en choques violentos como el de John Watson en Monza, del que salió ileso.",
+      "cambio": "En pocos años todos los equipos adoptan el chasis de fibra de carbono, mucho más resistente que el aluminio."
+    },
+    {
+      "id": "1982-12",
+      "anio": 1982,
+      "categoria": "seguridad",
+      "titulo": "Un año negro: Villeneuve y Pironi",
+      "texto": "Gilles Villeneuve muere en la clasificación de Zolder y, meses después, Didier Pironi sufre en Hockenheim un accidente que termina su carrera.",
+      "fecha": "05-08",
+      "cambio": "Desde 1983 se prohíben los coches de efecto suelo (se exigen fondos planos), en parte por la peligrosidad de las velocidades en curva."
+    },
+    {
+      "id": "1988-13",
+      "anio": 1988,
+      "categoria": "hito",
+      "titulo": "El año de McLaren",
+      "texto": "El MP4/4 de Senna y Prost, con motor Honda turbo, gana 15 de las 16 carreras de la temporada."
+    },
+    {
+      "id": "1992-14",
+      "anio": 1992,
+      "categoria": "tecnica",
+      "titulo": "Suspensión activa: una F1 de ciencia ficción",
+      "texto": "Nigel Mansell conquista el título con el Williams FW14B, un coche con suspensión activa y ayudas electrónicas muy avanzadas. Para 1994 estas ayudas se prohíben."
+    },
+    {
+      "id": "1994-15",
+      "anio": 1994,
+      "categoria": "seguridad",
+      "titulo": "Imola 1994: el fin de semana que lo cambió todo",
+      "texto": "El viernes, Rubens Barrichello sufre un fuerte accidente del que se recupera. El sábado muere Roland Ratzenberger y el domingo, Ayrton Senna. Es uno de los momentos más duros de la historia del deporte.",
+      "fecha": "05-01",
+      "cambio": "La FIA crea un grupo de expertos en seguridad, se rediseñan curvas peligrosas, se endurecen las pruebas de choque y los pilotos reactivan su asociación (GPDA) para opinar sobre las reglas."
+    },
+    {
+      "id": "2003-16",
+      "anio": 2003,
+      "categoria": "seguridad",
+      "titulo": "El HANS se vuelve obligatorio",
+      "texto": "Todos los pilotos deben usar el dispositivo HANS, que sujeta la cabeza al casco y reduce el riesgo de lesiones graves de cuello y cráneo en los impactos."
+    },
+    {
+      "id": "2005-17",
+      "anio": 2005,
+      "categoria": "hito",
+      "titulo": "Seis coches en Indianápolis",
+      "texto": "Por un problema con los neumáticos Michelin, solo seis autos toman la salida del Gran Premio de Estados Unidos. Es una de las carreras más extrañas de la historia.",
+      "fecha": "06-19"
+    },
+    {
+      "id": "2008-18",
+      "anio": 2008,
+      "categoria": "campeonato",
+      "titulo": "Hamilton campeón en la última curva",
+      "texto": "Lewis Hamilton se proclama campeón en Brasil al adelantar a Timo Glock en la última vuelta. A sus 23 años era el campeón más joven hasta entonces.",
+      "fecha": "11-02"
+    },
+    {
+      "id": "2009-19",
+      "anio": 2009,
+      "categoria": "seguridad",
+      "titulo": "El resorte de Hungría",
+      "texto": "En la clasificación, un resorte desprendido de otro coche golpea el casco de Felipe Massa. Sufre una lesión grave en la cabeza, pero se recupera.",
+      "fecha": "07-25",
+      "cambio": "Impulsó la investigación sobre la protección de la cabeza de los pilotos en cabinas abiertas, un trabajo que años después desembocó en el halo."
+    },
+    {
+      "id": "2010-20",
+      "anio": 2010,
+      "categoria": "campeonato",
+      "titulo": "Vettel, el campeón más joven",
+      "texto": "Sebastian Vettel gana el título en la última carrera, en Abu Dabi, con 23 años: el campeón más joven de la historia.",
+      "fecha": "11-14"
+    },
+    {
+      "id": "2011-21",
+      "anio": 2011,
+      "categoria": "tecnica",
+      "titulo": "Llega el DRS",
+      "texto": "El alerón móvil (DRS) se estrena para facilitar los adelantamientos. Desde 2009 los autos usaban también el KERS, un sistema de recuperación de energía."
+    },
+    {
+      "id": "2014-23",
+      "anio": 2014,
+      "categoria": "seguridad",
+      "titulo": "Jules Bianchi y la lección de Suzuka",
+      "texto": "Bajo la lluvia en Suzuka, el Marussia de Jules Bianchi chocó con una grúa que retiraba otro coche. Sufrió lesiones muy graves y falleció el 17 de julio de 2015, a los 25 años.",
+      "fecha": "10-05",
+      "cambio": "Se introdujo el Virtual Safety Car, se revisaron los procedimientos con grúas y banderas amarillas, y el número 17 se retiró en su honor."
+    },
+    {
+      "id": "2014-22",
+      "anio": 2014,
+      "categoria": "tecnica",
+      "titulo": "Era híbrida: llegan los V6 turbo",
+      "texto": "Cambian los motores y con ellos el orden de la parrilla: Mercedes gana ocho títulos de constructores seguidos, de 2014 a 2021."
+    },
+    {
+      "id": "2016-24",
+      "anio": 2016,
+      "categoria": "seguridad",
+      "titulo": "Se aprueba el halo",
+      "texto": "La FIA aprueba el halo, el arco de titanio que protege la cabeza del piloto. Es obligatorio en todos los monoplazas desde la temporada 2018."
+    },
+    {
+      "id": "2020-26",
+      "anio": 2020,
+      "categoria": "campeonato",
+      "titulo": "Hamilton iguala a Schumacher",
+      "texto": "Lewis Hamilton gana en Turquía y alcanza sus siete títulos mundiales, igualando el récord de Michael Schumacher.",
+      "fecha": "11-15"
+    },
+    {
+      "id": "2020-25",
+      "anio": 2020,
+      "categoria": "seguridad",
+      "titulo": "Los 28 segundos de Grosjean",
+      "texto": "En Bahréin, el Haas de Romain Grosjean choca contra la barrera en la salida, se parte en dos y se incendia. Grosjean sale por su propio pie del fuego con quemaduras en las manos.",
+      "fecha": "11-29",
+      "cambio": "Fue la prueba más dramática del halo, el monocasco y los trajes ignífugos, y de la rapidez de los equipos de rescate."
+    },
+    {
+      "id": "2021-27",
+      "anio": 2021,
+      "categoria": "campeonato",
+      "titulo": "Abu Dabi: un título decidido en la última vuelta",
+      "texto": "Max Verstappen supera a Lewis Hamilton en la última vuelta de la última carrera y gana su primer campeonato, en una de las temporadas más disputadas de la historia.",
+      "fecha": "12-12"
+    },
+    {
+      "id": "2022-28",
+      "anio": 2022,
+      "categoria": "seguridad",
+      "titulo": "Zhou da la vuelta en Silverstone",
+      "texto": "En la primera vuelta del Gran Premio de Gran Bretaña, el Alfa Romeo de Zhou Guanyu vuelca, se desliza boca abajo por la grava y sale por encima de las barreras de llantas. Salió sin lesiones graves.",
+      "fecha": "07-03",
+      "cambio": "El halo y el arco antivuelco resistieron el impacto, y el accidente impulsó nuevas revisiones de las barreras y las vallas."
+    },
+    {
+      "id": "2022-29",
+      "anio": 2022,
+      "categoria": "tecnica",
+      "titulo": "Regresa el efecto suelo",
+      "texto": "Llega un reglamento pensado para que los coches puedan seguirse más de cerca, junto con un límite presupuestario para los equipos (desde 2021)."
+    },
+    {
+      "id": "2024-30",
+      "anio": 2024,
+      "categoria": "campeonato",
+      "titulo": "Verstappen, tetracampeón",
+      "texto": "Max Verstappen asegura en Las Vegas su cuarto título consecutivo.",
+      "fecha": "11-23"
+    },
+    {
+      "id": "2025-31",
+      "anio": 2025,
+      "categoria": "hito",
+      "titulo": "Hamilton viste de rojo",
+      "texto": "Después de doce temporadas con Mercedes, Lewis Hamilton comienza su etapa en Ferrari."
+    },
+    {
+      "id": "2026-32",
+      "anio": 2026,
+      "categoria": "tecnica",
+      "titulo": "La nueva era de la F1",
+      "texto": "Entra en vigor un reglamento nuevo: motores con mucha más energía eléctrica, combustibles sostenibles, aerodinámica activa y monoplazas más compactos. Llegan también Cadillac, como undécimo equipo, y Audi."
+    }
+  ]
+}

@@ -52,7 +52,7 @@ fetch(menuPath)
         const currentSeasonYear = new Date().getFullYear();
         if (seasonLink) {
             seasonLink.setAttribute('href', `${basePrefix}html/paginas/calendario_temporada.html?year=${currentSeasonYear}`);
-            seasonLink.textContent = `📅 Temporada ${currentSeasonYear}`;
+            seasonLink.textContent = 'Calendario';
         }
 
         // Marcar enlace activo según la URL (ignorando query params)
@@ -74,7 +74,34 @@ fetch(menuPath)
             }
         });
 
+        // Menú hamburguesa (móvil)
+        const siteNav = document.querySelector('nav.site-nav');
+        const toggle = siteNav && siteNav.querySelector('.nav-toggle');
+        if (toggle) {
+            const setOpen = (open) => {
+                siteNav.classList.toggle('is-open', open);
+                toggle.setAttribute('aria-expanded', String(open));
+                toggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+            };
+            toggle.addEventListener('click', () => setOpen(!siteNav.classList.contains('is-open')));
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && siteNav.classList.contains('is-open')) {
+                    setOpen(false);
+                    toggle.focus();
+                }
+            });
+            siteNav.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+        }
+
     })
     .catch(error => {
         console.error('Error cargando el menú:', error);
     });
+
+
+// Service worker (PWA): permite abrir el sitio sin conexión y instalarlo como app
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register(`${basePrefix}sw.js`).catch((e) => console.warn('SW no registrado:', e));
+    });
+}

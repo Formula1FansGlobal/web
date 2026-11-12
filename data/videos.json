@@ -1,0 +1,4 @@
+{
+  "_ayuda": "Agrega videos a la lista 'videos'. 'id' es el código de 11 caracteres de YouTube (lo que va después de v= en la URL). Sube solo videos propios o de canales oficiales que permitan incrustar. Ver archivos-desarrollo/documentacion/COMO_AGREGAR_VIDEOS.md",
+  "videos": []
+}

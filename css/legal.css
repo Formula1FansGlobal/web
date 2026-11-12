@@ -1,0 +1,41 @@
+/* ==========================================================================
+   legal.css - Términos y política de privacidad
+   ========================================================================== */
+
+.legal { max-width: 860px; margin: 0 auto; padding: clamp(28px, 6vw, 64px) var(--gutter) 24px; }
+
+.terms-header, .privacy-header { margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.terms-header h1, .privacy-header h1 { margin: 0 0 6px; font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.15; letter-spacing: -0.02em; }
+.last-updated { margin: 0; color: var(--text-faint); font-size: 0.9rem; }
+
+.legal h2 { margin: 36px 0 10px; font-size: clamp(1.2rem, 2.4vw, 1.5rem); line-height: 1.3; color: var(--text); }
+.legal h3 { margin: 22px 0 8px; font-size: 1.05rem; color: var(--text); }
+.legal p, .legal li { color: var(--text-dim); line-height: 1.7; }
+.legal ul, .legal ol { padding-left: 22px; }
+.legal li { margin: 4px 0; }
+.legal strong { color: var(--text); }
+.legal a { color: var(--brand-strong); text-underline-offset: 3px; }
+.legal a:hover { color: var(--text); }
+.legal .icon { margin-right: 8px; }
+
+.privacy-section { padding: 6px 0 4px; border-bottom: 1px solid var(--line); }
+.privacy-section:last-of-type { border-bottom: 0; }
+
+.highlight-box, .info-box, .warning-box, .contact-box, .contact-section {
+    margin: 18px 0; padding: 16px 18px;
+    background: var(--bg-card); border: 1px solid var(--line); border-left: 4px solid var(--gold);
+    border-radius: var(--radius-sm);
+}
+.info-box { border-left-color: var(--brand); }
+.warning-box { border-left-color: var(--warn); }
+.contact-box, .contact-section { border-left-color: var(--brand); margin-top: 36px; }
+.highlight-box p, .info-box p, .warning-box p, .contact-box p, .contact-section p { margin: 6px 0; }
+.contact-box h3, .contact-section h3 { margin-top: 0; }
+
+.table-container { overflow-x: auto; margin: 14px 0; border: 1px solid var(--line); border-radius: var(--radius-sm); }
+.table-container table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+.table-container th, .table-container td { padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--line); color: var(--text-dim); vertical-align: top; }
+.table-container th { background: var(--bg-elev); color: var(--text-faint); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
+.table-container tr:last-child td { border-bottom: 0; }
+
+.back-link { display: inline-block; margin: 28px 0 0; font-weight: 600; text-decoration: none; }

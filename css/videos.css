@@ -1,0 +1,39 @@
+/* ==========================================================================
+   videos.css - Galería de videos (html/paginas/videos.html)
+   ========================================================================== */
+
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+
+.video-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+}
+.video-frame { position: relative; aspect-ratio: 16 / 9; background: #000; }
+.video-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+.video-play {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    appearance: none; border: 0; padding: 0; cursor: pointer; background: #000;
+}
+.video-play img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.85; transition: opacity 0.2s, transform 0.3s var(--ease); }
+.video-play:hover img { opacity: 1; transform: scale(1.03); }
+.video-play-icon {
+    position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--brand); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem; padding-left: 4px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.video-info { padding: 16px 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+.video-info h3 { margin: 0; font-size: 1.02rem; line-height: 1.35; }
+.video-info p { margin: 0; color: var(--text-dim); font-size: 0.9rem; }
+.video-meta { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 0.78rem; color: var(--text-faint); }
+
+.video-empty { grid-column: 1 / -1; text-align: center; padding: clamp(32px, 6vw, 64px); }
+.video-empty h3 { margin: 0 0 8px; font-size: 1.3rem; }
+.video-empty p { margin: 0 auto 20px; color: var(--text-dim); max-width: 48ch; }

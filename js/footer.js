@@ -30,6 +30,10 @@ class FooterManager {
             
             // Reescribir rutas dinámicamente
             this.rewriteFooterPaths();
+
+            // Año actual en el copyright
+            const yearEl = document.querySelector('footer [data-year]');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
             
             // Inicializar formulario de newsletter
             this.initNewsletter();

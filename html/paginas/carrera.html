@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Resultados de la carrera, clasificación y videos de un Gran Premio de la Fórmula 1.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://i.ytimg.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.jolpi.ca https://cloudflareinsights.com; media-src 'self'; frame-src https://www.youtube-nocookie.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <title>Gran Premio | Formula 1 Fans Global</title>
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../../img/Formula-1-Fans-Global3.jpg">
+    <link rel="manifest" href="../../manifest.webmanifest">
+    <meta name="theme-color" content="#0b0b0e">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/menu.css">
+    <link rel="stylesheet" href="../../css/sesiones.css">
+    <link rel="stylesheet" href="../../css/temporada.css">
+    <link rel="stylesheet" href="../../css/videos.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/notifications.css">
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <div id="nav-container"></div>
+
+    <main id="contenido">
+        <header class="page-hero">
+            <div class="container">
+                <p class="eyebrow" id="r-eyebrow">Gran Premio</p>
+                <h1 id="r-title" class="skeleton">&nbsp;</h1>
+                <div class="race-meta" id="r-meta"></div>
+                <div class="race-nav">
+                    <a class="link-arrow" id="r-back" href="calendario_temporada.html">Volver a la temporada</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="section section--tight" aria-labelledby="r-tab-title">
+            <div class="container">
+                <h2 id="r-tab-title" class="sr-only">Detalle del Gran Premio</h2>
+                <div class="tabs tabs--scroll" role="tablist" aria-label="Secciones del Gran Premio" style="margin-bottom:20px">
+                    <button class="tab is-active" role="tab" aria-selected="true" id="rtab-carrera" data-tab="carrera" aria-controls="r-panel">Carrera</button>
+                    <button class="tab" role="tab" aria-selected="false" id="rtab-clasif" data-tab="clasif" aria-controls="r-panel" tabindex="-1">Clasificación</button>
+                    <button class="tab" role="tab" aria-selected="false" id="rtab-videos" data-tab="videos" aria-controls="r-panel" tabindex="-1">Videos</button>
+                </div>
+                <div id="r-panel" role="tabpanel" aria-labelledby="rtab-carrera" aria-live="polite">
+                    <div class="skeleton" style="height: 320px"></div>
+                </div>
+                <p class="data-credit">Datos: Jolpica F1 API (compatible con Ergast). Los videos oficiales pertenecen a sus titulares.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../js/menu.js" defer></script>
+    <script src="../../js/theme-toggle.js" defer></script>
+    <script src="../../js/notifications.js" defer></script>
+    <script src="../../js/f1-data.js" defer></script>
+    <script src="../../js/carrera.js" defer></script>
+    <script src="../../js/footer.js" defer></script>
+</body>
+</html>

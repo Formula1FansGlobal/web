@@ -1,0 +1,3 @@
+# Redirecciones de Cloudflare Pages
+# URLs antiguas -> nuevas
+/html/paginas/video_gp.html   /html/paginas/videos.html   301

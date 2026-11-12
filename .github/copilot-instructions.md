@@ -2,14 +2,14 @@
 
 ## Descripción General del Proyecto
 
-Formula 1 Fans Global es un **sitio web estático HTML/CSS/JavaScript** (sin backend) enfocado en entregar noticias de F1, transmisiones en vivo, calendarios de eventos y participación de aficionados. El sitio está habilitado para PWA y se implementa a través de GitHub Pages.
+Formula 1 Fans Global es un **sitio web estático HTML/CSS/JavaScript** (sin backend) enfocado en entregar noticias de F1, calendarios de eventos e información para aficionados. **No retransmite sesiones de F1** (ver política de contenido). El sitio está habilitado para PWA y se implementa a través de GitHub Pages.
 
 **Características Clave:**
 - Frontend puro (sin dependencias de framework)
 - Diseño centrado en contenido en español
 - Manifiesto PWA para experiencia offline/instalable
 - Inyección dinámica de menú y estructura modular de páginas
-- Soporte para transmisión en vivo + chat en tiempo real
+- Página En Vivo informativa: cuenta regresiva + enlaces a canales oficiales (sin retransmisión propia)
 - Calendario de carreras interactivo
 - Tienda de mercancía con filtros (estructura preparada)
 
@@ -42,31 +42,32 @@ Al agregar nuevas páginas:
 
 ---
 
-### 2. **Componentes de Stream en Vivo**
+### 2. **Página En Vivo (informativa, sin retransmisión)**
 
-**Stream & Live Components** (Componentes de Stream y Transmisión en Vivo)
+> ⚠️ **POLÍTICA DE CONTENIDO (obligatoria):** el sitio **no** retransmite, graba ni aloja la señal de la F1.
+> No agregar reproductores HLS/RTMP/ngrok ni videos de sesiones/carreras en `videos/`.
+> Los videos de F1 solo se **incrustan** desde el canal oficial de su titular; los videos locales son de producción propia.
+> No poner claves de API en el repo (usar la Pages Function `functions/api/noticias.js`).
+> Las noticias se piden al proxy (`js/config.js` → `newsEndpoint`) y se pintan con DOM/`textContent`, nunca con `innerHTML`; los ejemplos de abajo con `API_KEY` en el cliente están obsoletos.
+> Detalle: `archivos-desarrollo/documentacion/POLITICA_DE_CONTENIDO.md`.
 
-La transmisión en vivo de carreras F1 usa una **arquitectura basada en modal** con flujos de control duales:
+## Sistema de diseño (páginas rediseñadas: index, noticias, en-vivo, videos, video_gp)
 
-**Archivos Principales:** [js/stream.js](js/stream.js), [js/en-vivo.js](en-vivo.js), [css/en-vivo.css](css/en-vivo.css)
+- Orden de CSS: `tokens.css` → `base.css` → `components.css` → `menu.css` → CSS de la página → `footer.css`.
+- Colores, radios y sombras SIEMPRE con variables de `tokens.css` (soporta `[data-theme="dark|light"]`).
+- Páginas antiguas (tienda, calendario, temporadas, términos, privacidad) solo cargan `tokens.css` + `menu.css`.
+- Datos de la F1: `js/f1-data.js` (`F1Data`, `F1UI`). Contenido externo siempre con `textContent`/`F1UI.h()`, nunca `innerHTML`.
+- Historia de la portada: `data/historia.json` + `js/historia.js` (ver `COMO_ACTUALIZAR_HISTORIA.md`). Verifica los hechos antes de agregar eventos.
+- Videos: `data/videos.json` (ver `archivos-desarrollo/documentacion/COMO_AGREGAR_VIDEOS.md`).
+- Al agregar páginas o cambiar archivos del shell, actualiza `sw.js` (lista `SHELL` y `CACHE_VERSION`).
+- Estado y pendientes: `archivos-desarrollo/documentacion/ROADMAP.md`.
 
-**Decisiones Clave de Arquitectura:**
-- **Selección defensiva de elementos (Defensive element selection):** `stream.js` verifica si los elementos del DOM existen antes de adjuntar listeners (previene crashes en páginas sin stream)
-- **Clases de estado (State classes):** El estado de reproducción de video usa clases CSS (`playing-stream`, `stream-active`, `hidden`) en lugar de estilos inline
-- **Patrón modal (Modal pattern):** Modal de opciones de reproducción (`play-modal`) con dos botones:
-  - `play-live-btn`: Comienza desde la posición actual (Start from current position)
-  - `play-from-start-btn`: Rebobina hacia el inicio (Rewind to beginning)
-- **Gestión de visibilidad de elementos (Element visibility management):** Estados pre-carrera (`preImage`), vivo (`liveVideo`), post-carrera (`postImage`) controlados mediante propiedad display
+`html/paginas/en-vivo.html` muestra:
+- Cuenta regresiva alimentada por `data/proxima-sesion.json` (editable sin tocar código) vía `js/contador.js`.
+- Panel `.watch-panel` con enlaces oficiales (F1 TV, canal oficial de YouTube, formula1.com).
 
-**Clases Críticas:**
-- `.playing-stream` — Se añade al contenedor cuando el video está activo (Added when active)
-- `.stream-active` — Se añade al contenedor del stream (Added to stream container)
-- `.hidden` — Se añade a elementos a ocultar (Added to elements to hide)
-
-Al modificar la lógica del stream:
-- Actualizar estado mediante alternancia de clases, no estilos inline (Update via class toggling, not inline styles)
-- Verificar siempre la existencia de elementos antes de adjuntar listeners (Always check element existence)
-- Mantener el flujo de listeners ended/pause para funcionalidad de repetición (Maintain listener flow for replay)
+Los archivos `stream.js`, `en-vivo.js` y `hls-config.js` fueron eliminados. Las secciones de este documento que los
+mencionan más abajo (arquitectura del modal/stream) están **obsoletas** y se conservan solo como referencia histórica.
 
 ---
 
@@ -99,7 +100,7 @@ Noticias dinámicas de F1 cargadas desde la API **NewsData.io**.
 
 **Patrón Clave (Key Pattern):**
 ```javascript
-const API_KEY = "pub_67944619781bfef5f895bb18760aa3cf7bf21";
+const API_KEY = "NUNCA-PONGAS-CLAVES-EN-EL-CLIENTE"; // obsoleto: usar functions/api/noticias.js
 const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=formula1&language=es`;
 ```
 
@@ -290,7 +291,7 @@ Carga y muestra noticias dinámicas de F1 desde la API de NewsData.io. Las notic
 **Funcionalidad (js/noticias.js):**
 
 ```javascript
-const API_KEY = "pub_67944619781bfef5f895bb18760aa3cf7bf21";
+const API_KEY = "NUNCA-PONGAS-CLAVES-EN-EL-CLIENTE"; // obsoleto: usar functions/api/noticias.js
 const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=formula1&language=es`;
 
 // En DOMContentLoaded:
@@ -875,7 +876,7 @@ Patrón para cargar datos dinámicos desde API:
 
 **En js/noticias.js:**
 ```javascript
-const API_KEY = "pub_67944619781bfef5f895bb18760aa3cf7bf21";
+const API_KEY = "NUNCA-PONGAS-CLAVES-EN-EL-CLIENTE"; // obsoleto: usar functions/api/noticias.js
 const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=formula1&language=es`;
 
 async function cargarNoticias() {
