@@ -1,0 +1,30 @@
+# Cabeceras de seguridad para Cloudflare Pages (se aplican a todo el sitio).
+# Documentación: https://developers.cloudflare.com/pages/configuration/headers/
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Content-Security-Policy: frame-ancestors 'none'
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  X-Permitted-Cross-Domain-Policies: none
+
+# El service worker y los datos siempre deben revalidarse
+/sw.js
+  Cache-Control: no-cache
+  Service-Worker-Allowed: /
+
+/data/*
+  Cache-Control: no-cache
+
+/manifest.webmanifest
+  Cache-Control: no-cache
+
+# Recursos estáticos
+/css/*
+  Cache-Control: public, max-age=3600
+/js/*
+  Cache-Control: public, max-age=3600
+/img/*
+  Cache-Control: public, max-age=2592000
