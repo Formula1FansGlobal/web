@@ -1,149 +1,128 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
-    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cuenta regresiva de las sesiones de F1 y enlaces para verlas en los canales oficiales.">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://cloudflareinsights.com; media-src 'self'; frame-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
-    <title>En Vivo</title>
+    <meta name="description" content="Horario de todas las sesiones del fin de semana de F1 en tu hora local, cuenta regresiva, resultados de la última carrera y dónde verlas de forma oficial.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.jolpi.ca https://cloudflareinsights.com; media-src 'self'; frame-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <title>Sesiones del fin de semana | Formula 1 Fans Global</title>
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../../img/Formula-1-Fans-Global3.jpg">
     <link rel="manifest" href="../../manifest.webmanifest">
-    <meta name="theme-color" content="#121212">
+    <meta name="theme-color" content="#0b0b0e">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/components.css">
     <link rel="stylesheet" href="../../css/menu.css">
-    <link rel="stylesheet" href="../../css/en-vivo.css">
+    <link rel="stylesheet" href="../../css/sesiones.css">
     <link rel="stylesheet" href="../../css/footer.css">
-    <link rel="stylesheet" href="../../css/breadcrumbs.css">
     <link rel="stylesheet" href="../../css/notifications.css">
 </head>
 <body>
-    <!-- Menú de navegación -->
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <div id="nav-container"></div>
 
-    <!-- Contenido principal En Vivo -->
-    <main id="en-vivo-main" role="main" aria-labelledby="event-title">
-        <div class="live-container">
-            <!-- Columna izquierda: Info y Contador -->
-            <div class="live-sidebar">
-                <!-- Banner del evento -->
-                <header class="event-banner">
-                    <div class="event-info">
-                        <div class="event-badge">🏁 PRÓXIMA SESIÓN</div>
-                        <h1 id="event-title">PRÓXIMA SESIÓN</h1>
-                        <p id="event-subtitle">Fecha por confirmar</p>
-                    </div>
-                </header>
+    <main id="contenido">
+        <header class="page-hero">
+            <div class="container">
+                <p class="eyebrow">Sesiones</p>
+                <h1 id="gp-title" class="skeleton">&nbsp;</h1>
+                <p class="page-sub" id="gp-sub">Cargando el calendario del fin de semana…</p>
 
-                <!-- Contador con estilo moderno -->
-                <aside class="countdown-card" aria-label="Cuenta regresiva">
-                    <div class="countdown-header">
-                        <span class="countdown-icon">⏱️</span>
-                        <h2 id="ronda-info">TEMPORADA</h2>
-                    </div>
-                    <div id="contador" class="countdown-display">
-                        <div class="time-block">
-                            <span id="dias" class="time-value">00</span>
-                            <span class="time-label">DÍAS</span>
-                        </div>
-                        <div class="time-block">
-                            <span id="horas" class="time-value">00</span>
-                            <span class="time-label">HRS</span>
-                        </div>
-                        <div class="time-block">
-                            <span id="minutos" class="time-value">00</span>
-                            <span class="time-label">MIN</span>
-                        </div>
-                        <div class="time-block">
-                            <span id="segundos" class="time-value">00</span>
-                            <span class="time-label">SEG</span>
-                        </div>
-                    </div>
-                </aside>
-
-                <!-- Info adicional -->
-                <div class="race-info">
-                    <div class="info-item">
-                        <span class="info-icon">📍</span>
-                        <div class="info-text">
-                            <strong>Ubicación</strong>
-                            <p id="info-ubicacion">Por confirmar</p>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-icon">🏎️</span>
-                        <div class="info-text">
-                            <strong>Sesión</strong>
-                            <p id="info-sesion">Por confirmar</p>
-                        </div>
+                <div class="big-count" id="big-count" role="timer" aria-live="off">
+                    <p class="big-count-label" id="big-label">Próxima sesión</p>
+                    <div class="big-count-digits">
+                        <div><span id="b-d">--</span><small>días</small></div>
+                        <div><span id="b-h">--</span><small>horas</small></div>
+                        <div><span id="b-m">--</span><small>min</small></div>
+                        <div><span id="b-s">--</span><small>seg</small></div>
                     </div>
                 </div>
             </div>
+        </header>
 
-            <!-- Columna derecha: cómo ver las sesiones (sin retransmisión propia) -->
-            <div class="live-main">
-                <section class="watch-panel" aria-labelledby="watch-title">
-                    <div class="watch-badge">📡 SEÑAL OFICIAL</div>
-                    <h2 id="watch-title">Mira las sesiones en los canales oficiales</h2>
-                    <p class="watch-lead">
-                        En Formula 1 Fans Global <strong>no retransmitimos</strong> prácticas, clasificaciones ni carreras:
-                        los derechos pertenecen a la Fórmula 1 y a sus emisoras. Aquí te damos la cuenta regresiva
-                        y los enlaces para verlas legalmente.
-                    </p>
-
-                    <div class="watch-links">
-                        <a class="watch-link" href="https://f1tv.formula1.com/" target="_blank" rel="noopener noreferrer">
-                            <span class="watch-link-icon">📺</span>
-                            <span class="watch-link-text">
-                                <strong>F1 TV (servicio oficial)</strong>
-                                <small>Sesiones en vivo y repeticiones. Disponibilidad según tu país.</small>
-                            </span>
-                        </a>
-                        <a class="watch-link" href="https://www.youtube.com/@F1" target="_blank" rel="noopener noreferrer">
-                            <span class="watch-link-icon">▶️</span>
-                            <span class="watch-link-text">
-                                <strong>Canal oficial de F1 en YouTube</strong>
-                                <small>Resúmenes, highlights y contenido gratuito.</small>
-                            </span>
-                        </a>
-                        <a class="watch-link" href="https://www.formula1.com/en/racing" target="_blank" rel="noopener noreferrer">
-                            <span class="watch-link-icon">🗓️</span>
-                            <span class="watch-link-text">
-                                <strong>Calendario y horarios oficiales</strong>
-                                <small>Consulta horarios confirmados en formula1.com.</small>
-                            </span>
-                        </a>
-                        <a class="watch-link" href="calendario_temporada.html">
-                            <span class="watch-link-icon">📅</span>
-                            <span class="watch-link-text">
-                                <strong>Calendario en nuestra web</strong>
-                                <small>Circuitos y fechas de la temporada.</small>
-                            </span>
-                        </a>
+        <section class="section section--tight" aria-labelledby="h-horario">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2 id="h-horario">Horario del fin de semana</h2>
+                        <p id="tz-note">Todos los horarios están en tu zona horaria.</p>
                     </div>
-
-                    <p class="watch-soon">
-                        🚧 <strong>Próximamente:</strong> centro de práctica con tiempos, clasificación y
-                        comunidad para comentar las sesiones mientras las ves en tu servicio oficial.
-                    </p>
-                </section>
+                </div>
+                <div class="card table-card" id="horario"><div class="skeleton" style="height: 220px"></div></div>
             </div>
-        </div>
+        </section>
+
+        <section class="section section--alt" aria-labelledby="h-ver">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2 id="h-ver">Dónde verlo de forma oficial</h2>
+                        <p><strong>No retransmitimos</strong> sesiones ni carreras: los derechos pertenecen a la Fórmula 1 y a sus emisoras. Estos son los canales legales.</p>
+                    </div>
+                </div>
+                <div class="watch-links">
+                    <a class="watch-link" href="https://f1tv.formula1.com/" target="_blank" rel="noopener noreferrer">
+                        <span class="watch-icon" aria-hidden="true">📺</span>
+                        <span><strong>F1 TV (servicio oficial)</strong><small>Sesiones en vivo y repeticiones. Disponibilidad según tu país.</small></span>
+                    </a>
+                    <a class="watch-link" href="https://www.youtube.com/@F1" target="_blank" rel="noopener noreferrer">
+                        <span class="watch-icon" aria-hidden="true">▶️</span>
+                        <span><strong>Canal oficial de F1 en YouTube</strong><small>Resúmenes, highlights y contenido gratuito.</small></span>
+                    </a>
+                    <a class="watch-link" href="https://www.formula1.com/en/racing" target="_blank" rel="noopener noreferrer">
+                        <span class="watch-icon" aria-hidden="true">🗓️</span>
+                        <span><strong>Calendario oficial</strong><small>Confirma siempre los horarios en formula1.com.</small></span>
+                    </a>
+                    <a class="watch-link" href="calendario_temporada.html">
+                        <span class="watch-icon" aria-hidden="true">📅</span>
+                        <span><strong>Calendario en nuestra web</strong><small>Carreras de la temporada y de años anteriores.</small></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="h-ultima" id="ultima" hidden>
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Resultados</p>
+                        <h2 id="h-ultima">Última carrera: <span id="ultima-nombre"></span></h2>
+                    </div>
+                </div>
+                <div class="card table-card" id="ultima-tabla"></div>
+                <p class="data-credit">Datos: Jolpica F1 API (compatible con Ergast).</p>
+            </div>
+        </section>
+
+        <section class="section section--alt" aria-labelledby="h-guia">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <h2 id="h-guia">Guía rápida: qué es cada sesión</h2>
+                    </div>
+                </div>
+                <div class="guide">
+                    <div class="card"><h3>Prácticas libres (P1, P2, P3)</h3><p>Los equipos prueban configuraciones, neumáticos y estrategia. Son sesiones de una hora; en fines de semana Sprint solo hay una práctica.</p></div>
+                    <div class="card"><h3>Clasificación</h3><p>Define la parrilla de salida en tres rondas (Q1, Q2 y Q3). El más rápido de Q3 sale en la pole position.</p></div>
+                    <div class="card"><h3>Sprint</h3><p>Carrera corta de unos 100 km que se disputa solo en algunos fines de semana y reparte puntos a los primeros lugares.</p></div>
+                    <div class="card"><h3>Carrera</h3><p>El Gran Premio completo, de unos 300 km (o dos horas como máximo). Reparte los puntos del campeonato.</p></div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Scripts -->
     <script src="../../js/menu.js" defer></script>
     <script src="../../js/theme-toggle.js" defer></script>
-    <script src="../../js/lazy-images.js" defer></script>
     <script src="../../js/notifications.js" defer></script>
-    <script src="../../js/breadcrumbs.js" defer></script>
-    <script src="../../js/contador.js" defer></script>
+    <script src="../../js/f1-data.js" defer></script>
+    <script src="../../js/sesiones.js" defer></script>
     <script src="../../js/footer.js" defer></script>
 </body>
 </html>

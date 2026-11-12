@@ -130,23 +130,6 @@
 .tab:hover { color: var(--text); }
 .tab.is-active { background: var(--brand); color: #fff; }
 
-/* ---------- Tabla de clasificación ---------- */
-.table-card { padding: 0; overflow: hidden; }
-.table-scroll { overflow-x: auto; }
-.standings { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
-.standings caption { text-align: left; }
-.standings th, .standings td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--line); }
-.standings th { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-faint); font-weight: 700; background: var(--bg-elev); }
-.standings tr:last-child td { border-bottom: 0; }
-.standings td.num, .standings th.num { text-align: right; font-variant-numeric: tabular-nums; }
-.standings .pos { width: 52px; font-weight: 800; color: var(--text-dim); }
-.standings tr:nth-child(-n+3) .pos { color: var(--gold); }
-.standings .who strong { display: block; }
-.standings .who small { color: var(--text-faint); }
-.standings .pts { font-weight: 800; }
-.standings tbody tr:hover { background: var(--bg-card-hover); }
-.data-credit { margin: 12px 0 0; font-size: 0.78rem; color: var(--text-faint); }
-
 /* ---------- Noticias ---------- */
 .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
 .news-item {
