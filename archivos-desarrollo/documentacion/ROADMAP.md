@@ -20,7 +20,7 @@ accesible, 100 % legal (sin retransmitir ni alojar señal de F1).
 | 8. Tienda | Rediseño con aviso de afiliación, filtros por categorías reales, enlaces `sponsored`, DOM seguro. Los datos siguen en `js/productos-*.js` (panel admin compatible). |
 | 9. Temporadas | `temporadas.html` (índice por década), `calendario_temporada.html` (calendario + ganadores + clasificación final de cualquier año) y `carrera.html` (resultados, clasificación y videos por GP). |
 | 10. PWA | `sw.js` (funciona sin conexión), manifest con accesos directos, botón «Agregar sesiones a mi calendario (.ics)», podio de la última carrera en la home. |
-| 11. Cloudflare | Repo listo: `_headers` (HSTS, anti-iframe, permisos), `_redirects`, `build.sh` (publica solo lo necesario), `set-domain.sh`. Guía en `CLOUDFLARE_Y_DOMINIO.md`. Pendiente: pasos en tu cuenta de Cloudflare. |
+| 11. Cloudflare | Repo listo: `_headers` (HSTS, anti-iframe, permisos), `_redirects`, `build.sh` (publica solo lo necesario), `set-domain.sh`. Guía en `PUBLICAR_EN_CLOUDFLARE.md` (ruta gratis `*.pages.dev`). Pendiente: pasos en tu cuenta de Cloudflare. |
 | 7. Calidad | `sitemap.xml` y `robots.txt` correctos, `404.html`, `lang`/`h1`/`main` en las páginas, sin desbordes en móvil. |
 
 ## Dependencias externas
@@ -28,19 +28,19 @@ accesible, 100 % legal (sin retransmitir ni alojar señal de F1).
 | Servicio | Uso | Si falla |
 |---|---|---|
 | Jolpica F1 API (`api.jolpi.ca`) | Calendario, clasificación, resultados | Caché local 10 min → respaldo `data/proxima-sesion.json` → mensaje amable |
-| NewsData.io vía Worker (`workers/noticias-proxy`) | Noticias | Sección oculta en home; mensaje en `/noticias` |
+| NewsData.io vía Pages Function (`functions/api/noticias.js`) | Noticias | Sección oculta en home; mensaje en `/noticias` |
 | YouTube (nocookie) | Videos | Solo se carga al hacer clic |
 | Google Fonts | Tipografía Poppins | Cae a la fuente del sistema |
 
 ## Para el dueño del sitio (acciones manuales)
 
-1. Rotar la API key de NewsData.io y desplegar el Worker (`workers/noticias-proxy/README.md`), luego poner la URL en `js/config.js`.
+1. Rotar la API key de NewsData.io y guardarla como secreto `NEWSDATA_API_KEY` en Cloudflare Pages (ver `PUBLICAR_EN_CLOUDFLARE.md`).
 2. Agregar videos en `data/videos.json` (`COMO_AGREGAR_VIDEOS.md`).
 3. Confirmar el origen/licencia de imágenes en `img/` y de `videos/*.mp4` (`POLITICA_DE_CONTENIDO.md`).
 4. Revisar la tienda: las imágenes de productos y los enlaces de afiliados (programa y licencias).
 5. `html/paginas/admin-productos.html` es una página pública con protección solo en el navegador: no debe contener secretos ni accesos reales. Muévela fuera del repo público o protégela con Cloudflare Access.
-6. Unificar el correo de contacto (términos usan `contacto@formula1fansglobal.com`; el footer usa el alias de soporte).
-7. Elegir/registrar dominio y ejecutar `set-domain.sh` (hoy `sitemap.xml`/`robots.txt` apuntan a `formula1fansglobal.github.io/web/`). Ver `CLOUDFLARE_Y_DOMINIO.md`.
+6. ~~Unificar el correo de contacto~~ (hecho: todo usa el alias de soporte).
+7. Elegir/registrar dominio y ejecutar `set-domain.sh` (hoy `sitemap.xml`/`robots.txt` apuntan a `formula1fansglobal.github.io/web/`). Ver `PUBLICAR_EN_CLOUDFLARE.md`.
 
 ## Mantenimiento del service worker
 

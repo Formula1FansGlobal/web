@@ -4,8 +4,7 @@
 # Uso:  bash archivos-desarrollo/scripts/set-domain.sh midominio.com
 #
 # Reemplaza:
-#   https://formula1fansglobal.github.io/web/   ->  https://midominio.com/
-#   contacto@formula1fansglobal.com             ->  contacto@midominio.com
+#   https://formula1fansglobal.github.io/web/   ->  https://midominio.com/   (también sirve con tu-nombre.pages.dev)
 set -euo pipefail
 
 if [ $# -ne 1 ] || ! [[ "$1" =~ ^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)+$ ]]; then
@@ -15,13 +14,12 @@ fi
 DOM="$1"
 cd "$(dirname "$0")/../.."
 
-FILES=$(grep -rlE "formula1fansglobal\.github\.io/web|contacto@formula1fansglobal\.com" \
+FILES=$(grep -rlE "formula1fansglobal\.github\.io/web" \
   --include=*.html --include=*.xml --include=*.txt --include=*.md --exclude-dir=.git --exclude-dir=node_modules . || true)
 
 for f in $FILES; do
   sed -i \
     -e "s#https://formula1fansglobal\.github\.io/web/#https://${DOM}/#g" \
-    -e "s#contacto@formula1fansglobal\.com#contacto@${DOM}#g" \
     "$f"
   echo "actualizado: $f"
 done

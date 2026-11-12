@@ -1,7 +1,7 @@
 // noticias.js - Carga de noticias de F1 a través de un proxy propio.
 //
 // La clave de NewsData.io NO está en este archivo: vive como secreto en el
-// Worker (workers/noticias-proxy). Todo el contenido externo se inserta con
+// Pages Function (functions/api/noticias.js). Todo el contenido externo se inserta con
 // textContent / atributos del DOM, nunca con innerHTML, para evitar XSS.
 
 (function () {

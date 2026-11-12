@@ -47,7 +47,7 @@ Al agregar nuevas páginas:
 > ⚠️ **POLÍTICA DE CONTENIDO (obligatoria):** el sitio **no** retransmite, graba ni aloja la señal de la F1.
 > No agregar reproductores HLS/RTMP/ngrok ni videos de sesiones/carreras en `videos/`.
 > Los videos de F1 solo se **incrustan** desde el canal oficial de su titular; los videos locales son de producción propia.
-> No poner claves de API en el repo (usar el Worker de `workers/noticias-proxy`).
+> No poner claves de API en el repo (usar la Pages Function `functions/api/noticias.js`).
 > Las noticias se piden al proxy (`js/config.js` → `newsEndpoint`) y se pintan con DOM/`textContent`, nunca con `innerHTML`; los ejemplos de abajo con `API_KEY` en el cliente están obsoletos.
 > Detalle: `archivos-desarrollo/documentacion/POLITICA_DE_CONTENIDO.md`.
 
@@ -99,7 +99,7 @@ Noticias dinámicas de F1 cargadas desde la API **NewsData.io**.
 
 **Patrón Clave (Key Pattern):**
 ```javascript
-const API_KEY = "NUNCA-PONGAS-CLAVES-EN-EL-CLIENTE"; // obsoleto: usar workers/noticias-proxy
+const API_KEY = "NUNCA-PONGAS-CLAVES-EN-EL-CLIENTE"; // obsoleto: usar functions/api/noticias.js
 const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=formula1&language=es`;
 ```
 
@@ -290,7 +290,7 @@ Carga y muestra noticias dinámicas de F1 desde la API de NewsData.io. Las notic
 **Funcionalidad (js/noticias.js):**
 
 ```javascript
-const API_KEY = "NUNCA-PONGAS-CLAVES-EN-EL-CLIENTE"; // obsoleto: usar workers/noticias-proxy
+const API_KEY = "NUNCA-PONGAS-CLAVES-EN-EL-CLIENTE"; // obsoleto: usar functions/api/noticias.js
 const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=formula1&language=es`;
 
 // En DOMContentLoaded:
@@ -875,7 +875,7 @@ Patrón para cargar datos dinámicos desde API:
 
 **En js/noticias.js:**
 ```javascript
-const API_KEY = "NUNCA-PONGAS-CLAVES-EN-EL-CLIENTE"; // obsoleto: usar workers/noticias-proxy
+const API_KEY = "NUNCA-PONGAS-CLAVES-EN-EL-CLIENTE"; // obsoleto: usar functions/api/noticias.js
 const URL = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=formula1&language=es`;
 
 async function cargarNoticias() {
