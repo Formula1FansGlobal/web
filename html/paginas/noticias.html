@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Últimas noticias de Fórmula 1 en español, actualizadas al momento.">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https: http:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
     <title>Noticias de F1</title>
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../../img/Formula-1-Fans-Global3.jpg">
@@ -29,10 +29,12 @@
         <h1>Últimas Noticias de F1</h1>
     </header>
     
-    <section id="news">
+    <section id="news" aria-live="polite">
         Cargando noticias...
     </section>
+    <p class="news-aviso">Titulares y enlaces provistos por NewsData.io. Cada nota pertenece a su medio de origen; al abrirla irás al sitio original. Este sitio no está afiliado a la Fórmula 1.</p>
     
+    <script src="../../js/config.js" defer></script>
     <script src="../../js/noticias.js" defer></script>
     <script src="../../js/menu.js" defer></script>
     <script src="../../js/theme-toggle.js" defer></script>

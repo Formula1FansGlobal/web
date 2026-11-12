@@ -3,8 +3,8 @@
 <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Transmisión en vivo, chat y cuenta regresiva de carreras F1 en español.">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com https://cdn.jsdelivr.net https://*.ngrok.io https://*.ngrok-free.app; media-src 'self' https://*.ngrok.io https://*.ngrok-free.app; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <meta name="description" content="Cuenta regresiva de las sesiones de F1 y enlaces para verlas en los canales oficiales.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://cloudflareinsights.com; media-src 'self'; frame-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
     <title>En Vivo</title>
     <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="../../img/Formula-1-Fans-Global3.jpg">
@@ -34,9 +34,9 @@
                 <!-- Banner del evento -->
                 <header class="event-banner">
                     <div class="event-info">
-                        <div class="event-badge">🏁 F1 LIVE</div>
-                        <h1 id="event-title">PRUEBAS DE PRETEMPORADA</h1>
-                        <p id="event-subtitle">PRETEMPORADA 2026</p>
+                        <div class="event-badge">🏁 PRÓXIMA SESIÓN</div>
+                        <h1 id="event-title">PRÓXIMA SESIÓN</h1>
+                        <p id="event-subtitle">Fecha por confirmar</p>
                     </div>
                 </header>
 
@@ -44,7 +44,7 @@
                 <aside class="countdown-card" aria-label="Cuenta regresiva">
                     <div class="countdown-header">
                         <span class="countdown-icon">⏱️</span>
-                        <h2 id="ronda-info">RONDA 0</h2>
+                        <h2 id="ronda-info">TEMPORADA</h2>
                     </div>
                     <div id="contador" class="countdown-display">
                         <div class="time-block">
@@ -72,80 +72,76 @@
                         <span class="info-icon">📍</span>
                         <div class="info-text">
                             <strong>Ubicación</strong>
-                            <p>Baréin</p>
+                            <p id="info-ubicacion">Por confirmar</p>
                         </div>
                     </div>
                     <div class="info-item">
                         <span class="info-icon">🏎️</span>
                         <div class="info-text">
-                            <strong>Cronograma</strong>
-                            <p>Día 1 de Pruebas</p>
+                            <strong>Sesión</strong>
+                            <p id="info-sesion">Por confirmar</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Columna derecha: Stream -->
+            <!-- Columna derecha: cómo ver las sesiones (sin retransmisión propia) -->
             <div class="live-main">
-                <section class="stream-wrapper" aria-label="Transmisión en vivo">
-                    <!-- Indicador EN VIVO flotante -->
-                    <div id="live-indicator" class="live-badge-top hidden">
-                        <span class="pulse-dot"></span>
-                        <span>EN VIVO</span>
+                <section class="watch-panel" aria-labelledby="watch-title">
+                    <div class="watch-badge">📡 SEÑAL OFICIAL</div>
+                    <h2 id="watch-title">Mira las sesiones en los canales oficiales</h2>
+                    <p class="watch-lead">
+                        En Formula 1 Fans Global <strong>no retransmitimos</strong> prácticas, clasificaciones ni carreras:
+                        los derechos pertenecen a la Fórmula 1 y a sus emisoras. Aquí te damos la cuenta regresiva
+                        y los enlaces para verlas legalmente.
+                    </p>
+
+                    <div class="watch-links">
+                        <a class="watch-link" href="https://f1tv.formula1.com/" target="_blank" rel="noopener noreferrer">
+                            <span class="watch-link-icon">📺</span>
+                            <span class="watch-link-text">
+                                <strong>F1 TV (servicio oficial)</strong>
+                                <small>Sesiones en vivo y repeticiones. Disponibilidad según tu país.</small>
+                            </span>
+                        </a>
+                        <a class="watch-link" href="https://www.youtube.com/@F1" target="_blank" rel="noopener noreferrer">
+                            <span class="watch-link-icon">▶️</span>
+                            <span class="watch-link-text">
+                                <strong>Canal oficial de F1 en YouTube</strong>
+                                <small>Resúmenes, highlights y contenido gratuito.</small>
+                            </span>
+                        </a>
+                        <a class="watch-link" href="https://www.formula1.com/en/racing" target="_blank" rel="noopener noreferrer">
+                            <span class="watch-link-icon">🗓️</span>
+                            <span class="watch-link-text">
+                                <strong>Calendario y horarios oficiales</strong>
+                                <small>Consulta horarios confirmados en formula1.com.</small>
+                            </span>
+                        </a>
+                        <a class="watch-link" href="calendario_temporada.html">
+                            <span class="watch-link-icon">📅</span>
+                            <span class="watch-link-text">
+                                <strong>Calendario en nuestra web</strong>
+                                <small>Circuitos y fechas de la temporada.</small>
+                            </span>
+                        </a>
                     </div>
 
-                    <div class="stream-container">
-                        <img id="pre-image" src="../../img/Pilotos-f1-2025.jpg" alt="Esperando el stream" class="stream-bg" loading="lazy">
-                        <video id="live-video" class="stream-video" controls playsinline preload="metadata" crossorigin="anonymous" poster="../../img/Pilotos-f1-2025.jpg">
-                            <source src="../../videos/Presentacion-Pilotos-F1-2025.mp4" type="video/mp4">
-                            Tu navegador no soporta el elemento de video.
-                        </video>
-                        <img id="post-image" src="../../img/Pilotos-f1-2025.jpg" alt="Stream finalizado" class="stream-bg" loading="lazy">
-
-                        <!-- Botón play central -->
-                        <button id="live-button" class="play-button" aria-controls="play-modal">
-                            <span class="play-icon">▶</span>
-                            <span class="live-dot"></span>
-                            <span class="play-text">TRANSMISIÓN EN VIVO</span>
-                        </button>
-                    </div>
+                    <p class="watch-soon">
+                        🚧 <strong>Próximamente:</strong> centro de práctica con tiempos, clasificación y
+                        comunidad para comentar las sesiones mientras las ves en tu servicio oficial.
+                    </p>
                 </section>
-            </div>
-        </div>
-
-        <!-- Modal moderno -->
-        <div id="play-modal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="play-modal-title" aria-describedby="play-modal-desc">
-            <div class="modal-box">
-                <button id="close-modal-btn" class="modal-close-btn" aria-label="Cerrar">✕</button>
-                <div class="modal-header">
-                    <h2 id="play-modal-title">🏁 Opciones de reproducción</h2>
-                    <p id="play-modal-desc">La transmisión está disponible. Elige cómo ver:</p>
-                </div>
-                <div class="modal-options">
-                    <button id="play-live-btn" class="option-card card-live">
-                        <span class="option-icon">🔴</span>
-                        <h3>Ver en Vivo</h3>
-                        <p>Únete a la transmisión actual</p>
-                    </button>
-                    <button id="play-from-start-btn" class="option-card card-start">
-                        <span class="option-icon">⏮️</span>
-                        <h3>Desde el Inicio</h3>
-                        <p>Ver desde el comienzo</p>
-                    </button>
-                </div>
             </div>
         </div>
     </main>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@1.4.12/dist/hls.min.js" integrity="sha384-miJUhTuRucSoqFe3/VSB2sRghSMoev6wpPoEyj5fhF0PARehD+naPBsAkl5NqwPO" crossorigin="anonymous"></script>
-    <script src="../../js/hls-config.js" defer></script>
     <script src="../../js/menu.js" defer></script>
     <script src="../../js/theme-toggle.js" defer></script>
     <script src="../../js/lazy-images.js" defer></script>
     <script src="../../js/notifications.js" defer></script>
     <script src="../../js/breadcrumbs.js" defer></script>
-    <script src="../../js/stream.js" defer></script>
     <script src="../../js/contador.js" defer></script>
     <script src="../../js/footer.js" defer></script>
 </body>

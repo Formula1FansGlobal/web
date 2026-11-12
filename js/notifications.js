@@ -30,11 +30,21 @@ class NotificationSystem {
             'warning': '⚠'
         };
 
-        notification.innerHTML = `
-            <span class="notification-icon">${icons[type] || '•'}</span>
-            <span class="notification-message">${message}</span>
-            <button class="notification-close" aria-label="Cerrar">×</button>
-        `;
+        // Se construye con el DOM (textContent) para que el mensaje nunca se interprete como HTML
+        const iconEl = document.createElement('span');
+        iconEl.className = 'notification-icon';
+        iconEl.textContent = icons[type] || '•';
+
+        const messageEl = document.createElement('span');
+        messageEl.className = 'notification-message';
+        messageEl.textContent = message;
+
+        const closeEl = document.createElement('button');
+        closeEl.className = 'notification-close';
+        closeEl.setAttribute('aria-label', 'Cerrar');
+        closeEl.textContent = '×';
+
+        notification.append(iconEl, messageEl, closeEl);
 
         // Agregar al contenedor
         this.container.appendChild(notification);

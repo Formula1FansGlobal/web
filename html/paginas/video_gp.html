@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Videos de Grandes Premios de Fórmula 1 por temporada.">
@@ -41,6 +41,25 @@
             border-radius: 18px;
             box-shadow: 0 8px 32px rgba(255,30,0,0.25);
         }
+        .video-placeholder {
+            width: 100%;
+            max-width: 1280px;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 24px;
+            box-sizing: border-box;
+            background: #000;
+            border-radius: 18px;
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(255,30,0,0.25);
+        }
+        .video-placeholder[hidden], .video-estilo[hidden] { display: none; }
+        .video-placeholder-note { color: #bbb; max-width: 560px; line-height: 1.5; }
+        .video-placeholder a { color: #ffd700; }
         @media (max-width: 1200px) {
             .video-estilo {
                 max-width: 100vw;
@@ -67,6 +86,14 @@
             <div class="player-wrapper">
                 <div class="player-container">
                     <video id="video-gp" class="video-estilo" controls playsinline preload="metadata" poster="../../img/Calendario/2024/T2024.avif"></video>
+                    <div id="video-placeholder" class="video-placeholder" hidden>
+                        <p>🎬 Todavía no hay video para esta carrera.</p>
+                        <p class="video-placeholder-note">
+                            Aquí publicaremos únicamente contenido propio (análisis y comentarios) o
+                            videos incrustados desde los canales oficiales. Para ver la carrera completa
+                            visita <a href="https://f1tv.formula1.com/" target="_blank" rel="noopener noreferrer">F1 TV</a>.
+                        </p>
+                    </div>
                 </div>
                 <div class="player-info">
                     <h3>Información de la Carrera</h3>
@@ -90,17 +117,17 @@
             //Temporada 2025
                         
             //Temporada 2024
-            "2024_gran_premio_de_bahrein":{src:"../../videos/Presentacion-Pilotos-F1-2025.mp4",titulo:"Gran Premio de Bahréin 2024"},
-            "2024_gran_premio_de_arabia_saudita":{src:"../../videos/Presentacion-Pilotos-F1-2025.mp4",titulo:"Gran Premio de Arabia Saudita 2024"},
+            "2024_gran_premio_de_bahrein":{src:"",titulo:"Gran Premio de Bahréin 2024"},
+            "2024_gran_premio_de_arabia_saudita":{src:"",titulo:"Gran Premio de Arabia Saudita 2024"},
             "2024_gran_premio_de_australia":{src:"",titulo:"Gran Premio de Australia 2024"},
-            "2024_gran_premio_de_japon":{src:"../../videos/Presentacion-Pilotos-F1-2025.mp4",titulo:"Gran Premio de Japon 2024"},
+            "2024_gran_premio_de_japon":{src:"",titulo:"Gran Premio de Japón 2024"},
             "2024_gran_premio_de_china":{src:"",titulo:"Gran Premio de China 2024"},
             "2024_gran_premio_de_miami":{src:"",titulo:"Gran Premio de Miami 2024"},
-            "2024_gran_premio_de_emilia_romagna":{src:"",titulo:"Gran Premio de Emillia Romagna 2024"},
+            "2024_gran_premio_de_emilia_romagna":{src:"",titulo:"Gran Premio de Emilia Romagna 2024"},
             "2024_gran_premio_de_monaco":{src:"",titulo:"Gran Premio de Monaco 2024"},
             "2024_gran_premio_de_canada":{src:"",titulo:"Gran Premio de Canada 2024"},
             "2024_gran_premio_de_españa":{src:"",titulo:"Gran Premio de España 2024"},
-            "2024_gran_premio_de_austria":{src:"",titulo:"Gran Premio de Austira 2024"},
+            "2024_gran_premio_de_austria":{src:"",titulo:"Gran Premio de Austria 2024"},
             "2024_gran_premio_de_reino_unido":{src:"",titulo:"Gran Premio de Reino Unido 2024"},
             "2024_gran_premio_de_hungria":{src:"",titulo:"Gran Premio de Hungria 2024"},
             "2024_gran_premio_de_belgica":{src:"",titulo:"Gran Premio de Belgica 2024"},
@@ -110,35 +137,35 @@
             "2024_gran_premio_de_singapore":{src:"",titulo:"Gran Premio de Singapore 2024"},
             "2024_gran_premio_de_estados_unidos":{src:"",titulo:"Gran Premio de Estados Unidos 2024"},
             "2024_gran_premio_de_mexico":{src:"",titulo:"Gran Premio de México 2024"},
-            "2024_gran_premio_de_brazil":{src:"",titulo:"Gran Premio Brazil 2024"},
+            "2024_gran_premio_de_brazil":{src:"",titulo:"Gran Premio de Brasil 2024"},
             "2024_gran_premio_de_las_vegas":{src:"",titulo:"Gran Premio de Las Vegas 2024"},
             "2024_gran_premio_de_qatar":{src:"",titulo:"Gran Premio de Qatar 2024"},
             "2024_gran_premio_de_abu_dhabi":{src:"",titulo:"Gran Premio de Abu Dhabi 2024"},
             //Temporada 2023
-            "2023_gran_premio_de_bahrein":{src:"../../videos/Presentacion-Pilotos-F1-2025.mp4",titulo:"Gran Premio de Bahréin 2023"},
-            "2023_gran_premio_de_arabia_saudita":{src:"../../videos/Presentacion-Pilotos-F1-2025.mp4",titulo:"Gran Premio de Arabia Saudita 2023"},
-            "2023_gran_premio_de_australia":{src:"",titulo:"Gran Premio de Australia 2024"},
-            "2023_gran_premio_de_japon":{src:"",titulo:"Gran Premio de Japon 2024"},
-            "2023_gran_premio_de_china":{src:"",titulo:"Gran Premio de China 2024"},
-            "2023_gran_premio_de_miami":{src:"",titulo:"Gran Premio de Miami 2024"},
-            "2023_gran_premio_de_emilia_romagna":{src:"",titulo:"Gran Premio de Emillia Romagna 2024"},
-            "2023_gran_premio_de_monaco":{src:"",titulo:"Gran Premio de Monaco 2024"},
-            "2023_gran_premio_de_canada":{src:"",titulo:"Gran Premio de Canada 2024"},
-            "2023_gran_premio_de_españa":{src:"",titulo:"Gran Premio de España 2024"},
-            "2023_gran_premio_de_austria":{src:"",titulo:"Gran Premio de Austira 2024"},
-            "2023_gran_premio_de_reino_unido":{src:"",titulo:"Gran Premio de Reino Unido 2024"},
-            "2023_gran_premio_de_hungria":{src:"",titulo:"Gran Premio de Hungria 2024"},
-            "2023_gran_premio_de_belgica":{src:"",titulo:"Gran Premio de Belgica 2024"},
-            "2023_gran_premio_de_paises_bajos":{src:"",titulo:"Gran Premio de Paises Bajos 2024"},
-            "2023_gran_premio_de_italia":{src:"",titulo:"Gran Premio de Italia 2024"},
-            "2023_gran_premio_de_azerbaijan":{src:"",titulo:"Gran Premio de Azerbaijan 2024"},
-            "2023_gran_premio_de_singapore":{src:"",titulo:"Gran Premio de Singapore 2024"},
-            "2023_gran_premio_de_estados_unidos":{src:"",titulo:"Gran Premio de Estados Unidos 2024"},
-            "2023_gran_premio_de_mexico":{src:"",titulo:"Gran Premio de México 2024"},
-            "2023_gran_premio_de_brazil":{src:"",titulo:"Gran Premio Brazil 2024"},
-            "2023_gran_premio_de_las_vegas":{src:"",titulo:"Gran Premio de Las Vegas 2024"},
-            "2023_gran_premio_de_qatar":{src:"",titulo:"Gran Premio de Qatar 2024"},
-            "2023_gran_premio_de_abu_dhabi":{src:"",titulo:"Gran Premio de Abu Dhabi 2024"},
+            "2023_gran_premio_de_bahrein":{src:"",titulo:"Gran Premio de Bahréin 2023"},
+            "2023_gran_premio_de_arabia_saudita":{src:"",titulo:"Gran Premio de Arabia Saudita 2023"},
+            "2023_gran_premio_de_australia":{src:"",titulo:"Gran Premio de Australia 2023"},
+            "2023_gran_premio_de_japon":{src:"",titulo:"Gran Premio de Japon 2023"},
+            "2023_gran_premio_de_china":{src:"",titulo:"Gran Premio de China 2023"},
+            "2023_gran_premio_de_miami":{src:"",titulo:"Gran Premio de Miami 2023"},
+            "2023_gran_premio_de_emilia_romagna":{src:"",titulo:"Gran Premio de Emilia Romagna 2023"},
+            "2023_gran_premio_de_monaco":{src:"",titulo:"Gran Premio de Monaco 2023"},
+            "2023_gran_premio_de_canada":{src:"",titulo:"Gran Premio de Canada 2023"},
+            "2023_gran_premio_de_españa":{src:"",titulo:"Gran Premio de España 2023"},
+            "2023_gran_premio_de_austria":{src:"",titulo:"Gran Premio de Austria 2023"},
+            "2023_gran_premio_de_reino_unido":{src:"",titulo:"Gran Premio de Reino Unido 2023"},
+            "2023_gran_premio_de_hungria":{src:"",titulo:"Gran Premio de Hungria 2023"},
+            "2023_gran_premio_de_belgica":{src:"",titulo:"Gran Premio de Belgica 2023"},
+            "2023_gran_premio_de_paises_bajos":{src:"",titulo:"Gran Premio de Paises Bajos 2023"},
+            "2023_gran_premio_de_italia":{src:"",titulo:"Gran Premio de Italia 2023"},
+            "2023_gran_premio_de_azerbaijan":{src:"",titulo:"Gran Premio de Azerbaijan 2023"},
+            "2023_gran_premio_de_singapore":{src:"",titulo:"Gran Premio de Singapore 2023"},
+            "2023_gran_premio_de_estados_unidos":{src:"",titulo:"Gran Premio de Estados Unidos 2023"},
+            "2023_gran_premio_de_mexico":{src:"",titulo:"Gran Premio de México 2023"},
+            "2023_gran_premio_de_brazil":{src:"",titulo:"Gran Premio de Brasil 2023"},
+            "2023_gran_premio_de_las_vegas":{src:"",titulo:"Gran Premio de Las Vegas 2023"},
+            "2023_gran_premio_de_qatar":{src:"",titulo:"Gran Premio de Qatar 2023"},
+            "2023_gran_premio_de_abu_dhabi":{src:"",titulo:"Gran Premio de Abu Dhabi 2023"},
             //Temporada 2022
             //Temporada 2021
             //Temporada 2020
@@ -160,22 +187,37 @@
         const gp = params.get('gp');
         const key = `${year}_${gp}`;
 
-        if (videosPorGP[key]) {
+        const videoEl = document.getElementById('video-gp');
+        const raceDetails = document.getElementById('race-details');
+        const placeholder = document.getElementById('video-placeholder');
+
+        // Solo se reproducen archivos locales de videos/ (contenido propio).
+        // Videos de F1 u otros titulares NO se alojan aquí: se enlazan o se incrustan desde su canal oficial.
+        function esRutaPermitida(src) {
+            return typeof src === 'string' && /^\.\.\/\.\.\/videos\/[\w\-. ]+\.(mp4|webm)$/i.test(src);
+        }
+
+        function mostrarSinVideo() {
+            videoEl.hidden = true;
+            placeholder.hidden = false;
+        }
+
+        if (Object.prototype.hasOwnProperty.call(videosPorGP, key)) {
             const videoData = videosPorGP[key];
             document.getElementById('video-titulo').textContent = videoData.titulo;
             document.getElementById('video-season').textContent = `Temporada ${year}`;
-            document.getElementById('video-gp').src = videoData.src;
-            
-            // Mostrar estado del video
-            const raceDetails = document.getElementById('race-details');
-            if (videoData.src) {
-                raceDetails.innerHTML = `<p>✅ Video disponible para reproducción</p>`;
+
+            if (esRutaPermitida(videoData.src)) {
+                videoEl.src = videoData.src;
+                raceDetails.textContent = '✅ Video disponible para reproducción';
             } else {
-                raceDetails.innerHTML = `<p>⏳ Video no disponible en este momento</p>`;
+                mostrarSinVideo();
+                raceDetails.textContent = '⏳ Aún no hay video publicado para esta carrera.';
             }
         } else {
             document.getElementById('video-titulo').textContent = "Video no disponible";
-            document.getElementById('race-details').innerHTML = `<p>❌ No se encontró información de esta carrera</p>`;
+            mostrarSinVideo();
+            raceDetails.textContent = '❌ No se encontró información de esta carrera';
         }
     </script>
     <script src="../../js/menu.js" defer></script>

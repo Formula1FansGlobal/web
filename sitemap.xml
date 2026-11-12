@@ -9,7 +9,7 @@
     <priority>1.0</priority>
   </url>
   
-  <!-- Transmisión en vivo -->
+  <!-- Cuenta regresiva y enlaces oficiales para ver las sesiones -->
   <url>
     <loc>https://formula1fansglobal.github.io/web/en-vivo.html</loc>
     <lastmod>2025-01-09</lastmod>

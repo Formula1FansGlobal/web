@@ -1,0 +1,15 @@
+name = "f1-noticias"
+main = "index.js"
+compatibility_date = "2025-01-01"
+
+# Opción A (recomendada si el dominio pasa por Cloudflare): servir en /api/noticias
+# del mismo dominio del sitio. Reemplaza el dominio y descomenta.
+# routes = [
+#   { pattern = "TU-DOMINIO.com/api/noticias", zone_name = "TU-DOMINIO.com" }
+# ]
+
+# Opción B: usar la URL workers.dev que Cloudflare asigna (no requiere dominio propio).
+# Después pon esa URL en js/config.js (newsEndpoint) y en connect-src del CSP.
+
+# La clave NO va aquí. Se guarda como secreto:
+#   npx wrangler secret put NEWSDATA_API_KEY

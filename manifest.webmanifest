@@ -6,7 +6,7 @@
   "display": "standalone",
   "background_color": "#121212",
   "theme_color": "#121212",
-  "description": "Noticias, temporadas y transmisiones en vivo de F1",
+  "description": "Noticias, calendario e historia de la Fórmula 1 (sitio de aficionados)",
   "icons": [
     {
       "src": "img/favicon.ico",

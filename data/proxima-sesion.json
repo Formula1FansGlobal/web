@@ -1,0 +1,9 @@
+{
+  "_ayuda": "Edita este archivo para actualizar la página En Vivo. 'fecha' debe ir en ISO 8601 con zona horaria, por ejemplo 2027-03-06T12:30:00-06:00 (hora de CDMX). Si 'fecha' es null se muestra 'Por confirmar'.",
+  "evento": "PRÓXIMA SESIÓN",
+  "subtitulo": "Fecha por confirmar",
+  "ronda": "TEMPORADA",
+  "ubicacion": "Por confirmar",
+  "sesion": "Por confirmar",
+  "fecha": null
+}

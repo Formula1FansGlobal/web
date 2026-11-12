@@ -1,3 +1,8 @@
+> ⚠️ **AVISO LEGAL (noviembre 2026):** este documento describe cómo retransmitir una señal de video desde un PC.
+> **No lo uses para retransmitir sesiones o carreras de la Fórmula 1** (ni gratis ni de pago): infringe derechos de autor
+> y puede provocar bajas del sitio, del hosting y acciones legales. Solo es válido para transmitir contenido **propio**
+> (por ejemplo, tu propio programa de comentarios). Lee `POLITICA_DE_CONTENIDO.md`.
+
 # Configuración MediaMTX - Servidor de Streaming
 
 ## 📋 Requisitos
