@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Videos de análisis, resúmenes y contenido de la Fórmula 1 en español, incrustados desde YouTube.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://i.ytimg.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://cloudflareinsights.com; media-src 'self'; frame-src https://www.youtube-nocookie.com; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <title>Videos de F1 | Formula 1 Fans Global</title>
+    <link rel="icon" href="../../img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="../../img/Formula-1-Fans-Global3.jpg">
+    <link rel="manifest" href="../../manifest.webmanifest">
+    <meta name="theme-color" content="#0b0b0e">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/tokens.css">
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/menu.css">
+    <link rel="stylesheet" href="../../css/sesiones.css">
+    <link rel="stylesheet" href="../../css/videos.css">
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/notifications.css">
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <div id="nav-container"></div>
+
+    <main id="contenido">
+        <header class="page-hero">
+            <div class="container">
+                <p class="eyebrow">Videos</p>
+                <h1>Análisis y resúmenes de la F1</h1>
+                <p class="page-sub">Contenido propio y videos oficiales incrustados desde YouTube. Los videos solo se cargan cuando les das clic.</p>
+            </div>
+        </header>
+
+        <section class="section section--tight" aria-labelledby="h-lista">
+            <div class="container">
+                <h2 id="h-lista" class="sr-only">Lista de videos</h2>
+                <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría" hidden></div>
+                <div class="video-grid" id="video-grid" aria-live="polite">
+                    <div class="skeleton" style="height: 220px"></div>
+                    <div class="skeleton" style="height: 220px"></div>
+                    <div class="skeleton" style="height: 220px"></div>
+                </div>
+                <p class="data-credit">Los videos oficiales pertenecen a sus titulares y se reproducen desde YouTube. Los marcados como "Propio" son producción de Formula 1 Fans Global.</p>
+            </div>
+        </section>
+    </main>
+
+    <script src="../../js/menu.js" defer></script>
+    <script src="../../js/theme-toggle.js" defer></script>
+    <script src="../../js/notifications.js" defer></script>
+    <script src="../../js/f1-data.js" defer></script>
+    <script src="../../js/videos.js" defer></script>
+    <script src="../../js/footer.js" defer></script>
+</body>
+</html>

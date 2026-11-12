@@ -12,7 +12,8 @@ class BreadcrumbManager {
             'noticias.html': { name: 'Noticias', icon: '📰' },
             'temporadas.html': { name: 'Temporadas', icon: '📚' },
             'calendario_temporada.html': { name: 'Calendario', icon: '📅' },
-            'video_gp.html': { name: 'Videos de GPs', icon: '🎥' },
+            'video_gp.html': { name: 'Video del GP', icon: '🎥' },
+            'videos.html': { name: 'Videos', icon: '🎬' },
             'tienda.html': { name: 'Tienda', icon: '🛍️' },
             'prueba.html': { name: 'Prueba', icon: '🧪' }
         };
