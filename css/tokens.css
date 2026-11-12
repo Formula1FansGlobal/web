@@ -1,0 +1,58 @@
+/* ==========================================================================
+   tokens.css - Sistema de diseño "Paddock Night"
+   Variables, base y componentes compartidos por todo el sitio.
+   Tema: <html data-theme="dark|light"> (lo controla js/theme-toggle.js)
+   ========================================================================== */
+
+:root,
+[data-theme="dark"] {
+    --bg: #0b0b0e;
+    --bg-elev: #131318;
+    --bg-card: #1a1a21;
+    --bg-card-hover: #21212a;
+    --line: rgba(255, 255, 255, 0.09);
+    --text: #f5f5f7;
+    --text-dim: #a9a9b6;
+    --text-faint: #7d7d8a;
+    --brand: #e10600;
+    --brand-strong: #ff2d12;
+    --brand-soft: rgba(225, 6, 0, 0.14);
+    --gold: #ffc83d;
+    --ok: #34d399;
+    --warn: #fbbf24;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    --hero-glow: radial-gradient(60% 80% at 85% 0%, rgba(225, 6, 0, 0.28), transparent 70%),
+                 radial-gradient(50% 60% at 0% 100%, rgba(255, 200, 61, 0.07), transparent 70%);
+    color-scheme: dark;
+}
+
+[data-theme="light"] {
+    --bg: #f5f5f8;
+    --bg-elev: #ffffff;
+    --bg-card: #ffffff;
+    --bg-card-hover: #f0f0f5;
+    --line: rgba(10, 10, 20, 0.12);
+    --text: #15151b;
+    --text-dim: #4d4d5c;
+    --text-faint: #70707f;
+    --brand: #d40500;
+    --brand-strong: #b80400;
+    --brand-soft: rgba(212, 5, 0, 0.09);
+    --gold: #b07800;
+    --ok: #0f9d6b;
+    --warn: #b45309;
+    --shadow: 0 10px 30px rgba(20, 20, 40, 0.12);
+    --hero-glow: radial-gradient(60% 80% at 85% 0%, rgba(212, 5, 0, 0.14), transparent 70%),
+                 radial-gradient(50% 60% at 0% 100%, rgba(176, 120, 0, 0.08), transparent 70%);
+    color-scheme: light;
+}
+
+:root {
+    --radius-sm: 8px;
+    --radius: 14px;
+    --radius-lg: 22px;
+    --container: 1200px;
+    --gutter: clamp(16px, 4vw, 32px);
+    --font: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}

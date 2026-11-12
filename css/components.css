@@ -1,0 +1,129 @@
+/* ==========================================================================
+   components.css - Layout y componentes (container, section, btn, card...)
+   Solo para páginas rediseñadas. Requiere tokens.css y base.css antes.
+   ========================================================================== */
+
+/* ---------- Layout ---------- */
+.container {
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-inline: var(--gutter);
+}
+
+.section { padding-block: clamp(40px, 7vw, 84px); }
+.section--tight { padding-block: clamp(24px, 4vw, 48px); }
+.section--alt { background: var(--bg-elev); border-block: 1px solid var(--line); }
+
+.section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: clamp(20px, 3vw, 32px);
+}
+.section-head h2 {
+    margin: 0;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--text);
+}
+.section-head p { margin: 6px 0 0; color: var(--text-dim); max-width: 60ch; }
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--brand-strong);
+    margin: 0 0 10px;
+}
+.eyebrow::before {
+    content: '';
+    width: 22px; height: 3px;
+    background: var(--brand);
+    border-radius: 3px;
+}
+
+/* ---------- Componentes ---------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font: 600 0.95rem/1 var(--font);
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s var(--ease), background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn--primary { background: var(--brand); color: #fff; box-shadow: 0 8px 22px rgba(225, 6, 0, 0.35); }
+.btn--primary:hover { background: var(--brand-strong); }
+.btn--ghost { background: transparent; color: var(--text); border-color: var(--line); }
+.btn--ghost:hover { border-color: var(--text-dim); background: var(--bg-card); }
+
+.link-arrow {
+    color: var(--brand-strong);
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.link-arrow::after { content: ' →'; transition: margin 0.2s; }
+.link-arrow:hover::after { margin-left: 4px; }
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: clamp(18px, 2.4vw, 26px);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: var(--brand-soft);
+    color: var(--brand-strong);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+/* Esqueletos de carga */
+.skeleton {
+    background: linear-gradient(90deg, var(--bg-card) 25%, var(--bg-card-hover) 50%, var(--bg-card) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
+    border-radius: var(--radius-sm);
+    min-height: 1em;
+}
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+.notice {
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--gold);
+    background: var(--bg-card);
+    color: var(--text-dim);
+    font-size: 0.92rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

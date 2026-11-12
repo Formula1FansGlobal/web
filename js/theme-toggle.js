@@ -112,7 +112,7 @@ class ThemeToggle {
                 
                 // Crear y agregar botón al final del nav
                 const toggleButton = this.createToggleButton();
-                nav.appendChild(toggleButton);
+                (nav.querySelector('.nav-actions') || nav).appendChild(toggleButton);
                 
                 console.log('✅ Botón de tema inyectado correctamente');
             } else if (attempts >= maxAttempts) {

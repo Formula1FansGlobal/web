@@ -1,86 +1,190 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Noticias, calendario e historia de la Fórmula 1 en español, hechos por aficionados. Sitio independiente no afiliado a la F1.">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https://via.placeholder.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://newsdata.io https://cloudflareinsights.com; media-src 'self'; frame-src 'self'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
-    <title>Inicio</title>
+    <meta name="description" content="Calendario, clasificación, noticias y cuenta regresiva de cada sesión de la Fórmula 1, en español. Sitio independiente hecho por aficionados.">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data:; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://api.jolpi.ca https://cloudflareinsights.com; media-src 'self'; frame-src 'none'; form-action 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+    <title>Formula 1 Fans Global | Calendario, clasificación y noticias de la F1</title>
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:title" content="Formula 1 Fans Global">
+    <meta property="og:description" content="Calendario, clasificación, noticias y cuenta regresiva de cada sesión de la Fórmula 1, en español.">
+    <meta name="twitter:card" content="summary">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" href="img/Formula-1-Fans-Global3.jpg">
     <link rel="manifest" href="manifest.webmanifest">
-    <meta name="theme-color" content="#121212">
+    <meta name="theme-color" content="#0b0b0e">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/notifications.css">
 </head>
 <body>
-    <!-- Menú de navegación -->
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <div id="nav-container"></div>
-    <!-- Sección de Presentación -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Bienvenidos a Formula 1 Fans Global</h1>
-            <p>Información, noticias, calendario y comunidad <br>para los aficionados de la Fórmula 1.</p>
-            <!-- <a href="noticias.html" class="btn">Últimas Noticias</a> -->
-             <video class="video-estilo" src="videos/Presentacion-Pilotos-F1-2025.mp4" autoplay muted playsinline preload="none" poster="img/Formula-1-Fans-Global2.jpg" width="1000"></video>
-        </div>
-    </header>
 
-    <!-- Línea del tiempo histórico de la Fórmula 1 -->
-    <section id="f1-history" class="f1-history">
-        <h2>Desarrollo de la Fórmula 1 por años</h2>
-        <div class="carousel-wrapper">
-            <button class="carousel-btn prev" aria-label="Anterior">‹</button>
-            <div class="carousel">
-                <!-- Elementos generados por JavaScript -->
+    <main id="contenido">
+        <!-- ============ HERO ============ -->
+        <header class="hero">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">Sitio de aficionados · independiente</p>
+                    <h1>Toda la Fórmula&nbsp;1, <span class="hero-accent">en español</span>.</h1>
+                    <p class="hero-lead">Calendario, clasificación, noticias y la cuenta regresiva de cada sesión del fin de semana, en tu hora local.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn--primary" href="html/paginas/en-vivo.html">Ver sesiones del fin de semana</a>
+                        <a class="btn btn--ghost" href="html/paginas/calendario_temporada.html">Explorar el calendario</a>
+                    </div>
+                </div>
+
+                <aside class="next-card" id="next-card" aria-live="polite" aria-labelledby="next-title">
+                    <p class="next-label"><span class="pulse" aria-hidden="true"></span> Próxima sesión</p>
+                    <h2 id="next-title" class="next-title skeleton">&nbsp;</h2>
+                    <p class="next-sub" id="next-sub"></p>
+                    <div class="next-count" id="next-count" role="timer" aria-label="Cuenta regresiva">
+                        <div><span id="c-d">--</span><small>días</small></div>
+                        <div><span id="c-h">--</span><small>horas</small></div>
+                        <div><span id="c-m">--</span><small>min</small></div>
+                        <div><span id="c-s">--</span><small>seg</small></div>
+                    </div>
+                    <ol class="next-schedule" id="next-schedule" aria-label="Horario del fin de semana"></ol>
+                    <p class="next-tz" id="next-tz"></p>
+                </aside>
             </div>
-            <button class="carousel-btn next" aria-label="Siguiente">›</button>
-        </div>
-        <div class="carousel-detail"></div>
-        <noscript>
-            <p>Tu navegador no permite ejecutar JavaScript, aquí tienes un resumen clásico:</p>
-            <ol>
-                <li><strong>1950</strong> – Primera temporada oficial en Silverstone.</li>
-                <li><strong>1961</strong> – Nacimiento de John Barnard.</li>
-                <li><strong>1970</strong> – Lotus introduce efectos suelo.</li>
-                <li><strong>1988</strong> – McLaren MP4/4 domina con Senna.</li>
-                <li><strong>1994</strong> – Fallece Ayrton Senna en San Marino.</li>
-                <li><strong>2005</strong> – Ferrari obtiene sexto título seguido.</li>
-                <li><strong>2014</strong> – Comienza la era híbrida V6 turbo.</li>
-                <li><strong>2021</strong> – Hamilton vs. Verstappen hasta Abu Dhabi.</li>
-                <li><strong>2025</strong> – Reglamentos aerodinámicos y sostenibilidad.</li>
-            </ol>
-        </noscript>
-    </section>
+        </header>
 
-    <!--Linea del Tiempo
-    <section class="linea-del-Tiempo">
-        <h2></h2>
-        <div id="timeline-embed" style="width: 100%; height: 600px"></div>
-    </section>
-    -->
-<!--
-    <section class="technological-evolution">
-        <h2></h2>
-        <div id="timeline-embed" style="width: 100%; height: 600px"></div>
-    </section>
--->
-<!--
-    <footer>
-        <p>Resumen de la historia de la Fórmula 1</p>
-        <p>¡Explora más secciones de nuestra página web!</p>
-    </footer>
--->
+        <!-- ============ CLASIFICACIÓN ============ -->
+        <section class="section section--alt" id="clasificacion" aria-labelledby="h-clasif">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Temporada <span id="clasif-temporada">en curso</span></p>
+                        <h2 id="h-clasif">Clasificación del campeonato</h2>
+                        <p id="clasif-ronda"></p>
+                    </div>
+                    <div class="tabs" role="tablist" aria-label="Tipo de clasificación">
+                        <button class="tab is-active" role="tab" aria-selected="true" data-tipo="pilotos" id="tab-pilotos" aria-controls="clasif-panel">Pilotos</button>
+                        <button class="tab" role="tab" aria-selected="false" data-tipo="constructores" id="tab-constructores" aria-controls="clasif-panel" tabindex="-1">Constructores</button>
+                    </div>
+                </div>
+                <div id="clasif-panel" role="tabpanel" aria-labelledby="tab-pilotos" class="card table-card">
+                    <div class="skeleton" style="height: 260px"></div>
+                </div>
+                <p class="data-credit">Datos: Jolpica F1 API (compatible con Ergast). Pueden tardar unos minutos en actualizarse.</p>
+            </div>
+        </section>
+
+        <!-- ============ NOTICIAS ============ -->
+        <section class="section" id="noticias-home" aria-labelledby="h-news" hidden>
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Al día</p>
+                        <h2 id="h-news">Últimas noticias</h2>
+                    </div>
+                    <a class="link-arrow" href="html/paginas/noticias.html">Ver todas</a>
+                </div>
+                <div class="news-grid" id="news-grid"></div>
+            </div>
+        </section>
+
+        <!-- ============ EXPLORA ============ -->
+        <section class="section section--tight" id="explora" aria-labelledby="h-explora">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Explora</p>
+                        <h2 id="h-explora">Todo lo que necesitas para seguir la F1</h2>
+                    </div>
+                </div>
+                <div class="tiles">
+                    <a class="tile" href="html/paginas/en-vivo.html">
+                        <span class="tile-icon" aria-hidden="true">⏱️</span>
+                        <h3>Sesiones</h3>
+                        <p>Horario del fin de semana en tu hora local y dónde verlo de forma oficial.</p>
+                    </a>
+                    <a class="tile" href="html/paginas/calendario_temporada.html">
+                        <span class="tile-icon" aria-hidden="true">📅</span>
+                        <h3>Calendario</h3>
+                        <p>Todas las carreras de la temporada y de años anteriores.</p>
+                    </a>
+                    <a class="tile" href="#historia">
+                        <span class="tile-icon" aria-hidden="true">🏆</span>
+                        <h3>Historia</h3>
+                        <p>De Silverstone 1950 a la nueva era de 2026, en una línea del tiempo.</p>
+                    </a>
+                    <a class="tile" href="html/paginas/tienda.html">
+                        <span class="tile-icon" aria-hidden="true">🛍️</span>
+                        <h3>Tienda</h3>
+                        <p>Selección de productos de aficionados con enlaces de afiliados.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ HISTORIA ============ -->
+        <section class="section section--alt" id="historia" aria-labelledby="h-historia">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Línea del tiempo</p>
+                        <h2 id="h-historia">Momentos que marcaron la Fórmula 1</h2>
+                    </div>
+                </div>
+                <div class="timeline" id="timeline">
+                    <div class="timeline-years" id="timeline-years" role="tablist" aria-label="Años destacados"></div>
+                    <article class="timeline-detail card" id="timeline-detail" role="tabpanel" aria-live="polite"></article>
+                </div>
+                <noscript>
+                    <ol>
+                        <li><strong>1950</strong> – Primera temporada oficial, en Silverstone.</li>
+                        <li><strong>1958</strong> – Nace el campeonato de constructores.</li>
+                        <li><strong>1977</strong> – Lotus estrena el efecto suelo con el 78.</li>
+                        <li><strong>1988</strong> – McLaren MP4/4 gana 15 de 16 carreras.</li>
+                        <li><strong>1994</strong> – Fin de semana trágico en Imola; se refuerza la seguridad.</li>
+                        <li><strong>2005</strong> – Alonso rompe la racha de Ferrari y Schumacher.</li>
+                        <li><strong>2014</strong> – Comienza la era híbrida V6 turbo.</li>
+                        <li><strong>2021</strong> – Hamilton vs. Verstappen se decide en Abu Dabi.</li>
+                        <li><strong>2026</strong> – Nueva era de reglamentos técnicos.</li>
+                    </ol>
+                </noscript>
+            </div>
+        </section>
+
+        <!-- ============ COMUNIDAD ============ -->
+        <section class="section" id="comunidad" aria-labelledby="h-comunidad">
+            <div class="container">
+                <div class="cta card">
+                    <div>
+                        <p class="eyebrow">Comunidad</p>
+                        <h2 id="h-comunidad">Vive la F1 con otros aficionados</h2>
+                        <p>Síguenos para ver análisis, resúmenes y opiniones de cada Gran Premio.</p>
+                    </div>
+                    <div class="cta-actions">
+                        <a class="btn btn--primary" href="https://www.youtube.com/@F1FansC11MX" target="_blank" rel="noopener noreferrer">YouTube</a>
+                        <a class="btn btn--ghost" href="https://www.tiktok.com/@formula1fansglobal" target="_blank" rel="noopener noreferrer">TikTok</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/config.js" defer></script>
     <script src="js/menu.js" defer></script>
     <script src="js/theme-toggle.js" defer></script>
-    <script src="js/lazy-images.js" defer></script>
+    <script src="js/notifications.js" defer></script>
+    <script src="js/f1-data.js" defer></script>
+    <script src="js/home.js" defer></script>
     <script src="js/custom-timeline.js" defer></script>
     <script src="js/footer.js" defer></script>
 </body>

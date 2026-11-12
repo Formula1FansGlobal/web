@@ -1,70 +1,63 @@
-// custom-timeline.js - carrusel horizontal con zoom y detalle
+// custom-timeline.js - Línea del tiempo de la portada (accesible, por teclado).
 
-document.addEventListener('DOMContentLoaded', () => {
-    const events = [
-        { year: '1950', title: 'El gran debut', text: 'El Campeonato Mundial se inauguró en Silverstone con victoria de Giuseppe Farina (Alfa Romeo).' },
-        { year: '1961', title: 'Nacimiento de John Barnard', text: 'El diseñador que décadas después traería el chasis de fibra de carbono a la F1.' },
-        { year: '1970', title: 'Revolución aerodinámica', text: 'Lotus estrena el "efecto suelo" con el 78, cambiando para siempre la aerodinámica.' },
-        { year: '1988', title: 'El año McLaren', text: 'El MP4/4 de Senna y Prost ganó 15 de 16 carreras, con motor Honda turbo.' },
-        { year: '1994', title: 'San Marino', text: 'Las muertes de Senna y Ratzenberger obligan a rediseñar la seguridad.' },
-        { year: '2005', title: 'Sexto doble título de Ferrari', text: 'Schumacher y Barrichello sellan la época dorada con el F2005.' },
-        { year: '2014', title: 'Era híbrida', text: 'Mercedes inicia hegemonía con unidades de potencia V6 turbo híbridas.' },
-        { year: '2021', title: 'Hamilton vs Verstappen', text: 'La temporada se decide en Abu Dhabi tras polémica del safety car.' },
-        { year: '2025', title: 'F1 sostenible', text: 'Reglamentos de efecto suelo y combustibles sintéticos 100% renovables.' }
+(function () {
+    'use strict';
+
+    const EVENTOS = [
+        { year: '1950', title: 'El gran debut', text: 'Se disputa en Silverstone la primera carrera del Campeonato Mundial. Giuseppe Farina (Alfa Romeo) gana la primera temporada.' },
+        { year: '1958', title: 'Nace el campeonato de constructores', text: 'Se entrega por primera vez el título de constructores; lo gana Vanwall.' },
+        { year: '1977', title: 'El efecto suelo llega a la F1', text: 'Lotus presenta el 78, el primer monoplaza que aprovecha el efecto suelo para generar carga aerodinámica.' },
+        { year: '1988', title: 'El año de McLaren', text: 'El MP4/4 de Senna y Prost, con motor Honda turbo, gana 15 de las 16 carreras de la temporada.' },
+        { year: '1994', title: 'Imola y la seguridad', text: 'Los accidentes mortales de Roland Ratzenberger y Ayrton Senna en San Marino impulsan una profunda revisión de la seguridad.' },
+        { year: '2005', title: 'Alonso rompe la racha', text: 'Fernando Alonso (Renault) se convierte en el campeón más joven hasta ese momento y termina con el dominio de Schumacher y Ferrari.' },
+        { year: '2014', title: 'Era híbrida', text: 'Llegan las unidades de potencia V6 turbo híbridas y comienza un largo periodo de dominio de Mercedes.' },
+        { year: '2021', title: 'Hamilton vs. Verstappen', text: 'Una de las batallas más ajustadas de la historia se decide en la última vuelta del Gran Premio de Abu Dabi.' },
+        { year: '2026', title: 'Nueva era técnica', text: 'Entra en vigor un reglamento nuevo con unidades de potencia más eléctricas, combustibles sostenibles y monoplazas más ligeros y compactos.' }
     ];
 
-    const carousel = document.querySelector('.carousel');
-    const detail = document.querySelector('.carousel-detail');
-    const prevBtn = document.querySelector('.carousel-btn.prev');
-    const nextBtn = document.querySelector('.carousel-btn.next');
+    const cont = document.getElementById('timeline-years');
+    const detalle = document.getElementById('timeline-detail');
+    if (!cont || !detalle) return;
 
-    let currentIndex = 0;
-
-    function renderCarousel() {
-        events.forEach((ev, idx) => {
-            const item = document.createElement('div');
-            item.className = 'carousel-item';
-            item.dataset.idx = idx;
-            item.innerHTML = `<span class="year">${ev.year}</span>`;
-            item.addEventListener('click', () => goToIndex(idx));
-            carousel.appendChild(item);
+    let actual = 0;
+    const botones = EVENTOS.map((ev, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'timeline-year';
+        b.id = 'tl-' + ev.year;
+        b.setAttribute('role', 'tab');
+        b.textContent = ev.year;
+        b.addEventListener('click', () => ir(i));
+        b.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') { e.preventDefault(); ir(i + 1, true); }
+            if (e.key === 'ArrowLeft') { e.preventDefault(); ir(i - 1, true); }
+            if (e.key === 'Home') { e.preventDefault(); ir(0, true); }
+            if (e.key === 'End') { e.preventDefault(); ir(EVENTOS.length - 1, true); }
         });
-        updateSelection();
-    }
+        cont.appendChild(b);
+        return b;
+    });
 
-    function updateSelection() {
-        const items = carousel.querySelectorAll('.carousel-item');
-        items.forEach((el, idx) => {
-            el.classList.toggle('active', idx === currentIndex);
+    function ir(i, enfocar) {
+        actual = (i + EVENTOS.length) % EVENTOS.length;
+        botones.forEach((b, idx) => {
+            const on = idx === actual;
+            b.setAttribute('aria-selected', String(on));
+            b.tabIndex = on ? 0 : -1;
         });
-        showDetail(currentIndex);
-        scrollIntoView(currentIndex);
+        const ev = EVENTOS[actual];
+        const y = document.createElement('span');
+        y.className = 'tl-year';
+        y.textContent = ev.year;
+        const t = document.createElement('h3');
+        t.textContent = ev.title;
+        const p = document.createElement('p');
+        p.textContent = ev.text;
+        detalle.replaceChildren(y, t, p);
+        detalle.setAttribute('aria-labelledby', botones[actual].id);
+        botones[actual].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        if (enfocar) botones[actual].focus();
     }
 
-    function showDetail(idx) {
-        const ev = events[idx];
-        detail.innerHTML = `
-            <h3>${ev.year} – ${ev.title}</h3>
-            <p>${ev.text}</p>
-        `;
-    }
-
-    function scrollIntoView(idx) {
-        const item = carousel.querySelector(`.carousel-item[data-idx="${idx}"]`);
-        if (item) {
-            item.scrollIntoView({behavior: 'smooth', inline: 'center'});
-        }
-    }
-
-    function goToIndex(idx) {
-        if (idx < 0) idx = events.length - 1;
-        if (idx >= events.length) idx = 0;
-        currentIndex = idx;
-        updateSelection();
-    }
-
-    prevBtn.addEventListener('click', () => goToIndex(currentIndex - 1));
-    nextBtn.addEventListener('click', () => goToIndex(currentIndex + 1));
-
-    renderCarousel();
-});
+    ir(EVENTOS.length - 1);
+})();
