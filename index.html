@@ -28,6 +28,26 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/notifications.css">
+    <link rel="stylesheet" href="css/explorar.css">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "name": "Formula 1 Fans Global",
+                "url": "https://formula1fansglobal.github.io/web/",
+                "sameAs": ["https://www.youtube.com/@F1FansC11MX", "https://www.tiktok.com/@formula1fansglobal"]
+            },
+            {
+                "@type": "WebSite",
+                "name": "Formula 1 Fans Global",
+                "url": "https://formula1fansglobal.github.io/web/",
+                "inLanguage": ["es", "en"]
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
     <a class="skip-link" href="#contenido">Saltar al contenido</a>
@@ -112,6 +132,19 @@
             </div>
         </section>
 
+        <!-- ============ TUS FAVORITOS ============ -->
+        <section class="section section--tight" id="favoritos" aria-labelledby="h-fav">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <p class="eyebrow">Tus favoritos</p>
+                        <h2 id="h-fav">Tu piloto y tu equipo</h2>
+                    </div>
+                </div>
+                <div class="fav-card" id="fav-card" aria-live="polite"></div>
+            </div>
+        </section>
+
         <!-- ============ EXPLORA ============ -->
         <section class="section section--tight" id="explora" aria-labelledby="h-explora">
             <div class="container">
@@ -137,10 +170,30 @@
                         <h3>Historia</h3>
                         <p>De Silverstone 1950 a la nueva era de 2026, en una línea del tiempo.</p>
                     </a>
+                    <a class="tile" href="html/paginas/pilotos.html">
+                        <span class="tile-icon" aria-hidden="true">🧑‍✈️</span>
+                        <h3>Pilotos y equipos</h3>
+                        <p>Fichas con victorias, podios, poles y resultados por temporada.</p>
+                    </a>
+                    <a class="tile" href="html/paginas/circuitos.html">
+                        <span class="tile-icon" aria-hidden="true">🏁</span>
+                        <h3>Circuitos del calendario</h3>
+                        <p>Dónde se corre y quién ganó en cada pista.</p>
+                    </a>
+                    <a class="tile" href="html/paginas/estadisticas.html">
+                        <span class="tile-icon" aria-hidden="true">📊</span>
+                        <h3>Estadísticas y récords</h3>
+                        <p>Campeones, títulos y la evolución de cada temporada.</p>
+                    </a>
+                    <a class="tile" href="html/paginas/quiniela.html">
+                        <span class="tile-icon" aria-hidden="true">🎯</span>
+                        <h3>Jugar a la quiniela</h3>
+                        <p>Pronostica el podio y la pole de la próxima carrera.</p>
+                    </a>
                     <a class="tile" href="html/paginas/tienda.html">
                         <span class="tile-icon" aria-hidden="true">🛍️</span>
                         <h3>Tienda</h3>
-                        <p>Selección de productos de aficionados con enlaces de afiliados.</p>
+                        <p>Próximamente: ropa, gorras y accesorios para aficionados.</p>
                     </a>
                 </div>
             </div>
@@ -205,6 +258,12 @@
     <script src="js/f1-data.js" defer></script>
     <script src="js/home.js" defer></script>
     <script src="js/historia.js" defer></script>
+    <script src="js/f1-extra.js" defer></script>
+    <script src="js/favoritos.js" defer></script>
+    <script src="js/home-favoritos.js" defer></script>
+    <script src="js/preferencias.js" defer></script>
+    <script src="js/buscador.js" defer></script>
     <script src="js/footer.js" defer></script>
+    <script src="js/i18n.js" defer></script>
 </body>
 </html>

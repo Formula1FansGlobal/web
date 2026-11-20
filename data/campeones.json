@@ -1,0 +1,948 @@
+{
+    "_ayuda":  "Campeones del mundo por temporada, generados desde Jolpica F1 API. js/f1-extra.js completa las temporadas posteriores a \u0027ultimaTemporada\u0027 en vivo.",
+    "ultimaTemporada":  2025,
+    "pilotos":  [
+                    {
+                        "anio":  1950,
+                        "id":  "farina",
+                        "nombre":  "Nino Farina",
+                        "equipo":  "Alfa Romeo",
+                        "puntos":  30
+                    },
+                    {
+                        "anio":  1951,
+                        "id":  "fangio",
+                        "nombre":  "Juan Fangio",
+                        "equipo":  "Alfa Romeo",
+                        "puntos":  31
+                    },
+                    {
+                        "anio":  1952,
+                        "id":  "ascari",
+                        "nombre":  "Alberto Ascari",
+                        "equipo":  "Ferrari",
+                        "puntos":  36
+                    },
+                    {
+                        "anio":  1953,
+                        "id":  "ascari",
+                        "nombre":  "Alberto Ascari",
+                        "equipo":  "Ferrari",
+                        "puntos":  34.5
+                    },
+                    {
+                        "anio":  1954,
+                        "id":  "fangio",
+                        "nombre":  "Juan Fangio",
+                        "equipo":  "Maserati",
+                        "puntos":  42
+                    },
+                    {
+                        "anio":  1955,
+                        "id":  "fangio",
+                        "nombre":  "Juan Fangio",
+                        "equipo":  "Mercedes",
+                        "puntos":  40
+                    },
+                    {
+                        "anio":  1956,
+                        "id":  "fangio",
+                        "nombre":  "Juan Fangio",
+                        "equipo":  "Ferrari",
+                        "puntos":  30
+                    },
+                    {
+                        "anio":  1957,
+                        "id":  "fangio",
+                        "nombre":  "Juan Fangio",
+                        "equipo":  "Maserati",
+                        "puntos":  40
+                    },
+                    {
+                        "anio":  1958,
+                        "id":  "hawthorn",
+                        "nombre":  "Mike Hawthorn",
+                        "equipo":  "Ferrari",
+                        "puntos":  42
+                    },
+                    {
+                        "anio":  1959,
+                        "id":  "jack_brabham",
+                        "nombre":  "Jack Brabham",
+                        "equipo":  "Cooper-Climax",
+                        "puntos":  31
+                    },
+                    {
+                        "anio":  1960,
+                        "id":  "jack_brabham",
+                        "nombre":  "Jack Brabham",
+                        "equipo":  "Cooper-Climax",
+                        "puntos":  43
+                    },
+                    {
+                        "anio":  1961,
+                        "id":  "phil_hill",
+                        "nombre":  "Phil Hill",
+                        "equipo":  "Ferrari",
+                        "puntos":  34
+                    },
+                    {
+                        "anio":  1962,
+                        "id":  "hill",
+                        "nombre":  "Graham Hill",
+                        "equipo":  "BRM",
+                        "puntos":  42
+                    },
+                    {
+                        "anio":  1963,
+                        "id":  "clark",
+                        "nombre":  "Jim Clark",
+                        "equipo":  "Lotus-Climax",
+                        "puntos":  54
+                    },
+                    {
+                        "anio":  1964,
+                        "id":  "surtees",
+                        "nombre":  "John Surtees",
+                        "equipo":  "Ferrari",
+                        "puntos":  40
+                    },
+                    {
+                        "anio":  1965,
+                        "id":  "clark",
+                        "nombre":  "Jim Clark",
+                        "equipo":  "Lotus-Climax",
+                        "puntos":  54
+                    },
+                    {
+                        "anio":  1966,
+                        "id":  "jack_brabham",
+                        "nombre":  "Jack Brabham",
+                        "equipo":  "Brabham-Repco",
+                        "puntos":  42
+                    },
+                    {
+                        "anio":  1967,
+                        "id":  "hulme",
+                        "nombre":  "Denny Hulme",
+                        "equipo":  "Brabham-Repco",
+                        "puntos":  51
+                    },
+                    {
+                        "anio":  1968,
+                        "id":  "hill",
+                        "nombre":  "Graham Hill",
+                        "equipo":  "Lotus-Ford",
+                        "puntos":  48
+                    },
+                    {
+                        "anio":  1969,
+                        "id":  "stewart",
+                        "nombre":  "Jackie Stewart",
+                        "equipo":  "Matra-Ford",
+                        "puntos":  63
+                    },
+                    {
+                        "anio":  1970,
+                        "id":  "rindt",
+                        "nombre":  "Jochen Rindt",
+                        "equipo":  "Team Lotus",
+                        "puntos":  45
+                    },
+                    {
+                        "anio":  1971,
+                        "id":  "stewart",
+                        "nombre":  "Jackie Stewart",
+                        "equipo":  "Tyrrell",
+                        "puntos":  62
+                    },
+                    {
+                        "anio":  1972,
+                        "id":  "emerson_fittipaldi",
+                        "nombre":  "Emerson Fittipaldi",
+                        "equipo":  "Team Lotus",
+                        "puntos":  61
+                    },
+                    {
+                        "anio":  1973,
+                        "id":  "stewart",
+                        "nombre":  "Jackie Stewart",
+                        "equipo":  "Tyrrell",
+                        "puntos":  71
+                    },
+                    {
+                        "anio":  1974,
+                        "id":  "emerson_fittipaldi",
+                        "nombre":  "Emerson Fittipaldi",
+                        "equipo":  "McLaren",
+                        "puntos":  55
+                    },
+                    {
+                        "anio":  1975,
+                        "id":  "lauda",
+                        "nombre":  "Niki Lauda",
+                        "equipo":  "Ferrari",
+                        "puntos":  64.5
+                    },
+                    {
+                        "anio":  1976,
+                        "id":  "hunt",
+                        "nombre":  "James Hunt",
+                        "equipo":  "McLaren",
+                        "puntos":  69
+                    },
+                    {
+                        "anio":  1977,
+                        "id":  "lauda",
+                        "nombre":  "Niki Lauda",
+                        "equipo":  "Ferrari",
+                        "puntos":  70
+                    },
+                    {
+                        "anio":  1978,
+                        "id":  "mario_andretti",
+                        "nombre":  "Mario Andretti",
+                        "equipo":  "Team Lotus",
+                        "puntos":  64
+                    },
+                    {
+                        "anio":  1979,
+                        "id":  "scheckter",
+                        "nombre":  "Jody Scheckter",
+                        "equipo":  "Ferrari",
+                        "puntos":  51
+                    },
+                    {
+                        "anio":  1980,
+                        "id":  "jones",
+                        "nombre":  "Alan Jones",
+                        "equipo":  "Williams",
+                        "puntos":  67
+                    },
+                    {
+                        "anio":  1981,
+                        "id":  "piquet",
+                        "nombre":  "Nelson Piquet",
+                        "equipo":  "Brabham",
+                        "puntos":  50
+                    },
+                    {
+                        "anio":  1982,
+                        "id":  "keke_rosberg",
+                        "nombre":  "Keke Rosberg",
+                        "equipo":  "Williams",
+                        "puntos":  44
+                    },
+                    {
+                        "anio":  1983,
+                        "id":  "piquet",
+                        "nombre":  "Nelson Piquet",
+                        "equipo":  "Brabham",
+                        "puntos":  59
+                    },
+                    {
+                        "anio":  1984,
+                        "id":  "lauda",
+                        "nombre":  "Niki Lauda",
+                        "equipo":  "McLaren",
+                        "puntos":  72
+                    },
+                    {
+                        "anio":  1985,
+                        "id":  "prost",
+                        "nombre":  "Alain Prost",
+                        "equipo":  "McLaren",
+                        "puntos":  73
+                    },
+                    {
+                        "anio":  1986,
+                        "id":  "prost",
+                        "nombre":  "Alain Prost",
+                        "equipo":  "McLaren",
+                        "puntos":  72
+                    },
+                    {
+                        "anio":  1987,
+                        "id":  "piquet",
+                        "nombre":  "Nelson Piquet",
+                        "equipo":  "Williams",
+                        "puntos":  73
+                    },
+                    {
+                        "anio":  1988,
+                        "id":  "senna",
+                        "nombre":  "Ayrton Senna",
+                        "equipo":  "McLaren",
+                        "puntos":  90
+                    },
+                    {
+                        "anio":  1989,
+                        "id":  "prost",
+                        "nombre":  "Alain Prost",
+                        "equipo":  "McLaren",
+                        "puntos":  76
+                    },
+                    {
+                        "anio":  1990,
+                        "id":  "senna",
+                        "nombre":  "Ayrton Senna",
+                        "equipo":  "McLaren",
+                        "puntos":  78
+                    },
+                    {
+                        "anio":  1991,
+                        "id":  "senna",
+                        "nombre":  "Ayrton Senna",
+                        "equipo":  "McLaren",
+                        "puntos":  96
+                    },
+                    {
+                        "anio":  1992,
+                        "id":  "mansell",
+                        "nombre":  "Nigel Mansell",
+                        "equipo":  "Williams",
+                        "puntos":  108
+                    },
+                    {
+                        "anio":  1993,
+                        "id":  "prost",
+                        "nombre":  "Alain Prost",
+                        "equipo":  "Williams",
+                        "puntos":  99
+                    },
+                    {
+                        "anio":  1994,
+                        "id":  "michael_schumacher",
+                        "nombre":  "Michael Schumacher",
+                        "equipo":  "Benetton",
+                        "puntos":  92
+                    },
+                    {
+                        "anio":  1995,
+                        "id":  "michael_schumacher",
+                        "nombre":  "Michael Schumacher",
+                        "equipo":  "Benetton",
+                        "puntos":  102
+                    },
+                    {
+                        "anio":  1996,
+                        "id":  "damon_hill",
+                        "nombre":  "Damon Hill",
+                        "equipo":  "Williams",
+                        "puntos":  97
+                    },
+                    {
+                        "anio":  1997,
+                        "id":  "villeneuve",
+                        "nombre":  "Jacques Villeneuve",
+                        "equipo":  "Williams",
+                        "puntos":  81
+                    },
+                    {
+                        "anio":  1998,
+                        "id":  "hakkinen",
+                        "nombre":  "Mika Häkkinen",
+                        "equipo":  "McLaren",
+                        "puntos":  100
+                    },
+                    {
+                        "anio":  1999,
+                        "id":  "hakkinen",
+                        "nombre":  "Mika Häkkinen",
+                        "equipo":  "McLaren",
+                        "puntos":  76
+                    },
+                    {
+                        "anio":  2000,
+                        "id":  "michael_schumacher",
+                        "nombre":  "Michael Schumacher",
+                        "equipo":  "Ferrari",
+                        "puntos":  108
+                    },
+                    {
+                        "anio":  2001,
+                        "id":  "michael_schumacher",
+                        "nombre":  "Michael Schumacher",
+                        "equipo":  "Ferrari",
+                        "puntos":  123
+                    },
+                    {
+                        "anio":  2002,
+                        "id":  "michael_schumacher",
+                        "nombre":  "Michael Schumacher",
+                        "equipo":  "Ferrari",
+                        "puntos":  144
+                    },
+                    {
+                        "anio":  2003,
+                        "id":  "michael_schumacher",
+                        "nombre":  "Michael Schumacher",
+                        "equipo":  "Ferrari",
+                        "puntos":  93
+                    },
+                    {
+                        "anio":  2004,
+                        "id":  "michael_schumacher",
+                        "nombre":  "Michael Schumacher",
+                        "equipo":  "Ferrari",
+                        "puntos":  148
+                    },
+                    {
+                        "anio":  2005,
+                        "id":  "alonso",
+                        "nombre":  "Fernando Alonso",
+                        "equipo":  "Renault",
+                        "puntos":  133
+                    },
+                    {
+                        "anio":  2006,
+                        "id":  "alonso",
+                        "nombre":  "Fernando Alonso",
+                        "equipo":  "Renault",
+                        "puntos":  134
+                    },
+                    {
+                        "anio":  2007,
+                        "id":  "raikkonen",
+                        "nombre":  "Kimi Räikkönen",
+                        "equipo":  "Ferrari",
+                        "puntos":  110
+                    },
+                    {
+                        "anio":  2008,
+                        "id":  "hamilton",
+                        "nombre":  "Lewis Hamilton",
+                        "equipo":  "McLaren",
+                        "puntos":  98
+                    },
+                    {
+                        "anio":  2009,
+                        "id":  "button",
+                        "nombre":  "Jenson Button",
+                        "equipo":  "Brawn",
+                        "puntos":  95
+                    },
+                    {
+                        "anio":  2010,
+                        "id":  "vettel",
+                        "nombre":  "Sebastian Vettel",
+                        "equipo":  "Red Bull",
+                        "puntos":  256
+                    },
+                    {
+                        "anio":  2011,
+                        "id":  "vettel",
+                        "nombre":  "Sebastian Vettel",
+                        "equipo":  "Red Bull",
+                        "puntos":  392
+                    },
+                    {
+                        "anio":  2012,
+                        "id":  "vettel",
+                        "nombre":  "Sebastian Vettel",
+                        "equipo":  "Red Bull",
+                        "puntos":  281
+                    },
+                    {
+                        "anio":  2013,
+                        "id":  "vettel",
+                        "nombre":  "Sebastian Vettel",
+                        "equipo":  "Red Bull",
+                        "puntos":  397
+                    },
+                    {
+                        "anio":  2014,
+                        "id":  "hamilton",
+                        "nombre":  "Lewis Hamilton",
+                        "equipo":  "Mercedes",
+                        "puntos":  384
+                    },
+                    {
+                        "anio":  2015,
+                        "id":  "hamilton",
+                        "nombre":  "Lewis Hamilton",
+                        "equipo":  "Mercedes",
+                        "puntos":  381
+                    },
+                    {
+                        "anio":  2016,
+                        "id":  "rosberg",
+                        "nombre":  "Nico Rosberg",
+                        "equipo":  "Mercedes",
+                        "puntos":  385
+                    },
+                    {
+                        "anio":  2017,
+                        "id":  "hamilton",
+                        "nombre":  "Lewis Hamilton",
+                        "equipo":  "Mercedes",
+                        "puntos":  363
+                    },
+                    {
+                        "anio":  2018,
+                        "id":  "hamilton",
+                        "nombre":  "Lewis Hamilton",
+                        "equipo":  "Mercedes",
+                        "puntos":  408
+                    },
+                    {
+                        "anio":  2019,
+                        "id":  "hamilton",
+                        "nombre":  "Lewis Hamilton",
+                        "equipo":  "Mercedes",
+                        "puntos":  413
+                    },
+                    {
+                        "anio":  2020,
+                        "id":  "hamilton",
+                        "nombre":  "Lewis Hamilton",
+                        "equipo":  "Mercedes",
+                        "puntos":  347
+                    },
+                    {
+                        "anio":  2021,
+                        "id":  "max_verstappen",
+                        "nombre":  "Max Verstappen",
+                        "equipo":  "Red Bull",
+                        "puntos":  395.5
+                    },
+                    {
+                        "anio":  2022,
+                        "id":  "max_verstappen",
+                        "nombre":  "Max Verstappen",
+                        "equipo":  "Red Bull",
+                        "puntos":  454
+                    },
+                    {
+                        "anio":  2023,
+                        "id":  "max_verstappen",
+                        "nombre":  "Max Verstappen",
+                        "equipo":  "Red Bull",
+                        "puntos":  575
+                    },
+                    {
+                        "anio":  2024,
+                        "id":  "max_verstappen",
+                        "nombre":  "Max Verstappen",
+                        "equipo":  "Red Bull",
+                        "puntos":  437
+                    },
+                    {
+                        "anio":  2025,
+                        "id":  "norris",
+                        "nombre":  "Lando Norris",
+                        "equipo":  "McLaren",
+                        "puntos":  423
+                    }
+                ],
+    "constructores":  [
+                          {
+                              "anio":  1958,
+                              "id":  "vanwall",
+                              "nombre":  "Vanwall",
+                              "puntos":  48
+                          },
+                          {
+                              "anio":  1959,
+                              "id":  "cooper-climax",
+                              "nombre":  "Cooper-Climax",
+                              "puntos":  40
+                          },
+                          {
+                              "anio":  1960,
+                              "id":  "cooper-climax",
+                              "nombre":  "Cooper-Climax",
+                              "puntos":  48
+                          },
+                          {
+                              "anio":  1961,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  45
+                          },
+                          {
+                              "anio":  1962,
+                              "id":  "brm",
+                              "nombre":  "BRM",
+                              "puntos":  42
+                          },
+                          {
+                              "anio":  1963,
+                              "id":  "lotus-climax",
+                              "nombre":  "Lotus-Climax",
+                              "puntos":  54
+                          },
+                          {
+                              "anio":  1964,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  45
+                          },
+                          {
+                              "anio":  1965,
+                              "id":  "lotus-climax",
+                              "nombre":  "Lotus-Climax",
+                              "puntos":  54
+                          },
+                          {
+                              "anio":  1966,
+                              "id":  "brabham-repco",
+                              "nombre":  "Brabham-Repco",
+                              "puntos":  42
+                          },
+                          {
+                              "anio":  1967,
+                              "id":  "brabham-repco",
+                              "nombre":  "Brabham-Repco",
+                              "puntos":  67
+                          },
+                          {
+                              "anio":  1968,
+                              "id":  "lotus-ford",
+                              "nombre":  "Lotus-Ford",
+                              "puntos":  62
+                          },
+                          {
+                              "anio":  1969,
+                              "id":  "matra-ford",
+                              "nombre":  "Matra-Ford",
+                              "puntos":  66
+                          },
+                          {
+                              "anio":  1970,
+                              "id":  "team_lotus",
+                              "nombre":  "Team Lotus",
+                              "puntos":  59
+                          },
+                          {
+                              "anio":  1971,
+                              "id":  "tyrrell",
+                              "nombre":  "Tyrrell",
+                              "puntos":  73
+                          },
+                          {
+                              "anio":  1972,
+                              "id":  "team_lotus",
+                              "nombre":  "Team Lotus",
+                              "puntos":  61
+                          },
+                          {
+                              "anio":  1973,
+                              "id":  "team_lotus",
+                              "nombre":  "Team Lotus",
+                              "puntos":  91
+                          },
+                          {
+                              "anio":  1974,
+                              "id":  "mclaren",
+                              "nombre":  "McLaren",
+                              "puntos":  72
+                          },
+                          {
+                              "anio":  1975,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  72.5
+                          },
+                          {
+                              "anio":  1976,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  83
+                          },
+                          {
+                              "anio":  1977,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  84
+                          },
+                          {
+                              "anio":  1978,
+                              "id":  "team_lotus",
+                              "nombre":  "Team Lotus",
+                              "puntos":  86
+                          },
+                          {
+                              "anio":  1979,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  113
+                          },
+                          {
+                              "anio":  1980,
+                              "id":  "williams",
+                              "nombre":  "Williams",
+                              "puntos":  120
+                          },
+                          {
+                              "anio":  1981,
+                              "id":  "williams",
+                              "nombre":  "Williams",
+                              "puntos":  95
+                          },
+                          {
+                              "anio":  1982,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  74
+                          },
+                          {
+                              "anio":  1983,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  89
+                          },
+                          {
+                              "anio":  1984,
+                              "id":  "mclaren",
+                              "nombre":  "McLaren",
+                              "puntos":  143.5
+                          },
+                          {
+                              "anio":  1985,
+                              "id":  "mclaren",
+                              "nombre":  "McLaren",
+                              "puntos":  90
+                          },
+                          {
+                              "anio":  1986,
+                              "id":  "williams",
+                              "nombre":  "Williams",
+                              "puntos":  141
+                          },
+                          {
+                              "anio":  1987,
+                              "id":  "williams",
+                              "nombre":  "Williams",
+                              "puntos":  137
+                          },
+                          {
+                              "anio":  1988,
+                              "id":  "mclaren",
+                              "nombre":  "McLaren",
+                              "puntos":  199
+                          },
+                          {
+                              "anio":  1989,
+                              "id":  "mclaren",
+                              "nombre":  "McLaren",
+                              "puntos":  141
+                          },
+                          {
+                              "anio":  1990,
+                              "id":  "mclaren",
+                              "nombre":  "McLaren",
+                              "puntos":  121
+                          },
+                          {
+                              "anio":  1991,
+                              "id":  "mclaren",
+                              "nombre":  "McLaren",
+                              "puntos":  139
+                          },
+                          {
+                              "anio":  1992,
+                              "id":  "williams",
+                              "nombre":  "Williams",
+                              "puntos":  164
+                          },
+                          {
+                              "anio":  1993,
+                              "id":  "williams",
+                              "nombre":  "Williams",
+                              "puntos":  168
+                          },
+                          {
+                              "anio":  1994,
+                              "id":  "williams",
+                              "nombre":  "Williams",
+                              "puntos":  118
+                          },
+                          {
+                              "anio":  1995,
+                              "id":  "benetton",
+                              "nombre":  "Benetton",
+                              "puntos":  147
+                          },
+                          {
+                              "anio":  1996,
+                              "id":  "williams",
+                              "nombre":  "Williams",
+                              "puntos":  175
+                          },
+                          {
+                              "anio":  1997,
+                              "id":  "williams",
+                              "nombre":  "Williams",
+                              "puntos":  123
+                          },
+                          {
+                              "anio":  1998,
+                              "id":  "mclaren",
+                              "nombre":  "McLaren",
+                              "puntos":  156
+                          },
+                          {
+                              "anio":  1999,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  128
+                          },
+                          {
+                              "anio":  2000,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  170
+                          },
+                          {
+                              "anio":  2001,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  179
+                          },
+                          {
+                              "anio":  2002,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  221
+                          },
+                          {
+                              "anio":  2003,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  158
+                          },
+                          {
+                              "anio":  2004,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  262
+                          },
+                          {
+                              "anio":  2005,
+                              "id":  "renault",
+                              "nombre":  "Renault",
+                              "puntos":  191
+                          },
+                          {
+                              "anio":  2006,
+                              "id":  "renault",
+                              "nombre":  "Renault",
+                              "puntos":  206
+                          },
+                          {
+                              "anio":  2007,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  204
+                          },
+                          {
+                              "anio":  2008,
+                              "id":  "ferrari",
+                              "nombre":  "Ferrari",
+                              "puntos":  172
+                          },
+                          {
+                              "anio":  2009,
+                              "id":  "brawn",
+                              "nombre":  "Brawn",
+                              "puntos":  172
+                          },
+                          {
+                              "anio":  2010,
+                              "id":  "red_bull",
+                              "nombre":  "Red Bull",
+                              "puntos":  498
+                          },
+                          {
+                              "anio":  2011,
+                              "id":  "red_bull",
+                              "nombre":  "Red Bull",
+                              "puntos":  650
+                          },
+                          {
+                              "anio":  2012,
+                              "id":  "red_bull",
+                              "nombre":  "Red Bull",
+                              "puntos":  460
+                          },
+                          {
+                              "anio":  2013,
+                              "id":  "red_bull",
+                              "nombre":  "Red Bull",
+                              "puntos":  596
+                          },
+                          {
+                              "anio":  2014,
+                              "id":  "mercedes",
+                              "nombre":  "Mercedes",
+                              "puntos":  701
+                          },
+                          {
+                              "anio":  2015,
+                              "id":  "mercedes",
+                              "nombre":  "Mercedes",
+                              "puntos":  703
+                          },
+                          {
+                              "anio":  2016,
+                              "id":  "mercedes",
+                              "nombre":  "Mercedes",
+                              "puntos":  765
+                          },
+                          {
+                              "anio":  2017,
+                              "id":  "mercedes",
+                              "nombre":  "Mercedes",
+                              "puntos":  668
+                          },
+                          {
+                              "anio":  2018,
+                              "id":  "mercedes",
+                              "nombre":  "Mercedes",
+                              "puntos":  655
+                          },
+                          {
+                              "anio":  2019,
+                              "id":  "mercedes",
+                              "nombre":  "Mercedes",
+                              "puntos":  739
+                          },
+                          {
+                              "anio":  2020,
+                              "id":  "mercedes",
+                              "nombre":  "Mercedes",
+                              "puntos":  573
+                          },
+                          {
+                              "anio":  2021,
+                              "id":  "mercedes",
+                              "nombre":  "Mercedes",
+                              "puntos":  613.5
+                          },
+                          {
+                              "anio":  2022,
+                              "id":  "red_bull",
+                              "nombre":  "Red Bull",
+                              "puntos":  759
+                          },
+                          {
+                              "anio":  2023,
+                              "id":  "red_bull",
+                              "nombre":  "Red Bull",
+                              "puntos":  860
+                          },
+                          {
+                              "anio":  2024,
+                              "id":  "mclaren",
+                              "nombre":  "McLaren",
+                              "puntos":  666
+                          },
+                          {
+                              "anio":  2025,
+                              "id":  "mclaren",
+                              "nombre":  "McLaren",
+                              "puntos":  833
+                          }
+                      ]
+}

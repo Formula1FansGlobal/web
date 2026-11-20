@@ -29,24 +29,63 @@
         } catch (e) { /* almacenamiento lleno o bloqueado: se ignora */ }
     }
 
-    async function getJSON(path) {
-        const cached = cacheGet(path);
-        if (cached && Date.now() - cached.t < TTL_MS) return cached.data;
+    /* La API pública limita las ráfagas: las peticiones salen en fila, con una pausa entre ellas. */
+    const PAUSA_MS = 280;
+    let cola = Promise.resolve();
+    let ultimaPeticion = 0;
+    const dormir = (ms) => new Promise((r) => setTimeout(r, ms));
 
-        const ctrl = new AbortController();
-        const timer = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
+    async function esperarTurno() {
+        const anterior = cola;
+        let liberar;
+        cola = new Promise((r) => { liberar = r; });
+        await anterior;
+        const falta = ultimaPeticion + PAUSA_MS - Date.now();
+        if (falta > 0) await dormir(falta);
+        ultimaPeticion = Date.now();
+        liberar();
+    }
+
+    async function pedir(path) {
+        for (let intento = 0; intento < 3; intento++) {
+            await esperarTurno();
+            const ctrl = new AbortController();
+            const timer = setTimeout(() => ctrl.abort(), TIMEOUT_MS);
+            try {
+                const res = await fetch(API + path, { signal: ctrl.signal, headers: { Accept: 'application/json' } });
+                if (res.status === 429 && intento < 2) { await dormir(1500 * (intento + 1)); continue; }
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                return await res.json();
+            } finally {
+                clearTimeout(timer);
+            }
+        }
+        throw new Error('Demasiadas peticiones');
+    }
+
+    /** ttlMs opcional: para datos históricos que casi no cambian se puede cachear más tiempo. */
+    async function getJSON(path, ttlMs) {
+        const cached = cacheGet(path);
+        if (cached && Date.now() - cached.t < (ttlMs || TTL_MS)) return cached.data;
         try {
-            const res = await fetch(API + path, { signal: ctrl.signal, headers: { Accept: 'application/json' } });
-            if (!res.ok) throw new Error('HTTP ' + res.status);
-            const json = await res.json();
+            const json = await pedir(path);
             cacheSet(path, json);
             return json;
         } catch (err) {
             if (cached) return cached.data; // datos viejos mejor que nada
             throw err;
-        } finally {
-            clearTimeout(timer);
         }
+    }
+
+    /* ---------------------------------------------- preferencias del visitante */
+    function pref(clave) {
+        try { return localStorage.getItem('f1fg:' + clave) || ''; } catch (e) { return ''; }
+    }
+    const IDIOMA = pref('lang') === 'en' ? 'en' : 'es';
+    function zonaElegida() {
+        const z = pref('tz');
+        if (!z) return '';
+        try { new Intl.DateTimeFormat('es', { timeZone: z }); return z; } catch (e) { return ''; }
     }
 
     /* ------------------------------------------------------ traducciones ES */
@@ -269,9 +308,9 @@
     }
 
     /* ------------------------------------------------------------------ UI */
-    const fmtFechaHora = new Intl.DateTimeFormat('es', {
+    const fmtFechaHora = new Intl.DateTimeFormat(IDIOMA, Object.assign({
         weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit'
-    });
+    }, zonaElegida() ? { timeZone: zonaElegida() } : {}));
 
     function formatearSesion(fecha) {
         const txt = fmtFechaHora.format(fecha);
@@ -280,7 +319,7 @@
 
     function zonaHoraria() {
         try {
-            return Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+            return zonaElegida() || Intl.DateTimeFormat().resolvedOptions().timeZone || '';
         } catch (e) {
             return '';
         }
@@ -363,6 +402,7 @@
     }
 
     window.F1Data = {
+        idioma: IDIOMA, getJSON, zonaElegida,
         generarICS,
         getProximaCarrera, getClasificacion, getUltimoResultado, getProximaManual, getCalendario, getGanadores, getCarrera,
         nombreGP, normalizarCarrera, siguienteSesion
@@ -387,7 +427,7 @@
         });
         marco.appendChild(boton);
         const f = v.fecha ? new Date(v.fecha) : null;
-        const meta = [v.tipo === 'propio' ? 'Propio' : 'Oficial', v.categoria, f && !isNaN(f) ? f.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' }) : ''].filter(Boolean);
+        const meta = [v.tipo === 'propio' ? 'Propio' : 'Oficial', v.categoria, f && !isNaN(f) ? f.toLocaleDateString(IDIOMA, { day: 'numeric', month: 'short', year: 'numeric' }) : ''].filter(Boolean);
         return h('article', { class: 'video-card' }, marco,
             h('div', { class: 'video-info' },
                 h('h3', { text: v.titulo }),

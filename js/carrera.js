@@ -120,10 +120,26 @@
         titulo.textContent = datos.nombre;
         document.title = `${datos.nombre} ${datos.temporada} | Formula 1 Fans Global`;
         document.getElementById('r-eyebrow').textContent = `Temporada ${datos.temporada} · Ronda ${datos.ronda}`;
-        const fecha = datos.fecha ? new Date(datos.fecha + 'T00:00:00Z').toLocaleDateString('es', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) : '';
+        const fecha = datos.fecha ? new Date(datos.fecha + 'T00:00:00Z').toLocaleDateString(D.idioma, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' }) : '';
         document.getElementById('r-meta').replaceChildren(
             ...[fecha, datos.circuito, datos.lugar].filter(Boolean).map((t) => h('span', { class: 'badge', text: t }))
         );
+
+        // Datos estructurados para buscadores (evento deportivo)
+        try {
+            const ld = document.createElement('script');
+            ld.type = 'application/ld+json';
+            ld.textContent = JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'SportsEvent',
+                name: datos.nombre + ' ' + datos.temporada,
+                sport: 'Formula 1',
+                startDate: datos.fecha,
+                eventStatus: 'https://schema.org/EventScheduled',
+                location: { '@type': 'Place', name: datos.circuito, address: datos.lugar }
+            }).replace(/</g, '\\u003c');
+            document.head.appendChild(ld);
+        } catch (e) { /* opcional */ }
 
         const rondaN = Number(ronda);
         const nav = document.querySelector('.race-nav');

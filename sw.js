@@ -8,23 +8,25 @@
 //
 // IMPORTANTE: al cambiar archivos del sitio, sube CACHE_VERSION para que los visitantes reciban lo nuevo.
 
-const CACHE_VERSION = 'f1fg-v2';
+const CACHE_VERSION = 'f1fg-v9';
 const SHELL = [
     './',
     'index.html',
     '404.html',
     'manifest.webmanifest',
     'css/tokens.css', 'css/base.css', 'css/components.css', 'css/menu.css', 'css/footer.css', 'css/notifications.css',
-    'css/home.css', 'css/sesiones.css', 'css/temporada.css', 'css/tienda.css', 'css/videos.css', 'css/noticias.css', 'css/legal.css',
+    'css/home.css', 'css/sesiones.css', 'css/temporada.css', 'css/tienda.css', 'css/videos.css', 'css/noticias.css', 'css/legal.css', 'css/explorar.css',
     'js/config.js', 'js/menu.js', 'js/theme-toggle.js', 'js/notifications.js', 'js/footer.js', 'js/f1-data.js',
     'js/home.js', 'js/historia.js', 'js/sesiones.js', 'js/temporada.js', 'js/temporadas.js', 'js/carrera.js',
-    'js/videos.js', 'js/noticias.js', 'js/tienda.js', 'js/productos-afiliados.js', 'js/productos-carrusel.js',
+    'js/videos.js', 'js/f1-extra.js', 'js/favoritos.js', 'js/preferencias.js', 'js/buscador.js', 'js/i18n.js', 'js/home-favoritos.js',
+    'js/mascota.js', 'js/circuito3d.js', 'js/mascota3d.js', 'js/pilotos.js', 'js/equipos.js', 'js/comparador.js', 'js/circuitos.js', 'js/estadisticas.js', 'js/quiniela.js', 'js/noticias.js', 'js/tienda.js', 'js/productos-afiliados.js', 'js/productos-carrusel.js',
     'html/layout/menu.html', 'html/layout/footer.html',
     'html/paginas/noticias.html', 'html/paginas/en-vivo.html', 'html/paginas/videos.html',
     'html/paginas/calendario_temporada.html', 'html/paginas/temporadas.html', 'html/paginas/carrera.html',
-    'html/paginas/tienda.html', 'html/paginas/terminos.html', 'html/paginas/privacidad.html',
+    'html/paginas/pilotos.html', 'html/paginas/equipos.html', 'html/paginas/circuitos.html', 'html/paginas/comparador.html',
+    'html/paginas/estadisticas.html', 'html/paginas/quiniela.html', 'html/paginas/tienda.html', 'html/paginas/terminos.html', 'html/paginas/privacidad.html',
     'img/favicon.ico', 'img/Formula-1-Fans-Global2.jpg', 'img/Formula-1-Fans-Global3.jpg',
-    'data/proxima-sesion.json', 'data/videos.json', 'data/historia.json'
+    'data/proxima-sesion.json', 'data/videos.json', 'data/historia.json', 'data/campeones.json', 'data/circuitos-trazados.geojson', 'data/circuitos-elevacion.json'
 ];
 
 self.addEventListener('install', (event) => {
