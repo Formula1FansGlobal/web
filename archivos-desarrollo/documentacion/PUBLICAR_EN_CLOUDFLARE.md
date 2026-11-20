@@ -105,3 +105,13 @@ curl -s https://NOMBRE.pages.dev/api/noticias | head -c 300
 Un dominio propio y duradero siempre cuesta (≈ US$10/año por un `.com` en Cloudflare Registrar, a precio de costo).
 No hay dominios gratuitos confiables a largo plazo (los `.tk`, `.ml`, etc. desaparecieron). Evita "f1" y "formula1" en el nombre.
 Cuando decidas comprarlo: Registro de dominios → registrar → en tu proyecto de Pages → **Dominios personalizados**, y vuelve a correr `set-domain.sh`.
+
+## Noticias nuevas cada hora
+
+- **Cloudflare Pages:** `/api/noticias` consulta NewsData.io y guarda la respuesta 1 hora en caché; la página
+  vuelve a pedirla cada hora si se queda abierta y marca las noticias nuevas con "Nueva".
+- **GitHub Pages (sin funciones):** el workflow `.github/workflows/noticias.yml` escribe `data/noticias.json`
+  cada hora. Está apagado por defecto: crea el secreto `NEWSDATA_API_KEY` (clave nueva) y la variable
+  `NOTICIAS_AUTO = true` en *Settings > Secrets and variables > Actions*. Cada actualización es un commit,
+  y en Cloudflare Pages cada commit gasta una de las 500 compilaciones gratuitas al mes: si usas Cloudflare,
+  déjalo apagado.

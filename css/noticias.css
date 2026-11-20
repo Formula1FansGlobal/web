@@ -41,3 +41,8 @@
 
 .news-mensaje { grid-column: 1 / -1; text-align: center; color: var(--text-dim); padding: 48px 0; }
 .news-aviso { margin: 24px 0 0; font-size: 0.78rem; color: var(--text-faint); text-align: center; }
+
+/* Estado de actualización y etiqueta "Nueva" */
+.news-estado { grid-column: 1 / -1; margin: 0 0 4px; font-size: 0.82rem; color: var(--text-faint); }
+.noticia { position: relative; }
+.noticia-nueva { position: absolute; top: 10px; left: 10px; z-index: 1; padding: 3px 10px; border-radius: 999px; background: var(--brand); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; }

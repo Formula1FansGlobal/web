@@ -1,0 +1,46 @@
+name: Actualizar noticias
+
+# Cada hora descarga noticias de F1 (NewsData.io) y las guarda en data/noticias.json.
+# Sirve para hospedaje SIN funciones (GitHub Pages). En Cloudflare Pages no hace falta: allí
+# /api/noticias ya consulta la API en vivo (caché de 1 hora).
+#
+# Está APAGADO por defecto. Para encenderlo:
+#   1) Settings > Secrets and variables > Actions > Secrets: crea NEWSDATA_API_KEY (clave NUEVA).
+#   2) Settings > Secrets and variables > Actions > Variables: crea NOTICIAS_AUTO = true
+# Nota: cada actualización es un commit, y en Cloudflare Pages cada commit gasta una de las
+# 500 compilaciones gratuitas al mes. Si usas Cloudflare, déjalo apagado.
+
+on:
+  schedule:
+    - cron: '7 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: noticias
+  cancel-in-progress: false
+
+jobs:
+  actualizar:
+    if: ${{ vars.NOTICIAS_AUTO == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar noticias
+        shell: pwsh
+        env:
+          NEWSDATA_API_KEY: ${{ secrets.NEWSDATA_API_KEY }}
+        run: ./archivos-desarrollo/scripts/actualizar-noticias.ps1
+      - name: Guardar si hay cambios
+        run: |
+          if [ -n "$(git status --porcelain data/noticias.json)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add data/noticias.json
+            git commit -m "Noticias: actualización automática"
+            git push
+          else
+            echo "Sin cambios."
+          fi

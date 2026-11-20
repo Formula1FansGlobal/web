@@ -4,12 +4,12 @@
 // proyecto de Pages (variable NEWSDATA_API_KEY), nunca en el repositorio ni en el navegador.
 //
 // - Misma URL que el sitio (/api/noticias): no requiere CORS ni cambiar el CSP.
-// - Cachea 15 min en el borde: la API externa se consulta como máximo una vez por ese lapso
+// - Cachea 1 hora en el borde: la API externa se consulta como máximo una vez por ese lapso
 //   por centro de datos, lo que también protege tu cuota contra abuso.
 // - Devuelve solo los campos necesarios y descarta enlaces/imágenes que no sean https.
 
-const NEWSDATA_URL = 'https://newsdata.io/api/1/news';
-const CACHE_SECONDS = 900;
+const NEWSDATA_URL = 'https://newsdata.io/api/1/latest';
+const CACHE_SECONDS = 3600; // 1 hora: las noticias se renuevan cada hora y se cuida la cuota de la API
 const MAX_RESULTADOS = 12;
 
 function soloHttps(valor) {
@@ -39,7 +39,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
     }
 
     const cache = caches.default;
-    const cacheKey = new Request(new URL(request.url).origin + '/__noticias_v1', { method: 'GET' });
+    const cacheKey = new Request(new URL(request.url).origin + '/__noticias_v2', { method: 'GET' });
     const enCache = await cache.match(cacheKey);
     if (enCache) return enCache;
 
@@ -71,7 +71,7 @@ export async function onRequestGet({ request, env, waitUntil }) {
         .filter((n) => n.title && n.link)
         .slice(0, MAX_RESULTADOS);
 
-    const respuesta = json({ results: resultados });
+    const respuesta = json({ actualizado: new Date().toISOString(), results: resultados });
     waitUntil(cache.put(cacheKey, respuesta.clone()));
     return respuesta;
 }

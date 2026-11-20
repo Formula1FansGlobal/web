@@ -1,8 +1,8 @@
-// noticias.js - Carga de noticias de F1 a través de un proxy propio.
+// noticias.js - Noticias de F1 que se renuevan cada hora.
 //
-// La clave de NewsData.io NO está en este archivo: vive como secreto en el
-// Pages Function (functions/api/noticias.js). Todo el contenido externo se inserta con
-// textContent / atributos del DOM, nunca con innerHTML, para evitar XSS.
+// Fuente 1: /api/noticias (Cloudflare Pages Function, clave secreta en el servidor).
+// Fuente 2: data/noticias.json, que genera cada hora el workflow .github/workflows/noticias.yml.
+// Todo el contenido externo se inserta con textContent / atributos del DOM, nunca con innerHTML.
 
 (function () {
     'use strict';
@@ -81,37 +81,75 @@
         return tarjeta;
     }
 
+    const INTERVALO_MS = 60 * 60 * 1000; // las noticias se renuevan cada hora
+    const BASE = location.pathname.replace(/\\/g, '/').includes('/html/') ? '../../' : './';
+    let conocidas = null; // enlaces ya mostrados, para marcar las nuevas
+    let ultimaCarga = 0;
+
+    /** Primero la API en vivo (Cloudflare); si no existe, el archivo que genera el workflow cada hora. */
+    async function pedirDatos() {
+        const endpoint = (window.SITE_CONFIG && window.SITE_CONFIG.newsEndpoint) || '';
+        const fuentes = [endpoint, BASE + 'data/noticias.json'].filter(Boolean);
+        for (const url of fuentes) {
+            try {
+                const r = await fetch(url, { headers: { Accept: 'application/json' }, cache: 'no-cache' });
+                if (!r.ok) continue;
+                const d = await r.json();
+                if (Array.isArray(d.results) && d.results.length) return d;
+            } catch (e) { /* prueba la siguiente */ }
+        }
+        return null;
+    }
+
+    function hora(valor) {
+        const f = new Date(valor);
+        return isNaN(f) ? '' : f.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' });
+    }
+
     async function cargarNoticias() {
         const contenedor = document.getElementById('news');
         if (!contenedor) return;
+        const primera = conocidas === null;
 
-        const endpoint = (window.SITE_CONFIG && window.SITE_CONFIG.newsEndpoint) || '';
-        if (!endpoint) {
-            mostrarMensaje(contenedor, 'Las noticias estarán disponibles muy pronto.');
+        const datos = await pedirDatos();
+        ultimaCarga = Date.now();
+        if (!datos) {
+            // Si ya había noticias en pantalla, las dejamos; solo avisamos en la primera carga.
+            if (primera) mostrarMensaje(contenedor, 'Las noticias estarán disponibles muy pronto.');
             return;
         }
 
-        try {
-            const respuesta = await fetch(endpoint, { headers: { Accept: 'application/json' } });
-            if (!respuesta.ok) throw new Error('HTTP ' + respuesta.status);
-            const datos = await respuesta.json();
-
-            const resultados = Array.isArray(datos.results) ? datos.results : [];
-            const tarjetas = resultados
-                .slice(0, MAX_NOTICIAS)
-                .map(crearTarjeta)
-                .filter(Boolean);
-
-            if (tarjetas.length === 0) {
-                mostrarMensaje(contenedor, 'No hay noticias disponibles por ahora.');
-                return;
+        const tarjetas = [];
+        datos.results.slice(0, MAX_NOTICIAS).forEach((n) => {
+            const t = crearTarjeta(n);
+            if (!t) return;
+            if (!primera && conocidas && !conocidas.has(n.link)) {
+                const etiqueta = document.createElement('span');
+                etiqueta.className = 'noticia-nueva';
+                etiqueta.textContent = 'Nueva';
+                t.prepend(etiqueta);
             }
-            contenedor.replaceChildren(...tarjetas);
-        } catch (error) {
-            console.error('Error al cargar noticias:', error);
-            mostrarMensaje(contenedor, 'Hubo un error al cargar las noticias. Intenta de nuevo más tarde.');
+            tarjetas.push(t);
+        });
+        if (tarjetas.length === 0) {
+            if (primera) mostrarMensaje(contenedor, 'No hay noticias disponibles por ahora.');
+            return;
         }
+        conocidas = new Set(datos.results.map((n) => n.link));
+
+        const estado = document.createElement('p');
+        estado.className = 'news-estado';
+        const h = hora(datos.actualizado);
+        estado.textContent = (h ? `Actualizado a las ${h} · ` : '') + 'Se renuevan cada hora.';
+        contenedor.replaceChildren(estado, ...tarjetas);
     }
 
-    document.addEventListener('DOMContentLoaded', cargarNoticias);
+    document.addEventListener('DOMContentLoaded', () => {
+        cargarNoticias();
+        // Se renuevan solas si la página queda abierta, y al volver a la pestaña si pasó más de una hora.
+        setInterval(() => { if (!document.hidden) cargarNoticias(); }, INTERVALO_MS);
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden && Date.now() - ultimaCarga >= INTERVALO_MS) cargarNoticias();
+        });
+    });
 })();
