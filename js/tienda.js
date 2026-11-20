@@ -1,6 +1,6 @@
 // tienda.js - Catálogo de afiliados.
 // Los datos viven en js/productos-afiliados.js y js/productos-carrusel.js
-// (los genera html/paginas/admin-productos.html). Este archivo solo los muestra.
+// (los genera archivos-desarrollo/herramientas/admin-productos.html). Este archivo solo los muestra.
 // Todo el contenido se inserta con el DOM (textContent), nunca con innerHTML.
 
 (function () {

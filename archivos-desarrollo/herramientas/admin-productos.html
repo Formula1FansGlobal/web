@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
         <meta name="robots" content="noindex, nofollow">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'none'; base-uri 'self'; object-src 'none'; form-action 'none'">
+    <!-- HERRAMIENTA LOCAL: ábrela desde tu computadora. No se publica en el sitio (ver build.sh). -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Panel Admin para gestionar productos de la tienda F1 Fans Global.">
     <title>Panel Admin - Productos | Formula 1 Fans Global</title>
@@ -364,6 +366,14 @@
         let currentTab = 'productos';
         let editingId = null;
 
+        // Seguridad: todo texto va escapado y solo se aceptan URLs https
+        function esc(v) {
+            return String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+        }
+        function safeUrl(v) {
+            try { const u = new URL(v); return u.protocol === 'https:' ? u.toString() : ''; } catch (e) { return ''; }
+        }
+
         // Cargar productos del archivo
         function loadProducts() {
             products = JSON.parse(JSON.stringify(productosAfiliados || []));
@@ -401,16 +411,16 @@
                     <tr>
                         <td>
                             <div class="product-image-thumb">
-                                <img src="${p.image}" alt="${p.title}" onerror="this.src='https://via.placeholder.com/50'">
+                                <img src="${esc(safeUrl(p.image))}" alt="${esc(p.title)}">
                             </div>
                         </td>
-                        <td>${p.title}</td>
-                        <td>$${p.price.toLocaleString('es-MX')}</td>
-                        <td><span style="background: #2a2a2a; padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;">${p.category}</span></td>
+                        <td>${esc(p.title)}</td>
+                        <td>$${(Number(p.price) || 0).toLocaleString('es-MX')}</td>
+                        <td><span style="background: #2a2a2a; padding: 4px 8px; border-radius: 4px; font-size: 0.85rem;">${esc(p.category)}</span></td>
                         <td>
                             <div class="table-actions">
-                                <button class="btn-secondary btn-small" onclick="editProduct('${p.id}')">✏️ Editar</button>
-                                <button class="btn-danger btn-small" onclick="deleteProduct('${p.id}')">🗑️ Eliminar</button>
+                                <button class="btn-secondary btn-small" data-action="edit" data-id="${esc(p.id)}">✏️ Editar</button>
+                                <button class="btn-danger btn-small" data-action="delete" data-id="${esc(p.id)}">🗑️ Eliminar</button>
                             </div>
                         </td>
                     </tr>
@@ -425,6 +435,13 @@
             container.innerHTML = html;
         }
 
+        document.getElementById('products-container').addEventListener('click', (e) => {
+            const b = e.target.closest('button[data-action]');
+            if (!b) return;
+            if (b.dataset.action === 'edit') editProduct(b.dataset.id);
+            else deleteProduct(b.dataset.id);
+        });
+
         // Actualizar estadísticas
         function updateStats() {
             const stats = document.getElementById('stats');
@@ -434,7 +451,7 @@
 
             currentProducts.forEach(p => {
                 categories[p.category] = (categories[p.category] || 0) + 1;
-                totalValue += p.price;
+                totalValue += Number(p.price) || 0;
             });
 
             stats.innerHTML = `
@@ -491,9 +508,10 @@
                 title: document.getElementById('form-title').value,
                 price: parseFloat(document.getElementById('form-price').value),
                 category: document.getElementById('form-category').value,
-                image: document.getElementById('form-image').value,
-                link: document.getElementById('form-link').value
+                image: safeUrl(document.getElementById('form-image').value),
+                link: safeUrl(document.getElementById('form-link').value)
             };
+            if (!product.image || !product.link) { alert('La imagen y el enlace deben ser URLs https válidas.'); return; }
 
             if (currentTab === 'productos') {
                 if (editingId) {

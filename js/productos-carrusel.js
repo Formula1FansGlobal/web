@@ -6,7 +6,7 @@
 // Son INDEPENDIENTES de los productos del catálogo principal (productos-afiliados.js)
 //
 // 🎯 INSTRUCCIONES CON PANEL ADMIN:
-// 1. Abre: html/paginas/admin-productos.html → Tab "✨ Carrusel (Ofertas)"
+// 1. Abre: archivos-desarrollo/herramientas/admin-productos.html → Tab "✨ Carrusel (Ofertas)"
 // 2. Agrega/edita/elimina productos
 // 3. Click en "📥 Generar Código"
 // 4. Copia el código completo

@@ -39,7 +39,7 @@ accesible, 100 % legal (sin retransmitir ni alojar señal de F1).
 2. Agregar videos en `data/videos.json` (`COMO_AGREGAR_VIDEOS.md`).
 3. Confirmar el origen/licencia de imágenes en `img/` y de `videos/*.mp4` (`POLITICA_DE_CONTENIDO.md`).
 4. Revisar la tienda: las imágenes de productos y los enlaces de afiliados (programa y licencias).
-5. `html/paginas/admin-productos.html` es una página pública con protección solo en el navegador: no debe contener secretos ni accesos reales. Muévela fuera del repo público o protégela con Cloudflare Access.
+5. `archivos-desarrollo/herramientas/admin-productos.html` es una página pública con protección solo en el navegador: no debe contener secretos ni accesos reales. Muévela fuera del repo público o protégela con Cloudflare Access.
 6. ~~Unificar el correo de contacto~~ (hecho: todo usa el alias de soporte).
 7. Elegir/registrar dominio y ejecutar `set-domain.sh` (hoy `sitemap.xml`/`robots.txt` apuntan a `formula1fansglobal.github.io/web/`). Ver `PUBLICAR_EN_CLOUDFLARE.md`.
 
@@ -57,3 +57,23 @@ Cada vez que cambies archivos que ya están en `SHELL` de `sw.js` (o agregues p�
 5. **Idiomas**: inglés como segunda lengua.
 6. **Analítica propia de privacidad**: eventos mínimos sin cookies.
 7. **Pruebas automáticas**: pasar los scripts de verificación a un workflow de GitHub Actions.
+
+## Actualización: 12 de noviembre de 2026 (14 mejoras)
+
+| Mejora | Dónde |
+|---|---|
+| Pilotos y equipos (fichas, favoritos) | `pilotos.html`, `equipos.html`, `js/pilotos.js`, `js/equipos.js`, `js/f1-extra.js` |
+| Comparador de pilotos | `comparador.html`, `js/comparador.js` |
+| Circuitos (mapa SVG de ubicación + ganadores) | `circuitos.html`, `js/circuitos.js` |
+| Estadísticas (campeones, títulos, gráfica de puntos) | `estadisticas.html`, `js/estadisticas.js`, `data/campeones.json` |
+| Favoritos en la portada (solo en el navegador) | `js/favoritos.js`, `js/home-favoritos.js` |
+| Buscador (Ctrl+K o «/») | `js/buscador.js` |
+| Zona horaria elegible, tamaño de letra, alto contraste, idioma | `js/preferencias.js` (botón ⚙️ del menú) |
+| Quiniela local (podio + pole) | `quiniela.html`, `js/quiniela.js` |
+| Inglés | `js/i18n.js` (diccionario `DIC`; lo que no esté traducido queda en español) |
+| Pruebas automáticas + escáner de secretos | `archivos-desarrollo/scripts/verificar.sh`, `.github/workflows/verificar.yml` |
+| Rendimiento | favicon real de 7 KB (pesaba 272 KB), imagen de 1954 recomprimida |
+| Datos estructurados (SEO) | JSON-LD en `index.html` y en cada `carrera.html` |
+
+Mantenimiento: cada año agrega la temporada nueva a `data/campeones.json` (o déjalo: el sitio completa las faltantes en vivo).
+Para traducir más textos, agrega líneas a `DIC` en `js/i18n.js`.

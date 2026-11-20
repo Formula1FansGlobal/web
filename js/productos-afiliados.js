@@ -15,7 +15,7 @@
 // ═══════════════════════════════════════════════════════════════════════════
 
 // 🎯 INSTRUCCIONES CON PANEL ADMIN:
-// 1. Abre: html/paginas/admin-productos.html → Tab "📦 Catálogo Principal"
+// 1. Abre: archivos-desarrollo/herramientas/admin-productos.html → Tab "📦 Catálogo Principal"
 // 2. Agrega/edita/elimina productos
 // 3. Click en "📥 Generar Código"
 // 4. Copia el código completo

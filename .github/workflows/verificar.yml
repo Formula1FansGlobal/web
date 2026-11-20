@@ -1,0 +1,19 @@
+name: Verificar sitio
+
+# Corre en cada cambio y en cada pull request: enlaces rotos, canales de YouTube, secretos,
+# innerHTML, target="_blank" sin noopener, CSP en cada página, archivos del service worker y peso.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Revisiones del sitio
+        run: bash archivos-desarrollo/scripts/verificar.sh

@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /html/paginas/admin-productos.html
 
 Sitemap: https://formula1fansglobal.github.io/web/sitemap.xml

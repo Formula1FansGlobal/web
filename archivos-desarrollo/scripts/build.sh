@@ -23,7 +23,7 @@ for d in css js html img data .well-known; do
 done
 
 # El panel admin es una herramienta LOCAL (sin autenticación real): no se publica
-rm -f dist/html/paginas/admin-productos.html
+# (el panel admin vive en archivos-desarrollo/herramientas y nunca se copia a dist)
 
 # Seguridad: nada de archivos internos ni de sistema dentro de dist
 find dist \( -name '.DS_Store' -o -name '*.md' -o -name '*.sh' -o -name '*.map' \) -type f -delete
