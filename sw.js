@@ -8,7 +8,7 @@
 //
 // IMPORTANTE: al cambiar archivos del sitio, sube CACHE_VERSION para que los visitantes reciban lo nuevo.
 
-const CACHE_VERSION = 'f1fg-v9';
+const CACHE_VERSION = 'f1fg-v10';
 const SHELL = [
     './',
     'index.html',
@@ -16,7 +16,7 @@ const SHELL = [
     'manifest.webmanifest',
     'css/tokens.css', 'css/base.css', 'css/components.css', 'css/menu.css', 'css/footer.css', 'css/notifications.css',
     'css/home.css', 'css/sesiones.css', 'css/temporada.css', 'css/tienda.css', 'css/videos.css', 'css/noticias.css', 'css/legal.css', 'css/explorar.css',
-    'js/config.js', 'js/menu.js', 'js/theme-toggle.js', 'js/notifications.js', 'js/footer.js', 'js/f1-data.js',
+    'js/config.js', 'js/menu.js', 'js/theme-toggle.js', 'js/notifications.js', 'js/footer.js', 'js/f1-data.js', 'js/resumen-carrera.js',
     'js/home.js', 'js/historia.js', 'js/sesiones.js', 'js/temporada.js', 'js/temporadas.js', 'js/carrera.js',
     'js/videos.js', 'js/f1-extra.js', 'js/favoritos.js', 'js/preferencias.js', 'js/buscador.js', 'js/i18n.js', 'js/home-favoritos.js',
     'js/mascota.js', 'js/circuito3d.js', 'js/mascota3d.js', 'js/pilotos.js', 'js/equipos.js', 'js/comparador.js', 'js/circuitos.js', 'js/estadisticas.js', 'js/quiniela.js', 'js/noticias.js', 'js/tienda.js', 'js/productos-afiliados.js', 'js/productos-carrusel.js',

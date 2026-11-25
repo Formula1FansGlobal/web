@@ -14,7 +14,8 @@
     const panel = document.getElementById('r-panel');
     const tabs = Array.from(document.querySelectorAll('.tabs .tab'));
     let datos = null;
-    let tab = 'carrera';
+    let tab = 'resumen';
+    let resumenCache = null;
 
     function aviso(t) { return h('p', { class: 'notice', text: t }); }
 
@@ -53,6 +54,41 @@
             )));
     }
 
+    /** Datos extra para el resumen (paradas y campeonato). Cada uno es opcional: si falla, se omite esa frase. */
+    async function pedirExtras() {
+        const ttl = Number(anio) < new Date().getFullYear() ? 6 * 3600 * 1000 : undefined;
+        const base = `/${encodeURIComponent(anio)}`;
+        const r = Number(ronda);
+        const leer = async (ruta, sacar) => {
+            try { return sacar(await D.getJSON(ruta, ttl)) || []; } catch (e) { return []; }
+        };
+        const [paradas, pilotosTras, pilotosAntes, equiposTras] = await Promise.all([
+            Number(anio) >= 2012 ? leer(`${base}/${r}/pitstops.json?limit=100`, (j) => j.MRData.RaceTable.Races[0] && j.MRData.RaceTable.Races[0].PitStops) : [],
+            leer(`${base}/${r}/driverStandings.json`, (j) => j.MRData.StandingsTable.StandingsLists[0] && j.MRData.StandingsTable.StandingsLists[0].DriverStandings),
+            r > 1 ? leer(`${base}/${r - 1}/driverStandings.json`, (j) => j.MRData.StandingsTable.StandingsLists[0] && j.MRData.StandingsTable.StandingsLists[0].DriverStandings) : [],
+            leer(`${base}/${r}/constructorStandings.json`, (j) => j.MRData.StandingsTable.StandingsLists[0] && j.MRData.StandingsTable.StandingsLists[0].ConstructorStandings)
+        ]);
+        return { paradas, pilotosTras, pilotosAntes, equiposTras };
+    }
+
+    async function vistaResumen() {
+        if (!datos.resultados.length) return aviso('Aún no hay resultados para esta carrera, así que todavía no hay resumen.');
+        if (!window.F1Resumen) return aviso('El resumen no está disponible en este momento.');
+        if (!resumenCache) resumenCache = window.F1Resumen.construir(datos, await pedirExtras());
+        const rs = resumenCache;
+        const desc = document.querySelector('meta[name="description"]');
+        if (desc && rs.descripcion) desc.setAttribute('content', rs.descripcion);
+        return h('div', { class: 'resumen' },
+            rs.claves.length ? h('div', { class: 'resumen-claves' }, rs.claves.map((c) =>
+                h('div', { class: 'card resumen-clave' },
+                    h('small', { text: c.etiqueta }),
+                    h('strong', { text: c.valor }),
+                    c.detalle ? h('span', { text: c.detalle }) : null))) : null,
+            h('div', { class: 'card resumen-texto' }, rs.parrafos.map((p) => h('p', { text: p }))),
+            h('p', { class: 'data-credit', text: 'Resumen redactado automáticamente a partir de los datos de la carrera (Jolpica F1 API). No es un texto de ningún medio.' })
+        );
+    }
+
     async function vistaVideos() {
         let lista = [];
         try {
@@ -82,7 +118,8 @@
         });
         panel.setAttribute('aria-labelledby', 'rtab-' + tab);
         if (!datos) return;
-        if (tab === 'carrera') panel.replaceChildren(vistaCarrera());
+        if (tab === 'resumen') { panel.replaceChildren(h('div', { class: 'skeleton', style: 'height: 220px' })); const v = await vistaResumen(); if (tab === 'resumen') panel.replaceChildren(v); }
+        else if (tab === 'carrera') panel.replaceChildren(vistaCarrera());
         else if (tab === 'clasif') panel.replaceChildren(vistaClasif());
         else panel.replaceChildren(await vistaVideos());
     }

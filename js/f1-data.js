@@ -274,6 +274,9 @@
             lugar: [loc.locality, loc.country].filter(Boolean).join(', '),
             resultados: (race.Results || []).map((r) => ({
                 pos: Number(r.position) || 0,
+                id: r.Driver.driverId || "",
+                equipoId: (r.Constructor && r.Constructor.constructorId) || "",
+                status: r.status || "",
                 parrilla: Number(r.grid) || 0,
                 nombre: `${r.Driver.givenName} ${r.Driver.familyName}`,
                 equipo: r.Constructor ? r.Constructor.name : '',

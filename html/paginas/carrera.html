@@ -43,11 +43,12 @@
             <div class="container">
                 <h2 id="r-tab-title" class="sr-only">Detalle del Gran Premio</h2>
                 <div class="tabs tabs--scroll" role="tablist" aria-label="Secciones del Gran Premio" style="margin-bottom:20px">
-                    <button class="tab is-active" role="tab" aria-selected="true" id="rtab-carrera" data-tab="carrera" aria-controls="r-panel">Carrera</button>
-                    <button class="tab" role="tab" aria-selected="false" id="rtab-clasif" data-tab="clasif" aria-controls="r-panel" tabindex="-1">Clasificación</button>
+                    <button class="tab is-active" role="tab" aria-selected="true" id="rtab-resumen" data-tab="resumen" aria-controls="r-panel">Resumen</button>
+                    <button class="tab" role="tab" aria-selected="false" id="rtab-carrera" data-tab="carrera" aria-controls="r-panel" tabindex="-1">Carrera</button>
+                                        <button class="tab" role="tab" aria-selected="false" id="rtab-clasif" data-tab="clasif" aria-controls="r-panel" tabindex="-1">Clasificación</button>
                     <button class="tab" role="tab" aria-selected="false" id="rtab-videos" data-tab="videos" aria-controls="r-panel" tabindex="-1">Videos</button>
                 </div>
-                <div id="r-panel" role="tabpanel" aria-labelledby="rtab-carrera" aria-live="polite">
+                <div id="r-panel" role="tabpanel" aria-labelledby="rtab-resumen" aria-live="polite">
                     <div class="skeleton" style="height: 320px"></div>
                 </div>
                 <p class="data-credit">Datos: Jolpica F1 API (compatible con Ergast). Los videos oficiales pertenecen a sus titulares.</p>
@@ -59,6 +60,7 @@
     <script src="../../js/theme-toggle.js" defer></script>
     <script src="../../js/notifications.js" defer></script>
     <script src="../../js/f1-data.js" defer></script>
+    <script src="../../js/resumen-carrera.js" defer></script>
     <script src="../../js/carrera.js" defer></script>
     <script src="../../js/f1-extra.js" defer></script>
     <script src="../../js/favoritos.js" defer></script>

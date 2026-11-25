@@ -319,3 +319,13 @@ nav.site-nav .nav-links a { padding-inline: 12px; }
 .c3d-prof-svg .p-now { fill: var(--text); font-size: 12px; font-weight: 700; font-family: var(--font); }
 .c3d-fallback { color: var(--brand-strong); max-width: 420px; margin: 0 auto; }
 .c3d-fallback svg { width: 100%; height: auto; display: block; }
+
+/* Resumen automático de la carrera */
+.resumen-claves { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.resumen-clave { padding: 14px 16px; display: flex; flex-direction: column; gap: 2px; }
+.resumen-clave small { color: var(--text-faint); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 700; }
+.resumen-clave strong { font-size: 1.05rem; line-height: 1.25; }
+.resumen-clave span { color: var(--text-dim); font-size: 0.85rem; }
+.resumen-texto { padding: 20px 22px; }
+.resumen-texto p { margin: 0 0 12px; line-height: 1.65; }
+.resumen-texto p:last-child { margin-bottom: 0; }
